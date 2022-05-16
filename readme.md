@@ -1,6 +1,6 @@
 # ultiplan
 
-- time manadement
+- time management
 - planning
 - tracking
 
