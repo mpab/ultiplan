@@ -1,0 +1,25 @@
+{
+  "name": "ultiplan",
+  "version": "1.0.0",
+  "description": "task planning and management",
+  "license": "MIT",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "tasks": "bin/tasks"
+  },
+  "scripts": {},
+  "dependencies": {
+    "axios": "^0.27.2",
+    "json2csv": "^5.0.7",
+    "minimist": "^1.2.0",
+    "ora": "^2.0.0"
+  }
+}

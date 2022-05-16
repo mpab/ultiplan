@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [ -z "$0" ]; then
+    echo "usage: $0 {options}"
+    exit
+fi
+
+echo "today's tasks $(date -I)"
+cat tracker.csv
+exit

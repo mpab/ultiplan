@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "today's tasks ($(date -I))"
+cat $(dirname "$0")/tasks.csv | grep $(date -I)
+echo
