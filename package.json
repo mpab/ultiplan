@@ -1,25 +1,23 @@
 {
   "name": "ultiplan",
-  "version": "1.0.0",
-  "description": "task planning and management",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "repository": "git@github.com:mpab/ultiplan.git",
+  "author": "",
   "license": "MIT",
-  "homepage": "",
-  "repository": {
-    "type": "git",
-    "url": ""
+  "devDependencies": {
+    "@types/node": "^17.0.34",
+    "ts-node": "^10.7.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.6.4"
   },
-  "engines": {
-    "node": ">=8"
-  },
-  "preferGlobal": true,
-  "bin": {
-    "tasks": "bin/tasks"
-  },
-  "scripts": {},
   "dependencies": {
     "axios": "^0.27.2",
     "json2csv": "^5.0.7",
-    "minimist": "^1.2.0",
-    "ora": "^2.0.0"
+    "minimist": "^1.2.6",
+    "ora": "^6.1.0"
+  },
+  "bin": {
+    "app": "./src/index.js"
   }
 }

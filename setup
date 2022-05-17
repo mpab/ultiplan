@@ -1,0 +1,12 @@
+#!/bin/sh
+yarn init -y
+yarn add -D typescript
+yarn add -D ts-node
+yarn add -D tslint
+yarn add -D @types/node
+yarn tsc --init --rootDir src --outDir dist
+
+yarn add axios
+yarn add json2csv
+yarn add minimist
+yarn add ora
