@@ -23,12 +23,12 @@ const index = () => {
       require("./commands/record")(args);
       break;
 
-    case "add-note":
-      require("./commands/add-note")(args);
+    case "note":
+      require("./commands/note")(args);
       break;
 
-    case "add-task":
-      require("./commands/add-task")(args);
+    case "track":
+      require("./commands/track")(args);
       break;
 
     case "list-json":
@@ -43,10 +43,6 @@ const index = () => {
       require("./commands/today")(args);
       break;
 
-    case "forecast":
-      require("./commands/forecast")(args);
-      break;
-
     case "version":
       require("./commands/version")(args);
       break;
@@ -56,7 +52,7 @@ const index = () => {
       break;
 
     default:
-      error(`"${cmd}" is not a valid command!`, true);
+      error(`"${cmd}" is not a valid command`, true);
       break;
   }
 };

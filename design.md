@@ -6,15 +6,27 @@ data is stored in k,v json file(s)
 
 - record
 
+interface TagArray extends Array<[...any]>{}
+
+export interface DbRecord {
+    description: string,
+    created_on: string,
+    started_on: string,
+    due_on: string,
+    completed_on: string,
+    project: string,
+    tags: TagArray,
+}
+
 ```json
 {
-  "name": "",                             // mandatory queued
-  "project": "",                          // mandatory queued
-  "start_date": "",                       // optional, semantically significant
-  "due_date": "",                         // optional, semantically significant
-  "completion_date":  "",                 // optional, semantically significant
-  "description": "",                      // optional, semantically significant
-  "comments": ["comment 1", "comment 2",] // optional, semantically significant
+  "description": "",                  // mandatory queued
+  "project": "",                      // mandatory queued
+  "created_on": "",                   // optional, semantically significant
+  "started_on": "",                   // optional, semantically significant
+  "due_on": "",                       // optional, semantically significant
+  "completed_on":  "",                // optional, semantically significant
+  "tags": [["t1"]["t2", "t2.1"], ...] // optional, semantically significant
 },
 ```
 

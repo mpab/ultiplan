@@ -14,13 +14,13 @@ module.exports = (item: DbRecord) => {
     item_errors += "no created_on, ";
   }
 
-  if (!item.started_on) {
-    item_errors += "no started_on, ";
-  }
+  // if (!item.started_on) {
+  //   item_errors += "no started_on, ";
+  // }
 
-  if (!item.due_on) {
-    item_errors += "no due_on, ";
-  }
+  // if (!item.due_on) {
+  //   item_errors += "no due_on, ";
+  // }
 
   if (!item.tags) {
     item_errors += "no tags, ";
