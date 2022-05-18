@@ -31,7 +31,7 @@ tasks
 
 ## link/unlink commands using npm
 ```sh
-# list all linksed modules
+# list all linked modules
 npm ls -g --depth=0 --link=true
 # or...
 npm ls --global
