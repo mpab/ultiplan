@@ -1,9 +1,11 @@
+interface TagArray extends Array<[...any]>{}
+
 export interface DbRecord {
-    description: String,
-    created_on: String,
-    started_on: String,
-    due_on: String,
-    completed_on: String,
-    project: String,
-    tags: [],
+    description: string,
+    created_on: string,
+    started_on: string,
+    due_on: string,
+    completed_on: string,
+    project: string,
+    tags: TagArray,
 }

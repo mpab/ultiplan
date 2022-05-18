@@ -12,8 +12,8 @@ import { DbRecord } from "../db/db-record";
 module.exports = async () => {
     var dateString = dateYYYYMMDD(new Date());
     console.log("record " + dateString);
-    rl.question("what has been completed? ", function (description: String) {
-        rl.question("project? ", function (project: String) {
+    rl.question("what has been completed? ", function (description: string) {
+        rl.question("project? ", function (project: string) {
             var item: DbRecord = {
                 description: description,
                 created_on: dateString,
