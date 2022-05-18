@@ -4,6 +4,31 @@
 - planning
 - tracking
 
+---
+
+## Installation
+
+Prereqisites
+
+- npm
+- yarn
+
+
+```sh
+yarn install
+npm link
+```
+
+---
+
+## Usage
+
+```sh
+tasks
+```
+
+---
+
 ## link/unlink commands using npm
 ```sh
 # list all linksed modules
