@@ -3,7 +3,7 @@ const menus: {[index: string]:any} = {
     tasks [command] <options>
 
     canned-data ........ create sample data
-    add-achievement .... add a completed, unplanned task 
+    record ............. add a completed, unplanned task 
     add-note ........... add a note (can be converted into a task later)
     add-task ........... add a planned task
     today .............. show tasks for today

@@ -5,7 +5,7 @@ module.exports = async (args) => {
 
   let data = [];
 
-  var item = {
+  var item = new DbRecord {
     description: "define initial task data model (nosql, json)",
     created_on: "2022-05-15",
     started_on: "2022-05-15",

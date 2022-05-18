@@ -4,8 +4,6 @@ const error = require("./utils/error");
 const index = () => {
   const args = minimist(process.argv.slice(2));
 
-  console.log("hello typescript2");
-
   let cmd = args._[0] || "help";
 
   if (args.version || args.v) {
@@ -21,8 +19,8 @@ const index = () => {
       require("./commands/canned-data")(args);
       break;
 
-    case "add-achievement":
-      require("./commands/add-achievement")(args);
+    case "record":
+      require("./commands/record")(args);
       break;
 
     case "add-note":

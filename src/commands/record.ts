@@ -1,18 +1,20 @@
-const dateYYYYMMDD = require("../utils/dateYYYYMMDD");
+const dateYYYYMMDD = require("../utils/dates");
+const dbCreateItem = require("../db/db-create-item");
+
 const readline = require("readline");
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
 });
 
-const dbCreateItem = require('../db/dbCreateItem');
+import { DbRecord } from "../db/db-record";
 
-module.exports = async (args) => {
+module.exports = async () => {
     var dateString = dateYYYYMMDD(new Date());
-    console.log("achievement " + dateString);
-    rl.question("what has been completed? ", function (description) {
-        rl.question("project? ", function (project) {
-            var item = {
+    console.log("record " + dateString);
+    rl.question("what has been completed? ", function (description: String) {
+        rl.question("project? ", function (project: String) {
+            var item: DbRecord = {
                 description: description,
                 created_on: dateString,
                 started_on: dateString,
