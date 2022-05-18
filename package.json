@@ -18,6 +18,6 @@
     "ora": "^6.1.0"
   },
   "bin": {
-    "app": "./src/index.js"
+    "tasks": "bin/tasks"
   }
 }

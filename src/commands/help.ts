@@ -1,4 +1,4 @@
-const menus = {
+const menus: {[index: string]:any} = {
   main: `
     tasks [command] <options>
 
@@ -12,7 +12,7 @@ const menus = {
     help ............... show help menu for a command`,
 }
 
-module.exports = (args) => {
+module.exports = (args: { _: any[] }) => {
   const subCmd = args._[0] === 'help'
     ? args._[1]
     : args._[0]

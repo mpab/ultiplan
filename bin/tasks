@@ -1,2 +1,6 @@
-#!/usr/bin/env node
-require('../src/')()
+#!/bin/sh
+npx ts-node src/index.ts
+
+# NB - this works locally, but not when linked
+# #!/usr/bin/env -S node -r "ts-node/register"
+# require('../src')
