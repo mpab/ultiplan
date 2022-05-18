@@ -15,8 +15,8 @@ const index = () => {
   }
 
   switch (cmd) {
-    case "canned-data":
-      require("./commands/canned-data")(args);
+    case "create-sample-tasks":
+      require("./commands/create-sample-tasks")(args);
       break;
 
     case "record":

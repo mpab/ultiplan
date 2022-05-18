@@ -1,5 +1,5 @@
 const dateYYYYMMDD = require("../utils/dates");
-const dbCreateItem = require("../db/db-create-item");
+const dbCreateRecord = require("../db/db-create-record");
 
 const readline = require("readline");
 const rl = readline.createInterface({
@@ -14,9 +14,7 @@ import { DbRecord } from "../db/db-record";
 module.exports = async () => {
     var dateString = dateYYYYMMDD(new Date());
     error("track not yet implemented", true);
-
-    console.log("track " + dateString);
-    rl.question("what do you want to track? ", function (description: string) {
+    rl.question(dateString + " track? ", function (description: string) {
         if (!description.length) exit();
         rl.question("project? ", function (project: string) {
             var item: DbRecord = {
@@ -28,7 +26,7 @@ module.exports = async () => {
                 project: project,
                 tags: [],
             };
-            dbCreateItem(item);
+            dbCreateRecord(item);
             rl.close();
         });
     });

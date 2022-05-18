@@ -1,5 +1,5 @@
 const dateYYYYMMDD = require("../utils/dates");
-const dbCreateItem = require("../db/db-create-item");
+const dbCreateRecord = require("../db/db-create-record");
 
 const readline = require("readline");
 const rl = readline.createInterface({
@@ -25,7 +25,7 @@ module.exports = async () => {
                 project: project,
                 tags: [],
             };
-            dbCreateItem(item);
+            dbCreateRecord(item);
             rl.close();
         });
     });

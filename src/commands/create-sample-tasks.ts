@@ -1,11 +1,9 @@
-const fs = require("fs");
-const filePath = process.cwd() + "\\data\\tasks.json";
-
 import { DbRecord } from "../db/db-record";
+const fs = require("fs");
 
 module.exports = async () => {
 
-  let data = [];
+  let data: DbRecord[] = [];
 
   var item: DbRecord = {
     description: "define initial task data model (nosql, json)",
@@ -63,7 +61,8 @@ module.exports = async () => {
   ];
   data.push(item);
 
-  console.log("writing " + filePath);
+  const filePath = process.cwd() + "\\data\\sample-tasks.json";
+
   fs.writeFile(filePath, JSON.stringify(data, null, "  "), function (err: any) {
     if (err) {
       return console.error(err);
