@@ -7,12 +7,14 @@ const rl = readline.createInterface({
     output: process.stdout,
 });
 
+import { exit } from "process";
 import { DbRecord } from "../db/db-record";
 
 module.exports = async () => {
     var dateString = dateYYYYMMDD(new Date());
     console.log("record " + dateString);
     rl.question("what has been completed? ", function (description: string) {
+        if (!description.length) exit();
         rl.question("project? ", function (project: string) {
             var item: DbRecord = {
                 description: description,
