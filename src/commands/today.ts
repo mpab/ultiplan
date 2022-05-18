@@ -4,7 +4,7 @@ const error = require("../utils/error");
 // const getWeather = require('../utils/weather')
 // const getLocation = require('../utils/location')
 
-module.exports = async (args) => {
+module.exports = async () => {
 
   error("today not yet implemented", true);
 
