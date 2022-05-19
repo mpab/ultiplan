@@ -1,3 +1,5 @@
+// list all tasks in JSON format
+
 module.exports = async (args: { _: any[] }) => {
   const fs = require("fs");
   const jsonFile = process.cwd() + "\\data\\tasks.json";

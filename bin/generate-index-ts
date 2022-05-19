@@ -1,0 +1,37 @@
+#!/bin/sh
+
+echo 'const minimist = require("minimist");'
+echo 'const error = require("./utils/error");'
+echo 
+echo 'const index = () => {'
+echo '  const args = minimist(process.argv.slice(2));'
+echo 
+echo '  let cmd = args._[0] || "help";'
+echo 
+echo '  if (args.version || args.v) {'
+echo '    cmd = "version";'
+echo ' }'
+echo 
+echo '  if (args.help || args.h) {'
+echo '    cmd = "help";'
+echo '  }'
+echo 
+echo '  switch (cmd) {'
+echo '    // generated command handlers'
+
+for filepath in ./src/commands/*; do
+  filename_with_ext=$(basename -- "$filepath")
+  filename="${filename_with_ext%.*}"
+  echo "    case \"$filename\":"
+  echo "      require(\"./commands/$filename\")(args);"
+  echo '      break;'
+  echo
+  done
+
+echo '    default:'
+echo '      error(`"${cmd}" is not a valid command`, true);'
+echo '      break;'
+echo '  }'
+echo '};'
+echo 
+echo 'export default index();'

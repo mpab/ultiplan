@@ -1,3 +1,5 @@
+// show all open tasks for today
+
 //const ora = require('ora')
 const sleep = require('../utils/sleep')
 const error = require("../utils/error");

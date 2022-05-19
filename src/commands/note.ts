@@ -1,3 +1,5 @@
+// add a note (todo item, no planning)
+
 const dateYYYYMMDD = require("../utils/dates");
 const dbCreateRecord = require("../db/db-create-record");
 

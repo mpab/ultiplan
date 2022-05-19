@@ -8,47 +8,48 @@ const index = () => {
 
   if (args.version || args.v) {
     cmd = "version";
-  }
+ }
 
   if (args.help || args.h) {
     cmd = "help";
   }
 
   switch (cmd) {
+    // generated command handlers
     case "create-sample-tasks":
       require("./commands/create-sample-tasks")(args);
       break;
 
-    case "record":
-      require("./commands/record")(args);
-      break;
-
-    case "note":
-      require("./commands/note")(args);
-      break;
-
-    case "track":
-      require("./commands/track")(args);
-      break;
-
-    case "list-json":
-      require("./commands/list-json")(args);
+    case "help":
+      require("./commands/help")(args);
       break;
 
     case "list-csv":
       require("./commands/list-csv")(args);
       break;
 
+    case "list-json":
+      require("./commands/list-json")(args);
+      break;
+
+    case "note":
+      require("./commands/note")(args);
+      break;
+
+    case "record":
+      require("./commands/record")(args);
+      break;
+
     case "today":
       require("./commands/today")(args);
       break;
 
-    case "version":
-      require("./commands/version")(args);
+    case "track":
+      require("./commands/track")(args);
       break;
 
-    case "help":
-      require("./commands/help")(args);
+    case "version":
+      require("./commands/version")(args);
       break;
 
     default:

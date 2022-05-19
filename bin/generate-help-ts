@@ -1,0 +1,42 @@
+#!/bin/sh
+
+cmds="\n"
+for filepath in ./src/commands/*; do
+  filename_with_ext=$(basename -- "$filepath")
+  read -r comment<$filepath
+  summary=${comment:2}
+  filename="${filename_with_ext%.*}"
+
+  cmds=$cmds"    $filename "
+  len1=${#summary}
+  len2=${#filename}
+  sum="$(($len1+$len2))"
+  pad="$((60-$sum))"
+  [ "$filename" == 'help' ] && pad="$((59-$sum))" # hack...
+  for i in $(seq $pad); do
+    cmds=$cmds"."
+  done
+  cmds=$cmds"$summary\n"
+done
+cmds=$cmds"\`"
+
+hdr="// help on using commands 
+
+const menus: {[index: string]:any} = {
+  main: \`
+    tasks [command] <options>
+"
+
+ftr=",
+}
+module.exports = (args: { _: any[] }) => {$(echo -e $ret)
+  const subCmd = args._[0] === 'help'
+    ? args._[1]
+    : args._[0]
+
+  console.log(menus[subCmd] || menus.main)
+}"
+
+doc=$hdr$cmds$ftr
+
+echo -e "$doc"
