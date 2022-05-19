@@ -6,12 +6,13 @@ const menus: {[index: string]:any} = {
 
     create-sample-tasks ................ create sample task data
     help ................................ help on using commands
+    list ........................................ list all tasks
     list-csv ...................... list all tasks in CSV format
     list-json .................... list all tasks in JSON format
-    note ................... add a note (todo item, no planning)
     record ............................. record a completed task
+    schedule ................................... schedule a task
     today ........................ show all open tasks for today
-    track ......................................... start a task
+    todo ............................................ add a todo
     version ....................... show the application version
 `,
 }

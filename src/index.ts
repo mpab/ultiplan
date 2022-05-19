@@ -24,6 +24,10 @@ const index = () => {
       require("./commands/help")(args);
       break;
 
+    case "list":
+      require("./commands/list")(args);
+      break;
+
     case "list-csv":
       require("./commands/list-csv")(args);
       break;
@@ -32,20 +36,20 @@ const index = () => {
       require("./commands/list-json")(args);
       break;
 
-    case "note":
-      require("./commands/note")(args);
-      break;
-
     case "record":
       require("./commands/record")(args);
+      break;
+
+    case "schedule":
+      require("./commands/schedule")(args);
       break;
 
     case "today":
       require("./commands/today")(args);
       break;
 
-    case "track":
-      require("./commands/track")(args);
+    case "todo":
+      require("./commands/todo")(args);
       break;
 
     case "version":

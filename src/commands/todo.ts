@@ -1,4 +1,4 @@
-// add a note (todo item, no planning)
+// add a todo
 
 const dateYYYYMMDD = require("../utils/dates");
 const dbCreateRecord = require("../db/db-create-record");
@@ -14,7 +14,7 @@ import { DbRecord } from "../db/db-record";
 
 module.exports = async () => {
     var dateString = dateYYYYMMDD(new Date());
-    rl.question(dateString + " note? ", function (description: string) {
+    rl.question(dateString + " todo? ", function (description: string) {
         if (!description.length) exit();
         rl.question("project? ", function (project: string) {
             var item: DbRecord = {
