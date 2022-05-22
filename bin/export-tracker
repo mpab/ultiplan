@@ -1,2 +1,2 @@
 #!/bin/sh
-rm -f tracker.md && tasks export-markdown > tracker.md
+rm -f tracker.md && tasks export-markdown --p ultiplan > tracker.md

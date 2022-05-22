@@ -5,7 +5,7 @@ import { dbValidate } from "./db/db-util";
 const minimist = require(`minimist`);
  
 const index = () => {
-const args = minimist(process.argv.slice(2));
+  const args = minimist(process.argv.slice(2));
 
   let cmd = args._[0] || `help`;
  
