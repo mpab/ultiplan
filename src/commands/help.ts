@@ -5,6 +5,7 @@ const menus: {[index: string]:any} = {
     tasks [command] <options>
 
     create-sample-tasks ................ create sample task data
+    dbinit ............................ initializes the database
     help ................................ help on using commands
     list ........................................ list all tasks
     list-csv ...................... list all tasks in CSV format

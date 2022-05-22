@@ -13,7 +13,7 @@ import { exit } from "process";
 const error = require("../utils/error");
 import { DbRecord } from "../db/db-record";
 
-module.exports = async () => {
+module.exports = () => {
     var dateString = dateYYYYMMDD(new Date());
     error("schedule not yet implemented", true);
     rl.question(dateString + " schedule? ", function (description: string) {

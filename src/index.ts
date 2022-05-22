@@ -1,23 +1,38 @@
-const minimist = require("minimist");
-const error = require("./utils/error");
-
+import errorExit from "./utils/error-exit";
+import { dbValidate } from "./db/db-util";
+const minimist = require(`minimist`);
+ 
 const index = () => {
-  const args = minimist(process.argv.slice(2));
+const args = minimist(process.argv.slice(2));
 
-  let cmd = args._[0] || "help";
-
+  let cmd = args._[0] || `help`;
+ 
   if (args.version || args.v) {
-    cmd = "version";
- }
-
+    cmd = `version`;
+  }
+ 
   if (args.help || args.h) {
     cmd = "help";
   }
 
+  const err = dbValidate();
+  if (err) {
+    if (cmd !== "dbinit") {
+      if (cmd !== "help") {
+        errorExit(err);
+      } 
+      console.warn("WARN: " + err);
+    }
+  }
+ 
+  // generated command handlers
   switch (cmd) {
-    // generated command handlers
     case "create-sample-tasks":
       require("./commands/create-sample-tasks")(args);
+      break;
+
+    case "dbinit":
+      require("./commands/dbinit")(args);
       break;
 
     case "help":
@@ -57,9 +72,9 @@ const index = () => {
       break;
 
     default:
-      error(`"${cmd}" is not a valid command`, true);
+      errorExit(`"${cmd}" is not a valid command`);
       break;
   }
 };
-
+ 
 export default index();

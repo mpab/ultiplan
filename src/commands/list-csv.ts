@@ -1,11 +1,10 @@
 // list all tasks in CSV format
 
-module.exports = async () => {
-  const fs = require("fs");
-  const jsonFile = process.cwd() + "\\data\\tasks.json";
-  const csvFile = process.cwd() + "\\data\\tasks.csv";
+import { dbHandle } from "../db/db-util";
 
-  fs.readFile(jsonFile, function (err: any, data: string) {
+module.exports = () => {
+  const fs = require("fs");
+  fs.readFile(dbHandle, function (err: any, data: string) {
     if (err) {
       console.error(err);
     }

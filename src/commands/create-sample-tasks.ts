@@ -3,7 +3,7 @@
 import { DbRecord } from "../db/db-record";
 const fs = require("fs");
 
-module.exports = async () => {
+module.exports = () => {
 
   let data: DbRecord[] = [];
 

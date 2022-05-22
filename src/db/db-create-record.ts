@@ -1,8 +1,9 @@
 import { DbRecord } from "./db-record";
+import { dbHandle } from "./db-util";
 
 // TODO: multi-record update is not working
 
-module.exports = (new_record: DbRecord, jsonFile: string = process.cwd() + "\\data\\tasks.json") => {
+module.exports = (new_record: DbRecord, jsonFile: string = dbHandle) => {
   const fs = require("fs");
 
   // validate item
@@ -14,18 +15,6 @@ module.exports = (new_record: DbRecord, jsonFile: string = process.cwd() + "\\da
   if (!new_record.created_on) {
     item_errors += "no created_on, ";
   }
-
-  // if (!item.started_on) {
-  //   item_errors += "no started_on, ";
-  // }
-
-  // if (!item.due_on) {
-  //   item_errors += "no due_on, ";
-  // }
-
-  // if (!item.tags) {
-  //   item_errors += "no tags, ";
-  // }
 
   if (item_errors.length) {
     return console.error(item_errors);

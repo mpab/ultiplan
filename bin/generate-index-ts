@@ -1,23 +1,36 @@
 #!/bin/sh
 
-echo 'const minimist = require("minimist");'
-echo 'const error = require("./utils/error");'
-echo 
-echo 'const index = () => {'
-echo '  const args = minimist(process.argv.slice(2));'
-echo 
-echo '  let cmd = args._[0] || "help";'
-echo 
-echo '  if (args.version || args.v) {'
-echo '    cmd = "version";'
-echo ' }'
-echo 
-echo '  if (args.help || args.h) {'
-echo '    cmd = "help";'
-echo '  }'
-echo 
-echo '  switch (cmd) {'
-echo '    // generated command handlers'
+typescript='import errorExit from "./utils/error-exit";
+import { dbValidate } from "./db/db-util";
+const minimist = require(`minimist`);
+ 
+const index = () => {
+const args = minimist(process.argv.slice(2));
+
+  let cmd = args._[0] || `help`;
+ 
+  if (args.version || args.v) {
+    cmd = `version`;
+  }
+ 
+  if (args.help || args.h) {
+    cmd = "help";
+  }
+
+  const err = dbValidate();
+  if (err) {
+    if (cmd !== "dbinit") {
+      if (cmd !== "help") {
+        errorExit(err);
+      } 
+      console.warn("WARN: " + err);
+    }
+  }
+ 
+  // generated command handlers
+  switch (cmd) {'
+
+echo "$typescript"
 
 for filepath in ./src/commands/*; do
   filename_with_ext=$(basename -- "$filepath")
@@ -28,10 +41,13 @@ for filepath in ./src/commands/*; do
   echo
   done
 
-echo '    default:'
-echo '      error(`"${cmd}" is not a valid command`, true);'
-echo '      break;'
-echo '  }'
-echo '};'
-echo 
-echo 'export default index();'
+typescript='    default:
+      errorExit(`"${cmd}" is not a valid command`);
+      break;
+  }
+};
+ 
+export default index();'
+
+echo "$typescript"
+

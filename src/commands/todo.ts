@@ -12,7 +12,7 @@ const rl = readline.createInterface({
 import { exit } from "process";
 import { DbRecord } from "../db/db-record";
 
-module.exports = async () => {
+module.exports = () => {
     var dateString = dateYYYYMMDD(new Date());
     rl.question(dateString + " todo? ", function (description: string) {
         if (!description.length) exit();
@@ -26,7 +26,6 @@ module.exports = async () => {
                 project: project,
                 tags: [],
             };
-            dbCreateRecord(item);
             dbCreateRecord(item);
             rl.close();
         });

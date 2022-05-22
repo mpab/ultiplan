@@ -1,12 +1,11 @@
 // list all tasks in JSON format
 
-module.exports = async (args: { _: any[] }) => {
+import { dbHandle } from "../db/db-util";
+
+module.exports = () => {
   const fs = require("fs");
-  const jsonFile = process.cwd() + "\\data\\tasks.json";
 
-  console.log("reading " + jsonFile);
-
-  fs.readFile(jsonFile, function (err: any, data: string) {
+  fs.readFile(dbHandle, function (err: any, data: string) {
     if (err) {
       return console.error(err);
     }
