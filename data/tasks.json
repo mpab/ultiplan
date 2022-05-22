@@ -196,11 +196,11 @@
     "tags": []
   },
   {
-    "description": "reporting: add date sorting",
+    "description": "reporting: implement date sorting",
     "created_on": "2022-05-22",
     "started_on": "",
     "due_on": "",
-    "completed_on": "",
+    "completed_on": "2022-05-23",
     "project": "ultiplan",
     "tags": []
   },
@@ -210,6 +210,51 @@
     "started_on": "",
     "due_on": "",
     "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "create design document, considering data flows, aggregation, and task creation (inbox concept)",
+    "created_on": "2022-05-22",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "implement check to determine if duplicate tasks are being created",
+    "created_on": "2022-05-22",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "implement analysis mode to scan tasks for similarities, extract keywords, suggest groupings, etc",
+    "created_on": "2022-05-22",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "implement multi-line text entry/handle commas",
+    "created_on": "2022-05-22",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "implement default project response when creating a task",
+    "created_on": "2022-05-23",
+    "started_on": "2022-05-23",
+    "due_on": "2022-05-23",
+    "completed_on": "2022-05-23",
     "project": "ultiplan",
     "tags": []
   }

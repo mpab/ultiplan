@@ -24,10 +24,3 @@ module.exports = () => {
     console.log(csv);
   });
 };
-
-// (async () => {
-//   const data = await parseJSONFile(inputFileName);
-//   const csv = await j2c.json2csvAsync(data);
-//   writeCSV(outputFileName, csv);
-//   console.log(`Successfully converted ${outputFileName}!`);
-// })();

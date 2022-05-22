@@ -48,7 +48,10 @@ module.exports = () => {
       .filter(record => record.project === project && !record.completed_on);
     
     const done: DbRecord[] = project_records
-      .filter(record => record.project === project && record.completed_on);
+      .filter(record => record.project === project && record.completed_on)
+      .sort(function (a, b) {
+        return ('' + b.completed_on).localeCompare(a.completed_on);
+    })
 
     console.log("### todo: " + project);
     console.log("");

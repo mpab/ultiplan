@@ -39,16 +39,16 @@ const index = () => {
       require("./commands/help")(args);
       break;
 
+    case "list":
+      require("./commands/list")(args);
+      break;
+
     case "list-csv":
       require("./commands/list-csv")(args);
       break;
 
     case "list-json":
       require("./commands/list-json")(args);
-      break;
-
-    case "list":
-      require("./commands/list")(args);
       break;
 
     case "record":
