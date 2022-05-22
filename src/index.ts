@@ -35,16 +35,8 @@ const index = () => {
       require("./commands/dbinit")(args);
       break;
 
-    case "export-markdown":
-      require("./commands/export-markdown")(args);
-      break;
-
     case "help":
       require("./commands/help")(args);
-      break;
-
-    case "list":
-      require("./commands/list")(args);
       break;
 
     case "list-csv":
@@ -55,8 +47,16 @@ const index = () => {
       require("./commands/list-json")(args);
       break;
 
+    case "list":
+      require("./commands/list")(args);
+      break;
+
     case "record":
       require("./commands/record")(args);
+      break;
+
+    case "report-md":
+      require("./commands/report-md")(args);
       break;
 
     case "schedule":

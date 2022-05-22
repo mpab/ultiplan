@@ -13,6 +13,7 @@
 - add parameters to commands
 - extract diff from tracker to use as git commit message
 - reporting: add date sorting
+- references: implement reference extraction to markdown
 
 ### done: ultiplan
 

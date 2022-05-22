@@ -1,0 +1,2 @@
+#!/bin/sh
+rm -f tracker.md && tasks report-md --p ultiplan > tracker.md

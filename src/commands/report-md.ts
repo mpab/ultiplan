@@ -1,4 +1,4 @@
-// export tasks as markdown
+// generate a tasks report in markdown
 
 import { DbRecord } from "../db/db-record";
 import { dbHandle } from "../db/db-util";

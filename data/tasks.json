@@ -1,0 +1,216 @@
+[
+  {
+    "description": "define initial task data model (nosql, json)",
+    "created_on": "2022-05-15",
+    "started_on": "2022-05-15",
+    "due_on": "2022-05-15",
+    "completed_on": "2022-05-15",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "auto configure commands such that they can be added automatically",
+    "created_on": "2022-05-15",
+    "started_on": "2022-05-15",
+    "due_on": "",
+    "completed_on": "2022-05-19",
+    "project": "ultiplan",
+    "tags": [],
+    "start_date": ""
+  },
+  {
+    "description": "basic task saving using a JSON file",
+    "created_on": "2022-05-16",
+    "started_on": "2022-05-15",
+    "due_on": "2022-05-16",
+    "completed_on": "2022-05-16",
+    "project": "ultiplan",
+    "tags": [],
+    "start_date": "2022-05-16"
+  },
+  {
+    "description": "javascript references",
+    "created_on": "2022-05-16",
+    "started_on": "2022-05-15",
+    "due_on": "2022-05-16",
+    "completed_on": "2022-05-16",
+    "project": "learning: javascript/typescript",
+    "tags": [
+      {
+        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+      },
+      {
+        "url": "https://www.w3schools.com/js/default.asp"
+      }
+    ],
+    "start_date": "2022-05-16"
+  },
+  {
+    "description": "implement a basic web UI for task creation and viewing",
+    "created_on": "2022-05-19",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "javascript and typescript learning resources",
+    "created_on": "2022-05-19",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "learning: javascript/typescript",
+    "tags": [
+      {
+        "github": "https://github.com/WebDevSimplified"
+      },
+      {
+        "codepen": "https://codepen.io/WebDevSimplified"
+      }
+    ]
+  },
+  {
+    "description": "Build A Calculator With JavaScript Tutorial",
+    "created_on": "2022-05-19",
+    "started_on": "2022-05-19",
+    "due_on": "",
+    "completed_on": "2022-05-20",
+    "project": "learning: javascript/typescript",
+    "tags": [
+      {
+        "url": "https://www.youtube.com/watch?v=j59qQ7YWLxw"
+      },
+      {
+        "github": "https://github.com/mpab/learning/tree/master/webdevsimplified/calculator"
+      },
+      {
+        "note": "implemented using typescript"
+      }
+    ]
+  },
+  {
+    "description": "create note alias for todo command",
+    "created_on": "2022-05-21",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "reporting: create parameterized summary reports per project (output to markdown)",
+    "created_on": "2022-05-21",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "2022-05-22",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "consider how to link tasks to learnings/learning paths",
+    "created_on": "2022-05-21",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "add task edit (update) functionality",
+    "created_on": "2022-05-21",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "implement local tasks repo/deployment (with default project?)",
+    "created_on": "2022-05-21",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "implement links between ultiplan repos (hierarchichal, sibling, ...)",
+    "created_on": "2022-05-21",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "10 javascript projects in 10 hours - coding challengs",
+    "created_on": "2022-05-21",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "learning: javascript/typescript",
+    "tags": [
+      {
+        "url": "https://www.youtube.com/watch?v=dtKciwk_si4"
+      },
+      {
+        "url": "https://www.udemy.com/course/build-10-javascript-projects-in-less-than-6-hours/"
+      }
+    ]
+  },
+  {
+    "description": "implement separate tasks database",
+    "created_on": "2022-05-21",
+    "started_on": "2022-05-21",
+    "due_on": "2022-05-21",
+    "completed_on": "2022-05-21",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "add parameters to commands",
+    "created_on": "2022-05-22",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "reporting: implemented basic tracker (in markdown) for project",
+    "created_on": "2022-05-22",
+    "started_on": "2022-05-22",
+    "due_on": "2022-05-22",
+    "completed_on": "2022-05-22",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "extract diff from tracker to use as git commit message",
+    "created_on": "2022-05-22",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "reporting: add date sorting",
+    "created_on": "2022-05-22",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "references: implement reference extraction to markdown",
+    "created_on": "2022-05-22",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  }
+]
