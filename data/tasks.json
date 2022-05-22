@@ -29,23 +29,6 @@
     "start_date": "2022-05-16"
   },
   {
-    "description": "javascript references",
-    "created_on": "2022-05-16",
-    "started_on": "2022-05-15",
-    "due_on": "2022-05-16",
-    "completed_on": "2022-05-16",
-    "project": "learning: javascript/typescript",
-    "tags": [
-      {
-        "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-      },
-      {
-        "url": "https://www.w3schools.com/js/default.asp"
-      }
-    ],
-    "start_date": "2022-05-16"
-  },
-  {
     "description": "implement a basic web UI for task creation and viewing",
     "created_on": "2022-05-19",
     "started_on": "",
@@ -53,41 +36,6 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
-  },
-  {
-    "description": "javascript and typescript learning resources",
-    "created_on": "2022-05-19",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
-    "project": "learning: javascript/typescript",
-    "tags": [
-      {
-        "github": "https://github.com/WebDevSimplified"
-      },
-      {
-        "codepen": "https://codepen.io/WebDevSimplified"
-      }
-    ]
-  },
-  {
-    "description": "Build A Calculator With JavaScript Tutorial",
-    "created_on": "2022-05-19",
-    "started_on": "2022-05-19",
-    "due_on": "",
-    "completed_on": "2022-05-20",
-    "project": "learning: javascript/typescript",
-    "tags": [
-      {
-        "url": "https://www.youtube.com/watch?v=j59qQ7YWLxw"
-      },
-      {
-        "github": "https://github.com/mpab/learning/tree/master/webdevsimplified/calculator"
-      },
-      {
-        "note": "implemented using typescript"
-      }
-    ]
   },
   {
     "description": "create note alias for todo command",
@@ -144,22 +92,6 @@
     "tags": []
   },
   {
-    "description": "10 javascript projects in 10 hours - coding challengs",
-    "created_on": "2022-05-21",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
-    "project": "learning: javascript/typescript",
-    "tags": [
-      {
-        "url": "https://www.youtube.com/watch?v=dtKciwk_si4"
-      },
-      {
-        "url": "https://www.udemy.com/course/build-10-javascript-projects-in-less-than-6-hours/"
-      }
-    ]
-  },
-  {
     "description": "implement separate tasks database",
     "created_on": "2022-05-21",
     "started_on": "2022-05-21",
@@ -205,7 +137,7 @@
     "tags": []
   },
   {
-    "description": "references: implement reference extraction to markdown",
+    "description": "references: implement reference extraction to markdown (url tags)",
     "created_on": "2022-05-22",
     "started_on": "",
     "due_on": "",
@@ -214,7 +146,7 @@
     "tags": []
   },
   {
-    "description": "create design document, considering data flows, aggregation, and task creation (inbox concept)",
+    "description": "design: data flows, aggregation, and task creation (inbox concept)",
     "created_on": "2022-05-22",
     "started_on": "",
     "due_on": "",
@@ -255,6 +187,33 @@
     "started_on": "2022-05-23",
     "due_on": "2022-05-23",
     "completed_on": "2022-05-23",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "improve list command formatting",
+    "created_on": "2022-05-23",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "design: how to integrate browser favourites?",
+    "created_on": "2022-05-23",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "design: how to integrate gists?",
+    "created_on": "2022-05-23",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
     "project": "ultiplan",
     "tags": []
   }
