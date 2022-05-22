@@ -6,6 +6,7 @@ const menus: {[index: string]:any} = {
 
     create-sample-tasks ................ create sample task data
     dbinit ............................ initializes the database
+    export-markdown ................... export tasks as markdown
     help ................................ help on using commands
     list ........................................ list all tasks
     list-csv ...................... list all tasks in CSV format

@@ -4,6 +4,8 @@
 - planning
 - tracking
 
+[project tracker](./tracker.md)
+
 ---
 
 ## Installation

@@ -35,6 +35,10 @@ const args = minimist(process.argv.slice(2));
       require("./commands/dbinit")(args);
       break;
 
+    case "export-markdown":
+      require("./commands/export-markdown")(args);
+      break;
+
     case "help":
       require("./commands/help")(args);
       break;
