@@ -216,5 +216,81 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "description": "improve task entry to support tags",
+    "created_on": "2022-05-23",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "add ability to specify sub-projects/epics/BTIs (Big Ticket Items) for sub-grouping within a project",
+    "created_on": "2022-05-23",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "add lists to descriptions using dash (-) separators and use these to format the reports",
+    "created_on": "2022-05-23",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "reporting: implement calendar display",
+    "created_on": "2022-05-23",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "design: implement a workflow concept to support tracking of events - e.g. email communications",
+    "created_on": "2022-05-23",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "noteplan",
+    "created_on": "2022-05-23",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": [
+      {
+        "url": "https://noteplan.co/"
+      },
+      {
+        "url": "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"
+      },
+      {
+        "url": "https://hackernoon.com/markdown-calendar-notes-28b87f965e5d"
+      },
+      {
+        "url": "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"
+      }
+    ]
+  },
+  {
+    "description": "design: how to separate notes, tasks, learning tasks, reading (learning) articles",
+    "created_on": "2022-05-23",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
   }
 ]

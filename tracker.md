@@ -12,11 +12,21 @@
 - implement links between ultiplan repos (hierarchichal, sibling, ...)
 - add parameters to commands
 - extract diff from tracker to use as git commit message
-- references: implement reference extraction to markdown
-- create design document, considering data flows, aggregation, and task creation (inbox concept)
+- references: implement reference extraction to markdown (url tags)
+- design: data flows, aggregation, and task creation (inbox concept)
 - implement check to determine if duplicate tasks are being created
 - implement analysis mode to scan tasks for similarities, extract keywords, suggest groupings, etc
 - implement multi-line text entry/handle commas
+- improve list command formatting
+- design: how to integrate browser favourites?
+- design: how to integrate gists?
+- improve task entry to support tags
+- add ability to specify sub-projects/epics/BTIs (Big Ticket Items) for sub-grouping within a project
+- add lists to descriptions using dash (-) separators and use these to format the reports
+- reporting: implement calendar display
+- design: implement a workflow concept to support tracking of events - e.g. email communications
+- noteplan
+- design: how to separate notes, tasks, learning tasks, reading (learning) articles
 
 ### done: ultiplan
 
