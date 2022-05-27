@@ -292,5 +292,32 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "description": "implement scanning of local subdirectories for project name selection",
+    "created_on": "2022-05-27",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "simplify adding tasks - 'add' command, default to 'todo'",
+    "created_on": "2022-05-27",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "implement true cli - with menu system to navigate commands",
+    "created_on": "2022-05-27",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
   }
 ]
