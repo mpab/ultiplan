@@ -1,14 +1,14 @@
 // generate a tasks report in markdown
 
 import { DbRecord } from "../db/db-record";
-import { dbHandle } from "../db/db-util";
+import { getDbHandle } from "../db/db-util";
 
 module.exports = () => {
   const minimist = require(`minimist`);
   const args = minimist(process.argv.slice(2));
 
   const fs = require("fs");
-  fs.readFile(dbHandle, function (err: any, data: string) {
+  fs.readFile(getDbHandle(), function (err: any, data: string) {
     if (err) {
       return console.error(err);
     }

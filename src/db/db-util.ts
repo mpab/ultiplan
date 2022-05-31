@@ -1,40 +1,77 @@
 import errorExit from "../utils/error-exit";
 import { DbRecord } from "./db-record";
 
-export const dbPath: string = "./data/";
-export const dbHandle: string = dbPath + "tasks.json";
+const dbName = "tasks.json";
 
-export const dbValidate = (exit: boolean = true) => {
+const path = require('path')
+const projectDbPath = "data";
+const projectDbHandle = path.join(projectDbPath, dbName);
+const globalDbPath = path.join(process.env.home, ".ultiplan");;
+const globalDbHandle = path.join(globalDbPath, dbName);
+
+export const getDbHandle = (use_logging: boolean = false) => {
   const fs = require("fs");
   try {
-    fs.accessSync(dbHandle, fs.constants.F_OK);
-    return "";
-  } catch (e) {}
-  return "database not found: " + dbHandle + ", use dbinit";
+    //if (use_logging) console.log("looking for: " + projectDbHandle);
+    fs.accessSync(projectDbHandle, fs.constants.F_OK);
+    if (use_logging) console.log("using project DB: " + projectDbHandle);
+    return projectDbHandle;
+  } catch (e) {
+    if (use_logging) console.log("no project DB: " + projectDbHandle);
+  }
+
+  
+
+  try {
+    //console.log("looking for: " + globalDbHandle);
+    fs.accessSync(globalDbHandle, fs.constants.F_OK);
+    if (use_logging) console.log("using global DB: " + globalDbHandle);
+    return globalDbHandle;
+  } catch (e) {
+    if (use_logging) console.log("no global DB: " + globalDbHandle);
+  }
+
+  //if (use_logging) console.warn("no databases: " + projectDbHandle + ", " + globalDbHandle);
+  return "";
 };
 
-export const dbInit = () => {
+const dbInitPath = (handle: string, path: string) => {
   const fs = require("fs");
   try {
-    fs.accessSync(dbHandle, fs.constants.F_OK);
-    console.warn("database already exists: " + dbHandle);
+    fs.accessSync(handle, fs.constants.F_OK);
+    console.warn("DB already exists: " + handle);
     return;
-  } catch (e) {}
+  } catch (e) {
+    console.log("no DB: " + handle);
+  }
   let records: DbRecord[] = [];
 
-  if (!fs.existsSync(dbPath)) {
-    fs.mkdir(dbPath, (err: any) => {
-      if (err) errorExit(err);;
-
-      fs.writeFile(
-        dbHandle,
-        JSON.stringify(records, null, "  "),
-        function (err: any) {
-          if (err) {
-            errorExit(err);
-          }
-        }
-      );
+  if (!fs.existsSync(path)) {
+    fs.mkdir(path, (err: any) => {
+      if (err) console.error(err);
     });
+    console.log("created: " + path);
+  } 
+
+  console.log("using directory: " + path);
+
+  try {
+    fs.writeFile(
+      projectDbHandle,
+      JSON.stringify(records, null, "  "),
+      function (err: any) {
+        if (err) console.error(err);
+      }
+    );
+  } catch (e) {
+    console.error("could not create DB: " + handle);
   }
+
+  console.log("created empty DB: " + handle);
+} 
+
+export const dbInit = () => {
+  // this is buggy - probably a sync issue
+  //dbInitPath(globalDbHandle, globalDbPath);
+  dbInitPath(projectDbHandle, projectDbPath);
 };

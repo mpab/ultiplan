@@ -1,4 +1,4 @@
-// initializes the database
+// initializes the application
 
 import { dbInit } from "../db/db-util";
 

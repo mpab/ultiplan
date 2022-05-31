@@ -1,5 +1,5 @@
 import errorExit from "./utils/error-exit";
-import { dbValidate } from "./db/db-util";
+import { getDbHandle } from "./db/db-util";
 const minimist = require(`minimist`);
  
 const index = () => {
@@ -15,15 +15,9 @@ const index = () => {
     cmd = "help";
   }
 
-  const err = dbValidate();
-  if (err) {
-    if (cmd !== "dbinit") {
-      if (cmd !== "help") {
-        errorExit(err);
-      } 
-      console.warn("WARN: " + err);
-    }
-  }
+  const handle = getDbHandle(true);
+  const noDbIsFatal = cmd === `dbinit` || cmd === `help`;
+  if (!handle && !noDbIsFatal) errorExit("a database is required, use the init command");
  
   // generated command handlers
   switch (cmd) {
@@ -31,12 +25,12 @@ const index = () => {
       require("./commands/create-sample-tasks")(args);
       break;
 
-    case "dbinit":
-      require("./commands/dbinit")(args);
-      break;
-
     case "help":
       require("./commands/help")(args);
+      break;
+
+    case "init":
+      require("./commands/init")(args);
       break;
 
     case "list":

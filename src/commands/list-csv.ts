@@ -1,10 +1,10 @@
 // list all tasks in CSV format
 
-import { dbHandle } from "../db/db-util";
+import { getDbHandle } from "../db/db-util";
 
 module.exports = () => {
   const fs = require("fs");
-  fs.readFile(dbHandle, function (err: any, data: string) {
+  fs.readFile(getDbHandle(), function (err: any, data: string) {
     if (err) {
       console.error(err);
     }

@@ -319,5 +319,23 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "description": "implement projects using tags - will simplify the data model",
+    "created_on": "2022-05-27",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "implement auto-linking of data, e.g. registration when creating a new DB",
+    "created_on": "2022-05-27",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
   }
 ]

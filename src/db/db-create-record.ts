@@ -1,9 +1,9 @@
 import { DbRecord } from "./db-record";
-import { dbHandle } from "./db-util";
+import { getDbHandle } from "./db-util";
 
 // TODO: multi-record update is not working
 
-module.exports = (new_record: DbRecord, jsonFile: string = dbHandle) => {
+module.exports = (new_record: DbRecord, jsonFile: string = getDbHandle()) => {
   const fs = require("fs");
 
   // validate item
