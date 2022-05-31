@@ -3,4 +3,4 @@
 npm r ultiplan -g
 npm link
 mkdir -p $HOME/.ultiplan
-[ ! -d $HOME/.ultiplan/tasks.json ] && echo "[]" > $HOME/.ultiplan/tasks.json
+[ ! -f $HOME/.ultiplan/tasks.json ] && echo "[]" > $HOME/.ultiplan/tasks.json
