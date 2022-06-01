@@ -1,6 +1,8 @@
 #!/bin/sh
 
+[ ! -f $HOME/.ultiplan/tasks.json ] && echo "[]" > $HOME/.ultiplan/tasks.json
+
 npm r ultiplan -g
 npm link
 mkdir -p $HOME/.ultiplan
-[ ! -f $HOME/.ultiplan/tasks.json ] && echo "[]" > $HOME/.ultiplan/tasks.json
+
