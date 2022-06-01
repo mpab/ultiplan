@@ -1,3 +1,4 @@
+using project DB: .ultiplan\tasks.json
 # PROJECTS
 
 ## project: ultiplan
@@ -27,9 +28,17 @@
 - design: implement a workflow concept to support tracking of events - e.g. email communications
 - noteplan
 - design: how to separate notes, tasks, learning tasks, reading (learning) articles
+- implement scanning of local subdirectories for project name selection
+- simplify adding tasks - 'add' command, default to 'todo'
+- implement true cli - with menu system to navigate commands
+- implement projects using tags - will simplify the data model
+- implement auto-linking of data, e.g. registration when creating a new DB
+- implement recursive project ls feature
 
 ### done: ultiplan
 
+- 2022-06-01: refactor list command into ls command with --options
+- 2022-06-01: implement default DB, use standard .ultiplan directory naming for DB
 - 2022-05-23: reporting: implement date sorting
 - 2022-05-23: implement default project response when creating a task
 - 2022-05-22: reporting: create parameterized summary reports per project (output to markdown)

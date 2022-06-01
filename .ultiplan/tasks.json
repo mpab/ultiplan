@@ -263,7 +263,7 @@
     "tags": []
   },
   {
-    "description": "noteplan",
+    "description": "similar app - noteplan",
     "created_on": "2022-05-23",
     "started_on": "",
     "due_on": "",
@@ -332,6 +332,33 @@
   {
     "description": "implement auto-linking of data, e.g. registration when creating a new DB",
     "created_on": "2022-05-27",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "refactor list command into ls command with --options",
+    "created_on": "2022-06-01",
+    "started_on": "2022-06-01",
+    "due_on": "2022-06-01",
+    "completed_on": "2022-06-01",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "implement default DB, use standard .ultiplan directory naming for DB",
+    "created_on": "2022-06-01",
+    "started_on": "2022-06-01",
+    "due_on": "2022-06-01",
+    "completed_on": "2022-06-01",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "implement recursive project ls feature",
+    "created_on": "2022-06-01",
     "started_on": "",
     "due_on": "",
     "completed_on": "",

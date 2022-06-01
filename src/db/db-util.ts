@@ -4,7 +4,7 @@ import { DbRecord } from "./db-record";
 const dbName = "tasks.json";
 
 const path = require('path')
-const projectDbPath = "data";
+const projectDbPath = ".ultiplan";
 const projectDbHandle = path.join(projectDbPath, dbName);
 const globalDbPath = path.join(process.env.home, ".ultiplan");;
 const globalDbHandle = path.join(globalDbPath, dbName);
