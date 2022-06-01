@@ -1,0 +1,3 @@
+#!/bin/sh
+
+[ ! -f $HOME/.ultiplan/tasks.json ] && echo "[]" > $HOME/.ultiplan/tasks.json
