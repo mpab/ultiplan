@@ -33,14 +33,6 @@ const index = () => {
       require("./commands/init")(args);
       break;
 
-    case "list-csv":
-      require("./commands/list-csv")(args);
-      break;
-
-    case "list-json":
-      require("./commands/list-json")(args);
-      break;
-
     case "ls":
       require("./commands/ls")(args);
       break;

@@ -6,9 +6,7 @@ const menus: {[index: string]:any} = {
 
     create-sample-tasks ................ create sample task data
     help ................................ help on using commands
-    init ........................... initializes the application
-    list-csv ...................... list all tasks in CSV format
-    list-json .................... list all tasks in JSON format
+    init ....... initializes a project (creates a task database)
     ls ............................ list tasks (non-recursively)
     record ............................. record a completed task
     report-md .............. generate a tasks report in markdown
