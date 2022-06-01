@@ -26,7 +26,7 @@ using project DB: .ultiplan\tasks.json
 - add lists to descriptions using dash (-) separators and use these to format the reports
 - reporting: implement calendar display
 - design: implement a workflow concept to support tracking of events - e.g. email communications
-- noteplan
+- similar app - noteplan
 - design: how to separate notes, tasks, learning tasks, reading (learning) articles
 - implement scanning of local subdirectories for project name selection
 - simplify adding tasks - 'add' command, default to 'todo'
