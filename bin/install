@@ -1,0 +1,20 @@
+#!/bin/sh
+
+npm install -g ts-node
+npm install -g yarn
+yarn install
+
+mkdir -p $HOME/bin
+cp ./bin/tasks $HOME/bin/.
+
+if [ "$(grep -c "ULTIPLAN_HOME" $HOME/.bashrc)" -ge 1 ]; then
+    echo "ULTIPLAN_HOME set in $HOME/.bashrc"
+else
+    echo "ULTIPLAN_HOME not set in $HOME/.bashrc"
+    cp $HOME/.bashrc $HOME/.bashrc-pre-ultiplan.bak
+    echo "export ULTIPLAN_HOME=$PWD" >> $HOME/.bashrc
+fi
+
+echo "tasks script installed to $(which tasks)"
+
+./bin/create-global-db

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+[ -z "$ULTIPLAN_HOME" ] && echo "ERROR: ULTIPLAN_HOME is not set" && exit
+
+ts-node $ULTIPLAN_HOME/src/index.ts "$@"

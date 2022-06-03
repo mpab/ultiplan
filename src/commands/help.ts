@@ -5,10 +5,10 @@ const menus: {[index: string]:any} = {
     tasks [command] <options>
 
     create-sample-tasks ................ create sample task data
+    done ............................... record a completed task
     help ................................ help on using commands
     init ....... initializes a project (creates a task database)
     ls ............................ list tasks (non-recursively)
-    record ............................. record a completed task
     report-md .............. generate a tasks report in markdown
     schedule ................................... schedule a task
     today ........................ show all open tasks for today

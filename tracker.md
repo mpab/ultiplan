@@ -34,6 +34,7 @@ using project DB: .ultiplan\tasks.json
 - implement projects using tags - will simplify the data model
 - implement auto-linking of data, e.g. registration when creating a new DB
 - implement recursive project ls feature
+- bug: can't create local DB if global DB not present
 
 ### done: ultiplan
 

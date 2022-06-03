@@ -364,5 +364,23 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "description": "bug: can't create local DB if global DB not present",
+    "created_on": "2022-06-01",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "create install script",
+    "created_on": "2022-06-03",
+    "started_on": "2022-06-03",
+    "due_on": "2022-06-03",
+    "completed_on": "2022-06-03",
+    "project": "ultiplan",
+    "tags": []
   }
 ]

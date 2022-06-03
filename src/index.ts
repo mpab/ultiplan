@@ -25,6 +25,10 @@ const index = () => {
       require("./commands/create-sample-tasks")(args);
       break;
 
+    case "done":
+      require("./commands/done")(args);
+      break;
+
     case "help":
       require("./commands/help")(args);
       break;
@@ -35,10 +39,6 @@ const index = () => {
 
     case "ls":
       require("./commands/ls")(args);
-      break;
-
-    case "record":
-      require("./commands/record")(args);
       break;
 
     case "report-md":

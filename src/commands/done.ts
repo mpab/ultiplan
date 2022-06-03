@@ -10,7 +10,7 @@ import { DbRecord } from "../db/db-record";
 
 module.exports = () => {
     var dateString = dateYYYYMMDD(new Date());
-    const description: string = reader.question(dateString + " record? ");
+    const description: string = reader.question(dateString + " done? ");
     if (!description.length) exit();
     const default_project_name = require('../utils/project-info')().name;
     const project_name: string = reader.question(`project? (enter=${default_project_name}) `, {defaultInput: default_project_name});
