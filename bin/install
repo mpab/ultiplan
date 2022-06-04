@@ -4,9 +4,6 @@ npm install -g ts-node
 npm install -g yarn
 yarn install
 
-mkdir -p $HOME/bin
-cp ./bin/tasks $HOME/bin/.
-
 if [ "$(grep -c "ULTIPLAN_HOME" $HOME/.bashrc)" -ge 1 ]; then
     echo "ULTIPLAN_HOME set in $HOME/.bashrc"
 else
@@ -15,4 +12,9 @@ else
     echo "export ULTIPLAN_HOME=$PWD" >> $HOME/.bashrc
 fi
 
+mkdir -p $HOME/bin
+cp ./bin/tasks $HOME/bin/.
 echo "tasks script installed to $(which tasks)"
+cp ./bin/tasks-tracker $HOME/bin/.
+echo "tasks-tracker script installed to $(which tasks)"
+

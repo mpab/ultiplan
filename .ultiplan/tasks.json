@@ -270,18 +270,10 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": [
-      {
-        "url": "https://noteplan.co/"
-      },
-      {
-        "url": "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"
-      },
-      {
-        "url": "https://hackernoon.com/markdown-calendar-notes-28b87f965e5d"
-      },
-      {
-        "url": "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"
-      }
+      ["url", "https://noteplan.co/"],
+      ["url", "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"],
+      ["url", "https://hackernoon.com/markdown-calendar-notes-28b87f965e5d"],
+      ["url", "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"]
     ]
   },
   {

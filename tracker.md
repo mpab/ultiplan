@@ -24,6 +24,10 @@
 - reporting: implement calendar display
 - design: implement a workflow concept to support tracking of events - e.g. email communications
 - similar app - noteplan
+  - url https://noteplan.co/
+  - url https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d
+  - url https://hackernoon.com/markdown-calendar-notes-28b87f965e5d
+  - url https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d
 - design: how to separate notes, tasks, learning tasks, reading (learning) articles
 - simplify adding tasks - 'add' command, default to 'todo'
 - implement true cli - with menu system to navigate commands

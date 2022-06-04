@@ -4,11 +4,17 @@ import { DbRecord } from "../db/db-record";
 import { getAndCheckDbHandle, getDbHandle } from "../db/db-util";
 
 const formatRecord = (record: DbRecord) => {
-  return (
+  let text =
     "- " +
     (record.completed_on ? record.completed_on + ": " : "") +
-    record.description
-  );
+    record.description;
+
+  for (const tag_list of record.tags) {
+    text = text + "\n  -"
+    for (const item of tag_list ) text = text + ` ` + item;
+  }
+
+  return text;
 };
 
 const recordsToMarkdown = (project_records: DbRecord[], project: string) => {
