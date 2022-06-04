@@ -2,7 +2,7 @@ import errorExit from "./utils/error-exit";
 import { getDbHandle } from "./db/db-util";
 const minimist = require(`minimist`);
  
-const index = () => {
+const index = async () => {
   const args = minimist(process.argv.slice(2));
 
   let cmd = args._[0] || `help`;
@@ -22,43 +22,43 @@ const index = () => {
   // generated command handlers
   switch (cmd) {
     case "create-sample-tasks":
-      require("./commands/create-sample-tasks")(args);
+      await require("./commands/create-sample-tasks")(args);
       break;
 
     case "done":
-      require("./commands/done")(args);
+      await require("./commands/done")(args);
       break;
 
     case "help":
-      require("./commands/help")(args);
+      await require("./commands/help")(args);
       break;
 
     case "init":
-      require("./commands/init")(args);
+      await require("./commands/init")(args);
       break;
 
     case "ls":
-      require("./commands/ls")(args);
+      await require("./commands/ls")(args);
       break;
 
     case "report-md":
-      require("./commands/report-md")(args);
+      await require("./commands/report-md")(args);
       break;
 
     case "schedule":
-      require("./commands/schedule")(args);
+      await require("./commands/schedule")(args);
       break;
 
     case "today":
-      require("./commands/today")(args);
+      await require("./commands/today")(args);
       break;
 
     case "todo":
-      require("./commands/todo")(args);
+      await require("./commands/todo")(args);
       break;
 
     case "version":
-      require("./commands/version")(args);
+      await require("./commands/version")(args);
       break;
 
     default:

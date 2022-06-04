@@ -33,11 +33,13 @@ using project DB: .ultiplan\tasks.json
 - implement true cli - with menu system to navigate commands
 - implement projects using tags - will simplify the data model
 - implement auto-linking of data, e.g. registration when creating a new DB
-- implement recursive project ls feature
 - bug: can't create local DB if global DB not present
+- implement markdown report generation for each project
 
 ### done: ultiplan
 
+- 2022-06-04: implement recursive project ls feature
+- 2022-06-03: create install script
 - 2022-06-01: refactor list command into ls command with --options
 - 2022-06-01: implement default DB, use standard .ultiplan directory naming for DB
 - 2022-05-23: reporting: implement date sorting

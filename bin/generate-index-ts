@@ -4,7 +4,7 @@ typescript='import errorExit from "./utils/error-exit";
 import { getDbHandle } from "./db/db-util";
 const minimist = require(`minimist`);
  
-const index = () => {
+const index = async () => {
   const args = minimist(process.argv.slice(2));
 
   let cmd = args._[0] || `help`;
@@ -30,7 +30,7 @@ for filepath in ./src/commands/*; do
   filename_with_ext=$(basename -- "$filepath")
   filename="${filename_with_ext%.*}"
   echo "    case \"$filename\":"
-  echo "      require(\"./commands/$filename\")(args);"
+  echo "      await require(\"./commands/$filename\")(args);"
   echo '      break;'
   echo
   done

@@ -359,9 +359,9 @@
   {
     "description": "implement recursive project ls feature",
     "created_on": "2022-06-01",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
+    "started_on": "2022-06-04",
+    "due_on": "2022-06-04",
+    "completed_on": "2022-06-04",
     "project": "ultiplan",
     "tags": []
   },
@@ -380,6 +380,15 @@
     "started_on": "2022-06-03",
     "due_on": "2022-06-03",
     "completed_on": "2022-06-03",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "implement markdown report generation for each project",
+    "created_on": "2022-06-04",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
     "project": "ultiplan",
     "tags": []
   }
