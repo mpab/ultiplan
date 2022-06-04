@@ -121,9 +121,9 @@
   {
     "description": "extract diff from tracker to use as git commit message",
     "created_on": "2022-05-22",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
+    "started_on": "2022-06-04",
+    "due_on": "2022-06-04",
+    "completed_on": "2022-06-04",
     "project": "ultiplan",
     "tags": []
   },

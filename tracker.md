@@ -9,7 +9,6 @@
 - implement local tasks repo/deployment (with default project?)
 - implement links between ultiplan repos (hierarchichal, sibling, ...)
 - add parameters to commands
-- extract diff from tracker to use as git commit message
 - design: data flows, aggregation, and task creation (inbox concept)
 - implement check to determine if duplicate tasks are being created
 - implement analysis mode to scan tasks for similarities, extract keywords, suggest groupings, etc
@@ -33,6 +32,7 @@
 - implement auto-linking of data, e.g. registration when creating a new DB
 
 ### done: ultiplan
+- 2022-06-04: extract diff from tracker to use as git commit message
 - 2022-06-04: references: implement reference extraction to markdown (url tags)
 - 2022-06-04: improve task entry to support tags
 - 2022-06-04: implement scanning of local subdirectories for project name selection

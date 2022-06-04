@@ -16,5 +16,4 @@ mkdir -p $HOME/bin
 cp ./bin/tasks $HOME/bin/.
 echo "tasks script installed to $(which tasks)"
 cp ./bin/tasks-tracker $HOME/bin/.
-echo "tasks-tracker script installed to $(which tasks)"
-
+echo "tasks-tracker script installed to $(which tasks-tracker)"
