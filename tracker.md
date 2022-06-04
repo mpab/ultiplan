@@ -10,7 +10,6 @@
 - implement links between ultiplan repos (hierarchichal, sibling, ...)
 - add parameters to commands
 - extract diff from tracker to use as git commit message
-- references: implement reference extraction to markdown (url tags)
 - design: data flows, aggregation, and task creation (inbox concept)
 - implement check to determine if duplicate tasks are being created
 - implement analysis mode to scan tasks for similarities, extract keywords, suggest groupings, etc
@@ -18,7 +17,6 @@
 - improve list command formatting
 - design: how to integrate browser favourites?
 - design: how to integrate gists?
-- improve task entry to support tags
 - add ability to specify sub-projects/epics/BTIs (Big Ticket Items) for sub-grouping within a project
 - add lists to descriptions using dash (-) separators and use these to format the reports
 - reporting: implement calendar display
@@ -35,6 +33,8 @@
 - implement auto-linking of data, e.g. registration when creating a new DB
 
 ### done: ultiplan
+- 2022-06-04: references: implement reference extraction to markdown (url tags)
+- 2022-06-04: improve task entry to support tags
 - 2022-06-04: implement scanning of local subdirectories for project name selection
 - 2022-06-04: implement recursive project ls feature
 - 2022-06-04: fix: can't create local DB if global DB not present - removed global DB

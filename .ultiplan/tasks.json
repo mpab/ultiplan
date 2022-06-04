@@ -139,9 +139,9 @@
   {
     "description": "references: implement reference extraction to markdown (url tags)",
     "created_on": "2022-05-22",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
+    "started_on": "2022-06-04",
+    "due_on": "2022-06-04",
+    "completed_on": "2022-06-04",
     "project": "ultiplan",
     "tags": []
   },
@@ -220,9 +220,9 @@
   {
     "description": "improve task entry to support tags",
     "created_on": "2022-05-23",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
+    "started_on": "2022-06-04",
+    "due_on": "2022-06-04",
+    "completed_on": "2022-06-04",
     "project": "ultiplan",
     "tags": []
   },
@@ -270,10 +270,22 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": [
-      ["url", "https://noteplan.co/"],
-      ["url", "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"],
-      ["url", "https://hackernoon.com/markdown-calendar-notes-28b87f965e5d"],
-      ["url", "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"]
+      [
+        "url",
+        "https://noteplan.co/"
+      ],
+      [
+        "url",
+        "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"
+      ],
+      [
+        "url",
+        "https://hackernoon.com/markdown-calendar-notes-28b87f965e5d"
+      ],
+      [
+        "url",
+        "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"
+      ]
     ]
   },
   {
