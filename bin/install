@@ -16,5 +16,3 @@ else
 fi
 
 echo "tasks script installed to $(which tasks)"
-
-./bin/create-global-db

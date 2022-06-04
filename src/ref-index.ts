@@ -28,11 +28,11 @@ const index = async () => {
       break;
 
     case "help":
-      await require("./commands/help")(handle);
+      await require("./commands/help")();
       break;
 
     case "init":
-      await require("./commands/init")(handle);
+      await require("./commands/init")();
       break;
 
     case "ls":
@@ -56,7 +56,7 @@ const index = async () => {
       break;
 
     case "version":
-      await require("./commands/version")(handle);
+      await require("./commands/version")();
       break;
 
     default:

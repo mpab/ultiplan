@@ -1,12 +1,10 @@
 #!/bin/sh
 
 typescript='import errorExit from "./utils/error-exit";
-import { getDbHandle } from "./db/db-util";
-const minimist = require(`minimist`);
+import { getAndCheckDbHandle } from "./db/db-util";
  
 const index = async () => {
-  const args = minimist(process.argv.slice(2));
-
+  const args = require(`minimist`)(process.argv.slice(2));
   let cmd = args._[0] || `help`;
  
   if (args.version || args.v) {
@@ -17,9 +15,9 @@ const index = async () => {
     cmd = "help";
   }
 
-  const handle = getDbHandle(true);
-  const noDbIsFatal = cmd === `dbinit` || cmd === `help`;
-  if (!handle && !noDbIsFatal) errorExit("a database is required, use the init command");
+  const [handle, info] = getAndCheckDbHandle();
+  const ignoreInvalidHandle = cmd === `init` || cmd === `help` || cmd === `version`;
+  if (!handle && !ignoreInvalidHandle) errorExit(info);
  
   // generated command handlers
   switch (cmd) {'
@@ -30,7 +28,7 @@ for filepath in ./src/commands/*; do
   filename_with_ext=$(basename -- "$filepath")
   filename="${filename_with_ext%.*}"
   echo "    case \"$filename\":"
-  echo "      await require(\"./commands/$filename\")(args);"
+  echo "      await require(\"./commands/$filename\")(handle);"
   echo '      break;'
   echo
   done

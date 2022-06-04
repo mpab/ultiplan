@@ -1,0 +1,2 @@
+#!/bin/sh
+tasks report --r >| tracker.md && browser $PWD/tracker.md

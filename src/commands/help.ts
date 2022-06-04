@@ -9,14 +9,15 @@ const menus: {[index: string]:any} = {
     help ................................ help on using commands
     init ....... initializes a project (creates a task database)
     ls ............................ list tasks (non-recursively)
-    report-md .............. generate a tasks report in markdown
+    report ............................. generate a tasks report
     schedule ................................... schedule a task
     today ........................ show all open tasks for today
     todo ............................................ add a todo
     version ....................... show the application version
 `,
 }
-module.exports = (args: { _: any[] }) => {
+module.exports = () => {
+  const args = require(`minimist`)(process.argv.slice(2));
   const subCmd = args._[0] === 'help'
     ? args._[1]
     : args._[0]

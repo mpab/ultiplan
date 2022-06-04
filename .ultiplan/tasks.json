@@ -296,9 +296,9 @@
   {
     "description": "implement scanning of local subdirectories for project name selection",
     "created_on": "2022-05-27",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
+    "started_on": "2022-06-04",
+    "due_on": "2022-06-04",
+    "completed_on": "2022-06-04",
     "project": "ultiplan",
     "tags": []
   },
@@ -348,7 +348,7 @@
     "tags": []
   },
   {
-    "description": "implement default DB, use standard .ultiplan directory naming for DB",
+    "description": "use standard .ultiplan directory naming for DB",
     "created_on": "2022-06-01",
     "started_on": "2022-06-01",
     "due_on": "2022-06-01",
@@ -366,11 +366,11 @@
     "tags": []
   },
   {
-    "description": "bug: can't create local DB if global DB not present",
+    "description": "fix: can't create local DB if global DB not present - removed global DB",
     "created_on": "2022-06-01",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
+    "started_on": "2022-06-04",
+    "due_on": "2022-06-04",
+    "completed_on": "2022-06-04",
     "project": "ultiplan",
     "tags": []
   },
@@ -384,11 +384,11 @@
     "tags": []
   },
   {
-    "description": "implement markdown report generation for each project",
+    "description": "implement recursive markdown report generation",
     "created_on": "2022-06-04",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
+    "started_on": "2022-06-04",
+    "due_on": "2022-06-04",
+    "completed_on": "2022-06-04",
     "project": "ultiplan",
     "tags": []
   }

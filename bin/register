@@ -2,4 +2,4 @@
 
 npm r ultiplan -g
 npm link
-mkdir -p $HOME/.ultiplan
+# mkdir -p $HOME/.ultiplan

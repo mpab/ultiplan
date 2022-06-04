@@ -1,11 +1,11 @@
 // list tasks (non-recursively)
 
 import { DbRecord } from "../db/db-record";
-import { getDbHandle } from "../db/db-util";
+import { getAndCheckDbHandle } from "../db/db-util";
 
-const lsCsv = () => {
+const lsCsv = (handle: string) => {
   const fs = require("fs");
-  fs.readFile(getDbHandle(), function (err: any, data: string) {
+  fs.readFile(handle, function (err: any, data: string) {
     if (err) {
       console.error(err);
     }
@@ -26,10 +26,10 @@ const lsCsv = () => {
   });
 };
 
-const lsJson = () => {
+const lsJson = (handle: string) => {
   const fs = require("fs");
 
-  fs.readFile(getDbHandle(), function (err: any, data: string) {
+  fs.readFile(handle, function (err: any, data: string) {
     if (err) {
       return console.error(err);
     }
@@ -45,34 +45,28 @@ const lsFormatRecord = (record: DbRecord) => {
 const lsRecurse = async () => {
   const fs = require("fs");
   const path = require("path");
+
   async function* walk(dir: string): any {
     for await (const d of await fs.promises.opendir(dir)) {
       if (d.isDirectory()) {
+        
         const entry = path.join(dir, d.name);
-        const handle = path.join(dir, d.name, getDbHandle(false));
+        const [handle, info] = getAndCheckDbHandle(entry);
         if (handle) {
-          const fs = require("fs");
-          fs.readFile(handle, function (err: any, data: string) {
-            if (!err) {
-              const records = JSON.parse(data);
-              for (let jsonRecord of records) {
-                let record: DbRecord = jsonRecord;
-                console.log(lsFormatRecord(record));
-              }
-            }
-          });
+          ls(handle);
         }
 
         yield* await walk(entry);
       }
     }
   }
-  for await (const p of walk("./")) console.log(p);
+  for await (const p of walk("./"));
 };
 
-const ls = () => {
+const ls = (handle: string) => {
   const fs = require("fs");
-  fs.readFile(getDbHandle(), function (err: any, data: string) {
+
+  fs.readFile(handle, function (err: any, data: string) {
     if (err) {
       return console.error(err);
     }
@@ -84,22 +78,21 @@ const ls = () => {
   });
 };
 
-module.exports = async () => {
+module.exports = async (handle: string) => {
   const argv = require("minimist")(process.argv.slice(2));
   if (argv.csv) {
-    lsCsv();
+    lsCsv(handle);
     return;
   }
 
   if (argv.json) {
-    lsJson();
+    lsJson(handle);
     return;
   }
+
+  ls(handle);
 
   if (argv.r) {
     await lsRecurse();
-    return;
   }
-
-  ls();
 };
