@@ -1,3 +1,3 @@
 #!/bin/sh
 tasks report --r >| tracker.md
-[ $(command -v browser) ] && browser $PWD./tracker.md
+[ $(command -v browser) ] && browser $PWD/./tracker.md

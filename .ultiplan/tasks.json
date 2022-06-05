@@ -404,5 +404,14 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "description": "installer: detect shell environment and update correct profile (sh, bash, zsh, ...)",
+    "created_on": "2022-06-05",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
   }
 ]

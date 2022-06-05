@@ -31,6 +31,7 @@
 - implement projects using tags - will simplify the data model
 - implement auto-linking of data, e.g. registration when creating a new DB
 - when adding a task, pick up the comment as a parameter
+- installer: detect shell environment and update correct profile (sh, bash, zsh, ...)
 
 ### done: ultiplan
 - 2022-06-04: extract diff from tracker to use as git commit message
