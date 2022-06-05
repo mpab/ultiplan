@@ -2,6 +2,7 @@
 ## project: ultiplan
 
 ### todo: ultiplan
+- this is a sample demonstrating refactoring of task schema to k, v tag model
 - implement a basic web UI for task creation and viewing
 - create note alias for todo command
 - consider how to link tasks to learnings/learning paths
@@ -32,6 +33,7 @@
 - implement auto-linking of data, e.g. registration when creating a new DB
 - when adding a task, pick up the comment as a parameter
 - installer: detect shell environment and update correct profile (sh, bash, zsh, ...)
+- task schema: refactor named fields to k,v tag model
 
 ### done: ultiplan
 - 2022-06-04: extract diff from tracker to use as git commit message
