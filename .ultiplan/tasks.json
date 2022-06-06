@@ -1,6 +1,6 @@
 [
   {
-    "schema": 1,
+    "task schema": 1,
     "project": "ultiplan",
     "description": "this is a sample demonstrating refactoring of task schema to k, v tag model",
     "dates": [
@@ -32,6 +32,38 @@
       ]
     ],
     "tags": []
+  },
+  {
+    "task schema": 1,
+    "project": "ultiplan",
+    "description": "this is a sample demonstrating composite tags",
+    "created_on": "2022-05-15",
+    "started_on": "2022-05-15",
+    "due_on": "2022-05-15",
+    "completed_on": "2022-05-15",
+    "tags": [
+      [
+        "dates",
+        [
+          [
+            "created_on",
+            "2022-05-15"
+          ],
+          [
+            "started_on",
+            "2022-05-15"
+          ],
+          [
+            "due_on",
+            "2022-05-15"
+          ],
+          [
+            "completed_on",
+            "2022-05-15"
+          ]
+        ]
+      ]
+    ]
   },
   {
     "description": "define initial task data model (nosql, json)",
@@ -304,22 +336,10 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": [
-      [
-        "url",
-        "https://noteplan.co/"
-      ],
-      [
-        "url",
-        "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"
-      ],
-      [
-        "url",
-        "https://hackernoon.com/markdown-calendar-notes-28b87f965e5d"
-      ],
-      [
-        "url",
-        "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"
-      ]
+      "https://noteplan.co/",
+      "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d",
+      "https://hackernoon.com/markdown-calendar-notes-28b87f965e5d",
+      "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"
     ]
   },
   {
@@ -451,6 +471,24 @@
   {
     "description": "task schema: refactor named fields to k,v tag model",
     "created_on": "2022-06-05",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "task schema: tags can now be added as groups",
+    "created_on": "2022-06-06",
+    "started_on": "2022-06-06",
+    "due_on": "2022-06-06",
+    "completed_on": "2022-06-06",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "task schema: improve documentation",
+    "created_on": "2022-06-06",
     "started_on": "",
     "due_on": "",
     "completed_on": "",

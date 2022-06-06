@@ -1,5 +1,5 @@
 # PROJECTS
-## project: ultiplan
+## ultiplan
 
 ### todo: ultiplan
 - this is a sample demonstrating refactoring of task schema to k, v tag model
@@ -22,10 +22,10 @@
 - reporting: implement calendar display
 - design: implement a workflow concept to support tracking of events - e.g. email communications
 - similar app - noteplan
-  - url https://noteplan.co/
-  - url https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d
-  - url https://hackernoon.com/markdown-calendar-notes-28b87f965e5d
-  - url https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d
+  - https://noteplan.co/
+  - https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d
+  - https://hackernoon.com/markdown-calendar-notes-28b87f965e5d
+  - https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d
 - design: how to separate notes, tasks, learning tasks, reading (learning) articles
 - simplify adding tasks - 'add' command, default to 'todo'
 - implement true cli - with menu system to navigate commands
@@ -34,8 +34,10 @@
 - when adding a task, pick up the comment as a parameter
 - installer: detect shell environment and update correct profile (sh, bash, zsh, ...)
 - task schema: refactor named fields to k,v tag model
+- task schema: improve documentation
 
 ### done: ultiplan
+- 2022-06-06: task schema: tags can now be added as groups
 - 2022-06-04: extract diff from tracker to use as git commit message
 - 2022-06-04: references: implement reference extraction to markdown (url tags)
 - 2022-06-04: improve task entry to support tags
@@ -53,5 +55,11 @@
 - 2022-05-21: implement separate tasks database
 - 2022-05-19: auto configure commands such that they can be added automatically
 - 2022-05-16: basic task saving using a JSON file
+- 2022-05-15: this is a sample demonstrating composite tags
+  - dates
+    - created_on,2022-05-15
+    - started_on,2022-05-15
+    - due_on,2022-05-15
+    - completed_on,2022-05-15
 - 2022-05-15: define initial task data model (nosql, json)
 ---

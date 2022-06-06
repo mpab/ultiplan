@@ -9,16 +9,28 @@ const formatRecord = (record: DbRecord) => {
     (record.completed_on ? record.completed_on + ": " : "") +
     record.description;
 
-  for (const tag_list of record.tags) {
-    text = text + "\n  -"
-    for (const item of tag_list ) text = text + ` ` + item;
+  for (const tag of record.tags) {
+    if (tag.constructor === Array) {
+      //text = text + `\n  - ARRAY`;
+      let idx = 0;
+      for (const el of tag)
+        if (idx++ === 0) {
+          text = text + `\n  - ` + el;
+        } else {
+          for (const sub_el of el) {
+            text = text + `\n    - ` + sub_el;
+          }
+        }
+      continue;
+    }
+    text = text + `\n  - ` + tag;
   }
 
   return text;
 };
 
 const recordsToMarkdown = (project_records: DbRecord[], project: string) => {
-  console.log("## project: " + project);
+  console.log("## " + project);
 
   const todo: DbRecord[] = project_records.filter(
     (record) => record.project === project && !record.completed_on
