@@ -10,15 +10,20 @@ export interface DbRecord_0x {
     tags: TagArray,
 }
 
-export interface DbRecord_1x {
-    schema: number,
-    info: TagArray,
-    dates: TagArray,
-    tags: TagArray,
+export interface Tag {
+    key: string
+    val: null | string | Array<Tag>
 }
 
+export interface DbRecord_00_01_00 {
+    schema: Array<number> = [0x00, 0x01, 0x00];
+    tasks: Array<Tag>;    
+}
+
+interface TagArray extends Array<[...any]>{}
+
 export interface DbRecord {
-    getSchema: () => number;
+    getSchema: () number => 1;
     getDescription: () => string;
     getCreatedOn: () => string;
     getStartedOn: () => string;

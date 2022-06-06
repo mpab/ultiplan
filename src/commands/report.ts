@@ -63,7 +63,6 @@ const projectToMarkdown = (
   );
   if (!records.length) return;
   recordsToMarkdown(records, project_name);
-  console.log("---");
 };
 
 const reportAsMarkdown = (handle: string, project_name = undefined) => {
@@ -71,29 +70,35 @@ const reportAsMarkdown = (handle: string, project_name = undefined) => {
   const fs = require("fs");
   fs.readFile(handle, function (err: any, data: string) {
     if (err) {
-      //if (logErrors) console.error(err);
+      console.log(`## error reading: ` + handle.replace(/\\/g, "/"));
+      console.log("---");
       return;
     }
 
-    const unfilteredRecords: DbRecord[] = JSON.parse(data);
-    let project_name = args.project || args.p || undefined;
+    try {
+      const unfilteredRecords: DbRecord[] = JSON.parse(data);
+      let project_name = args.project || args.p || undefined;
 
-    if (project_name) {
-      projectToMarkdown(unfilteredRecords, project_name);
-      return;
+      if (project_name) {
+        projectToMarkdown(unfilteredRecords, project_name);
+        return;
+      }
+
+      // extract all projects & iterate
+      const projects = [
+        ...new Set(unfilteredRecords.map((record) => record.project)),
+      ];
+
+      for (project_name of projects) {
+        const records = unfilteredRecords.filter(
+          (record) => record.project === project_name
+        );
+        projectToMarkdown(records, project_name);
+      }
+    } catch (e) {
+      console.log(`## unhandled schema in: ` + handle.replace(/\\/g, "/"));
     }
-
-    // extract all projects & iterate
-    const projects = [
-      ...new Set(unfilteredRecords.map((record) => record.project)),
-    ];
-
-    for (project_name of projects) {
-      const records = unfilteredRecords.filter(
-        (record) => record.project === project_name
-      );
-      projectToMarkdown(records, project_name);
-    }
+    console.log("---");
   });
 };
 
