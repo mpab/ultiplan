@@ -1,4 +1,4 @@
-// add a todo
+// add a todo2
 
 const dateYYYYMMDD = require("../utils/dates");
 const dbCreateRecord = require("../db/db-create-record");
@@ -13,15 +13,22 @@ module.exports = () => {
     if (!description.length) exit();
     const default_project_name = require('../utils/project-info')().name;
     const project_name: string = reader.question(`project? (enter=${default_project_name}) `, {defaultInput: default_project_name});
-    let tags = Array<string>() as DbRecordItem;
+    let tags = Array<DbRecordItem>() as DbRecordItem;
 
     let tag_v;
 
-    do {
-        tag_v = reader.question(`tag? `);
-        if (tag_v && tags) tags.push(tag_v);
-        //if (tag.length) ttags.push(tag);
-    } while (tag_v);
+    const tag_n = reader.question(`tag name? `);
+
+    if (tag_n) {
+        let inner_tags = Array<string>();
+        do {           
+            tag_v = reader.question(`tag? `);
+            if (tag_v && inner_tags) inner_tags.push(tag_v);
+        } while (tag_v);
+
+        tags.push(tag_n);
+        tags.push(inner_tags);
+    }
 
     var item: DbRecord = {
         description: description,

@@ -1,0 +1,152 @@
+[
+  {
+    "task schema": 1,
+    "project": "tests",
+    "description": "this is a sample demonstrating refactoring of task schema to k, v tag model",
+    "dates": [
+      [
+        "created_on",
+        "2022-05-15"
+      ],
+      [
+        "started_on",
+        "2022-05-15"
+      ],
+      [
+        "due_on",
+        "2022-05-15"
+      ],
+      [
+        "completed_on",
+        "2022-05-15"
+      ]
+    ],
+    "info": [
+      [
+        "description",
+        "define initial task data model (nosql, json)"
+      ],
+      [
+        "group",
+        "ultiplan"
+      ]
+    ],
+    "tags": []
+  },
+  {
+    "task schema": 1,
+    "project": "tests",
+    "description": "this is a sample demonstrating composite tags",
+    "created_on": "2022-05-15",
+    "started_on": "2022-05-15",
+    "due_on": "2022-05-15",
+    "completed_on": "2022-05-15",
+    "tags": [
+      "composite",
+      [
+        "dates",
+        [
+          "created_on",
+          [
+            "2022-05-15"
+          ],
+          "started_on",
+          [
+            "2022-05-15"
+          ],
+          "due_on",
+          [
+            "2022-05-15"
+          ],
+          "completed_on",
+          [
+            "2022-05-15"
+          ]
+        ]
+      ]
+    ]
+  },
+  {
+    "description": "empty tags",
+    "created_on": "2022-06-07",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "tests",
+    "tags": []
+  },
+  {
+    "description": "single tag item",
+    "created_on": "2022-06-07",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "tests",
+    "tags": [
+      "a tag"
+    ]
+  },
+  {
+    "description": "multiple tag item",
+    "created_on": "2022-06-07",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "tests",
+    "tags": [
+      "tag 1",
+      "tag 2",
+      "tag 3"
+    ]
+  },
+  {
+    "description": "multiple nested tag items",
+    "created_on": "2022-06-07",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "tests",
+    "tags": [
+      "tag group 1",
+      [
+        "tag 1.1",
+        "tag 1.2",
+        "tag 1.3"
+      ],
+      "tag group 2",
+      [
+        "tag 2.1",
+        "tag 2.2",
+        "tag 2.3"
+      ]
+    ]
+  },
+  {
+    "description": "multiple multiple nested tag items",
+    "created_on": "2022-06-07",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "tests",
+    "tags": [
+      "tag group 1",
+      [
+        "tag 1.1",
+        "tag 1.2",
+        "tag 1.3",
+        "tag group 1.2",
+        [
+          "tag 1.2.1",
+          "tag 1.2.2",
+          "tag 1.2.3"
+        ]
+      ],
+      "tag group 2",
+      [
+        "tag 2.1",
+        "tag 2.2",
+        "tag 2.3"
+      ]
+    ]
+  }
+]

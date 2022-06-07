@@ -1,4 +1,6 @@
-interface TagArray extends Array<[...any]>{}
+//interface TagArray extends Array<[...any]>{}
+
+export type DbRecordItem = Array<null | string | Array<string> | Array<DbRecordItem>>;
 
 export interface DbRecord {
     description: string,
@@ -7,5 +9,5 @@ export interface DbRecord {
     due_on: string,
     completed_on: string,
     project: string,
-    tags: TagArray,
+    tags: DbRecordItem,
 }

@@ -1,6 +1,6 @@
 // generate a tasks report
 
-import { DbRecord } from "../db/db-record";
+import { DbRecord, DbRecordItem } from "../db/db-record";
 import { getAndCheckDbHandle, getDbHandle } from "../db/db-util";
 
 const formatRecord = (record: DbRecord) => {
@@ -9,22 +9,30 @@ const formatRecord = (record: DbRecord) => {
     (record.completed_on ? record.completed_on + ": " : "") +
     record.description;
 
-  for (const tag of record.tags) {
-    if (tag.constructor === Array) {
-      //text = text + `\n  - ARRAY`;
-      let idx = 0;
-      for (const el of tag)
-        if (idx++ === 0) {
-          text = text + `\n  - ` + el;
-        } else {
-          for (const sub_el of el) {
-            text = text + `\n    - ` + sub_el;
-          }
-        }
-      continue;
+  const formatElement = (element: string, indent: number) => {
+    text = text + `\n` + ` `.repeat(indent << 2) + `- ` + element;
+    //text = text + `\n - ${indent}: ` + element;
+  };
+
+  const formatItems = (items: DbRecordItem, indent = 0) => {
+    if (!items) return;
+
+    for (let item of items) {
+      if (!item) {
+        //formatElement(`NULL`, indent);
+        continue;
+      }
+
+      if (Array.isArray(item)) {
+        formatItems(item as unknown as DbRecordItem, indent + 1);
+        continue;
+      }
+
+      formatElement(item as string, indent + 1);
     }
-    text = text + `\n  - ` + tag;
-  }
+  };
+
+  formatItems(record.tags);
 
   return text;
 };

@@ -13,11 +13,11 @@ const menus: {[index: string]:any} = {
     schedule ................................... schedule a task
     today ........................ show all open tasks for today
     todo ............................................ add a todo
+    todo2 .......................................... add a todo2
     version ....................... show the application version
 `,
 }
-module.exports = () => {
-  const args = require(`minimist`)(process.argv.slice(2));
+module.exports = (args: { _: any[] }) => {
   const subCmd = args._[0] === 'help'
     ? args._[1]
     : args._[0]
