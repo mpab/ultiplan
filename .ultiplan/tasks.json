@@ -437,5 +437,38 @@
     "completed_on": "2022-06-09",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "description": "data linking",
+    "created_on": "2022-06-09",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": [
+      "scan tasks and look for similar wording/phrases/key words",
+      "can be done at a description level or at a tag level (what about custom tags)",
+      "extract the phrases into a dictionary",
+      "link tasks using the dictionary",
+      "dictionary should be dynamic and implemented as a separate schema"
+    ]
+  },
+  {
+    "description": "graph ui",
+    "created_on": "2022-06-09",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": [
+      "create a UI view of the tasks (and data linking schema)",
+      "https://www.monterail.com/blog/javascript-libraries-data-visualization",
+      "https://flatlogic.com/blog/best-19-javascript-charts-libraries/",
+      "https://en.wikipedia.org/wiki/Comparison_of_JavaScript_charting_libraries",
+      "https://www.toucantoco.com/en/glossary/force-directed-graph.html",
+      "https://cambridge-intelligence.com/keylines-faq-force-directed-layouts/",
+      "http://getspringy.com/",
+      "https://www.yworks.com/pages/force-directed-graph-layout"
+    ]
   }
 ]
