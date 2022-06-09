@@ -1,0 +1,70 @@
+# PROJECTS
+## tests
+
+### todo: tests
+- this is a sample demonstrating refactoring of task schema to k, v tag model
+- empty tags
+- single tag item
+    - a tag
+- multiple tag item
+    - tag 1
+    - tag 2
+    - tag 3
+- multiple nested tag items
+    - tag group 1
+        - tag 1.1
+        - tag 1.2
+        - tag 1.3
+    - tag group 2
+        - tag 2.1
+        - tag 2.2
+        - tag 2.3
+- multiple multiple nested tag items
+    - tag group 1
+        - tag 1.1
+        - tag 1.2
+        - tag 1.3
+        - tag group 1.2
+            - tag 1.2.1
+            - tag 1.2.2
+            - tag 1.2.3
+    - tag group 2
+        - tag 2.1
+        - tag 2.2
+        - tag 2.3
+- taggy waggy
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+- tiggy wiggy
+    - custom tag
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+- tuggy wuggy
+- teggy weggy
+    - 9
+    - 8
+    - 7
+    - 6
+- single custom tag
+- multiple custom tags
+
+### done: tests
+- 2022-05-15: this is a sample demonstrating composite tags
+    - composite
+        - dates
+            - created_on
+                - 2022-05-15
+            - started_on
+                - 2022-05-15
+            - due_on
+                - 2022-05-15
+            - completed_on
+                - 2022-05-15
+---

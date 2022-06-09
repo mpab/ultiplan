@@ -36,6 +36,7 @@
 - task schema: improve documentation
 
 ### done: ultiplan
+- 2022-06-09: implemented custom tag handling for 'todo'
 - 2022-06-06: task schema: tags can now be added as groups
 - 2022-06-04: extract diff from tracker to use as git commit message
 - 2022-06-04: references: implement reference extraction to markdown (url tags)

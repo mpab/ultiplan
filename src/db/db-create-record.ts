@@ -38,7 +38,5 @@ module.exports = (new_record: DbRecord, jsonFile: string = getDbHandle()) => {
         return console.error(err);
       }
     });
-
-    //console.log(obj);
   });
 };

@@ -428,5 +428,14 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "description": "implemented custom tag handling for 'todo'",
+    "created_on": "2022-06-09",
+    "started_on": "2022-06-09",
+    "due_on": "2022-06-09",
+    "completed_on": "2022-06-09",
+    "project": "ultiplan",
+    "tags": []
   }
 ]
