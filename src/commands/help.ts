@@ -5,15 +5,14 @@ const menus: {[index: string]:any} = {
     tasks [command] <options>
 
     create-sample-tasks ................ create sample task data
-    done ............................... record a completed task
+    done ..........nst dateYYYYMMDD = require("../utils/dates");
     help ................................ help on using commands
     init ....... initializes a project (creates a task database)
     ls ............................ list tasks (non-recursively)
     report ............................. generate a tasks report
     schedule ................................... schedule a task
     today ........................ show all open tasks for today
-    todo ............................................ add a todo
-    todo2 .......................................... add a todo2
+    todo ..........nst dateYYYYMMDD = require("../utils/dates");
     version ....................... show the application version
 `,
 }

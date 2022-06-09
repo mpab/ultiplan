@@ -385,11 +385,11 @@
     "tags": []
   },
   {
-    "description": "when adding a task, pick up the comment as a parameter",
+    "description": "when adding a task, pick up the description from the command line parameters",
     "created_on": "2022-06-04",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
+    "started_on": "2022-06-09",
+    "due_on": "2022-06-09",
+    "completed_on": "2022-06-09",
     "project": "ultiplan",
     "tags": []
   },
@@ -470,5 +470,14 @@
       "http://getspringy.com/",
       "https://www.yworks.com/pages/force-directed-graph-layout"
     ]
+  },
+  {
+    "description": "implemented multiple task entry (keep entering tasks until a task with no description is detected)",
+    "created_on": "2022-06-09",
+    "started_on": "2022-06-09",
+    "due_on": "2022-06-09",
+    "completed_on": "2022-06-09",
+    "project": "ultiplan",
+    "tags": []
   }
 ]

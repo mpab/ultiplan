@@ -30,13 +30,29 @@
 - implement true cli - with menu system to navigate commands
 - implement projects using tags - will simplify the data model
 - implement auto-linking of data, e.g. registration when creating a new DB
-- when adding a task, pick up the comment as a parameter
 - installer: detect shell environment and update correct profile (sh, bash, zsh, ...)
 - task schema: refactor named fields to k,v tag model
 - task schema: improve documentation
+- data linking
+    - scan tasks and look for similar wording/phrases/key words
+    - can be done at a description level or at a tag level (what about custom tags)
+    - extract the phrases into a dictionary
+    - link tasks using the dictionary
+    - dictionary should be dynamic and implemented as a separate schema
+- graph ui
+    - create a UI view of the tasks (and data linking schema)
+    - https://www.monterail.com/blog/javascript-libraries-data-visualization
+    - https://flatlogic.com/blog/best-19-javascript-charts-libraries/
+    - https://en.wikipedia.org/wiki/Comparison_of_JavaScript_charting_libraries
+    - https://www.toucantoco.com/en/glossary/force-directed-graph.html
+    - https://cambridge-intelligence.com/keylines-faq-force-directed-layouts/
+    - http://getspringy.com/
+    - https://www.yworks.com/pages/force-directed-graph-layout
 
 ### done: ultiplan
+- 2022-06-09: when adding a task, pick up the description from the command line parameters
 - 2022-06-09: implemented custom tag handling for 'todo'
+- 2022-06-09: implemented multiple task entry (keep entering tasks until a task with no description is detected)
 - 2022-06-06: task schema: tags can now be added as groups
 - 2022-06-04: extract diff from tracker to use as git commit message
 - 2022-06-04: references: implement reference extraction to markdown (url tags)
