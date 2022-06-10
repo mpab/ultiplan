@@ -488,5 +488,23 @@
     "completed_on": "2022-06-10",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "description": "create a basic web ui for managing tasks",
+    "created_on": "2022-06-10",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "create an api for the web ui",
+    "created_on": "2022-06-10",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
   }
 ]
