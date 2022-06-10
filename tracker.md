@@ -47,6 +47,8 @@
     - https://cambridge-intelligence.com/keylines-faq-force-directed-layouts/
     - http://getspringy.com/
     - https://www.yworks.com/pages/force-directed-graph-layout
+- create a basic web ui for managing tasks
+- create an api for the web ui
 
 ### done: ultiplan
 - 2022-06-10: create alias for todo command
