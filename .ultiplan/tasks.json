@@ -38,11 +38,11 @@
     "tags": []
   },
   {
-    "description": "create note alias for todo command",
+    "description": "create alias for todo command",
     "created_on": "2022-05-21",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
+    "started_on": "2022-06-10",
+    "due_on": "2022-06-10",
+    "completed_on": "2022-06-10",
     "project": "ultiplan",
     "tags": []
   },

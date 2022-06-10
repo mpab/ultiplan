@@ -19,6 +19,10 @@ const index = async () => {
  
   // generated command handlers
   switch (cmd) {
+    case "add":
+      await require("./commands/add")(handle);
+      break;
+
     case "create-sample-tasks":
       await require("./commands/create-sample-tasks")(handle);
       break;

@@ -1,4 +1,5 @@
 // list tasks (non-recursively)
+// ls: `list all tasks <options> --r, -r ..... recursively`,
 
 import { DbRecord } from "../db/db-record";
 import { getAndCheckDbHandle } from "../db/db-util";

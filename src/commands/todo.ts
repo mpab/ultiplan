@@ -1,3 +1,5 @@
+// add a todo task
+
 const dateYYYYMMDD = require("../utils/dates");
 const dbCreateRecord = require("../db/db-create-record");
 const reader = require("readline-sync");
@@ -30,7 +32,7 @@ module.exports = () => {
   }
 
   do {
-    description = reader.question(" todo? ");
+    description = reader.question("add todo? ");
     if (description.length) {
       dbCreateRecord(require("../db/new-record")(description, dates));
     }

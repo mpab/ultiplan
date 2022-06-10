@@ -27,16 +27,23 @@ const menus: {[index: string]:any} = {
     tasks [command] <options>
 "
 
+## example sub-help
+help2=',
+  ls: `
+    tasks list <options>
+    --r, -r (recursively)`'
+
 ftr=",
 }
-module.exports = (args: { _: any[] }) => {$(echo -e $ret)
+module.exports = () => {
+  const args = require('minimist')(process.argv.slice(2));
   const subCmd = args._[0] === 'help'
     ? args._[1]
     : args._[0]
 
-  console.log(menus[subCmd] || menus.main)
-}"
+  console.log(menus[subCmd] || menus.main);
+};"
 
-doc=$hdr$cmds$ftr
+doc=$hdr$cmds$help2$ftr
 
 echo -e "$doc"
