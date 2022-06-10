@@ -43,27 +43,6 @@ const lsFormatRecord = (record: DbRecord) => {
   return record.project + ": " + record.description;
 };
 
-const lsRecurse = async () => {
-  const fs = require("fs");
-  const path = require("path");
-
-  async function* walk(dir: string): any {
-    for await (const d of await fs.promises.opendir(dir)) {
-      if (d.isDirectory()) {
-        
-        const entry = path.join(dir, d.name);
-        const [handle, info] = getAndCheckDbHandle(entry);
-        if (handle) {
-          ls(handle);
-        }
-
-        yield* await walk(entry);
-      }
-    }
-  }
-  for await (const p of walk("./"));
-};
-
 const ls = (handle: string) => {
   const fs = require("fs");
 
@@ -94,6 +73,6 @@ module.exports = async (handle: string) => {
   ls(handle);
 
   if (argv.r) {
-    await lsRecurse();
+    await require(`../utils/dir-visitor`)(ls, getAndCheckDbHandle);
   }
 };

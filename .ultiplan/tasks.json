@@ -479,5 +479,14 @@
     "completed_on": "2022-06-09",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "description": "factor out project/directory scanning code to visitor pattern",
+    "created_on": "2022-06-10",
+    "started_on": "2022-06-10",
+    "due_on": "2022-06-10",
+    "completed_on": "2022-06-10",
+    "project": "ultiplan",
+    "tags": []
   }
 ]

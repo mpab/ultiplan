@@ -49,7 +49,8 @@
     - https://www.yworks.com/pages/force-directed-graph-layout
 
 ### done: ultiplan
-- 2022-06-10: create note alias for todo command
+- 2022-06-10: create alias for todo command
+- 2022-06-10: factor out project/directory scanning code to visitor pattern
 - 2022-06-09: when adding a task, pick up the description from the command line parameters
 - 2022-06-09: implemented custom tag handling for 'todo'
 - 2022-06-09: implemented multiple task entry (keep entering tasks until a task with no description is detected)

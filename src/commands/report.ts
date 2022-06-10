@@ -110,26 +110,6 @@ const reportAsMarkdown = (handle: string, project_name = undefined) => {
   });
 };
 
-const reportRecurse = async () => {
-  const fs = require("fs");
-  const path = require("path");
-
-  async function* walk(dir: string): any {
-    for await (const d of await fs.promises.opendir(dir)) {
-      if (d.isDirectory()) {
-        const entry = path.join(dir, d.name);
-        const [handle, info] = getAndCheckDbHandle(entry);
-        if (handle) {
-          reportAsMarkdown(handle);
-        }
-
-        yield* await walk(entry);
-      }
-    }
-  }
-  for await (const p of walk("./"));
-};
-
 module.exports = async (handle: string) => {
   const minimist = require(`minimist`);
   const args = minimist(process.argv.slice(2));
@@ -141,6 +121,6 @@ module.exports = async (handle: string) => {
   reportAsMarkdown((handle = handle), (project_name = project_name));
 
   if (args.r || args.recurse || undefined) {
-    await reportRecurse();
+    await require(`../utils/dir-visitor`)(reportAsMarkdown, getAndCheckDbHandle);
   }
 };
