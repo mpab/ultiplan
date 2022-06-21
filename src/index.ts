@@ -14,13 +14,17 @@ const index = async () => {
   }
 
   const [handle, info] = getAndCheckDbHandle();
-  const ignoreInvalidHandle = cmd === `init` || cmd === `mv` || cmd === `report` || cmd === `help` || cmd === `version`;
+  const ignoreInvalidHandle = cmd === `init` || cmd === `help` || cmd === `version`;
   if (!handle && !ignoreInvalidHandle) errorExit(info);
  
   // generated command handlers
   switch (cmd) {
     case "add":
       await require("./commands/add")(handle);
+      break;
+
+    case "check":
+      await require("./commands/check")(handle);
       break;
 
     case "create-sample-tasks":

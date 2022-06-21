@@ -5,6 +5,7 @@ const menus: {[index: string]:any} = {
     tasks [command] <options>
 
     add ............................... alias to add a todo task
+    check  checks if all of the tasks in a project have the same name
     create-sample-tasks ................ create sample task data
     done ................................. add a completed task 
     help ................................ help on using commands

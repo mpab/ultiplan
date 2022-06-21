@@ -2,7 +2,6 @@
 
 import { DbRecord, DbRecordItem } from "../db/db-record";
 import { getAndCheckDbHandle, getDbHandle } from "../db/db-util";
-import errorExit from "../utils/error-exit";
 
 const formatRecord = (record: DbRecord) => {
   let text =

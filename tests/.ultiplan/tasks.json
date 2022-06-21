@@ -67,6 +67,15 @@
     ]
   },
   {
+    "description": "bad task",
+    "created_on": "2022-06-07",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "not tests",
+    "tags": []
+  },
+  {
     "description": "empty tags",
     "created_on": "2022-06-07",
     "started_on": "",

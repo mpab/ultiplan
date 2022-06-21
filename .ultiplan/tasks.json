@@ -524,5 +524,23 @@
     "completed_on": "2022-06-21",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "description": "bug: check command fails - seems to read top-level project twice",
+    "created_on": "2022-06-21",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "implement data checks in projects",
+    "created_on": "2022-06-21",
+    "started_on": "2022-06-21",
+    "due_on": "2022-06-21",
+    "completed_on": "2022-06-21",
+    "project": "ultiplan",
+    "tags": []
   }
 ]

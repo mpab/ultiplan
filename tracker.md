@@ -50,9 +50,11 @@
 - create a basic web ui for managing tasks
 - create an api for the web ui
 - implement ability to move tasks between different projects
+- bug: check command fails - seems to read top-level project twice
 
 ### done: ultiplan
 - 2022-06-21: implement project move/rename
+- 2022-06-21: implement data checks in projects
 - 2022-06-10: create alias for todo command
 - 2022-06-10: factor out project/directory scanning code to visitor pattern
 - 2022-06-09: when adding a task, pick up the description from the command line parameters
@@ -124,4 +126,9 @@
                 - 2022-05-15
             - completed_on
                 - 2022-05-15
+## not tests
+
+### todo: not tests
+- bad task
+---
 ---
