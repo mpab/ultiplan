@@ -9,7 +9,8 @@ const menus: {[index: string]:any} = {
     done ................................. add a completed task 
     help ................................ help on using commands
     init ....... initializes a project (creates a task database)
-    ls ............................ list tasks (non-recursively)
+    ls ...................... list tasks (with recursive option)
+    mv ................. moves/renames a project (non-recursive)
     report ............................. generate a tasks report
     schedule ................................... schedule a task
     today ........................ show all open tasks for today

@@ -4,8 +4,8 @@ const path = require("path");
 
 const projectDbPath = ".ultiplan";
 
-export const getDbHandle = (): string => {
-  return path.join(projectDbPath, dbName);
+export const getDbHandle = (dir: string = ``): string => {
+  return path.join(dir, projectDbPath, dbName);
 };
 
 export const getAndCheckDbHandle = (

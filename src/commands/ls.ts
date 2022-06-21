@@ -1,4 +1,4 @@
-// list tasks (non-recursively)
+// list tasks (with recursive option)
 // ls: `list all tasks <options> --r, -r ..... recursively`,
 
 import { DbRecord } from "../db/db-record";

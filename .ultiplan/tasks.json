@@ -506,5 +506,23 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "description": "implement ability to move tasks between different projects",
+    "created_on": "2022-06-21",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "description": "implement project move/rename",
+    "created_on": "2022-06-21",
+    "started_on": "2022-06-21",
+    "due_on": "2022-06-21",
+    "completed_on": "2022-06-21",
+    "project": "ultiplan",
+    "tags": []
   }
 ]

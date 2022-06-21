@@ -49,8 +49,10 @@
     - https://www.yworks.com/pages/force-directed-graph-layout
 - create a basic web ui for managing tasks
 - create an api for the web ui
+- implement ability to move tasks between different projects
 
 ### done: ultiplan
+- 2022-06-21: implement project move/rename
 - 2022-06-10: create alias for todo command
 - 2022-06-10: factor out project/directory scanning code to visitor pattern
 - 2022-06-09: when adding a task, pick up the description from the command line parameters

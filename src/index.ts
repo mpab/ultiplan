@@ -43,6 +43,10 @@ const index = async () => {
       await require("./commands/ls")(handle);
       break;
 
+    case "mv":
+      await require("./commands/mv")(handle);
+      break;
+
     case "report":
       await require("./commands/report")(handle);
       break;
