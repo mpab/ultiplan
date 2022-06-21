@@ -2,6 +2,7 @@
 
 import { DbRecord, DbRecordItem } from "../db/db-record";
 import { getAndCheckDbHandle, getDbHandle } from "../db/db-util";
+import errorExit from "../utils/error-exit";
 
 const formatRecord = (record: DbRecord) => {
   let text =
@@ -74,7 +75,8 @@ const projectToMarkdown = (
 };
 
 const reportAsMarkdown = (handle: string, project_name = undefined) => {
-  const args = require(`minimist`)(process.argv.slice(2));
+  if (require(`../utils/string-is-null-or-empty`)(handle)) return;
+
   const fs = require("fs");
   fs.readFile(handle, function (err: any, data: string) {
     if (err) {
@@ -85,6 +87,7 @@ const reportAsMarkdown = (handle: string, project_name = undefined) => {
 
     try {
       const unfilteredRecords: DbRecord[] = JSON.parse(data);
+      const args = require(`minimist`)(process.argv.slice(2));
       let project_name = args.project || args.p || undefined;
 
       if (project_name) {
@@ -113,11 +116,9 @@ const reportAsMarkdown = (handle: string, project_name = undefined) => {
 module.exports = async (handle: string) => {
   const minimist = require(`minimist`);
   const args = minimist(process.argv.slice(2));
-
   let project_name = args.project || args.p || undefined;
 
   console.log(project_name ? `# PROJECTS (${project_name})` : "# PROJECTS");
-
   reportAsMarkdown((handle = handle), (project_name = project_name));
 
   if (args.r || args.recurse || undefined) {

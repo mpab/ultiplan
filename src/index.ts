@@ -14,7 +14,7 @@ const index = async () => {
   }
 
   const [handle, info] = getAndCheckDbHandle();
-  const ignoreInvalidHandle = cmd === `init` || cmd === `help` || cmd === `version`;
+  const ignoreInvalidHandle = cmd === `init` || cmd === `mv` || cmd === `report` || cmd === `help` || cmd === `version`;
   if (!handle && !ignoreInvalidHandle) errorExit(info);
  
   // generated command handlers
