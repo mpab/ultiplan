@@ -51,8 +51,11 @@
 - create an api for the web ui
 - implement ability to move tasks between different projects
 - bug: check command fails - seems to read top-level project twice
+- implement a find command
 
 ### done: ultiplan
+- 2022-06-25: implemented id field as uuid
+- 2022-06-25: improved DB validation check
 - 2022-06-21: implement project move/rename
 - 2022-06-21: implement data checks in projects
 - 2022-06-10: create alias for todo command
@@ -79,56 +82,4 @@
 - 2022-05-19: auto configure commands such that they can be added automatically
 - 2022-05-16: basic task saving using a JSON file
 - 2022-05-15: define initial task data model (nosql, json)
----
-## tests
-
-### todo: tests
-- this is a sample demonstrating refactoring of task schema to k, v tag model
-- empty tags
-- single tag item
-    - a tag
-- multiple tag item
-    - tag 1
-    - tag 2
-    - tag 3
-- multiple nested tag items
-    - tag group 1
-        - tag 1.1
-        - tag 1.2
-        - tag 1.3
-    - tag group 2
-        - tag 2.1
-        - tag 2.2
-        - tag 2.3
-- multiple multiple nested tag items
-    - tag group 1
-        - tag 1.1
-        - tag 1.2
-        - tag 1.3
-        - tag group 1.2
-            - tag 1.2.1
-            - tag 1.2.2
-            - tag 1.2.3
-    - tag group 2
-        - tag 2.1
-        - tag 2.2
-        - tag 2.3
-
-### done: tests
-- 2022-05-15: this is a sample demonstrating composite tags
-    - composite
-        - dates
-            - created_on
-                - 2022-05-15
-            - started_on
-                - 2022-05-15
-            - due_on
-                - 2022-05-15
-            - completed_on
-                - 2022-05-15
-## not tests
-
-### todo: not tests
-- bad task
----
 ---

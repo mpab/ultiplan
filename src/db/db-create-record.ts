@@ -8,9 +8,14 @@ module.exports = (new_record: DbRecord, jsonFile: string = getDbHandle()) => {
 
   // validate item
   let item_errors = "";
+
+  if (!new_record.id) {
+    item_errors += "no id, ";
+  }
+
   if (!new_record.description) {
     item_errors += "no description, ";
-    }
+  }
 
   if (!new_record.created_on) {
     item_errors += "no created_on, ";
@@ -31,12 +36,16 @@ module.exports = (new_record: DbRecord, jsonFile: string = getDbHandle()) => {
     }
 
     records.push(new_record);
-    
+
     console.log("writing '" + new_record.description + "' to " + jsonFile);
-    fs.writeFile(jsonFile, JSON.stringify(records, null, "  "), function (err: any) {
-      if (err) {
-        return console.error(err);
+    fs.writeFile(
+      jsonFile,
+      JSON.stringify(records, null, "  "),
+      function (err: any) {
+        if (err) {
+          return console.error(err);
+        }
       }
-    });
+    );
   });
 };

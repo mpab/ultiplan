@@ -3,6 +3,7 @@
 export type DbRecordItem = Array<null | string | Array<string> | Array<DbRecordItem>>;
 
 export interface DbRecord {
+    id: string, // uuid
     description: string,
     created_on: string,
     started_on: string,

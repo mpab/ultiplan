@@ -27,8 +27,8 @@ const index = async () => {
       await require("./commands/check")(handle);
       break;
 
-    case "create-sample-tasks":
-      await require("./commands/create-sample-tasks")(handle);
+    case "create-samples":
+      await require("./commands/create-samples")(handle);
       break;
 
     case "done":

@@ -5,13 +5,13 @@ const menus: {[index: string]:any} = {
     tasks [command] <options>
 
     add ............................... alias to add a todo task
-    check  checks if all of the tasks in a project have the same name
-    create-sample-tasks ................ create sample task data
+    check ..................... checks a project for data issues
+    create-samples ..................... create sample task data
     done ................................. add a completed task 
     help ................................ help on using commands
-    init ....... initializes a project (creates a task database)
+    init ................................. initializes a project
     ls ...................... list tasks (with recursive option)
-    mv ................. moves/renames a project (non-recursive)
+    mv .................... move project (with recursive option)
     report ............................. generate a tasks report
     schedule ................................... schedule a task
     today ........................ show all open tasks for today

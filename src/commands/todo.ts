@@ -3,6 +3,7 @@
 const dateYYYYMMDD = require("../utils/dates");
 const dbCreateRecord = require("../db/db-create-record");
 const reader = require("readline-sync");
+const genGuid = require("../utils/generate-uuid");
 import { DbRecord, DbRecordDates } from "../db/db-record";
 
 module.exports = () => {
@@ -18,6 +19,7 @@ module.exports = () => {
 
   if (description.length) {
     const record: DbRecord = {
+      id: genGuid(),
       description: description,
       created_on: dates.created_on,
       started_on: dates.started_on,

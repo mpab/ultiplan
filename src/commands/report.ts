@@ -1,7 +1,7 @@
 // generate a tasks report
 
 import { DbRecord, DbRecordItem } from "../db/db-record";
-import { getAndCheckDbHandle, getDbHandle } from "../db/db-util";
+import { getAndCheckDbHandle } from "../db/db-util";
 
 const formatRecord = (record: DbRecord) => {
   let text =

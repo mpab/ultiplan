@@ -1,0 +1,84 @@
+[
+  {
+    "id": "581b1740-5ebe-4027-c51e-d528a8fb4c6c",
+    "description": "define initial task data model (nosql, json)",
+    "created_on": "2022-05-15",
+    "started_on": "2022-05-15",
+    "due_on": "2022-05-15",
+    "completed_on": "2022-05-15",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "5a71ab73-4744-4b15-e08e-7bd8b6f774db",
+    "description": "transcribe post-its",
+    "created_on": "2022-05-15",
+    "started_on": "2022-05-15",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "2d5f4edb-c20e-47e4-b141-a285af11cbaf",
+    "description": "auto configure commands such that they can be added automatically",
+    "created_on": "2022-05-15",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "742d888f-53f1-41e7-987f-06ddaeb82735",
+    "description": "basic task saving using a JSON file",
+    "created_on": "2022-05-16",
+    "started_on": "2022-05-16",
+    "due_on": "2022-05-16",
+    "completed_on": "2022-05-16",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "a8c9e94e-127a-4845-e352-8ae69d16433f",
+    "description": "javascript references",
+    "created_on": "2022-05-16",
+    "started_on": "2022-05-16",
+    "due_on": "2022-05-16",
+    "completed_on": "2022-05-16",
+    "project": "learning javascript",
+    "tags": [
+      [
+        "url",
+        "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+      ],
+      [
+        "url",
+        "https://www.w3schools.com/js/default.asp"
+      ]
+    ]
+  },
+  {
+    "id": "6d90a415-45ca-4955-8f66-807a389d4a21",
+    "description": "tags test",
+    "created_on": "2022-05-16",
+    "started_on": "2022-05-16",
+    "due_on": "2022-05-16",
+    "completed_on": "2022-05-16",
+    "project": "tags test",
+    "tags": [
+      [
+        "t0"
+      ],
+      [
+        "t1",
+        "t1.1"
+      ],
+      [
+        "t2",
+        "t2.1",
+        "t2.2"
+      ]
+    ]
+  }
+]

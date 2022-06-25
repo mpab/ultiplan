@@ -1,4 +1,4 @@
-// initializes a project (creates a task database)
+// initializes a project
 
 import { DbRecord } from "../db/db-record";
 import { getAndCheckDbHandle, getDbHandle } from "../db/db-util";

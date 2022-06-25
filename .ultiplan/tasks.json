@@ -542,5 +542,34 @@
     "completed_on": "2022-06-21",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "description": "implement a find command",
+    "created_on": "2022-06-23",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "baa8b871-8d67-4413-f353-7aeb6d7ad54c",
+    "description": "implemented id field as uuid",
+    "created_on": "2022-06-25",
+    "started_on": "2022-06-25",
+    "due_on": "2022-06-25",
+    "completed_on": "2022-06-25",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "76d23829-2926-4cdf-cd2e-f46243a0beef",
+    "description": "improved DB validation check",
+    "created_on": "2022-06-25",
+    "started_on": "2022-06-25",
+    "due_on": "2022-06-25",
+    "completed_on": "2022-06-25",
+    "project": "ultiplan",
+    "tags": []
   }
 ]

@@ -1,8 +1,8 @@
-// moves/renames a project (non-recursive)
+// move project (with recursive option)
 // mv: `move/rename project <old name> <new name>`,
 
 import { DbRecord } from "../db/db-record";
-import { getAndCheckDbHandle, getDbHandle } from "../db/db-util";
+import { getAndCheckDbHandle } from "../db/db-util";
 import errorExit from "../utils/error-exit";
 
 const mv = async (old_project: string, new_project: string) => {
