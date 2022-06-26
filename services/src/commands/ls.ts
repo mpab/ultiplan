@@ -82,7 +82,4 @@ module.exports = async (handle: string) => {
     });
   }
 
-  // if (argv.r) {
-  //   await require(`../utils/dir-visitor`)(ls);
-  // }
 };
