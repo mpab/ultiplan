@@ -2,7 +2,9 @@
 
 npm install -g ts-node
 npm install -g yarn
+pushd services
 yarn install
+popd
 
 if [ "$(grep -c "ULTIPLAN_HOME" $HOME/.bashrc)" -ge 1 ]; then
     echo "ULTIPLAN_HOME set in $HOME/.bashrc"

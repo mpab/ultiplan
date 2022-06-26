@@ -1,5 +1,5 @@
 // list tasks (with recursive option)
-// ls: `list all tasks <options> --r, -r ..... recursively`,
+// ls: `list all tasks <options> --r, -r recursively`,
 
 import { DbRecord } from "../db/db-record";
 import { getAndCheckDbHandle } from "../db/db-util";
@@ -43,10 +43,8 @@ const lsFormatRecord = (record: DbRecord) => {
   return record.project + ": " + record.description;
 };
 
-const ls = (dir: string) => {
-  //console.log(`list ${dir}`)
-  const [handle] = getAndCheckDbHandle(dir);
-  if (!handle) return;
+const ls = (handle: string) => {
+  console.log(`list ${handle}`)
   //console.log(`found DB ${handle}`)
 
   const fs = require("fs");
@@ -63,20 +61,28 @@ const ls = (dir: string) => {
 };
 
 module.exports = async (handle: string) => {
-  const argv = require("minimist")(process.argv.slice(2));
-  if (argv.csv) {
+  const args = require("minimist")(process.argv.slice(2));
+  if (args.csv) {
     lsCsv(handle);
     return;
   }
 
-  if (argv.json) {
+  if (args.json) {
     lsJson(handle);
     return;
   }
 
   ls(handle);
 
-  if (argv.r) {
-    await require(`../utils/dir-visitor`)(ls);
+  if (args.r || args.recurse || undefined) {
+    await require(`../utils/dir-visitor`)((dir: string) => {
+      const [handle] = getAndCheckDbHandle(dir);
+      if (!handle) return;
+      ls(handle);
+    });
   }
+
+  // if (argv.r) {
+  //   await require(`../utils/dir-visitor`)(ls);
+  // }
 };

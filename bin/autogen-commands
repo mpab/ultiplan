@@ -1,7 +1,7 @@
 #!/bin/sh
-./bin/generate-index-ts >| ./src/index.ts
+./bin/generate-index-ts >| ./services/src/index.ts
 rm -rf ./tmp
 mkdir ./tmp
 ./bin/generate-help-ts >| ./tmp/help.ts
-cp ./tmp/help.ts ./src/commands/.
+cp ./tmp/help.ts ./services/src/commands/.
 rm -rf ./tmp
