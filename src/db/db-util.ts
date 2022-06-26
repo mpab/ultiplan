@@ -1,20 +1,25 @@
 const dbFileName = "tasks.json";
-
-const path = require("path");
-
 const projectDbPath = ".ultiplan";
 
 export const getDbHandle = (
+  dir = projectDbPath,
   fileName = dbFileName,
 ): string => {
-  return path.join(projectDbPath, fileName);
+  const path = require("path");
+  return path.join(dir, fileName);
 };
 
 export const getAndCheckDbHandle = (
+  dir = projectDbPath,
   fileName = dbFileName
 ): [handle: string | null, info: string, dir: string] => {
+  //console.log(`getAndCheckDbHandle fileName: ${fileName}`);
+  //console.log(`getAndCheckDbHandle dir: ${dir}`);
+
+  const dbFilePath = getDbHandle(dir, fileName);
+  //console.log(`getAndCheckDbHandle dbFilePath: ${dbFilePath}`);
+
   const fs = require("fs");
-  const dbFilePath = getDbHandle(fileName);
   try {
     fs.accessSync(dbFilePath, fs.constants.F_OK);
     return [
@@ -23,6 +28,7 @@ export const getAndCheckDbHandle = (
       projectDbPath,
     ];
   } catch (e) {
+    //console.log(e)
   }
 
   return [null, "no project DB", projectDbPath];

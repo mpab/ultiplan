@@ -43,16 +43,20 @@ const lsFormatRecord = (record: DbRecord) => {
   return record.project + ": " + record.description;
 };
 
-const ls = (handle: string) => {
-  const fs = require("fs");
+const ls = (dir: string) => {
+  //console.log(`list ${dir}`)
+  const [handle] = getAndCheckDbHandle(dir);
+  if (!handle) return;
+  //console.log(`found DB ${handle}`)
 
+  const fs = require("fs");
   fs.readFile(handle, function (err: any, data: string) {
     if (err) {
       return console.error(err);
     }
     const records = JSON.parse(data);
-    for (let jsonRecord of records) {
-      let record: DbRecord = jsonRecord;
+    for (const item of records) {
+      const record: DbRecord = item;
       console.log(lsFormatRecord(record));
     }
   });
@@ -73,6 +77,6 @@ module.exports = async (handle: string) => {
   ls(handle);
 
   if (argv.r) {
-    await require(`../utils/dir-visitor`)(ls, getAndCheckDbHandle);
+    await require(`../utils/dir-visitor`)(ls);
   }
 };

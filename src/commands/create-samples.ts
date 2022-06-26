@@ -8,7 +8,7 @@ const genGuid = require("../utils/generate-uuid");
 module.exports = () => {
   const sampleDb = `sample-tasks.json`;
 
-  let [shouldBeNull] = getAndCheckDbHandle(sampleDb);
+  const [shouldBeNull] = getAndCheckDbHandle(sampleDb);
   if (shouldBeNull) {
     console.warn("DB already exists: " + shouldBeNull);
     return;
@@ -16,7 +16,7 @@ module.exports = () => {
 
   const sampleDbFilepath = getDbHandle(sampleDb);
 
-  let data: DbRecord[] = [];
+  const data: DbRecord[] = [];
 
   var item: DbRecord = {
     id: "",

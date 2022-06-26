@@ -4,7 +4,8 @@ import { DbRecordItem, DbRecord, DbRecordDates } from "./db-record";
 
 module.exports = (
   description: string,
-  recordDates: DbRecordDates
+  recordDates: DbRecordDates,
+  id: string,
 ): DbRecord => {
   const default_project_name = require("../utils/project-info")().name;
   const project_name: string = reader.question(
@@ -25,6 +26,7 @@ module.exports = (
   } while (tag_v);
 
   const record: DbRecord = {
+    id: id,
     description: description,
     created_on: recordDates.created_on,
     started_on: recordDates.created_on,

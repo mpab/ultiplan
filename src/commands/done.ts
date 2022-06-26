@@ -17,9 +17,11 @@ module.exports = () => {
     completed_on: date,
   };
 
+  const id = genGuid();
+
   if (description.length) {
     const record: DbRecord = {
-      id: genGuid(),
+      id: id,
       description: description,
       created_on: dates.created_on,
       started_on: dates.started_on,
@@ -36,7 +38,7 @@ module.exports = () => {
   do {
     description = reader.question(" completed? ");
     if (description.length) {
-      dbCreateRecord(require("../db/new-record")(description, dates));
+      dbCreateRecord(require("../db/new-record")(description, dates, id));
     }
   } while (description.length);
 };
