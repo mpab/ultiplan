@@ -55,6 +55,8 @@
 
 ### done: ultiplan
 - 2022-06-26: fixed visitor implementation
+- 2022-06-26: fixed report
+- 2022-06-26: implemented prototype ui
 - 2022-06-25: implemented id field as uuid
 - 2022-06-25: improved DB validation check
 - 2022-06-21: implement project move/rename
@@ -140,6 +142,8 @@
 
 ### done: ultiplan
 - 2022-06-26: fixed visitor implementation
+- 2022-06-26: fixed report
+- 2022-06-26: implemented prototype ui
 - 2022-06-25: implemented id field as uuid
 - 2022-06-25: improved DB validation check
 - 2022-06-21: implement project move/rename

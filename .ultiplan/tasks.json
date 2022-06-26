@@ -591,5 +591,15 @@
     "completed_on": "2022-06-26",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "id": "1b24e437-4769-407f-e8c0-8ee7c380754d",
+    "description": "implemented prototype ui",
+    "created_on": "2022-06-26",
+    "started_on": "2022-06-26",
+    "due_on": "2022-06-26",
+    "completed_on": "2022-06-26",
+    "project": "ultiplan",
+    "tags": []
   }
 ]
