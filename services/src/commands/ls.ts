@@ -44,7 +44,7 @@ const lsFormatRecord = (record: DbRecord) => {
 };
 
 const ls = (handle: string) => {
-  console.log(`list ${handle}`)
+  //console.log(`list ${handle}`)
   //console.log(`found DB ${handle}`)
 
   const fs = require("fs");
