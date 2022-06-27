@@ -118,13 +118,16 @@ module.exports = async (handle: string) => {
   let project_name = args.project || args.p || undefined;
 
   console.log(project_name ? `# PROJECTS (${project_name})` : "# PROJECTS");
-  reportAsMarkdown(handle, project_name);
 
-  if (args.r || args.recurse || undefined) {
+  if (args.r || args.recurse) {
     await require(`../utils/dir-visitor`)((dir: string) => {
       const [handle] = getAndCheckDbHandle(dir);
       if (!handle) return;
       reportAsMarkdown(handle);
     });
+    return;
   }
+
+  reportAsMarkdown(handle, project_name);
+
 };

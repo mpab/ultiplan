@@ -7,9 +7,13 @@ type Props = {
 };
 
 const columns: Array<Column<TaskRecord>> = [
-  { title: "Id", field: "id" },
-  { title: "Project", field: "project" },
+  //{ title: "Id", field: "id" },
   { title: "Description", field: "description" },
+  { title: "Project", field: "project" },
+  { title: "Created", field: "created_on" },
+  { title: "Completed", field: "completed_on" },
+  { title: "Due", field: "due_on" },
+  { title: "Status", field: "status" },
 ];
 
 const options = {

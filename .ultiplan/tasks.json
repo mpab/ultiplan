@@ -715,5 +715,15 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "id": "2b174856-6d72-4380-bb87-a70bf0024de4",
+    "description": "ui: added more details to tasks view",
+    "created_on": "2022-06-28",
+    "started_on": "2022-06-28",
+    "due_on": "2022-06-28",
+    "completed_on": "2022-06-28",
+    "project": "ultiplan",
+    "tags": []
   }
 ]

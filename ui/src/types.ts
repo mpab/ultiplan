@@ -1,5 +1,6 @@
 export type TaskRecord = {
-  id: string;
+  //id: string;
   project: string;
+  status: string;
   description: string;
 };

@@ -72,14 +72,15 @@ module.exports = async (handle: string) => {
     return;
   }
 
-  ls(handle);
-
-  if (args.r || args.recurse || undefined) {
+  if (args.r || args.recurse) {
     await require(`../utils/dir-visitor`)((dir: string) => {
       const [handle] = getAndCheckDbHandle(dir);
       if (!handle) return;
       ls(handle);
     });
+    return;
   }
+
+  ls(handle);
 
 };
