@@ -1,0 +1,14 @@
+#!/bin/sh
+
+[ -z "$ULTIPLAN_HOME" ] && echo "ERROR: ULTIPLAN_HOME is not set" && exit
+
+cd $ULTIPLAN_HOME/api
+mintty sh -mc "yarn start &>/dev/null < /dev/null &"
+
+cd $ULTIPLAN_HOME/ui
+mintty sh -mc "yarn start &>/dev/null < /dev/null &"
+
+# TODO: implement check to see if API & UI are running
+# ping -n 5 localhost
+# curl http://localhost:3001/api 
+# curl http://localhost:3000

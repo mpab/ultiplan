@@ -1,0 +1,3 @@
+#!/bin/sh
+
+kill `ps | awk '/[n]ode/{print $1}'`

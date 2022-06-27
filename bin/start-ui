@@ -1,6 +1,0 @@
-#!/bin/sh
-
-[ -z "$ULTIPLAN_HOME" ] && echo "ERROR: ULTIPLAN_HOME is not set" && exit
-
-cd $ULTIPLAN_HOME/ui
-yarn start

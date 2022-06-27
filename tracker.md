@@ -64,6 +64,7 @@
 ### done: ultiplan
 - 2022-06-27: implemented initial ui connection to api
 - 2022-06-27: hacked port settings for ui and api
+- 2022-06-27: implemented local start and stop for api and ui
 - 2022-06-26: fixed visitor implementation
 - 2022-06-26: fixed report
 - 2022-06-26: implemented prototype ui
@@ -163,6 +164,7 @@
 ### done: ultiplan
 - 2022-06-27: implemented initial ui connection to api
 - 2022-06-27: hacked port settings for ui and api
+- 2022-06-27: implemented local start and stop for api and ui
 - 2022-06-26: fixed visitor implementation
 - 2022-06-26: fixed report
 - 2022-06-26: implemented prototype ui

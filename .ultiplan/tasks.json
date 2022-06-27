@@ -695,5 +695,15 @@
     "completed_on": "2022-06-27",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "id": "9f27495e-2013-4e87-b22e-50ba27275d11",
+    "description": "implemented local start and stop for api and ui",
+    "created_on": "2022-06-27",
+    "started_on": "2022-06-27",
+    "due_on": "2022-06-27",
+    "completed_on": "2022-06-27",
+    "project": "ultiplan",
+    "tags": []
   }
 ]
