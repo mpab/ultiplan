@@ -1,7 +1,8 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Res } from '@nestjs/common';
 import { AppService } from './app.service';
+import { Response } from 'express';
 
-@Controller()
+@Controller('api')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -11,7 +12,13 @@ export class AppController {
   // }
 
   @Get()
-  getTasks(): string {
-    return this.appService.getTasks();
+  getTasks(@Res() res: Response): any {
+    res.status(HttpStatus.OK).json(this.appService.getTasksAsJSON());
+    return res;
   }
+
+  // @Get()
+  // getTasks(): string {
+  //   return this.appService.getTasksAsString();
+  // }
 }

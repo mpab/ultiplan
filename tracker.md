@@ -52,8 +52,13 @@
 - implement ability to move tasks between different projects
 - bug: check command fails - seems to read top-level project twice
 - implement a find command
+- notes: nestjs
+    - https://docs.nestjs.com/
+    - https://www.thisdot.co/blog/introduction-to-restful-apis-with-nestjs
+    - api/routes: https://progressivecoder.com/creating-your-first-nestjs-controller-learn-nestjs-series-part-2/
 
 ### done: ultiplan
+- 2022-06-27: implemented initial ui connection to api
 - 2022-06-26: fixed visitor implementation
 - 2022-06-26: fixed report
 - 2022-06-26: implemented prototype ui
@@ -141,8 +146,13 @@
 - implement ability to move tasks between different projects
 - bug: check command fails - seems to read top-level project twice
 - implement a find command
+- notes: nestjs
+    - https://docs.nestjs.com/
+    - https://www.thisdot.co/blog/introduction-to-restful-apis-with-nestjs
+    - api/routes: https://progressivecoder.com/creating-your-first-nestjs-controller-learn-nestjs-series-part-2/
 
 ### done: ultiplan
+- 2022-06-27: implemented initial ui connection to api
 - 2022-06-26: fixed visitor implementation
 - 2022-06-26: fixed report
 - 2022-06-26: implemented prototype ui
