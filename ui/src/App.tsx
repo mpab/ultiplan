@@ -1,16 +1,13 @@
 import "./styles.css";
 import { Table } from "./components/Table";
-import CssBaseline from '@material-ui/core/CssBaseline'
+import CssBaseline from "@material-ui/core/CssBaseline";
 import { useEffect, useState } from "react";
 import { TaskRecord } from "./types";
 
-export default function App() {
-  const [records, setRecords] = useState<TaskRecord[]>([]);
-
-  useEffect(() => {
-    fetch('http://localhost:3000/api')
-    .then((res) =>  res.json())
-    .then(records => {
+const apiGetRecords = (setRecords: (arg0: TaskRecord[]) => void) => {
+  fetch("http://localhost:3001/api")
+    .then((res) => res.json())
+    .then((records) => {
       const result: TaskRecord[] = new Array<TaskRecord>();
       for (const d of records) {
         const task = {
@@ -19,11 +16,17 @@ export default function App() {
           description: d.description,
         };
         result.push(task);
+      }
       setRecords(result);
-    }
     });
-  }, []);
+};
 
+export default function App() {
+  const [records, setRecords] = useState<TaskRecord[]>([]);
+
+  useEffect(() => {
+    apiGetRecords(setRecords);
+  }, []);
 
   return (
     <div className="App">

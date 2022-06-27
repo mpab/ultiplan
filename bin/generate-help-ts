@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cmds="\n"
-for filepath in ./services/src/commands/*; do
+for filepath in ./cli/src/commands/*; do
   filename_with_ext=$(basename -- "$filepath")
   read -r comment<$filepath
   summary=${comment:2}

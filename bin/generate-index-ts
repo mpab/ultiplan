@@ -24,7 +24,7 @@ const index = async () => {
 
 echo "$typescript"
 
-for filepath in ./services/src/commands/*; do
+for filepath in ./cli/src/commands/*; do
   filename_with_ext=$(basename -- "$filepath")
   filename="${filename_with_ext%.*}"
   echo "    case \"$filename\":"

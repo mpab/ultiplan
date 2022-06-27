@@ -2,4 +2,4 @@
 
 [ -z "$ULTIPLAN_HOME" ] && echo "ERROR: ULTIPLAN_HOME is not set" && exit
 
-ts-node $ULTIPLAN_HOME/services/src/index.ts "$@"
+ts-node $ULTIPLAN_HOME/cli/src/index.ts "$@"

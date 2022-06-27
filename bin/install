@@ -2,7 +2,7 @@
 
 npm install -g ts-node
 npm install -g yarn
-pushd services
+pushd cli
 yarn install
 popd
 

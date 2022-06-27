@@ -56,9 +56,14 @@
     - https://docs.nestjs.com/
     - https://www.thisdot.co/blog/introduction-to-restful-apis-with-nestjs
     - api/routes: https://progressivecoder.com/creating-your-first-nestjs-controller-learn-nestjs-series-part-2/
+- implement location-independent running of ui + api + services bundle
+- implement appending of records without reading all of the items first
+- implement api start and stop feature
+- implement ui start and stop feature
 
 ### done: ultiplan
 - 2022-06-27: implemented initial ui connection to api
+- 2022-06-27: hacked port settings for ui and api
 - 2022-06-26: fixed visitor implementation
 - 2022-06-26: fixed report
 - 2022-06-26: implemented prototype ui
@@ -150,9 +155,14 @@
     - https://docs.nestjs.com/
     - https://www.thisdot.co/blog/introduction-to-restful-apis-with-nestjs
     - api/routes: https://progressivecoder.com/creating-your-first-nestjs-controller-learn-nestjs-series-part-2/
+- implement location-independent running of ui + api + services bundle
+- implement appending of records without reading all of the items first
+- implement api start and stop feature
+- implement ui start and stop feature
 
 ### done: ultiplan
 - 2022-06-27: implemented initial ui connection to api
+- 2022-06-27: hacked port settings for ui and api
 - 2022-06-26: fixed visitor implementation
 - 2022-06-26: fixed report
 - 2022-06-26: implemented prototype ui
