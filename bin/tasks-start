@@ -2,7 +2,12 @@
 
 [ -z "$ULTIPLAN_HOME" ] && echo "ERROR: ULTIPLAN_HOME is not set" && exit
 
+# TODO: this is a hack for windows, needs to be cross-platform
+# utiliplanProject=$PWD
+utiliplanProject=$(cmd.exe /c cd)
 cd $ULTIPLAN_HOME/api
+cp env .env
+echo "utiliplanProject=$utiliplanProject" >> .env
 mintty sh -mc "yarn start &>/dev/null < /dev/null &"
 
 cd $ULTIPLAN_HOME/ui

@@ -648,11 +648,11 @@
   },
   {
     "id": "112ea396-b096-46cd-d0ba-94734ab3196e",
-    "description": "implement location-independent running of ui + api + services bundle",
+    "description": "implement location-independent running of ui/api/services bundle",
     "created_on": "2022-06-27",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
+    "started_on": "2022-06-28",
+    "due_on": "2022-06-28",
+    "completed_on": "2022-06-28",
     "project": "ultiplan",
     "tags": []
   },
@@ -668,21 +668,21 @@
   },
   {
     "id": "41c3a05a-b28b-4e6d-c379-c18859c42162",
-    "description": "implement api start and stop feature",
+    "description": "api: implement start and stop feature",
     "created_on": "2022-06-27",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
+    "started_on": "2022-06-28",
+    "due_on": "2022-06-28",
+    "completed_on": "2022-06-28",
     "project": "ultiplan",
     "tags": []
   },
   {
     "id": "dd010176-bfd9-4f6f-b53e-734fd32e3272",
-    "description": "implement ui start and stop feature",
+    "description": "ui: implement start and stop feature",
     "created_on": "2022-06-27",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
+    "started_on": "2022-06-28",
+    "due_on": "2022-06-28",
+    "completed_on": "2022-06-28",
     "project": "ultiplan",
     "tags": []
   },
@@ -703,6 +703,16 @@
     "started_on": "2022-06-27",
     "due_on": "2022-06-27",
     "completed_on": "2022-06-27",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "6ae7a3d7-1864-48bc-ac1f-38d97cfce282",
+    "description": "api: implement recursive reading of projects",
+    "created_on": "2022-06-28",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
     "project": "ultiplan",
     "tags": []
   }

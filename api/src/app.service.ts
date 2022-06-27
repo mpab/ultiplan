@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
+import * as path from 'path';
 
-const filePath = './../.ultiplan/tasks.json';
+const dbFileName = 'tasks.json';
+const projectDbPath = '.ultiplan';
 
 @Injectable()
 export class AppService {
@@ -9,17 +11,30 @@ export class AppService {
     return 'Hello World!';
   }
 
+  getRecords(): any {
+    console.log(`------------------------------------`);
+    console.log(`getRecords`);
+
+    try {
+      const utiliplanProject: string = process.env.utiliplanProject;
+      const handle = path.join(utiliplanProject, projectDbPath, dbFileName);
+      console.log(handle);
+      if (!existsSync(handle)) {
+        console.error(`${handle} not found`);
+        return [];
+      }
+      return readFileSync(handle, 'utf-8');
+    } catch (e) {
+      console.error(e);
+    }
+    return [];
+  }
+
   getTasksAsJSON(): any {
-    const [handle] = [filePath]; //getAndCheckDbHandle(dir);
-    if (!handle) return [];
-    const json = readFileSync(handle, 'utf-8');
-    return JSON.parse(json);
+    return JSON.parse(this.getRecords());
   }
 
   getTasksAsString(): string {
-    const [handle] = [filePath]; //getAndCheckDbHandle(dir);
-    if (!handle) JSON.stringify([], null, '  ');
-    const json = readFileSync(handle, 'utf-8');
-    return json;
+    return this.getRecords();
   }
 }
