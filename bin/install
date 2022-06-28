@@ -2,7 +2,16 @@
 
 npm install -g ts-node
 npm install -g yarn
+
 pushd cli
+yarn install
+popd
+
+pushd api
+yarn install
+popd
+
+pushd ui
 yarn install
 popd
 

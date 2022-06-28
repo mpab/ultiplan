@@ -58,6 +58,7 @@
     - api/routes: https://progressivecoder.com/creating-your-first-nestjs-controller-learn-nestjs-series-part-2/
 - implement appending of records without reading all of the items first
 - api: implement recursive reading of projects
+- api: add markdown summary endpoint
 
 ### done: ultiplan
 - 2022-06-28: implement location-independent running of ui/api/services bundle
