@@ -65,6 +65,7 @@
 - 2022-06-28: api: implement start and stop feature
 - 2022-06-28: ui: implement start and stop feature
 - 2022-06-28: ui: added more details to tasks view
+- 2022-06-28: implemented tasks-diff - requires a git repository to work
 - 2022-06-27: implemented initial ui connection to api
 - 2022-06-27: hacked port settings for ui and api
 - 2022-06-27: implemented local start and stop for api and ui
