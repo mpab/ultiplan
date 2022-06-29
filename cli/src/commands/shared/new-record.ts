@@ -1,8 +1,7 @@
-const dateYYYYMMDD = require("../utils/dates");
-const reader = require("readline-sync");
-import { DbRecordItem, DbRecord, DbRecordDates } from "./db-record";
+import { DbRecordItem, DbRecord, DbRecordDates } from "libs/src/db/db-record";
+import reader from "readline-sync";
 
-module.exports = (
+const index = (
   description: string,
   recordDates: DbRecordDates,
   id: string,
@@ -50,3 +49,5 @@ module.exports = (
 
   return record;
 };
+
+export default index;

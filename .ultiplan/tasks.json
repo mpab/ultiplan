@@ -745,5 +745,15 @@
     "completed_on": "2022-06-28",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "id": "590b45fd-a464-4f6d-98a3-46613a3ced81",
+    "description": "moved service functions to shared library",
+    "created_on": "2022-06-29",
+    "started_on": "2022-06-29",
+    "due_on": "2022-06-29",
+    "completed_on": "2022-06-29",
+    "project": "ultiplan",
+    "tags": []
   }
 ]

@@ -4,9 +4,11 @@ export interface ProjectInfo {
   name: string
 }
 
-module.exports = (): ProjectInfo => {
+const index = (): ProjectInfo => {
   const path = require("path");
   return {
     name: process.cwd().split(path.sep).pop() as string
   };
 };
+
+export default index;

@@ -12,6 +12,8 @@ async function* visitDirectory (visitFn: Visitor, dir: string): any {
   }
 }
 
-module.exports = async (visitFn: Visitor, dir: string = "./") => {
+const index = async (visitFn: Visitor, dir: string = "./") => {
   for await (const p of visitDirectory(visitFn, dir));
 }
+
+export default index;

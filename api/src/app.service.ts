@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { readFileSync, existsSync } from 'fs';
+import * as fs from 'fs';
 import * as path from 'path';
 
 const dbFileName = 'tasks.json';
@@ -19,11 +19,11 @@ export class AppService {
       const utiliplanProject: string = process.env.utiliplanProject;
       const handle = path.join(utiliplanProject, projectDbPath, dbFileName);
       console.log(handle);
-      if (!existsSync(handle)) {
+      if (!fs.existsSync(handle)) {
         console.error(`${handle} not found`);
         return [];
       }
-      return readFileSync(handle, 'utf-8');
+      return fs.readFileSync(handle, 'utf-8');
     } catch (e) {
       console.error(e);
     }

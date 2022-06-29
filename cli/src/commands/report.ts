@@ -1,7 +1,13 @@
 // generate a tasks report
 
-import { DbRecord, DbRecordItem } from "../db/db-record";
-import { getAndCheckDbHandle } from "../db/db-util";
+import fs from 'fs';
+import minimist from 'minimist';
+
+import { DbRecord, DbRecordItem } from "libs/src/db/db-record";
+import { getAndCheckDbHandle } from "libs/src/db/db-util";
+
+import visit from "libs/src/utils/dir-visitor";
+import stringIsNullOrEmpty from "libs/src/utils/string-is-null-or-empty";
 
 const formatRecord = (record: DbRecord) => {
   let text =
@@ -74,10 +80,9 @@ const projectToMarkdown = (
 };
 
 const reportAsMarkdown = (handle: string, project_name = undefined) => {
-  if (require(`../utils/string-is-null-or-empty`)(handle)) return;
+  if (stringIsNullOrEmpty(handle)) return;
 
-  const fs = require("fs");
-  fs.readFile(handle, function (err: any, data: string) {
+  fs.readFile(handle, 'utf-8', function (err: any, data: string) {
     if (err) {
       console.log(`## error reading: ` + handle.replace(/\\/g, "/"));
       console.log("---");
@@ -86,7 +91,7 @@ const reportAsMarkdown = (handle: string, project_name = undefined) => {
 
     try {
       const unfilteredRecords: DbRecord[] = JSON.parse(data);
-      const args = require(`minimist`)(process.argv.slice(2));
+      const args = minimist(process.argv.slice(2));
       let project_name = args.project || args.p || undefined;
 
       if (project_name) {
@@ -113,14 +118,13 @@ const reportAsMarkdown = (handle: string, project_name = undefined) => {
 };
 
 module.exports = async (handle: string) => {
-  const minimist = require(`minimist`);
   const args = minimist(process.argv.slice(2));
   let project_name = args.project || args.p || undefined;
 
   console.log(project_name ? `# PROJECTS (${project_name})` : "# PROJECTS");
 
   if (args.r || args.recurse) {
-    await require(`../utils/dir-visitor`)((dir: string) => {
+    await visit((dir: string) => {
       const [handle] = getAndCheckDbHandle(dir);
       if (!handle) return;
       reportAsMarkdown(handle);

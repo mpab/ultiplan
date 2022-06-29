@@ -3,7 +3,7 @@ import { getDbHandle } from "./db-util";
 
 // TODO: multi-record update is not working
 
-module.exports = (new_record: DbRecord, jsonFile: string = getDbHandle()) => {
+const index = (new_record: DbRecord, jsonFile: string = getDbHandle()) => {
   const fs = require("fs");
 
   // validate item
@@ -49,3 +49,5 @@ module.exports = (new_record: DbRecord, jsonFile: string = getDbHandle()) => {
     );
   });
 };
+
+export default index;

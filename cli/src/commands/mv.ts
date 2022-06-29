@@ -1,9 +1,12 @@
 // move project (with recursive option)
-// mv: `move/rename project <old name> <new name>`,
+// mv: `move/rename project <old name> <new name>`
 
-import { DbRecord } from "../db/db-record";
-import { getAndCheckDbHandle } from "../db/db-util";
-import errorExit from "../utils/error-exit";
+import fs from 'fs';
+
+import { DbRecord } from "libs/src/db/db-record";
+import { getAndCheckDbHandle } from "libs/src/db/db-util";
+import errorExit from "libs/src/utils/error-exit";
+import stringIsNullOrEmpty from "libs/src/utils/string-is-null-or-empty";
 
 const mv = async (old_project: string, new_project: string) => {
   // specification
@@ -19,16 +22,13 @@ const mv = async (old_project: string, new_project: string) => {
   // notes
   // - merge is not supported
 
-  const is_null_or_empty = require(`../utils/string-is-null-or-empty`);
-  if (is_null_or_empty(old_project))
+  if (stringIsNullOrEmpty(old_project))
     errorExit(`old project "${old_project}" is invalid`); // 1
-  if (is_null_or_empty(new_project))
+  if (stringIsNullOrEmpty(new_project))
     errorExit(`new project "${new_project}" is invalid`); // 2
 
   if (old_project == new_project)
     errorExit(`project names must be different`); // 3
-
-  const fs = require("fs");
 
   try { // 4
     const stat = fs.statSync(new_project);
@@ -41,10 +41,13 @@ const mv = async (old_project: string, new_project: string) => {
 
   fs.renameSync(old_project, new_project);
   const [handle, info] = getAndCheckDbHandle(new_project);
+  if (!handle) errorExit(info);
+
+  const safeHandle = handle as string;
 
   let records: DbRecord[] = [];
 
-  fs.readFile(handle, function (err: any, json_string: string) {
+  fs.readFile(safeHandle, 'utf-8', function (err: any, json_string: string) {
     if (err) {
       console.warn(err);
     } else {
@@ -55,7 +58,7 @@ const mv = async (old_project: string, new_project: string) => {
       record.project = new_project;
     }
 
-    fs.writeFile(handle, JSON.stringify(records, null, "  "), function (err: any) {
+    fs.writeFile(safeHandle, JSON.stringify(records, null, "  "), function (err: any) {
       if (err) errorExit(err);
     });
 

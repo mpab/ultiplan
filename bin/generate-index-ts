@@ -1,7 +1,7 @@
 #!/bin/sh
 
-typescript='import errorExit from "./utils/error-exit";
-import { getAndCheckDbHandle } from "./db/db-util";
+typescript='import errorExit from "libs/src/utils/error-exit";
+import { getAndCheckDbHandle } from "libs/src/db/db-util";
  
 const index = async () => {
   const args = require(`minimist`)(process.argv.slice(2));

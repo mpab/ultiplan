@@ -1,10 +1,10 @@
 // checks a project for data issues
 // check: `check all project tasks <options> --r, -r ..... recursively`,
 
-import { exit } from "process";
-import { DbRecord, DbRecordItem } from "../db/db-record";
-import { getAndCheckDbHandle } from "../db/db-util";
-import errorExit from "../utils/error-exit";
+import { DbRecord } from "libs/src/db/db-record";
+import { getAndCheckDbHandle } from "libs/src/db/db-util";
+import visit from "libs/src/utils/dir-visitor";
+import stringIsNullOrEmpty from "libs/src/utils/string-is-null-or-empty";
 
 const checkRecordsBelongToProject = (
   project_name: string,
@@ -23,7 +23,6 @@ const checkRecordsBelongToProject = (
 };
 
 const check = (handle: string, project_name = undefined) => {
-  const stringIsNullOrEmpty = require(`../utils/string-is-null-or-empty`);
 
   if (stringIsNullOrEmpty(handle)) return;
 
@@ -79,9 +78,14 @@ module.exports = async (handle: string) => {
   const args = minimist(process.argv.slice(2));
   let project_name = args.project || args.p || undefined;
 
-  check((handle = handle), (project_name = project_name));
-
-  if (args.r || args.recurse || undefined) {
-    await require(`../utils/dir-visitor`)(check, getAndCheckDbHandle);
+  if (args.r || args.recurse) {
+    await visit((dir: string) => {
+      const [handle] = getAndCheckDbHandle(dir);
+      if (!handle) return;
+      check(handle);
+    });
+    return;
   }
+
+  check(handle, project_name);
 };

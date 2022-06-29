@@ -1,10 +1,13 @@
 // add a completed task 
 
-const dateYYYYMMDD = require("../utils/dates");
-const dbCreateRecord = require("../db/db-create-record");
-const reader = require("readline-sync");
-const genGuid = require("../utils/generate-uuid");
-import { DbRecord, DbRecordDates } from "../db/db-record";
+import reader from "readline-sync";
+
+import dateYYYYMMDD from "libs/src/utils/dates";
+import dbCreateRecord from "libs/src/db/db-create-record";
+import genGuid from "libs/src/utils/generate-uuid";
+import { DbRecord, DbRecordDates } from "libs/src/db/db-record";
+import dbNewRecord from './shared/new-record';
+import projectInfo from "libs/src/utils/project-info";
 
 module.exports = () => {
   let description: string = process.argv.slice(3).join(` `);
@@ -27,7 +30,7 @@ module.exports = () => {
       started_on: dates.started_on,
       due_on: dates.due_on,
       completed_on: dates.completed_on,
-      project: require("../utils/project-info")().name,
+      project: projectInfo().name,
       tags: Array(),
     };
 
@@ -38,7 +41,7 @@ module.exports = () => {
   do {
     description = reader.question(" completed? ");
     if (description.length) {
-      dbCreateRecord(require("../db/new-record")(description, dates, id));
+      dbCreateRecord(dbNewRecord(description, dates, id));
     }
   } while (description.length);
 };

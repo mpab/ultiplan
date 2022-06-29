@@ -1,5 +1,8 @@
 // alias to add a todo task
 
-module.exports = () => {
-  require('./todo')();
+import todo from './todo';
+
+module.exports = async (handle: string) => {
+  todo(handle);
 };
+

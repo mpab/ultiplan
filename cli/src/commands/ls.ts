@@ -1,12 +1,17 @@
 // list tasks (with recursive option)
 // ls: `list all tasks <options> --r, -r recursively`,
 
-import { DbRecord } from "../db/db-record";
-import { getAndCheckDbHandle } from "../db/db-util";
+import fs from 'fs';
+import minimist from 'minimist';
+
+import { DbRecord, DbRecordItem } from "libs/src/db/db-record";
+import { getAndCheckDbHandle } from "libs/src/db/db-util";
+
+import visit from "libs/src/utils/dir-visitor";
+import stringIsNullOrEmpty from "libs/src/utils/string-is-null-or-empty";
 
 const lsCsv = (handle: string) => {
-  const fs = require("fs");
-  fs.readFile(handle, function (err: any, data: string) {
+  fs.readFile(handle, 'utf-8', function (err: any, data: string) {
     if (err) {
       console.error(err);
     }
@@ -28,9 +33,7 @@ const lsCsv = (handle: string) => {
 };
 
 const lsJson = (handle: string) => {
-  const fs = require("fs");
-
-  fs.readFile(handle, function (err: any, data: string) {
+  fs.readFile(handle, 'utf-8', function (err: any, data: string) {
     if (err) {
       return console.error(err);
     }
@@ -47,8 +50,7 @@ const ls = (handle: string) => {
   //console.log(`list ${handle}`)
   //console.log(`found DB ${handle}`)
 
-  const fs = require("fs");
-  fs.readFile(handle, function (err: any, data: string) {
+  fs.readFile(handle, 'utf-8', function (err: any, data: string) {
     if (err) {
       return console.error(err);
     }
@@ -61,7 +63,8 @@ const ls = (handle: string) => {
 };
 
 module.exports = async (handle: string) => {
-  const args = require("minimist")(process.argv.slice(2));
+  const args = minimist(process.argv.slice(2));
+
   if (args.csv) {
     lsCsv(handle);
     return;
@@ -73,7 +76,7 @@ module.exports = async (handle: string) => {
   }
 
   if (args.r || args.recurse) {
-    await require(`../utils/dir-visitor`)((dir: string) => {
+    await visit((dir: string) => {
       const [handle] = getAndCheckDbHandle(dir);
       if (!handle) return;
       ls(handle);

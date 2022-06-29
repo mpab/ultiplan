@@ -1,7 +1,7 @@
 // initializes a project
 
-import { DbRecord } from "../db/db-record";
-import { getAndCheckDbHandle, getDbHandle } from "../db/db-util";
+import { DbRecord } from "libs/src/db/db-record";
+import { getAndCheckDbHandle, getDbHandle } from "libs/src/db/db-util";
 
 module.exports = () => {
   let [projectDbHandle, _, dir] = getAndCheckDbHandle();

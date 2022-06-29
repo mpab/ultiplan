@@ -1,4 +1,4 @@
-module.exports = () => {
+const index = () => {
   let
     d = new Date().getTime(),
     d2 = (performance && performance.now && (performance.now() * 1000)) || 0;
@@ -11,6 +11,8 @@ module.exports = () => {
       r = (d2 + r) % 16 | 0;
       d2 = Math.floor(d2 / 16);
     }
-    return (c == 'x' ? r : (r & 0x7 | 0x8)).toString(16);
+    return (c === 'x' ? r : ((r & 0x7) | 0x8)).toString(16);
   });
 };
+
+export default index;

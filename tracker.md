@@ -61,6 +61,7 @@
 - api: add markdown summary endpoint
 
 ### done: ultiplan
+- 2022-06-29: moved service functions to shared library
 - 2022-06-28: implement location-independent running of ui/api/services bundle
 - 2022-06-28: api: implement start and stop feature
 - 2022-06-28: ui: implement start and stop feature

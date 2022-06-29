@@ -1,18 +1,20 @@
 {
   "name": "ultiplan-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./src/index.ts",
   "repository": "git@github.com:mpab/ultiplan.git",
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^17.0.34",
+    "@types/readline-sync": "^1.4.4",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^4.0.0",
     "tslint": "^6.1.3",
     "typescript": "^4.6.4"
   },
   "dependencies": {
+    "@types/minimist": "^1.2.2",
     "axios": "^0.27.2",
     "json2csv": "^5.0.7",
     "minimist": "^1.2.6",
