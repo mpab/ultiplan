@@ -1,7 +1,6 @@
 // show the application version
 
-const { version } = require('../../package.json')
-
 module.exports = () => {
+  const { version } = require('../../package.json')
   console.log(`v${version}`)
 }

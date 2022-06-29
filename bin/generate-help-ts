@@ -2,6 +2,11 @@
 
 cmds="\n"
 for filepath in ./cli/src/commands/*; do
+  
+  if [ -d $filepath ]; then
+    continue
+  fi
+  
   filename_with_ext=$(basename -- "$filepath")
   read -r comment<$filepath
   summary=${comment:2}

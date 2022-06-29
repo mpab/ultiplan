@@ -1,9 +1,10 @@
 // create sample task data
 
-import { DbRecord } from "../db/db-record";
-import { getAndCheckDbHandle, getDbHandle } from "../db/db-util";
-const fs = require("fs");
-const genGuid = require("../utils/generate-uuid");
+import fs from "fs";
+
+import genGuid from "libs/src/utils/generate-uuid";
+import { DbRecord, DbRecordDates } from "libs/src/db/db-record";
+import { getAndCheckDbHandle, getDbHandle } from "libs/src/db/db-util";
 
 module.exports = () => {
   const sampleDb = `sample-tasks.json`;
@@ -14,7 +15,7 @@ module.exports = () => {
     return;
   }
 
-  const sampleDbFilepath = getDbHandle(sampleDb);
+  const sampleDbFilepath = getDbHandle(`./`, sampleDb);
 
   const data: DbRecord[] = [];
 

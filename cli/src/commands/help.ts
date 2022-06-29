@@ -14,7 +14,6 @@ const menus: {[index: string]:any} = {
     mv .................... move project (with recursive option)
     report ............................. generate a tasks report
     schedule ................................... schedule a task
-    shared ..................................... schedule a task
     today ........................ show all open tasks for today
     todo ....................................... add a todo task
     version ....................... show the application version

@@ -16,7 +16,7 @@ const index = async () => {
   }
 
   const [handle, info] = getAndCheckDbHandle();
-  const ignoreInvalidHandle = cmd === `init` || cmd === `help` || cmd === `version`;
+  const ignoreInvalidHandle = cmd === `init` || cmd === `help` || cmd === `version` || cmd === `create-samples`;
   if (!handle && !ignoreInvalidHandle) errorExit(info);
  
   // generated command handlers
@@ -25,6 +25,11 @@ const index = async () => {
 echo "$typescript"
 
 for filepath in ./cli/src/commands/*; do
+
+  if [ -d $filepath ]; then
+    continue
+  fi
+
   filename_with_ext=$(basename -- "$filepath")
   filename="${filename_with_ext%.*}"
   echo "    case \"$filename\":"

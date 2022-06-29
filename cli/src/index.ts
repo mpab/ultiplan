@@ -1,7 +1,7 @@
 import errorExit from "libs/src/utils/error-exit";
 import { getAndCheckDbHandle } from "libs/src/db/db-util";
  
-async function index() {
+const index = async () => {
   const args = require(`minimist`)(process.argv.slice(2));
   let cmd = args._[0] || `help`;
  
@@ -14,7 +14,7 @@ async function index() {
   }
 
   const [handle, info] = getAndCheckDbHandle();
-  const ignoreInvalidHandle = cmd === `init` || cmd === `help` || cmd === `version`;
+  const ignoreInvalidHandle = cmd === `init` || cmd === `help` || cmd === `version` || cmd === `create-samples`;
   if (!handle && !ignoreInvalidHandle) errorExit(info);
  
   // generated command handlers
@@ -57,10 +57,6 @@ async function index() {
 
     case "schedule":
       await require("./commands/schedule")(handle);
-      break;
-
-    case "shared":
-      await require("./commands/shared")(handle);
       break;
 
     case "today":
