@@ -1,3 +1,5 @@
 #!/bin/sh
 
+# TODO: make this more specific, rather than killing all running node tasks
+
 kill `ps | awk '/[n]ode/{print $1}'`
