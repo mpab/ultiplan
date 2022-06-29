@@ -43,7 +43,8 @@ const lsJson = (handle: string) => {
 };
 
 const lsFormatRecord = (record: DbRecord) => {
-  return record.project + ": " + record.description;
+  const id = stringIsNullOrEmpty(record.id) ? "00000000-0000-0000-0000-000000000000" : record.id;
+  return `${record.project}-${id}: ${record.description}`;
 };
 
 const ls = (handle: string) => {
