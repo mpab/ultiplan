@@ -3,12 +3,22 @@
 npm install -g ts-node
 npm install -g yarn
 
+pushd libs
+yarn install
+yarn unlink
+yarn link
+popd
+
 pushd cli
 yarn install
+yarn unlink libs
+yarn link libs
 popd
 
 pushd api
 yarn install
+yarn unlink libs
+yarn link libs
 popd
 
 pushd ui
