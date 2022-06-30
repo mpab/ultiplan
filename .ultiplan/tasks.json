@@ -795,5 +795,35 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "id": "f82f41aa-aca1-4acf-a841-ecbe62381e50",
+    "description": "implement integration with web browsers to save and set favourites - initially using a set of indexed markdown pages",
+    "created_on": "2022-06-29",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "47080bcf-1e3d-4edf-a5d2-3e41402f0c13",
+    "description": "implement multiline task entry with tags separated by semi-colons",
+    "created_on": "2022-06-29",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "2e0dd8ce-5622-4aec-fb5b-506ee1c1cf35",
+    "description": "example layout/representation - cheatsheets: https://devhints.io/",
+    "created_on": "2022-06-30",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
   }
 ]
