@@ -53,9 +53,9 @@ const AddItemDialog = (props: { addItemHandler: any }) => {
     switchState.addMultiple ? setOpen(true) : setOpen(false);
   };
 
-  const handleChange = (name: string) => {
-    //setItem({ ...item, [name]: value });
-  };
+  // const handleChange = (name: string) => {
+  //   //setItem({ ...item, [name]: value });
+  // };
 
   return (
     <div>
