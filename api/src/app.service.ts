@@ -16,8 +16,8 @@ export class AppService {
     console.log(`getRecords`);
 
     try {
-      const utiliplanProject: string = process.env.utiliplanProject;
-      const handle = path.join(utiliplanProject, projectDbPath, dbFileName);
+      const ultiplanProject: string = process.env.ultiplanProject;
+      const handle = path.join(ultiplanProject, projectDbPath, dbFileName);
       console.log(handle);
       if (!fs.existsSync(handle)) {
         console.error(`${handle} not found`);

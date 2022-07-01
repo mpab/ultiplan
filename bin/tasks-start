@@ -2,16 +2,26 @@
 
 [ -z "$ULTIPLAN_HOME" ] && echo "ERROR: ULTIPLAN_HOME is not set" && exit
 
-# TODO: this is a hack for windows, needs to be cross-platform
-# utiliplanProject=$PWD
-utiliplanProject=$(cmd.exe /c cd)
+startYarnProcess() {
+    if [ ! -z $(uname | grep MINGW64) ]; then
+    mintty sh -mc "yarn start &>/dev/null < /dev/null &"
+    else
+    sh -mc "yarn start &>/dev/null < /dev/null &"
+    fi
+}
+
+ultiplanProject=$PWD
+if [ ! -z $(uname | grep MINGW64) ]; then
+  echo windows OS detected
+  ultiplanProject=$(cmd.exe /c cd)
+fi
+
 cd $ULTIPLAN_HOME/api
 cp env .env
-echo "utiliplanProject=$utiliplanProject" >> .env
-mintty sh -mc "yarn start &>/dev/null < /dev/null &"
-
+echo "ultiplanProject=$ultiplanProject" >> .env
+startYarnProcess
 cd $ULTIPLAN_HOME/ui
-mintty sh -mc "yarn start &>/dev/null < /dev/null &"
+startYarnProcess
 
 # TODO: implement check to see if API & UI are running
 # ping -n 5 localhost
