@@ -44,5 +44,9 @@ cp ./bin/tasks-start $HOME/bin/.
 echo "tasks-start script installed to $(which tasks-start)"
 cp ./bin/tasks-stop $HOME/bin/.
 echo "tasks-stop script installed to $(which tasks-stop)"
+cp ./bin/tasks-api $HOME/bin/.
+echo "tasks-api script installed to $(which tasks-api)"
+cp ./bin/tasks-ui $HOME/bin/.
+echo "tasks-ui script installed to $(which tasks-ui)"
 cp ./bin/tasks-diff $HOME/bin/.
-echo "tasks-stop script installed to $(which tasks-diff)"
+echo "tasks-diff script installed to $(which tasks-diff)"

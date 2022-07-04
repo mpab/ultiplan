@@ -1,4 +1,4 @@
-import { Controller, Get, HttpStatus, Res } from '@nestjs/common';
+import { Controller, Delete, Get, HttpStatus, Post, Res } from '@nestjs/common';
 import { AppService } from './app.service';
 import { Response } from 'express';
 
@@ -12,8 +12,20 @@ export class AppController {
   // }
 
   @Get()
-  getTasks(@Res() res: Response): any {
+  get(@Res() res: Response): any {
     res.status(HttpStatus.OK).json(this.appService.getTasksAsJSON());
+    return res;
+  }
+
+  @Delete()
+  delete(@Res() res: Response): any {
+    res.status(HttpStatus.OK).json(this.appService.deleteRecord());
+    return res;
+  }
+
+  @Post()
+  create(@Res() res: Response): any {
+    res.status(HttpStatus.OK).json(this.appService.createRecord());
     return res;
   }
 

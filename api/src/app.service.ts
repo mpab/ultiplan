@@ -2,6 +2,8 @@ import { Injectable } from '@nestjs/common';
 import * as fs from 'fs';
 import * as path from 'path';
 
+import { DbRecord } from '../../libs/src/db/db-record';
+
 const dbFileName = 'tasks.json';
 const projectDbPath = '.ultiplan';
 
@@ -11,9 +13,19 @@ export class AppService {
     return 'Hello World!';
   }
 
-  getRecords(): any {
+  deleteRecord(record: DbRecord): any {
     console.log(`------------------------------------`);
-    console.log(`getRecords`);
+    console.log(`deleteRecord`);
+  }
+
+  createRecord(record: DbRecord): any {
+    console.log(`------------------------------------`);
+    console.log(`createRecord`);
+  }
+
+  readRecords(): any {
+    console.log(`------------------------------------`);
+    console.log(`readRecords`);
 
     try {
       const ultiplanProject: string = process.env.ultiplanProject;
