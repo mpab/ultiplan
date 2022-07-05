@@ -3,13 +3,13 @@ import { Table } from "./components/Table";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { useEffect, useState } from "react";
 import { TaskRecord } from "./types";
-import { apiGet } from "./api/api";
+import { tasksRead } from "./api/tasks";
 
 export default function App() {
   const [records, setRecords] = useState<TaskRecord[]>([]);
 
   useEffect(() => {
-    apiGet(setRecords);
+    tasksRead(setRecords);
   }, []);
 
   return (

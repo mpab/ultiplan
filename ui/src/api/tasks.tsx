@@ -1,7 +1,7 @@
 import { TaskRecord } from "../types";
 
-export const apiGet = (setRecords: (arg0: TaskRecord[]) => void) => {
-    fetch("http://localhost:3001/api")
+export const tasksRead = (setRecords: (arg0: TaskRecord[]) => void) => {
+    fetch("http://localhost:3001/api/tasks")
       .then((res) => res.json())
       .then((records) => {
         const result: TaskRecord[] = new Array<TaskRecord>();

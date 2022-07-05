@@ -6,11 +6,7 @@ const dbFileName = 'tasks.json';
 const projectDbPath = '.ultiplan';
 
 @Injectable()
-export class AppService {
-  getHello(): string {
-    return 'Hello World!';
-  }
-
+export class TasksService {
   delete(): any {
     console.log(`------------------------------------`);
     console.log(`deleteRecord`);
