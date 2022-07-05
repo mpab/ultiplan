@@ -2,7 +2,6 @@
 ## ultiplan
 
 ### todo: ultiplan
-- implement a basic web UI for task creation and viewing
 - consider how to link tasks to learnings/learning paths
 - add task edit (update) functionality
 - implement local tasks repo/deployment (with default project?)
@@ -59,8 +58,17 @@
 - implement appending of records without reading all of the items first
 - api: implement recursive reading of projects
 - api: add markdown summary endpoint
+- implement meeting notes feature
+- implement integration with github projects and tickets
+- implement integration with bitbucket projects and tickets
+- implement DB version conversion feature
+- implement integration with web browsers to save and set favourites - initially using a set of indexed markdown pages
+- implement multiline task entry with tags separated by semi-colons
+- example layout/representation - cheatsheets: https://devhints.io/
+- ui: implement refresh/re-read of data after modification
 
 ### done: ultiplan
+- 2022-07-06: ui: implement basic task viewing, creation and deletion
 - 2022-06-29: moved service functions to shared library
 - 2022-06-28: implement location-independent running of ui/api/services bundle
 - 2022-06-28: api: implement start and stop feature

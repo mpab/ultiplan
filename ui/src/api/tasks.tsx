@@ -47,7 +47,40 @@ async function postData(url = "", data = {}) {
 }
 
 export const taskDelete = (id: string) => {
-  postData(`http://localhost:3001/api/tasks/${id}`).then((data) => {
-    console.log(data); // JSON data parsed by `data.json()` call
-  });
+  fetch(`http://localhost:3001/api/tasks/${id}`, {
+    method: "DELETE", // or 'PUT'
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
+
+export const taskCreate = (description: string) => {
+  const task = {
+    id: '',
+    description: description,
+    project: '',
+    created_on: '',
+    completed_on: '',
+    due_on: '',
+  };
+
+  fetch(`http://localhost:3001/api/tasks`, {
+    method: "POST", // or 'PUT'
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(task),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
 };

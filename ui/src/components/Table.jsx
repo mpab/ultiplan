@@ -11,6 +11,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
+import { taskDelete, taskCreate } from "../api/tasks";
+
 import { TaskRecord } from "../types";
 
 // type Props = {
@@ -45,6 +47,25 @@ export const Table = ({ data }) => {
     setIsDialogOpen(false);
   };
 
+  const handleDeleteTaskRequest = (rowData) => {
+    if (!rowData.id) {
+      alert(`task has no id, unable to delete`);
+      return;
+    }
+
+    if (
+      window.confirm(`Delete Task?\n` + rowData.id + `\n` + rowData.description)
+    ) {
+      taskDelete(rowData.id);
+    }
+  };
+
+  const handleNewTaskRequest = () => {
+    var description = prompt("Enter description: ", "todo");
+    if (description)
+    taskCreate(description);
+  };
+
   React.useEffect(() => {
     // Closes dialog after saving
     // if (isDialogOpen) {
@@ -66,14 +87,13 @@ export const Table = ({ data }) => {
           {
             icon: tableIcons.Delete,
             tooltip: "Delete Task",
-            onClick: (event, rowData) =>
-              alert(`Delete Task?\n` + rowData.id + `\n` + rowData.description),
+            onClick: (event, rowData) => handleDeleteTaskRequest(rowData),
           },
           {
             icon: tableIcons.Add,
             tooltip: "Add Task",
             isFreeAction: true,
-            onClick: (event) => handleClickOpen(),
+            onClick: (event) => handleNewTaskRequest(),
           },
         ]}
       />

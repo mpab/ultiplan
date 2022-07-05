@@ -29,11 +29,11 @@
     "start_date": "2022-05-16"
   },
   {
-    "description": "implement a basic web UI for task creation and viewing",
+    "description": "ui: implement basic task viewing, creation and deletion",
     "created_on": "2022-05-19",
     "started_on": "",
     "due_on": "",
-    "completed_on": "",
+    "completed_on": "2022-07-06",
     "project": "ultiplan",
     "tags": []
   },
@@ -827,13 +827,13 @@
     "tags": []
   },
   {
-    "id": "94da602c-d841-4c6f-a375-e8123db658f3",
-    "description": "delete me",
-    "created_on": "2022-07-05",
+    "id": "cec45a61-f12a-4441-e775-414ada8935ea",
+    "description": "ui: implement refresh/re-read of data after modification",
+    "created_on": "2022-07-06",
     "started_on": "",
     "due_on": "",
     "completed_on": "",
-    "project": "C:\\dev\\mpab\\ultiplan",
+    "project": "ultiplan",
     "tags": []
   }
 ]

@@ -13,13 +13,18 @@ import dbCreateRecord from 'src/libs/db/db-create-record';
 import dateYYYYMMDD from 'src/libs/utils/dates';
 import genGuid from 'src/libs/utils/generate-uuid';
 
-const dbFileName = 'tasks.json';
 const projectDbPath = '.ultiplan';
+const dbFileName = 'tasks.json';
 
 const getDbHandle = (): string => {
   const ultiplanProject: string = process.env.ultiplanProject;
   return path.join(ultiplanProject, projectDbPath, dbFileName);
 };
+
+const getProjectName = (): string => {
+  const arr = process.env.ultiplanProject.replace(/\\/g, "/").split(`/`);
+  return arr[arr.length -1];
+}
 
 @Injectable()
 export class TasksService {
@@ -49,7 +54,7 @@ export class TasksService {
       started_on: dates.started_on,
       due_on: dates.due_on,
       completed_on: dates.completed_on,
-      project: process.env.ultiplanProject,
+      project: getProjectName(),
       tags: [],
     };
 
