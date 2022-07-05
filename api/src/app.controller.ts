@@ -13,24 +13,19 @@ export class AppController {
 
   @Get()
   get(@Res() res: Response): any {
-    res.status(HttpStatus.OK).json(this.appService.getTasksAsJSON());
+    res.status(HttpStatus.OK).json(this.appService.read());
     return res;
   }
 
   @Delete()
   delete(@Res() res: Response): any {
-    res.status(HttpStatus.OK).json(this.appService.deleteRecord());
+    res.status(HttpStatus.OK).json(this.appService.delete());
     return res;
   }
 
   @Post()
   create(@Res() res: Response): any {
-    res.status(HttpStatus.OK).json(this.appService.createRecord());
+    res.status(HttpStatus.OK).json(this.appService.create());
     return res;
   }
-
-  // @Get()
-  // getTasks(): string {
-  //   return this.appService.getTasksAsString();
-  // }
 }
