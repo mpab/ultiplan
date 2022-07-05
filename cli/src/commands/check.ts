@@ -1,10 +1,10 @@
 // checks a project for data issues
 // check: `check all project tasks <options> --r, -r ..... recursively`,
 
-import { DbRecord } from "libs/src/db/db-record";
-import { getAndCheckDbHandle } from "libs/src/db/db-util";
-import visit from "libs/src/utils/dir-visitor";
-import stringIsNullOrEmpty from "libs/src/utils/string-is-null-or-empty";
+import { DbRecord } from "ultiplan-api/src/libs/db/db-record";
+import { getAndCheckDbHandle } from "../utils/db-handle";
+import visit from "ultiplan-api/src/libs/utils/dir-visitor";
+import stringIsNullOrEmpty from "ultiplan-api/src/libs/utils/string-is-null-or-empty";
 
 const checkRecordsBelongToProject = (
   project_name: string,

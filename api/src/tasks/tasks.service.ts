@@ -1,42 +1,85 @@
-import { Injectable } from '@nestjs/common';
-import * as fs from 'fs';
+import {
+  Injectable,
+  NotAcceptableException,
+  NotFoundException,
+} from '@nestjs/common';
 import * as path from 'path';
+import { DbRecord, DbRecordDates } from '../libs/db/db-record';
+import dbLoad from '../libs/db/db-load';
+import { TaskModel } from './task.interface';
+import dbDeleteRecord from 'src/libs/db/db-delete-record';
+import dbFindRecord from 'src/libs/db/db-find-record';
+import dbCreateRecord from 'src/libs/db/db-create-record';
+import dateYYYYMMDD from 'src/libs/utils/dates';
+import genGuid from 'src/libs/utils/generate-uuid';
 
 const dbFileName = 'tasks.json';
 const projectDbPath = '.ultiplan';
 
+const getDbHandle = (): string => {
+  const ultiplanProject: string = process.env.ultiplanProject;
+  return path.join(ultiplanProject, projectDbPath, dbFileName);
+};
+
 @Injectable()
 export class TasksService {
-  delete(): any {
+  create(model: TaskModel): any {
     console.log(`------------------------------------`);
-    console.log(`deleteRecord`);
-  }
+    console.log(`create`);
+    console.dir(model);
 
-  create(): any {
-    console.log(`------------------------------------`);
-    console.log(`createRecord`);
-  }
-
-  readRaw(): any {
-    console.log(`------------------------------------`);
-    console.log(`readRecords`);
-
-    try {
-      const ultiplanProject: string = process.env.ultiplanProject;
-      const handle = path.join(ultiplanProject, projectDbPath, dbFileName);
-      console.log(handle);
-      if (!fs.existsSync(handle)) {
-        console.error(`${handle} not found`);
-        return [];
-      }
-      return fs.readFileSync(handle, 'utf-8');
-    } catch (e) {
-      console.error(e);
+    if (!model.description.length) {
+      throw new NotAcceptableException('Bad model.');
     }
-    return [];
+
+    const date = dateYYYYMMDD(new Date());
+    const dates: DbRecordDates = {
+      created_on: date,
+      started_on: '',
+      due_on: '',
+      completed_on: '',
+    };
+
+    const id = genGuid();
+
+    const record: DbRecord = {
+      id: id,
+      description: model.description,
+      created_on: dates.created_on,
+      started_on: dates.started_on,
+      due_on: dates.due_on,
+      completed_on: dates.completed_on,
+      project: process.env.ultiplanProject,
+      tags: [],
+    };
+
+    dbCreateRecord(record, getDbHandle());
   }
 
   read(): any {
-    return JSON.parse(this.readRaw());
+    console.log(`------------------------------------`);
+    console.log(`read`);
+    return dbLoad(getDbHandle());
+  }
+
+  find(id: string): any {
+    console.log(`------------------------------------`);
+    console.log(`find ${id}`);
+
+    const record = dbFindRecord(id, getDbHandle());
+
+    if (!record) {
+      throw new NotFoundException('Task not found.');
+    }
+
+    return record;
+  }
+
+  delete(id: string): any {
+    console.log(`------------------------------------`);
+    console.log(`delete ${id}`);
+    if (!dbDeleteRecord(id, getDbHandle())) {
+      throw new NotFoundException('Task not found.');
+    }
   }
 }

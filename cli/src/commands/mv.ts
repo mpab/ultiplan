@@ -3,10 +3,10 @@
 
 import fs from 'fs';
 
-import { DbRecord } from "libs/src/db/db-record";
-import { getAndCheckDbHandle } from "libs/src/db/db-util";
-import errorExit from "libs/src/utils/error-exit";
-import stringIsNullOrEmpty from "libs/src/utils/string-is-null-or-empty";
+import { DbRecord } from "ultiplan-api/src/libs/db/db-record";
+import { getAndCheckDbHandle } from "../utils/db-handle";
+import errorExit from "../utils/error-exit";
+import stringIsNullOrEmpty from "ultiplan-api/src/libs/utils/string-is-null-or-empty";
 
 const mv = async (old_project: string, new_project: string) => {
   // specification

@@ -3,11 +3,11 @@
 import fs from 'fs';
 import minimist from 'minimist';
 
-import { DbRecord, DbRecordItem } from "libs/src/db/db-record";
-import { getAndCheckDbHandle } from "libs/src/db/db-util";
+import { DbRecord, DbRecordItem } from "ultiplan-api/src/libs/db/db-record";
+import { getAndCheckDbHandle } from "../utils/db-handle";
 
-import visit from "libs/src/utils/dir-visitor";
-import stringIsNullOrEmpty from "libs/src/utils/string-is-null-or-empty";
+import visit from "ultiplan-api/src/libs/utils/dir-visitor";
+import stringIsNullOrEmpty from "ultiplan-api/src/libs/utils/string-is-null-or-empty";
 
 const formatRecord = (record: DbRecord) => {
   let text =

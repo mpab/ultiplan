@@ -3,19 +3,19 @@
 
 import fs from 'fs';
 import minimist from 'minimist';
+import dbLoad from 'ultiplan-api/src/libs/db/db-load';
 
-import { DbRecord, DbRecordItem } from "libs/src/db/db-record";
-import { getAndCheckDbHandle } from "libs/src/db/db-util";
+import { DbRecord } from "ultiplan-api/src/libs/db/db-record";
+import { getAndCheckDbHandle } from "../utils/db-handle";
 
-import visit from "libs/src/utils/dir-visitor";
-import stringIsNullOrEmpty from "libs/src/utils/string-is-null-or-empty";
+import visit from "ultiplan-api/src/libs/utils/dir-visitor";
+import stringIsNullOrEmpty from "ultiplan-api/src/libs/utils/string-is-null-or-empty";
 
 const lsCsv = (handle: string) => {
-  fs.readFile(handle, 'utf-8', function (err: any, data: string) {
-    if (err) {
-      console.error(err);
-    }
-    const json = JSON.parse(data);
+  const records = dbLoad(handle);
+
+  for (const item of records) {
+    const record: DbRecord = item;
     const { parse } = require("json2csv");
     const fields = [
       "description",
@@ -27,19 +27,20 @@ const lsCsv = (handle: string) => {
       "tags",
     ];
     const opts = { fields };
-    const csv = parse(json, opts);
+    const csv = parse(record, opts);
     console.log(csv);
-  });
+    console.log();
+  }
 };
 
-const lsJson = (handle: string) => {
-  fs.readFile(handle, 'utf-8', function (err: any, data: string) {
-    if (err) {
-      return console.error(err);
-    }
-    const json = JSON.parse(data);
-    console.log(json);
-  });
+const lsAttr = (handle: string) => {
+  const records = dbLoad(handle);
+
+  for (const item of records) {
+    const record: DbRecord = item;
+    console.dir(record);
+    console.log();
+  }
 };
 
 const lsFormatRecord = (record: DbRecord) => {
@@ -55,17 +56,13 @@ const ls = (handle: string) => {
   //console.log(`list ${handle}`)
   //console.log(`found DB ${handle}`)
 
-  fs.readFile(handle, 'utf-8', function (err: any, data: string) {
-    if (err) {
-      return console.error(err);
-    }
-    const records = JSON.parse(data);
-    for (const item of records) {
-      const record: DbRecord = item;
-      console.log(lsFormatRecord(record));
-      console.log();
-    }
-  });
+  const records = dbLoad(handle);
+
+  for (const item of records) {
+    const record: DbRecord = item;
+    console.log(lsFormatRecord(record));
+    console.log();
+  }
 };
 
 module.exports = async (handle: string) => {
@@ -76,8 +73,8 @@ module.exports = async (handle: string) => {
     return;
   }
 
-  if (args.json) {
-    lsJson(handle);
+  if (args.attr) {
+    lsAttr(handle);
     return;
   }
 

@@ -1,5 +1,5 @@
-import errorExit from "libs/src/utils/error-exit";
-import { getAndCheckDbHandle } from "libs/src/db/db-util";
+import errorExit from "./utils/error-exit";
+import { getAndCheckDbHandle } from "./utils/db-handle";
  
 const index = async () => {
   const args = require(`minimist`)(process.argv.slice(2));
@@ -35,6 +35,10 @@ const index = async () => {
       await require("./commands/done")(handle);
       break;
 
+    case "find":
+      await require("./commands/find")(handle);
+      break;
+
     case "help":
       await require("./commands/help")(handle);
       break;
@@ -53,6 +57,10 @@ const index = async () => {
 
     case "report":
       await require("./commands/report")(handle);
+      break;
+
+    case "rm":
+      await require("./commands/rm")(handle);
       break;
 
     case "schedule":

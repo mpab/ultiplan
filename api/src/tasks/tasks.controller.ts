@@ -1,26 +1,29 @@
-import { Controller, Delete, Get, HttpStatus, Post, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
 import { TasksService } from './tasks.service';
-import { Response } from 'express';
+import { TaskModel } from './task.interface';
 
 @Controller('api/tasks')
 export class TasksController {
   constructor(private readonly service: TasksService) {}
 
   @Get()
-  get(@Res() res: Response): any {
-    res.status(HttpStatus.OK).json(this.service.read());
-    return res;
+  get(): any {
+    return this.service.read();
   }
 
-  @Delete()
-  delete(@Res() res: Response): any {
-    res.status(HttpStatus.OK).json(this.service.delete());
-    return res;
+  @Get(':id')
+  find(@Param('id') id: string): any {
+    return this.service.find(id);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: string): any {
+    return this.service.delete(id);
   }
 
   @Post()
-  create(@Res() res: Response): any {
-    res.status(HttpStatus.OK).json(this.service.create());
-    return res;
+  create(@Body() model: TaskModel): any {
+    //res.status(HttpStatus.OK).json(this.service.create());
+    return this.service.create(model);
   }
 }

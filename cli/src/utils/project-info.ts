@@ -1,13 +1,13 @@
 // project information
 
 export interface ProjectInfo {
-  name: string
+  name: string;
 }
 
 const index = (): ProjectInfo => {
-  const path = require("path");
+  const path = require('path');
   return {
-    name: process.cwd().split(path.sep).pop() as string
+    name: process.cwd().split(path.sep).pop() as string,
   };
 };
 

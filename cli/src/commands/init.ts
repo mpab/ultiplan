@@ -1,7 +1,7 @@
 // initializes a project
 
-import { DbRecord } from "libs/src/db/db-record";
-import { getAndCheckDbHandle, getDbHandle } from "libs/src/db/db-util";
+import { DbRecord } from "ultiplan-api/src/libs/db/db-record";
+import { getAndCheckDbHandle, getDbHandle } from "../utils/db-handle";
 
 module.exports = () => {
   let [projectDbHandle, _, dir] = getAndCheckDbHandle();

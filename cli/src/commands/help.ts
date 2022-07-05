@@ -8,11 +8,13 @@ const menus: {[index: string]:any} = {
     check ..................... checks a project for data issues
     create-samples ..................... create sample task data
     done ................................. add a completed task 
+    find ................................. find a task by its id
     help ................................ help on using commands
     init ................................. initializes a project
     ls ...................... list tasks (with recursive option)
     mv .................... move project (with recursive option)
     report ............................. generate a tasks report
+    rm ................................. delete a task by its id
     schedule ................................... schedule a task
     today ........................ show all open tasks for today
     todo ....................................... add a todo task

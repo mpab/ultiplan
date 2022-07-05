@@ -2,9 +2,9 @@
 
 import fs from "fs";
 
-import genGuid from "libs/src/utils/generate-uuid";
-import { DbRecord, DbRecordDates } from "libs/src/db/db-record";
-import { getAndCheckDbHandle, getDbHandle } from "libs/src/db/db-util";
+import genGuid from "ultiplan-api/src/libs/utils/generate-uuid";
+import { DbRecord} from "ultiplan-api/src/libs/db/db-record";
+import { getAndCheckDbHandle, getDbHandle } from "../utils/db-handle";
 
 module.exports = () => {
   const sampleDb = `sample-tasks.json`;

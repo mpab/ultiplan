@@ -2,12 +2,13 @@
 
 import reader from "readline-sync";
 
-import dateYYYYMMDD from "libs/src/utils/dates";
-import dbCreateRecord from "libs/src/db/db-create-record";
-import genGuid from "libs/src/utils/generate-uuid";
-import { DbRecord, DbRecordDates } from "libs/src/db/db-record";
+import dateYYYYMMDD from "ultiplan-api/src/libs/utils/dates";
+import dbCreateRecord from "ultiplan-api/src/libs/db/db-create-record";
+import genGuid from "ultiplan-api/src/libs/utils/generate-uuid";
+import { DbRecord, DbRecordDates } from "ultiplan-api/src/libs/db/db-record";
+import { getDbHandle } from "../utils/db-handle";
 import dbNewRecord from './shared/new-record';
-import projectInfo from "libs/src/utils/project-info";
+import projectInfo from "../utils/project-info";
 
 const index = async (handle: string) => {
   let description: string = process.argv.slice(3).join(` `);
@@ -34,14 +35,14 @@ const index = async (handle: string) => {
       tags: Array(),
     };
 
-    dbCreateRecord(record);
+    dbCreateRecord(record, getDbHandle());
     return;
   }
 
   do {
     description = reader.question("add todo? ");
     if (description.length) {
-      dbCreateRecord(dbNewRecord(description, dates, id));
+      dbCreateRecord(dbNewRecord(description, dates, id), getDbHandle());
     }
   } while (description.length);
 };

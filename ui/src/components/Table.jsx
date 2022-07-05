@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MaterialTable, { Column } from "@material-table/core";
 import tableIcons from "./TableIcons";
 import { Container } from "@material-ui/core";
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 import { TaskRecord } from "../types";
 
-type Props = {
-  data: TaskRecord[],
-};
+// type Props = {
+//   data: TaskRecord[],
+// };
 
 const columns: Array<Column<TaskRecord>> = [
   //{ title: "Id", field: "id" },
@@ -34,7 +34,6 @@ const options = {
   pageSizeOptions: [10, 20, 50],
 };
 
-
 export const Table = ({ data }) => {
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
@@ -46,7 +45,7 @@ export const Table = ({ data }) => {
     setIsDialogOpen(false);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     // Closes dialog after saving
     // if (isDialogOpen) {
     //   setIsDialogOpen(false);
@@ -59,13 +58,16 @@ export const Table = ({ data }) => {
         columns={columns}
         data={data}
         icons={tableIcons}
-        options={options}
+        options={{
+          exportButton: true,
+        }}
         title={"Tasks"}
         actions={[
           {
             icon: tableIcons.Delete,
-            tooltip: "Delete User",
-            onClick: (event, rowData) => alert("Delete Task?"),
+            tooltip: "Delete Task",
+            onClick: (event, rowData) =>
+              alert(`Delete Task?\n` + rowData.id + `\n` + rowData.description),
           },
           {
             icon: tableIcons.Add,
@@ -75,12 +77,11 @@ export const Table = ({ data }) => {
           },
         ]}
       />
+
       <Dialog open={isDialogOpen} onClose={handleClose}>
         <DialogTitle>Add a new Task</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            Enter a description
-          </DialogContentText>
+          <DialogContentText>Enter a description</DialogContentText>
           <TextField
             autoFocus
             margin="dense"

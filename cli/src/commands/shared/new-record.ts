@@ -1,14 +1,15 @@
 import reader from "readline-sync";
 
-import { DbRecordItem, DbRecord, DbRecordDates } from "libs/src/db/db-record";
-import projectInfo from "libs/src/utils/project-info";
+import { DbRecordItem, DbRecord, DbRecordDates } from "ultiplan-api/src/libs/db/db-record";
+import projectInfo from "../../utils/project-info";
 
 const index = (
   description: string,
   recordDates: DbRecordDates,
   id: string,
+  default_project_name: string = projectInfo().name,
 ): DbRecord => {
-  const default_project_name = projectInfo().name;
+  
   const project_name: string = reader.question(
     `project? (enter=${default_project_name}) `,
     { defaultInput: default_project_name }

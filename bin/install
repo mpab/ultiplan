@@ -5,25 +5,22 @@ git pull
 npm install -g ts-node
 npm install -g yarn
 
-pushd libs
+pushd api
+rm -rf node_modules
 yarn install
 yarn unlink
 yarn link
 popd
 
 pushd cli
+rm -rf node_modules
 yarn install
-yarn unlink libs
-yarn link libs
-popd
-
-pushd api
-yarn install
-yarn unlink libs
-yarn link libs
+yarn unlink ultiplan-api
+yarn link ultiplan-api
 popd
 
 pushd ui
+rm -rf node_modules
 yarn install
 popd
 
