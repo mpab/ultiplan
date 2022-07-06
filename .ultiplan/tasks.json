@@ -71,7 +71,9 @@
     "due_on": "",
     "completed_on": "2022-07-06",
     "project": "ultiplan",
-    "tags": ["implemented in ui and api, not in cli"]
+    "tags": [
+      "implemented in ui and api, not in cli"
+    ]
   },
   {
     "description": "implement local tasks repo/deployment (with default project?)",
@@ -889,6 +891,16 @@
   {
     "id": "cb9f5524-8952-4995-bc5a-1dea3ceb37ae",
     "description": "api: implement ability to dynamically add and remove projects links - extends recursive view functionality",
+    "created_on": "2022-07-06",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "50bc5290-b769-44e8-87a9-4aa9ec4955d0",
+    "description": "implement ability to group tasks - eg for epics",
     "created_on": "2022-07-06",
     "started_on": "",
     "due_on": "",
