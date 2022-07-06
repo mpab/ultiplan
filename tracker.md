@@ -3,7 +3,6 @@
 
 ### todo: ultiplan
 - consider how to link tasks to learnings/learning paths
-- add task edit (update) functionality
 - implement local tasks repo/deployment (with default project?)
 - implement links between ultiplan repos (hierarchichal, sibling, ...)
 - add parameters to commands
@@ -66,9 +65,17 @@
 - implement multiline task entry with tags separated by semi-colons
 - example layout/representation - cheatsheets: https://devhints.io/
 - ui: implement refresh/re-read of data after modification
+- ui: implement collapsible rows - e.g. show/hide date information
+- implement mindmap generation
+- implement project-to-project task merge feature
+- implement generation of help text for commands and command options
+- api: implement view of projects using a recursive view option similar to ls and report commands
+- api: implement ability to dynamically add and remove projects links - extends recursive view functionality
 
 ### done: ultiplan
 - 2022-07-06: ui: implement basic task viewing, creation and deletion
+- 2022-07-06: add task edit (update) functionality
+    - implemented in ui and api, not in cli
 - 2022-06-29: moved service functions to shared library
 - 2022-06-28: implement location-independent running of ui/api/services bundle
 - 2022-06-28: api: implement start and stop feature

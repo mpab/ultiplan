@@ -48,7 +48,7 @@ async function postData(url = "", data = {}) {
 
 export const taskDelete = (id: string) => {
   fetch(`http://localhost:3001/api/tasks/${id}`, {
-    method: "DELETE", // or 'PUT'
+    method: "DELETE",
   })
     .then((response) => response.json())
     .then((data) => {
@@ -70,7 +70,33 @@ export const taskCreate = (description: string) => {
   };
 
   fetch(`http://localhost:3001/api/tasks`, {
-    method: "POST", // or 'PUT'
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(task),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("Success:", data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+};
+
+export const taskUpdate = (id: string, description: string) => {
+  const task = {
+    id: id,
+    description: description,
+    project: '',
+    created_on: '',
+    completed_on: '',
+    due_on: '',
+  };
+
+  fetch(`http://localhost:3001/api/tasks`, {
+    method: "PUT",
     headers: {
       'Content-Type': 'application/json',
     },

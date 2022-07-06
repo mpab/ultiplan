@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import { DbRecord } from './db-record';
 
 const dbSave = (records: DbRecord[], handle: string) => {
-  if (!records.length) return;
+  if (!records.length) console.warn('saving empty record set');
 
   //console.log(`saving ${handle}`);
   fs.writeFile(

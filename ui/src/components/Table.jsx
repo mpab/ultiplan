@@ -11,7 +11,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-import { taskDelete, taskCreate } from "../api/tasks";
+import { taskDelete, taskCreate, taskUpdate } from "../api/tasks";
 
 import { TaskRecord } from "../types";
 
@@ -61,9 +61,18 @@ export const Table = ({ data }) => {
   };
 
   const handleNewTaskRequest = () => {
-    var description = prompt("Enter description: ", "todo");
-    if (description)
-    taskCreate(description);
+    const description = prompt("Enter description: ", "todo");
+    if (description) taskCreate(description);
+  };
+
+  const handleEditTaskRequest = (rowData) => {
+    if (!rowData.id) {
+      alert(`task has no id, unable to edit`);
+      return;
+    }
+
+    const description = prompt("Description: ", rowData.description);
+    if (description) taskUpdate(rowData.id, description);
   };
 
   React.useEffect(() => {
@@ -93,7 +102,13 @@ export const Table = ({ data }) => {
             icon: tableIcons.Add,
             tooltip: "Add Task",
             isFreeAction: true,
+
             onClick: (event) => handleNewTaskRequest(),
+          },
+          {
+            icon: tableIcons.Edit,
+            tooltip: "Edit Task",
+            onClick: (event, rowData) => handleEditTaskRequest(rowData),
           },
         ]}
       />

@@ -2,6 +2,7 @@ import {
   Injectable,
   NotAcceptableException,
   NotFoundException,
+  UnprocessableEntityException,
 } from '@nestjs/common';
 import * as path from 'path';
 import { DbRecord, DbRecordDates } from '../libs/db/db-record';
@@ -12,6 +13,9 @@ import dbFindRecord from 'src/libs/db/db-find-record';
 import dbCreateRecord from 'src/libs/db/db-create-record';
 import dateYYYYMMDD from 'src/libs/utils/dates';
 import genGuid from 'src/libs/utils/generate-uuid';
+import dbSave from 'src/libs/db/db-save';
+import dbUpdateRecord from 'src/libs/db/db-update-record';
+import { BaseExceptionFilter } from '@nestjs/core';
 
 const projectDbPath = '.ultiplan';
 const dbFileName = 'tasks.json';
@@ -22,9 +26,9 @@ const getDbHandle = (): string => {
 };
 
 const getProjectName = (): string => {
-  const arr = process.env.ultiplanProject.replace(/\\/g, "/").split(`/`);
-  return arr[arr.length -1];
-}
+  const arr = process.env.ultiplanProject.replace(/\\/g, '/').split(`/`);
+  return arr[arr.length - 1];
+};
 
 @Injectable()
 export class TasksService {
@@ -78,6 +82,30 @@ export class TasksService {
     }
 
     return record;
+  }
+
+  update(model: TaskModel): any {
+    console.log(`------------------------------------`);
+    console.log(`update`);
+    console.dir(model);
+
+    if (!model.description.length) {
+      throw new NotAcceptableException('Bad model.');
+    }
+
+    const record: DbRecord = {
+      id: model.id,
+      description: model.description,
+      created_on: '',
+      started_on: '',
+      due_on: '',
+      completed_on: '',
+      project: '',
+      tags: [],
+    };
+
+    if (!dbUpdateRecord(record, getDbHandle()))
+      throw new UnprocessableEntityException(`cannot update: id=${model.id}`);
   }
 
   delete(id: string): any {

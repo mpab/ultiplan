@@ -69,9 +69,9 @@
     "created_on": "2022-05-21",
     "started_on": "",
     "due_on": "",
-    "completed_on": "",
+    "completed_on": "2022-07-06",
     "project": "ultiplan",
-    "tags": []
+    "tags": ["implemented in ui and api, not in cli"]
   },
   {
     "description": "implement local tasks repo/deployment (with default project?)",
@@ -829,6 +829,66 @@
   {
     "id": "cec45a61-f12a-4441-e775-414ada8935ea",
     "description": "ui: implement refresh/re-read of data after modification",
+    "created_on": "2022-07-06",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "7f5087d4-a24f-46de-8ff2-4284706ddd5e",
+    "description": "ui: implement collapsible rows - e.g. show/hide date information",
+    "created_on": "2022-07-06",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "1cc6601d-4d8f-4af7-9a33-cc4b88edc5e3",
+    "description": "implement mindmap generation",
+    "created_on": "2022-07-06",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "ab6ebe86-5277-49d5-86e5-02257791b6af",
+    "description": "implement project-to-project task merge feature",
+    "created_on": "2022-07-06",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "d9b1be83-984d-4f24-efc1-61842169c578",
+    "description": "implement generation of help text for commands and command options",
+    "created_on": "2022-07-06",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "17d5d307-9684-4c33-ec9c-15d7176984c5",
+    "description": "api: implement view of projects using a recursive view option similar to ls and report commands",
+    "created_on": "2022-07-06",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "cb9f5524-8952-4995-bc5a-1dea3ceb37ae",
+    "description": "api: implement ability to dynamically add and remove projects links - extends recursive view functionality",
     "created_on": "2022-07-06",
     "started_on": "",
     "due_on": "",

@@ -1,4 +1,12 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { TaskModel } from './task.interface';
 
@@ -25,5 +33,11 @@ export class TasksController {
   create(@Body() model: TaskModel): any {
     //res.status(HttpStatus.OK).json(this.service.create());
     return this.service.create(model);
+  }
+
+  @Put()
+  update(@Body() model: TaskModel): any {
+    //res.status(HttpStatus.OK).json(this.service.create());
+    return this.service.update(model);
   }
 }
