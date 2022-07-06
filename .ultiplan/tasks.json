@@ -909,5 +909,18 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "id": "7ef49f90-d1a8-44d4-dc62-64adc6d307d4",
+    "description": "implement ability to capture and display tasks as md/html fragments",
+    "created_on": "2022-07-06",
+    "started_on": "2022-07-06",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": [
+      "example: https://www.retrorgb.com/mister-fpga-news-psx-core-fpga-to-asic-rodland-sound-and-more.html",
+      "FPGA to ASIC section"
+    ]
   }
 ]
