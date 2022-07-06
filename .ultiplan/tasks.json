@@ -429,7 +429,9 @@
     "due_on": "",
     "completed_on": "",
     "project": "ultiplan",
-    "tags": []
+    "tags": [
+      "https://github.com/MiSTer-devel/MkDocs_MiSTer"
+    ]
   },
   {
     "description": "implemented custom tag handling for 'todo'",
