@@ -13,7 +13,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 
 import { taskDelete, taskCreate, taskUpdate } from "../api/tasks";
 
-import { TaskRecord } from "../types";
+import { TaskRecord } from "../api/types";
 
 // type Props = {
 //   data: TaskRecord[],

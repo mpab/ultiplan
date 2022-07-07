@@ -30,6 +30,7 @@
 - installer: detect shell environment and update correct profile (sh, bash, zsh, ...)
 - task schema: refactor named fields to k,v tag model
 - task schema: improve documentation
+    - https://github.com/MiSTer-devel/MkDocs_MiSTer
 - data linking
     - scan tasks and look for similar wording/phrases/key words
     - can be done at a description level or at a tag level (what about custom tags)
@@ -71,8 +72,16 @@
 - implement generation of help text for commands and command options
 - api: implement view of projects using a recursive view option similar to ls and report commands
 - api: implement ability to dynamically add and remove projects links - extends recursive view functionality
+- implement ability to group tasks - eg for epics
+- implement ability to capture and display tasks as md/html fragments
+    - example: https://www.retrorgb.com/mister-fpga-news-psx-core-fpga-to-asic-rodland-sound-and-more.html
+    - FPGA to ASIC section
+- ui: use sticky header + custom overrides + collapsible table
+- ui: convert/upgrade all @material-ui to @mui
+- implement org-chart generation
 
 ### done: ultiplan
+- 2022-07-07: can now start api on a mapped network drive
 - 2022-07-06: ui: implement basic task viewing, creation and deletion
 - 2022-07-06: add task edit (update) functionality
     - implemented in ui and api, not in cli

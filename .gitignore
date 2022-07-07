@@ -3,6 +3,10 @@
 **/node_modules
 **/.env
 
+# Artifacts
+**/*.zip
+**/*.7z
+
 # Logs
 logs
 *.log

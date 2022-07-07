@@ -922,5 +922,45 @@
       "example: https://www.retrorgb.com/mister-fpga-news-psx-core-fpga-to-asic-rodland-sound-and-more.html",
       "FPGA to ASIC section"
     ]
+  },
+  {
+    "id": "eff318c5-be50-4254-f341-45a66532dac0",
+    "description": "ui: use sticky header + custom overrides + collapsible table",
+    "created_on": "2022-07-07",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "ceb6501b-8f5c-4e53-9673-d18ba7c74782",
+    "description": "ui: convert/upgrade all @material-ui to @mui",
+    "created_on": "2022-07-07",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "7694a95e-c724-447b-b7ed-181014407979",
+    "description": "implement org-chart generation",
+    "created_on": "2022-07-07",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "76a559fe-8cda-4829-c005-836a12bb9021",
+    "description": "can now start api on a mapped network drive",
+    "created_on": "2022-07-07",
+    "started_on": "2022-07-07",
+    "due_on": "2022-07-07",
+    "completed_on": "2022-07-07",
+    "project": "ultiplan",
+    "tags": []
   }
 ]

@@ -1,4 +1,4 @@
-import { TaskRecord } from "../types";
+import { TaskRecord } from "./types";
 
 export const tasksRead = (setRecords: (arg0: TaskRecord[]) => void) => {
   fetch("http://localhost:3001/api/tasks")

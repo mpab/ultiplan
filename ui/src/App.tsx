@@ -1,9 +1,9 @@
 import "./styles.css";
-import { Table } from "./components/Table";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { useEffect, useState } from "react";
-import { TaskRecord } from "./types";
+import { TaskRecord } from "./api/types";
 import { tasksRead } from "./api/tasks";
+import { Table } from "./components/Table";
 
 export default function App() {
   const [records, setRecords] = useState<TaskRecord[]>([]);
