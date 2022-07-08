@@ -3,6 +3,7 @@ import {
   Collapse,
   IconButton,
   Paper,
+  Switch,
   Table,
   TableBody,
   TableCell,
@@ -19,7 +20,7 @@ import { taskCreate, taskDelete, tasksRead, taskUpdate } from "../api/tasks";
 //import { TaskRecord } from "../api/types";
 
 import { TaskRecord, TaskView } from "../api/types";
-import { Add, Check, DeleteOutline, Edit } from "@mui/icons-material";
+import { Add, DeleteOutline, EditOutlined } from "@mui/icons-material";
 
 const stringIsNullOrEmpty = (str: string | null): boolean => {
   return typeof str == "undefined" || !str || !str.trim;
@@ -186,7 +187,8 @@ export const TaskList = () => {
             >
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
-
+          </TableCell>
+          <TableCell component="th" scope="row">
             <IconButton
               aria-label="edit task"
               size="small"
@@ -194,29 +196,32 @@ export const TaskList = () => {
             >
               {stringIsNullOrEmpty(row.taskRecord.completed_on) &&
               !stringIsNullOrEmpty(row.taskRecord.id) ? (
-                <Edit />
+                <EditOutlined />
               ) : (
                 <></>
               )}
             </IconButton>
-            <IconButton
-              aria-label="mark as complete"
-              size="small"
-              onClick={(event) => handleMarkTaskAsCompleteRequest(row)}
-            >
-              {stringIsNullOrEmpty(row.taskRecord.completed_on) &&
-              !stringIsNullOrEmpty(row.taskRecord.id) ? (
-                <Check />
-              ) : (
-                <></>
-              )}
-            </IconButton>
-          </TableCell>
-          <TableCell component="th" scope="row">
             {row.taskRecord.description}
           </TableCell>
           <TableCell></TableCell>
-          <TableCell>{row.status}</TableCell>
+          <TableCell>
+            <IconButton
+              aria-label="mark as complete"
+              size="small"
+              onClick={(event) => {
+                if (stringIsNullOrEmpty(row.taskRecord.completed_on))
+                  handleMarkTaskAsCompleteRequest(row);
+              }}
+            >
+              {stringIsNullOrEmpty(row.taskRecord.completed_on) &&
+              !stringIsNullOrEmpty(row.taskRecord.id) ? (
+                <Switch checked={false} />
+              ) : (
+                <Switch disabled defaultChecked color="success"/>
+              )}
+            </IconButton>
+            {row.status}
+          </TableCell>
           <TableCell>{row.date}</TableCell>
           <TableCell>
             <IconButton
