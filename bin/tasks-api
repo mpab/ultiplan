@@ -2,7 +2,14 @@
 
 [ -z "$ULTIPLAN_HOME" ] && echo "ERROR: ULTIPLAN_HOME is not set" && exit
 
-ultiplanProject=$PWD
+if [ ! -z "$1" ]; then
+  ultiplanProject=$1
+else
+  ultiplanProject=$PWD
+fi
+
+[ ! -d "$ultiplanProject" ] && echo "ERROR: $ultiplanProject is not a valid directory" && exit
+
 if [ ! -z $(uname | grep MINGW64) ]; then
   echo windows OS detected
   # this doesn't work with network drives
@@ -12,7 +19,9 @@ fi
 
 echo using ultiplanProject=$ultiplanProject
 
+exit
+
 cd $ULTIPLAN_HOME/api
 cp env .env
-echo "ultiplanProject=$ultiplanProject" >> .env
+echo "ultiplanProject=$ultiplanProject" >>.env
 yarn start -w
