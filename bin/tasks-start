@@ -11,6 +11,8 @@ startProcessSilent() {
   echo "starting $process in silent mode"
   if [ ! -z $(uname | grep MINGW64) ]; then
     mintty sh -mc "$process &>/dev/null < /dev/null &"
+  elif [ ! -z $(uname | grep Darwin) ]; then
+    sh -mc "nohup sh $process &"
   else
     sh -mc "$process &>/dev/null < /dev/null &"
   fi
@@ -20,6 +22,8 @@ startProcessNormal() {
   echo "starting $process in normal mode"
   if [ ! -z $(uname | grep MINGW64) ]; then
     mintty sh -mc "$process"
+  elif [ ! -z $(uname | grep Darwin) ]; then
+    sh -mc "nohup sh $process &"
   else
     sh -mc "$process"
   fi

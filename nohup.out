@@ -1,0 +1,370 @@
+using ultiplanProject=/Users/mick/dev/mpab/ultiplan
+yarn run v1.22.19
+$ nest start -w
+c[[90m13:06:12[0m] Starting compilation in watch mode...
+
+[[90m13:06:15[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:15 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +40ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTasksModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHelloModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +681ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 81893  - [39m08/07/2022, 13:06:16 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+ultiplanProject is /Users/mick/dev/mpab/ultiplan
+API listening at http://localhost:3001
+------------------------------------
+read
+using ultiplanProject=/Users/mick/dev/mpab/ultiplan
+yarn run v1.22.19
+$ nest start -w
+c[[90m13:06:51[0m] Starting compilation in watch mode...
+
+[[90m13:06:54[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +39ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTasksModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHelloModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +732ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 81945  - [39m08/07/2022, 13:06:55 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2ms[39m
+ultiplanProject is /Users/mick/dev/mpab/ultiplan
+API listening at http://localhost:3001
+------------------------------------
+read
+using ultiplanProject=/Users/mick/dev/mpab/ultiplan
+yarn run v1.22.19
+$ nest start -w
+c[[90m13:08:14[0m] Starting compilation in watch mode...
+
+[[90m13:08:17[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:17 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:17 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +31ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:17 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:17 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTasksModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:17 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHelloModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:17 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +639ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82025  - [39m08/07/2022, 13:08:18 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2ms[39m
+ultiplanProject is /Users/mick/dev/mpab/ultiplan
+API listening at http://localhost:3001
+------------------------------------
+read
+using ultiplanProject=/Users/mick/dev/mpab/ultiplan
+yarn run v1.22.19
+$ nest start -w
+c[[90m13:08:29[0m] Starting compilation in watch mode...
+
+[[90m13:08:31[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:32 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +39ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTasksModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHelloModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:32 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +1260ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82058  - [39m08/07/2022, 13:08:33 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +3ms[39m
+ultiplanProject is /Users/mick/dev/mpab/ultiplan
+API listening at http://localhost:3001
+------------------------------------
+read
+------------------------------------
+read
+yarn run v1.22.19
+$ react-scripts start -w
+(node:82081) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:82081) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled successfully!
+
+You can now view ultiplan-ui in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://10.0.0.47:3000
+
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+
+webpack compiled successfully
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+------------------------------------
+read
+------------------------------------
+read
+yarn run v1.22.19
+$ react-scripts start -w
+(node:82495) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:82495) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+Compiled successfully!
+
+You can now view ultiplan-ui in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://10.0.0.47:3000
+
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+
+webpack compiled successfully
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+No issues found.
+using ultiplanProject=/Users/mick/dev/mpab/ultiplan
+yarn run v1.22.19
+$ nest start -w
+c[[90m13:11:12[0m] Starting compilation in watch mode...
+
+[[90m13:11:16[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:17 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:17 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +41ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:17 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:17 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTasksModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:17 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHelloModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:17 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +675ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82554  - [39m08/07/2022, 13:11:18 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2ms[39m
+ultiplanProject is /Users/mick/dev/mpab/ultiplan
+API listening at http://localhost:3001
+------------------------------------
+read
+------------------------------------
+read
+using ultiplanProject=/Users/mick/dev/mpab/ultiplan
+yarn run v1.22.19
+$ nest start -w
+c[[90m13:14:44[0m] Starting compilation in watch mode...
+
+[[90m13:14:47[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:47 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +34ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTasksModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHelloModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:47 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +673ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82698  - [39m08/07/2022, 13:14:48 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +2ms[39m
+ultiplanProject is /Users/mick/dev/mpab/ultiplan
+API listening at http://localhost:3001
+using ultiplanProject=/Users/mick/dev/mpab/ultiplan
+yarn run v1.22.19
+yarn run v1.22.19
+$ nest start -w
+$ react-scripts start -w
+c[[90m13:18:52[0m] Starting compilation in watch mode...
+
+(node:82883) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:82883) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+[[90m13:18:56[0m] Found 0 errors. Watching for file changes.
+
+Starting the development server...
+
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:57 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +39ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTasksModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHelloModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:57 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +1255ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +21ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +7ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +30ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 82886  - [39m08/07/2022, 13:18:58 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +22ms[39m
+ultiplanProject is /Users/mick/dev/mpab/ultiplan
+API listening at http://localhost:3001
+------------------------------------
+read
+Compiled successfully!
+
+You can now view ultiplan-ui in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://10.0.0.47:3000
+
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+
+webpack compiled successfully
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+------------------------------------
+read
+------------------------------------
+read
+No issues found.
+using ultiplanProject=/Users/mick/dev/mpab/ultiplan
+yarn run v1.22.19
+yarn run v1.22.19
+$ nest start -w
+$ react-scripts start -w
+c[[90m13:20:06[0m] Starting compilation in watch mode...
+
+(node:82994) [DEP_WEBPACK_DEV_SERVER_ON_AFTER_SETUP_MIDDLEWARE] DeprecationWarning: 'onAfterSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+(node:82994) [DEP_WEBPACK_DEV_SERVER_ON_BEFORE_SETUP_MIDDLEWARE] DeprecationWarning: 'onBeforeSetupMiddleware' option is deprecated. Please use the 'setupMiddlewares' option.
+Starting the development server...
+
+[[90m13:20:11[0m] Found 0 errors. Watching for file changes.
+
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:13 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigHostModule dependencies initialized[39m[38;5;3m +207ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTasksModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mHelloModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:13 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mConfigModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +2395ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +4ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +10ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +5ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +5ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +1ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +4ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTasksController {/api/tasks}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, GET} route[39m[38;5;3m +4ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, GET} route[39m[38;5;3m +3ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/tasks, PUT} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mHelloController {/api/hello}:[39m[38;5;3m +13ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/api/hello, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 83002  - [39m08/07/2022, 13:20:15 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +52ms[39m
+ultiplanProject is /Users/mick/dev/mpab/ultiplan
+API listening at http://localhost:3001
+------------------------------------
+read
+Compiled successfully!
+
+You can now view ultiplan-ui in the browser.
+
+  Local:            http://localhost:3000
+  On Your Network:  http://10.0.0.47:3000
+
+Note that the development build is not optimized.
+To create a production build, use yarn build.
+
+webpack compiled successfully
+Files successfully emitted, waiting for typecheck results...
+Issues checking in progress...
+------------------------------------
+read
+------------------------------------
+read
+No issues found.
