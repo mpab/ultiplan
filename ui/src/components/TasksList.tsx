@@ -340,6 +340,8 @@ export const TaskList = () => {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
+          showFirstButton
+          showLastButton
         />
       </Paper>
     </React.Fragment>

@@ -80,13 +80,13 @@
 - ui: implement color coding for bad data/bad records
 - ui: implement custom tag notation for known tags - eg bug feature note etc and implement grouping and filtering
 - ui: defect - search feature no longer working after table refactoring
-- ui: defect - page controls no longer have navigate to start/end buttons
 
 ### done: ultiplan
 - 2022-07-08: ui: implement collapsible rows - e.g. show/hide date information
 - 2022-07-08: ui: convert/upgrade all @material-ui to @mui
 - 2022-07-08: ui: improved date and status information display
 - 2022-07-08: ui: can now mark tasks as done
+- 2022-07-08: ui: defect - page controls no longer have navigate to start/end buttons
 - 2022-07-07: can now start api on a mapped network drive
 - 2022-07-06: ui: implement basic task viewing, creation and deletion
 - 2022-07-06: add task edit (update) functionality
