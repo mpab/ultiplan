@@ -16,9 +16,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import { TaskList } from "./TasksList";
+import NotesIcon from "@mui/icons-material/Notes";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import WaterfallChartIcon from "@mui/icons-material/WaterfallChart";
+import { FormatListNumbered } from "@mui/icons-material";
+import { TasksListView } from "./TasksListView";
+import { TasksCalendarView } from "./TasksCalendarView";
+import { TasksGanttChartView } from "./TasksGanttChartView";
+import { MeetingsListView } from "./MeetingsListView";
 
 const drawerWidth = 240;
 
@@ -83,6 +88,15 @@ export default function PersistentDrawerLeft() {
     setOpen(false);
   };
 
+  const [view, setView] = React.useState(0);
+
+  const viewNames = [
+    'Tasks List View',
+    'Tasks Calendar View',
+    'Tasks Gantt Chart View',
+    'Meetings List View',
+  ];
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -98,7 +112,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Tasks
+            {viewNames[view]}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -127,21 +141,68 @@ export default function PersistentDrawerLeft() {
         <Divider />
 
         <List>
-          {["All Tasks", "Todo", "Done"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+          <ListItemText
+            primary={
+              <Typography variant="h6" style={{ color: "blue" }}>
+                Tasks Views
+              </Typography>
+            }
+          />
+
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => setView(0)}>
+              <ListItemIcon>
+                <FormatListNumbered />
+              </ListItemIcon>
+              <ListItemText primary="List" />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding>
+          <ListItemButton onClick={() => setView(1)}>
+              <ListItemIcon>
+                <CalendarMonthIcon />
+              </ListItemIcon>
+              <ListItemText primary="Calendar" />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding>
+          <ListItemButton onClick={() => setView(2)}>
+              <ListItemIcon>
+                <WaterfallChartIcon />
+              </ListItemIcon>
+              <ListItemText primary="Chart" />
+            </ListItemButton>
+          </ListItem>
+
+          <Divider />
+
+          <ListItemText
+            primary={
+              <Typography variant="h6" style={{ color: "blue" }}>
+                Meetings Views
+              </Typography>
+            }
+          />
+          <ListItem disablePadding>
+          <ListItemButton onClick={() => setView(3)}>
+              <ListItemIcon>
+                <NotesIcon />
+              </ListItemIcon>
+              <ListItemText primary="List" />
+            </ListItemButton>
+          </ListItem>
+
+          <Divider />
         </List>
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <TaskList />
+        {view === 0 && <TasksListView />}
+        {view === 1 && <TasksCalendarView />}
+        {view === 2 && <TasksGanttChartView />}
+        {view === 3 && <MeetingsListView />}
       </Main>
     </Box>
   );

@@ -93,7 +93,7 @@ const taskRecordToTaskView = (r: TaskRecord): TaskView => {
   };
 };
 
-export const TaskList = () => {
+export const TasksListView = () => {
   // ----------------
   // records get/set
   const [records, setRecords] = useState<TaskRecord[]>([]);
