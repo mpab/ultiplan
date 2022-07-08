@@ -19,8 +19,6 @@ fi
 
 echo using ultiplanProject=$ultiplanProject
 
-exit
-
 cd $ULTIPLAN_HOME/api
 cp env .env
 echo "ultiplanProject=$ultiplanProject" >>.env
