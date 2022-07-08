@@ -229,7 +229,7 @@ export const TaskList = () => {
               size="small"
               onClick={(event) => handleDeleteTaskRequest(row)}
             >
-              <DeleteOutline />
+              <DeleteOutline color="error"/>
             </IconButton>
           </TableCell>
         </TableRow>
