@@ -2,28 +2,38 @@
 
 [ -z "$ULTIPLAN_HOME" ] && echo "ERROR: ULTIPLAN_HOME is not set" && exit
 
-startYarnProcess() {
-    if [ ! -z $(uname | grep MINGW64) ]; then
-    mintty sh -mc "yarn start &>/dev/null < /dev/null &"
-    else
-    sh -mc "yarn start &>/dev/null < /dev/null &"
-    fi
+startProcess() {
+  [ "$mode" = "--silent" ] && startProcessSilent && return
+  startProcessNormal
 }
 
-ultiplanProject=$PWD
-if [ ! -z $(uname | grep MINGW64) ]; then
-  echo windows OS detected
-  ultiplanProject=$(cmd.exe /c cd)
-fi
+startProcessSilent() {
+  echo "starting $process in silent mode"
+  if [ ! -z $(uname | grep MINGW64) ]; then
+    mintty sh -mc "$process &>/dev/null < /dev/null &"
+  else
+    sh -mc "$process &>/dev/null < /dev/null &"
+  fi
+}
 
-cd $ULTIPLAN_HOME/api
-cp env .env
-echo "ultiplanProject=$ultiplanProject" >> .env
-startYarnProcess
-cd $ULTIPLAN_HOME/ui
-startYarnProcess
+startProcessNormal() {
+  echo "starting $process in normal mode"
+  if [ ! -z $(uname | grep MINGW64) ]; then
+    mintty sh -mc "$process"
+  else
+    sh -mc "$process"
+  fi
+}
+
+# TODO: implement check to see if API & UI are already running
+# ping -n 5 localhost
+# curl http://localhost:3001/api
+# curl http://localhost:3000
+
+mode=$1 && process=tasks-api && startProcess
+mode=$1 && process=tasks-ui && startProcess
 
 # TODO: implement check to see if API & UI are running
 # ping -n 5 localhost
-# curl http://localhost:3001/api 
+# curl http://localhost:3001/api
 # curl http://localhost:3000

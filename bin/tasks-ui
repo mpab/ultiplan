@@ -4,4 +4,4 @@
 
 cd $ULTIPLAN_HOME/ui
 GENERATE_SOURCEMAP=false
-yarn start
+yarn start -w

@@ -1,0 +1,19 @@
+#!/bin/sh
+
+mkdir -p $HOME/bin
+cp ./bin/tasks $HOME/bin/.
+echo "tasks script installed to $(which tasks)"
+cp ./bin/tasks-tracker $HOME/bin/.
+echo "tasks-tracker script installed to $(which tasks-tracker)"
+cp ./bin/tasks-start $HOME/bin/.
+echo "tasks-start script installed to $(which tasks-start)"
+cp ./bin/tasks-start-silent $HOME/bin/.
+echo "tasks-start-silent script installed to $(which tasks-start-silent)"
+cp ./bin/tasks-stop $HOME/bin/.
+echo "tasks-stop script installed to $(which tasks-stop)"
+cp ./bin/tasks-api $HOME/bin/.
+echo "tasks-api script installed to $(which tasks-api)"
+cp ./bin/tasks-ui $HOME/bin/.
+echo "tasks-ui script installed to $(which tasks-ui)"
+cp ./bin/tasks-diff $HOME/bin/.
+echo "tasks-diff script installed to $(which tasks-diff)"

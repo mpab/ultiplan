@@ -1,5 +1,4 @@
 import "./styles.css";
-import CssBaseline from "@material-ui/core/CssBaseline";
 
 // import { Table } from "./components/Table";
 // import CollapsibleTable from "./components/CollapsibleTable";
@@ -8,6 +7,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 import StickyHeaderTable from "./components/StickyHeaderTable";
 import Index from "./components/Index";
+import { CssBaseline } from "@mui/material";
 
 export default function App() {
 

@@ -1,0 +1,33 @@
+#!/bin/sh
+
+git pull
+
+npm install -g ts-node
+npm install -g yarn
+
+pushd api
+rm -rf node_modules
+yarn install
+yarn unlink
+yarn link
+popd
+
+pushd cli
+rm -rf node_modules
+yarn install
+yarn unlink ultiplan-api
+yarn link ultiplan-api
+popd
+
+pushd ui
+rm -rf node_modules
+yarn install
+popd
+
+if [ "$(grep -c "ULTIPLAN_HOME" $HOME/.bashrc)" -ge 1 ]; then
+    echo "ULTIPLAN_HOME set in $HOME/.bashrc"
+else
+    echo "ULTIPLAN_HOME not set in $HOME/.bashrc"
+    cp $HOME/.bashrc $HOME/.bashrc-pre-ultiplan.bak
+    echo "export ULTIPLAN_HOME=$PWD" >> $HOME/.bashrc
+fi
