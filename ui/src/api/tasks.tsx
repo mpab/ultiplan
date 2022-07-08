@@ -1,10 +1,14 @@
+import { stringIsNullOrEmpty } from "../utils";
 import { TaskRecord } from "./types";
 
-export const tasksRead = (setRecords: (arg0: TaskRecord[]) => void) => {
+export const tasksRead = (setRecords: (arg0: TaskRecord[]) => void, setSummary: any) => {
+  const result = new Array<TaskRecord>();
+  const projects = new Set<string>();
+  let completed = 0;
+
   fetch("http://localhost:3001/api/tasks")
     .then((res) => res.json())
     .then((records) => {
-      const result: TaskRecord[] = new Array<TaskRecord>();
       for (const d of records) {
         const task: TaskRecord = {
           id: d.id,
@@ -17,8 +21,13 @@ export const tasksRead = (setRecords: (arg0: TaskRecord[]) => void) => {
           tags: d.tags,
         };
         result.push(task);
+        projects.add(d.project);
+        if (!stringIsNullOrEmpty(task.completed_on)) ++completed;
       }
       setRecords(result);
+      const project_list = Array.from(projects).join(', ');
+      const summary = `${project_list}, ${records.length} tasks, ${completed} completed`;
+      setSummary(summary);
     });
 };
 

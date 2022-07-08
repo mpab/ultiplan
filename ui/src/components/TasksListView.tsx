@@ -21,20 +21,7 @@ import { taskCreate, taskDelete, tasksRead, taskUpdate } from "../api/tasks";
 
 import { TaskRecord, TaskView } from "../api/types";
 import { Add, DeleteOutline, EditOutlined } from "@mui/icons-material";
-
-const stringIsNullOrEmpty = (str: string | null): boolean => {
-  return typeof str == "undefined" || !str || !str.trim;
-};
-
-const dateYYYYMMDD = (date: {
-  getTime: () => number;
-  getTimezoneOffset: () => number;
-}) => {
-  const ms_per_minute = 60000;
-  return new Date(date.getTime() - date.getTimezoneOffset() * ms_per_minute)
-    .toISOString()
-    .split("T")[0];
-};
+import { dateYYYYMMDD, stringIsNullOrEmpty } from "../utils";
 
 const taskRecordToTaskView = (r: TaskRecord): TaskView => {
   let status = "unknown";
@@ -94,17 +81,20 @@ const taskRecordToTaskView = (r: TaskRecord): TaskView => {
 };
 
 export const TasksListView = () => {
-  // ----------------
+  // -----------------------------------------------------
   // records get/set
   const [records, setRecords] = useState<TaskRecord[]>([]);
 
+  const [summary, setSummary] = useState<string>('');
+
   useEffect(() => {
-    tasksRead(setRecords);
+    tasksRead(setRecords, setSummary);
   }, []);
 
   // -----------------------------------------------------
 
   const Row = (props: { row: ReturnType<typeof taskRecordToTaskView> }) => {
+
     // -----------------------------------------------------
     // expander
     const { row } = props;
@@ -127,8 +117,8 @@ export const TasksListView = () => {
         )
       ) {
         taskDelete(taskView.taskRecord.id);
-        tasksRead(setRecords);
-        tasksRead(setRecords);
+        tasksRead(setRecords, setSummary);
+        tasksRead(setRecords, setSummary);
       }
     };
 
@@ -150,8 +140,8 @@ export const TasksListView = () => {
 
       taskView.taskRecord.description = description as string;
       taskUpdate(taskView.taskRecord);
-      tasksRead(setRecords);
-      tasksRead(setRecords);
+      tasksRead(setRecords, setSummary);
+      tasksRead(setRecords, setSummary);
     };
 
     const handleMarkTaskAsCompleteRequest = (taskView: TaskView) => {
@@ -170,9 +160,8 @@ export const TasksListView = () => {
       ) {
         taskView.taskRecord.completed_on = dateYYYYMMDD(new Date());
         taskUpdate(taskView.taskRecord);
-        tasksRead(setRecords);
-        tasksRead(setRecords);
-        tasksRead(setRecords);
+        tasksRead(setRecords, setSummary);
+        tasksRead(setRecords, setSummary);
       }
     };
 
@@ -217,7 +206,7 @@ export const TasksListView = () => {
               !stringIsNullOrEmpty(row.taskRecord.id) ? (
                 <Switch checked={false} />
               ) : (
-                <Switch disabled defaultChecked color="success"/>
+                <Switch disabled defaultChecked color="success" />
               )}
             </IconButton>
             {row.status}
@@ -229,7 +218,7 @@ export const TasksListView = () => {
               size="small"
               onClick={(event) => handleDeleteTaskRequest(row)}
             >
-              <DeleteOutline color="error"/>
+              <DeleteOutline color="error" />
             </IconButton>
           </TableCell>
         </TableRow>
@@ -266,8 +255,8 @@ export const TasksListView = () => {
       const description = prompt("Enter description: ", "todo");
       if (description) {
         taskCreate(description);
-        tasksRead(setRecords);
-        tasksRead(setRecords);
+        tasksRead(setRecords, setSummary);
+        tasksRead(setRecords, setSummary);
       }
     };
 
@@ -284,7 +273,7 @@ export const TasksListView = () => {
               <Add />
             </IconButton>
           </TableCell>
-          <TableCell>Description</TableCell>
+          <TableCell>Project: {summary}</TableCell>
           <TableCell />
           <TableCell>Status</TableCell>
           <TableCell>Date</TableCell>
