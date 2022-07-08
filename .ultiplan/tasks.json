@@ -1071,5 +1071,15 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "id": "aa65464b-373d-418e-95d5-42bd0d26ebf6",
+    "description": "feature for api/services/db: add metadata to db - eg groups and tags spec along with statistics",
+    "created_on": "2022-07-08",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
   }
 ]
