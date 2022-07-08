@@ -96,12 +96,12 @@ export class TasksService {
     const record: DbRecord = {
       id: model.id,
       description: model.description,
-      created_on: '',
-      started_on: '',
-      due_on: '',
-      completed_on: '',
-      project: '',
-      tags: [],
+      created_on: model.created_on,
+      started_on: model.started_on,
+      due_on: model.due_on,
+      completed_on: model.completed_on,
+      project: model.project,
+      tags: model.tags,
     };
 
     if (!dbUpdateRecord(record, getDbHandle()))

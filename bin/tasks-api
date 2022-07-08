@@ -5,7 +5,7 @@
 ultiplanProject=$PWD
 if [ ! -z $(uname | grep MINGW64) ]; then
   echo windows OS detected
-  # this doesn;t work with network drives
+  # this doesn't work with network drives
   # ultiplanProject=$(cmd.exe /c cd)
   ultiplanProject=$(echo $PWD | sed 's/^\///g' | sed 's/./&:/1')
 fi

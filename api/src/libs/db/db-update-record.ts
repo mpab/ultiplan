@@ -14,8 +14,8 @@ const dbUpdateRecord = (new_record: DbRecord, handle: string): boolean => {
     console.error(`record not found: id=${new_record.id}`);
     return false;
   }
-  record.description = new_record.description;
-  //console.log(`deleted ${id} from ${handle}`);
+
+  Object.keys(record).forEach((key) => (record[key] = new_record[key]));
   dbSave(records, handle);
   return true;
 };

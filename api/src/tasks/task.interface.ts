@@ -7,9 +7,21 @@ export class TaskModel {
   @ApiProperty({ type: String })
   description: string;
 
-  @ApiProperty({ type: String, format: 'date-time' })
-  date: Date;
+  @ApiProperty({ type: String })
+  project: string;
 
-  @ApiPropertyOptional({ type: String })
-  tags: string;
+  @ApiProperty({ type: String, format: 'date-time' })
+  created_on: string;
+
+  @ApiProperty({ type: String, format: 'date-time' })
+  started_on: string;
+
+  @ApiProperty({ type: String, format: 'date-time' })
+  completed_on: string;
+
+  @ApiProperty({ type: String, format: 'date-time' })
+  due_on: string;
+
+  @ApiPropertyOptional({ type: Array<string> })
+  tags: string[];
 }

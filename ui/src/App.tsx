@@ -1,21 +1,27 @@
 import "./styles.css";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { useEffect, useState } from "react";
-import { TaskRecord } from "./api/types";
-import { tasksRead } from "./api/tasks";
-import { Table } from "./components/Table";
+
+// import { Table } from "./components/Table";
+// import CollapsibleTable from "./components/CollapsibleTable";
+// import CustomOverridesTable from "./components/CustomOverridesTable";
+// import DataTable from "./components/DataTable";
+
+import StickyHeaderTable from "./components/StickyHeaderTable";
+import Index from "./components/Index";
 
 export default function App() {
-  const [records, setRecords] = useState<TaskRecord[]>([]);
 
-  useEffect(() => {
-    tasksRead(setRecords);
-  }, []);
+  //<Table data={records} />
+  //<CollapsibleTable />
+  //<CustomOverridesTable />
+  //<StickyHeaderTable />
+  //<DataTable />
+  <StickyHeaderTable />
 
   return (
     <div className="App">
       <CssBaseline />
-      <Table data={records} />
+      <Index />
     </div>
   );
 }

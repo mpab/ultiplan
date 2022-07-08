@@ -838,7 +838,9 @@
     "due_on": "",
     "completed_on": "",
     "project": "ultiplan",
-    "tags": []
+    "tags": [
+      "works partially, sometimes the refresh works, sometimes it doesn't"
+    ]
   },
   {
     "id": "7f5087d4-a24f-46de-8ff2-4284706ddd5e",
@@ -846,7 +848,7 @@
     "created_on": "2022-07-06",
     "started_on": "",
     "due_on": "",
-    "completed_on": "",
+    "completed_on": "2022-07-08",
     "project": "ultiplan",
     "tags": []
   },
@@ -918,10 +920,7 @@
     "due_on": "",
     "completed_on": "",
     "project": "ultiplan",
-    "tags": [
-      "example: https://www.retrorgb.com/mister-fpga-news-psx-core-fpga-to-asic-rodland-sound-and-more.html",
-      "FPGA to ASIC section"
-    ]
+    "tags": []
   },
   {
     "id": "eff318c5-be50-4254-f341-45a66532dac0",
@@ -939,7 +938,7 @@
     "created_on": "2022-07-07",
     "started_on": "",
     "due_on": "",
-    "completed_on": "",
+    "completed_on": "2022-07-08",
     "project": "ultiplan",
     "tags": []
   },
@@ -960,6 +959,76 @@
     "started_on": "2022-07-07",
     "due_on": "2022-07-07",
     "completed_on": "2022-07-07",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "22b40030-a037-4af7-eec3-5eb50dae98d2",
+    "description": "ui: implement color coding for date status",
+    "created_on": "2022-07-07",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "567586f6-8fd7-4083-bbd2-22adbc001866",
+    "description": "ui: implement color coding for bad data/bad records",
+    "created_on": "2022-07-07",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "c94c4a54-5a3e-422c-d529-d8c66f20af1b",
+    "description": "ui: implement custom tag notation for known tags - eg bug feature note etc and implement grouping and filtering",
+    "created_on": "2022-07-07",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "f7dcc2fe-b3c1-4f3e-8c02-0ea9ec590c83",
+    "description": "ui: defect - search feature no longer working after table refactoring",
+    "created_on": "2022-07-08",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "2649db27-0a8f-40f5-b091-c064e328be63",
+    "description": "ui: improved date and status information display",
+    "created_on": "2022-07-08",
+    "started_on": "2022-07-08",
+    "due_on": "2022-07-08",
+    "completed_on": "2022-07-08",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "b987a4ad-06c1-477e-90d2-e37a2620a298",
+    "description": "ui: can now mark tasks as done",
+    "created_on": "2022-07-08",
+    "started_on": "2022-07-08",
+    "due_on": "2022-07-08",
+    "completed_on": "2022-07-08",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "215431c3-c61c-429e-be90-0866597025fd",
+    "description": "ui: defect - page controls no longer have navigate to start/end buttons",
+    "created_on": "2022-07-08",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
     "project": "ultiplan",
     "tags": []
   }
