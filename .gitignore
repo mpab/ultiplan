@@ -6,6 +6,7 @@
 # Artifacts
 **/*.zip
 **/*.7z
+**/*.out
 
 # Logs
 logs

@@ -17,7 +17,6 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import React from "react";
 import { useEffect, useState } from "react";
 import { taskCreate, taskDelete, tasksRead, taskUpdate } from "../api/tasks";
-//import { TaskRecord } from "../api/types";
 
 import { TaskRecord, TaskView } from "../api/types";
 import { Add, DeleteOutline, EditOutlined } from "@mui/icons-material";
@@ -111,9 +110,9 @@ export const TasksListView = () => {
       if (
         window.confirm(
           `Delete Task?\n` +
-            taskView.taskRecord.id +
-            `\n` +
-            taskView.taskRecord.description
+          taskView.taskRecord.id +
+          `\n` +
+          taskView.taskRecord.description
         )
       ) {
         taskDelete(taskView.taskRecord.id);
@@ -153,9 +152,9 @@ export const TasksListView = () => {
       if (
         window.confirm(
           `Mark as complete?\n` +
-            taskView.taskRecord.id +
-            `\n` +
-            taskView.taskRecord.description
+          taskView.taskRecord.id +
+          `\n` +
+          taskView.taskRecord.description
         )
       ) {
         taskView.taskRecord.completed_on = dateYYYYMMDD(new Date());
@@ -184,7 +183,7 @@ export const TasksListView = () => {
               onClick={(event) => handleEditTaskRequest(row)}
             >
               {stringIsNullOrEmpty(row.taskRecord.completed_on) &&
-              !stringIsNullOrEmpty(row.taskRecord.id) ? (
+                !stringIsNullOrEmpty(row.taskRecord.id) ? (
                 <EditOutlined />
               ) : (
                 <></>
@@ -201,15 +200,13 @@ export const TasksListView = () => {
                 if (stringIsNullOrEmpty(row.taskRecord.completed_on))
                   handleMarkTaskAsCompleteRequest(row);
               }}
-            >
-              {stringIsNullOrEmpty(row.taskRecord.completed_on) &&
-              !stringIsNullOrEmpty(row.taskRecord.id) ? (
+            >{row.status}
+              {stringIsNullOrEmpty(row.taskRecord.completed_on) ? (
                 <Switch checked={false} />
               ) : (
                 <Switch disabled defaultChecked color="success" />
               )}
             </IconButton>
-            {row.status}
           </TableCell>
           <TableCell>{row.date}</TableCell>
           <TableCell>
@@ -218,7 +215,11 @@ export const TasksListView = () => {
               size="small"
               onClick={(event) => handleDeleteTaskRequest(row)}
             >
-              <DeleteOutline color="error" />
+              {!stringIsNullOrEmpty(row.taskRecord.completed_on) || !stringIsNullOrEmpty(row.taskRecord.started_on) ? (
+                <></>
+              ) : (
+                <DeleteOutline color="error" />
+              )}
             </IconButton>
           </TableCell>
         </TableRow>
@@ -264,7 +265,6 @@ export const TasksListView = () => {
       <TableHead>
         <TableRow>
           <TableCell>
-            {" "}
             <IconButton
               aria-label="add task"
               size="small"

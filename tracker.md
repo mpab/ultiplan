@@ -1,4 +1,55 @@
 # PROJECTS
+## tests
+
+### todo: tests
+- this is a sample demonstrating refactoring of task schema to k, v tag model
+- empty tags
+- single tag item
+    - a tag
+- multiple tag item
+    - tag 1
+    - tag 2
+    - tag 3
+- multiple nested tag items
+    - tag group 1
+        - tag 1.1
+        - tag 1.2
+        - tag 1.3
+    - tag group 2
+        - tag 2.1
+        - tag 2.2
+        - tag 2.3
+- multiple multiple nested tag items
+    - tag group 1
+        - tag 1.1
+        - tag 1.2
+        - tag 1.3
+        - tag group 1.2
+            - tag 1.2.1
+            - tag 1.2.2
+            - tag 1.2.3
+    - tag group 2
+        - tag 2.1
+        - tag 2.2
+        - tag 2.3
+
+### done: tests
+- 2022-05-15: this is a sample demonstrating composite tags
+    - composite
+        - dates
+            - created_on
+                - 2022-05-15
+            - started_on
+                - 2022-05-15
+            - due_on
+                - 2022-05-15
+            - completed_on
+                - 2022-05-15
+## not tests
+
+### todo: not tests
+- bad task
+---
 ## ultiplan
 
 ### todo: ultiplan
@@ -80,6 +131,10 @@
 - ui: implement color coding for bad data/bad records
 - ui: implement custom tag notation for known tags - eg bug feature note etc and implement grouping and filtering
 - ui: defect - search feature no longer working after table refactoring
+- api: prevent deletion of completed tasks
+- api: prevent deletion of started tasks
+- api book: discuss how to push validation to client - see task deletion guards
+- feature for api/services/db: add metadata to db - eg groups and tags spec along with statistics
 
 ### done: ultiplan
 - 2022-07-08: ui: implement collapsible rows - e.g. show/hide date information
@@ -87,6 +142,7 @@
 - 2022-07-08: ui: improved date and status information display
 - 2022-07-08: ui: can now mark tasks as done
 - 2022-07-08: ui: defect - page controls no longer have navigate to start/end buttons
+- 2022-07-08: ui: prevent deletion of started or completed tasks
 - 2022-07-07: can now start api on a mapped network drive
 - 2022-07-06: ui: implement basic task viewing, creation and deletion
 - 2022-07-06: add task edit (update) functionality
@@ -133,55 +189,4 @@
 - 2022-05-19: auto configure commands such that they can be added automatically
 - 2022-05-16: basic task saving using a JSON file
 - 2022-05-15: define initial task data model (nosql, json)
----
-## tests
-
-### todo: tests
-- this is a sample demonstrating refactoring of task schema to k, v tag model
-- empty tags
-- single tag item
-    - a tag
-- multiple tag item
-    - tag 1
-    - tag 2
-    - tag 3
-- multiple nested tag items
-    - tag group 1
-        - tag 1.1
-        - tag 1.2
-        - tag 1.3
-    - tag group 2
-        - tag 2.1
-        - tag 2.2
-        - tag 2.3
-- multiple multiple nested tag items
-    - tag group 1
-        - tag 1.1
-        - tag 1.2
-        - tag 1.3
-        - tag group 1.2
-            - tag 1.2.1
-            - tag 1.2.2
-            - tag 1.2.3
-    - tag group 2
-        - tag 2.1
-        - tag 2.2
-        - tag 2.3
-
-### done: tests
-- 2022-05-15: this is a sample demonstrating composite tags
-    - composite
-        - dates
-            - created_on
-                - 2022-05-15
-            - started_on
-                - 2022-05-15
-            - due_on
-                - 2022-05-15
-            - completed_on
-                - 2022-05-15
-## not tests
-
-### todo: not tests
-- bad task
 ---
