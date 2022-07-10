@@ -1,10 +1,13 @@
 import {
   Box,
-  Button,
   Collapse,
+  FormControl,
   IconButton,
+  InputLabel,
+  MenuItem,
   Paper,
-  Switch,
+  Select,
+  SelectChangeEvent,
   Table,
   TableBody,
   TableCell,
@@ -19,29 +22,29 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { taskCreate, taskDelete, tasksRead, taskUpdate } from "../api/tasks";
 
-import { TaskRecord, TaskView } from "../api/types";
+import { TaskRecord, TaskStatus, TaskView } from "../api/types";
 import { EditOutlined } from "@mui/icons-material";
-import { dateYYYYMMDD, stringIsNullOrEmpty } from "../utils";
+import { dateYYYYMMDD, enumToMap, stringIsNullOrEmpty } from "../utils";
 import TasksDeleteDialog from "./TasksDeleteDialog";
 import TasksAddDialog from "./TasksAddDialog";
 
 const taskRecordToTaskView = (r: TaskRecord): TaskView => {
-  let status = "unknown";
   let date = "unknown";
+  let status = TaskStatus.unknown;
 
   if (r.created_on) {
-    status = "todo";
-    date = r.created_on + ` [C]`;
+    status = TaskStatus.not_started;
+    date = r.created_on + ` [created]`;
   }
 
   if (r.started_on) {
-    status = "started";
-    date = r.created_on + ` [S]`;
+    status = TaskStatus.in_progress;
+    date = r.created_on + ` [started]`;
   }
 
   if (r.completed_on) {
-    status = "done";
-    date = r.completed_on + ` [D]`;
+    status = TaskStatus.completed;
+    date = r.completed_on + ` [done]`;
   }
 
   let summary = "";
@@ -148,25 +151,76 @@ export const TasksListView = () => {
       tasksRead(setRecords, setSummary);
     };
 
-    const handleMarkTaskAsCompleteRequest = (taskView: TaskView) => {
-      if (stringIsNullOrEmpty(taskView.taskRecord.id)) {
-        alert(`task has no id, unable to mark as complete`);
-        return;
+    const TasksStatusSelect = () => {
+      //const taskStatusMap = enumToMap(TaskStatus); //Map of keys to values
+      let tasksStatusArray = Object.values(TaskStatus).filter(
+        (ts) => ts !== TaskStatus.unknown
+      );
+
+      // state machine
+      // not_started -> started
+      // not_started -> completed
+      if (row.status === TaskStatus.not_started) {
+        tasksStatusArray = tasksStatusArray.filter(
+          (ts) => ts !== TaskStatus.not_started
+        );
       }
 
-      if (
-        window.confirm(
-          `Mark as complete?\n` +
-            taskView.taskRecord.id +
-            `\n` +
-            taskView.taskRecord.description
-        )
-      ) {
-        taskView.taskRecord.completed_on = dateYYYYMMDD(new Date());
-        taskUpdate(taskView.taskRecord);
-        tasksRead(setRecords, setSummary);
-        tasksRead(setRecords, setSummary);
+      // in_progress -> completed
+      if (row.status === TaskStatus.in_progress) {
+        tasksStatusArray = tasksStatusArray.filter(
+          (ts) => ts !== TaskStatus.not_started
+        );
+        tasksStatusArray = tasksStatusArray.filter(
+          (ts) => ts !== TaskStatus.in_progress
+        );
       }
+
+      const handleTaskStatusChange = (event: SelectChangeEvent) => {
+        const newTaskStatus = event.target.value as TaskStatus;
+        //setTaskStatus(newTaskStatus);
+
+        switch (newTaskStatus) {
+          case TaskStatus.completed:
+            row.taskRecord.completed_on = dateYYYYMMDD(new Date());
+            break;
+
+            case TaskStatus.in_progress:
+            row.taskRecord.started_on = dateYYYYMMDD(new Date());
+            break;
+        }
+
+        taskUpdate(row.taskRecord);
+        tasksRead(setRecords, setSummary);
+        tasksRead(setRecords, setSummary);
+      };
+
+      return (
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+            {row.status === TaskStatus.completed ||
+            row.status === TaskStatus.unknown ? (
+              <>
+                <InputLabel>{row.status}</InputLabel>
+              </>
+            ) : (
+              <>
+                <InputLabel>{row.status}</InputLabel>
+                <Select
+                  labelId="task-status-select-label"
+                  id="task-status-select-label-id"
+                  label={row.status}
+                  onChange={handleTaskStatusChange}
+                >
+                  {tasksStatusArray.map((e) => (
+                    <MenuItem value={e}>{e}</MenuItem>
+                  ))}
+                </Select>
+              </>
+            )}
+          </FormControl>
+        </Box>
+      );
     };
 
     return (
@@ -198,21 +252,7 @@ export const TasksListView = () => {
           </TableCell>
           <TableCell></TableCell>
           <TableCell>
-            <IconButton
-              aria-label="mark as complete"
-              size="small"
-              onClick={(event) => {
-                if (stringIsNullOrEmpty(row.taskRecord.completed_on))
-                  handleMarkTaskAsCompleteRequest(row);
-              }}
-            >
-              {row.status}
-              {stringIsNullOrEmpty(row.taskRecord.completed_on) ? (
-                <Switch checked={false} />
-              ) : (
-                <Switch disabled defaultChecked color="success" />
-              )}
-            </IconButton>
+            <TasksStatusSelect />
           </TableCell>
           <TableCell>{row.date}</TableCell>
           <TableCell>

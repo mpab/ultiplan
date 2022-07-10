@@ -9,14 +9,21 @@ export type TaskRecord = {
   tags: string[];
 };
 
+export enum TaskStatus {
+  unknown = "unknown",
+  not_started = "not started",
+  in_progress = "in progress",
+  completed = "completed",
+}
+
 export type TaskView = {
   taskRecord: TaskRecord;
-  status: string;
+  status: TaskStatus;
   summary: string;
   date: string;
 };
 
-export const taskRecordFromDescription = (description: string): TaskRecord  => {
+export const taskRecordFromDescription = (description: string): TaskRecord => {
   return {
     id: "",
     description: description,

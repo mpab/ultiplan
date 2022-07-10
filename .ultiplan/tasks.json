@@ -1081,5 +1081,15 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "id": "256e2b21-1a70-4084-f3b3-2a4343745875",
+    "description": "ui: implemented new status change controls with state transition guards",
+    "created_on": "2022-07-10",
+    "started_on": "2022-07-10",
+    "due_on": "2022-07-10",
+    "completed_on": "2022-07-10",
+    "project": "ultiplan",
+    "tags": []
   }
 ]
