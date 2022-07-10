@@ -91,11 +91,20 @@ export default function PersistentDrawerLeft() {
   const [view, setView] = React.useState(0);
 
   const viewNames = [
-    'Tasks List View',
-    'Tasks Calendar View',
-    'Tasks Gantt Chart View',
-    'Meetings List View',
+    "Tasks List View",
+    "Tasks Calendar View",
+    "Tasks Gantt Chart View",
+    "Meetings List View",
   ];
+
+  // ------------------------------------------------------------
+  // Dialog
+  const [openDialog, setOpenDialog] = React.useState(false);
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  // ------------------------------------------------------------
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -159,7 +168,7 @@ export default function PersistentDrawerLeft() {
           </ListItem>
 
           <ListItem disablePadding>
-          <ListItemButton onClick={() => setView(1)}>
+            <ListItemButton onClick={() => setView(1)}>
               <ListItemIcon>
                 <CalendarMonthIcon />
               </ListItemIcon>
@@ -168,7 +177,7 @@ export default function PersistentDrawerLeft() {
           </ListItem>
 
           <ListItem disablePadding>
-          <ListItemButton onClick={() => setView(2)}>
+            <ListItemButton onClick={() => setView(2)}>
               <ListItemIcon>
                 <WaterfallChartIcon />
               </ListItemIcon>
@@ -186,7 +195,7 @@ export default function PersistentDrawerLeft() {
             }
           />
           <ListItem disablePadding>
-          <ListItemButton onClick={() => setView(3)}>
+            <ListItemButton onClick={() => setView(3)}>
               <ListItemIcon>
                 <NotesIcon />
               </ListItemIcon>

@@ -44,16 +44,7 @@ export const taskDelete = (id: string) => {
     });
 };
 
-export const taskCreate = (description: string) => {
-  const task = {
-    id: "",
-    description: description,
-    project: "",
-    created_on: "",
-    completed_on: "",
-    due_on: "",
-  };
-
+export const taskCreate = (task: TaskRecord) => {
   fetch(`http://localhost:3001/api/tasks`, {
     method: "POST",
     headers: {

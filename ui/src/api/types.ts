@@ -15,3 +15,16 @@ export type TaskView = {
   summary: string;
   date: string;
 };
+
+export const taskRecordFromDescription = (description: string): TaskRecord  => {
+  return {
+    id: "",
+    description: description,
+    project: "",
+    created_on: "",
+    started_on: "",
+    completed_on: "",
+    due_on: "",
+    tags: [],
+  };
+};

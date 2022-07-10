@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Collapse,
   IconButton,
   Paper,
@@ -19,8 +20,10 @@ import { useEffect, useState } from "react";
 import { taskCreate, taskDelete, tasksRead, taskUpdate } from "../api/tasks";
 
 import { TaskRecord, TaskView } from "../api/types";
-import { Add, DeleteOutline, EditOutlined } from "@mui/icons-material";
+import { EditOutlined } from "@mui/icons-material";
 import { dateYYYYMMDD, stringIsNullOrEmpty } from "../utils";
+import TasksDeleteDialog from "./TasksDeleteDialog";
+import TasksAddDialog from "./TasksAddDialog";
 
 const taskRecordToTaskView = (r: TaskRecord): TaskView => {
   let status = "unknown";
@@ -80,11 +83,23 @@ const taskRecordToTaskView = (r: TaskRecord): TaskView => {
 };
 
 export const TasksListView = () => {
+  // ------------------------------------------------------------
+  // Dialogs
+  const [openAddDialog, setOpenAddDialog] = React.useState(false);
+  // const handleOpenAddDialog = () => {
+  //   setOpenAddDialog(true);
+  // };
+
+  const [openDeleteDialog, setOpenDeleteDialog] = React.useState(false);
+  // const handleOpenDeleteDialog = () => {
+  //   setOpenDeleteDialog(true);
+  // };
+
   // -----------------------------------------------------
   // records get/set
   const [records, setRecords] = useState<TaskRecord[]>([]);
 
-  const [summary, setSummary] = useState<string>('');
+  const [summary, setSummary] = useState<string>("");
 
   useEffect(() => {
     tasksRead(setRecords, setSummary);
@@ -93,7 +108,6 @@ export const TasksListView = () => {
   // -----------------------------------------------------
 
   const Row = (props: { row: ReturnType<typeof taskRecordToTaskView> }) => {
-
     // -----------------------------------------------------
     // expander
     const { row } = props;
@@ -103,22 +117,13 @@ export const TasksListView = () => {
 
     const handleDeleteTaskRequest = (taskView: TaskView) => {
       if (stringIsNullOrEmpty(taskView.taskRecord.id)) {
-        alert(`task has no id, unable to delete`);
         return;
       }
 
-      if (
-        window.confirm(
-          `Delete Task?\n` +
-          taskView.taskRecord.id +
-          `\n` +
-          taskView.taskRecord.description
-        )
-      ) {
-        taskDelete(taskView.taskRecord.id);
-        tasksRead(setRecords, setSummary);
-        tasksRead(setRecords, setSummary);
-      }
+      taskDelete(taskView.taskRecord.id);
+      tasksRead(setRecords, setSummary);
+      taskDelete(taskView.taskRecord.id);
+      tasksRead(setRecords, setSummary);
     };
 
     const handleEditTaskRequest = (taskView: TaskView) => {
@@ -152,9 +157,9 @@ export const TasksListView = () => {
       if (
         window.confirm(
           `Mark as complete?\n` +
-          taskView.taskRecord.id +
-          `\n` +
-          taskView.taskRecord.description
+            taskView.taskRecord.id +
+            `\n` +
+            taskView.taskRecord.description
         )
       ) {
         taskView.taskRecord.completed_on = dateYYYYMMDD(new Date());
@@ -183,7 +188,7 @@ export const TasksListView = () => {
               onClick={(event) => handleEditTaskRequest(row)}
             >
               {stringIsNullOrEmpty(row.taskRecord.completed_on) &&
-                !stringIsNullOrEmpty(row.taskRecord.id) ? (
+              !stringIsNullOrEmpty(row.taskRecord.id) ? (
                 <EditOutlined />
               ) : (
                 <></>
@@ -200,7 +205,8 @@ export const TasksListView = () => {
                 if (stringIsNullOrEmpty(row.taskRecord.completed_on))
                   handleMarkTaskAsCompleteRequest(row);
               }}
-            >{row.status}
+            >
+              {row.status}
               {stringIsNullOrEmpty(row.taskRecord.completed_on) ? (
                 <Switch checked={false} />
               ) : (
@@ -210,17 +216,12 @@ export const TasksListView = () => {
           </TableCell>
           <TableCell>{row.date}</TableCell>
           <TableCell>
-            <IconButton
-              aria-label="delete task"
-              size="small"
-              onClick={(event) => handleDeleteTaskRequest(row)}
-            >
-              {!stringIsNullOrEmpty(row.taskRecord.completed_on) || !stringIsNullOrEmpty(row.taskRecord.started_on) ? (
-                <></>
-              ) : (
-                <DeleteOutline color="error" />
-              )}
-            </IconButton>
+            <TasksDeleteDialog
+              openDialog={openDeleteDialog}
+              setOpenDialog={setOpenDeleteDialog}
+              onConfirmHandler={() => handleDeleteTaskRequest(row)}
+              taskRecord={row.taskRecord}
+            />
           </TableCell>
         </TableRow>
         <TableRow>
@@ -252,10 +253,9 @@ export const TasksListView = () => {
   // -----------------------------------------------------
 
   const TableHeader = () => {
-    const handleAddTaskRequest = () => {
-      const description = prompt("Enter description: ", "todo");
-      if (description) {
-        taskCreate(description);
+    const addTask = (task: TaskRecord) => {
+      if (task.description) {
+        taskCreate(task);
         tasksRead(setRecords, setSummary);
         tasksRead(setRecords, setSummary);
       }
@@ -265,13 +265,11 @@ export const TasksListView = () => {
       <TableHead>
         <TableRow>
           <TableCell>
-            <IconButton
-              aria-label="add task"
-              size="small"
-              onClick={(event) => handleAddTaskRequest()}
-            >
-              <Add />
-            </IconButton>
+            <TasksAddDialog
+              openDialog={openAddDialog}
+              setOpenDialog={setOpenAddDialog}
+              onConfirmHandler={addTask}
+            />
           </TableCell>
           <TableCell>Project: {summary}</TableCell>
           <TableCell />
@@ -300,12 +298,6 @@ export const TasksListView = () => {
   };
 
   // -----------------------------------------------------
-
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-
-  const handleClose = () => {
-    setIsDialogOpen(false);
-  };
 
   let height = rowsPerPage <= 10 ? rowsPerPage * 90 : 900;
   //height =
