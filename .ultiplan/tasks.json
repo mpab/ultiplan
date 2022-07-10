@@ -1091,5 +1091,25 @@
     "completed_on": "2022-07-10",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "id": "34eb117e-79da-4f42-ab31-89eb1e0a6dcf",
+    "description": "ui: extend task creation dialog to support tags",
+    "created_on": "2022-07-11",
+    "started_on": "2022-07-11",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
+  },
+  {
+    "id": "739c35dd-cead-4e7a-eb56-41c1bbb0f05f",
+    "description": "ui: extend task editing functionality to support tags",
+    "created_on": "2022-07-11",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
   }
 ]
