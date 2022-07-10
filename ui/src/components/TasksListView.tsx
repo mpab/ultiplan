@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Collapse,
   FormControl,
   IconButton,
@@ -27,6 +28,8 @@ import { TaskRecord, TaskStatus, TaskView } from "../api/types";
 import { dateYYYYMMDD, stringIsNullOrEmpty } from "../utils";
 import TasksDeleteDialog from "./TasksDeleteDialog";
 import TasksAddDialog from "./TasksAddDialog";
+
+import toast from "./Toast";
 
 const taskRecordToTaskView = (r: TaskRecord): TaskView => {
   let date = "unknown";
@@ -118,7 +121,6 @@ export const TasksListView = () => {
 
       taskDelete(taskView.taskRecord.id);
       tasksRead(setRecords, setSummary);
-      taskDelete(taskView.taskRecord.id);
       tasksRead(setRecords, setSummary);
     };
 
@@ -149,8 +151,6 @@ export const TasksListView = () => {
 
       const handleOnChange = (event: SelectChangeEvent) => {
         const newTaskStatus = event.target.value as TaskStatus;
-        //setTaskStatus(newTaskStatus);
-
         switch (newTaskStatus) {
           case TaskStatus.completed:
             taskView.taskRecord.completed_on = dateYYYYMMDD(new Date());
@@ -163,6 +163,7 @@ export const TasksListView = () => {
 
         taskUpdate(taskView.taskRecord);
         tasksRead(setRecords, setSummary);
+        toast.success(`changed: ${taskView.status} -> ${newTaskStatus}`);
         tasksRead(setRecords, setSummary);
       };
 
@@ -200,7 +201,6 @@ export const TasksListView = () => {
     };
 
     const TaskEditCell = () => {
-
       const [description, setDescription] = useState(
         taskView.taskRecord.description
       );
@@ -225,12 +225,15 @@ export const TasksListView = () => {
 
         taskView.taskRecord.description = description;
         taskUpdate(taskView.taskRecord);
+        tasksRead(setRecords, setSummary);
+        toast.success(`changed: ${description}`);
+        tasksRead(setRecords, setSummary);
       };
 
       const handleKeyUp = (e: React.KeyboardEvent<HTMLDivElement>) => {
         if (e.key !== "Enter") {
           return;
-        }       
+        }
       };
 
       return (
@@ -286,7 +289,12 @@ export const TasksListView = () => {
             <TasksDeleteDialog
               openDialog={openDeleteDialog}
               setOpenDialog={setOpenDeleteDialog}
-              onConfirmHandler={() => handleDeleteTaskRequest(taskView)}
+              onConfirmHandler={() => {
+                handleDeleteTaskRequest(taskView);
+                tasksRead(setRecords, setSummary);
+                toast.success(`deleted: ${taskView.taskRecord.description}`);
+                tasksRead(setRecords, setSummary);
+              }}
               taskView={taskView}
             />
           </TableCell>
@@ -326,6 +334,7 @@ export const TasksListView = () => {
       if (task.description) {
         taskCreate(task);
         tasksRead(setRecords, setSummary);
+        toast.success(`added: ${task.description}`);
         tasksRead(setRecords, setSummary);
       }
     };
@@ -399,6 +408,7 @@ export const TasksListView = () => {
           showLastButton
         />
       </Paper>
+      <div id="snackbarhelper"></div>
     </React.Fragment>
   );
 };
