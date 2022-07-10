@@ -10,16 +10,17 @@ const index = (
   default_project_name: string = projectInfo().name,
 ): DbRecord => {
   
-  const project_name: string = reader.question(
-    `project? (enter=${default_project_name}) `,
-    { defaultInput: default_project_name }
-  );
+  const project_name = default_project_name; 
+  // const project_name: string = reader.question(
+  //   `project? (enter=${default_project_name}) `,
+  //   { defaultInput: default_project_name }
+  // );
 
   let tag_v;
-
-  const tag_n = reader.question(`tag name? (enter=tags) `, {
-    defaultInput: `tags`,
-  });
+  const tag_n = `tags`;
+  // const tag_n = reader.question(`tag name? (enter=tags) `, {
+  //   defaultInput: `tags`,
+  // });
   const custom_tags = Array<string>();
 
   do {
