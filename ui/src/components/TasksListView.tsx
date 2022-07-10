@@ -15,6 +15,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  TextField,
 } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -24,7 +25,7 @@ import { taskCreate, taskDelete, tasksRead, taskUpdate } from "../api/tasks";
 
 import { TaskRecord, TaskStatus, TaskView } from "../api/types";
 import { EditOutlined } from "@mui/icons-material";
-import { dateYYYYMMDD, enumToMap, stringIsNullOrEmpty } from "../utils";
+import { dateYYYYMMDD, stringIsNullOrEmpty } from "../utils";
 import TasksDeleteDialog from "./TasksDeleteDialog";
 import TasksAddDialog from "./TasksAddDialog";
 
@@ -185,7 +186,7 @@ export const TasksListView = () => {
             row.taskRecord.completed_on = dateYYYYMMDD(new Date());
             break;
 
-            case TaskStatus.in_progress:
+          case TaskStatus.in_progress:
             row.taskRecord.started_on = dateYYYYMMDD(new Date());
             break;
         }
@@ -201,7 +202,12 @@ export const TasksListView = () => {
             {row.status === TaskStatus.completed ||
             row.status === TaskStatus.unknown ? (
               <>
-                <InputLabel>{row.status}</InputLabel>
+                <TextField
+                  value={row.status}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                ></TextField>
               </>
             ) : (
               <>
