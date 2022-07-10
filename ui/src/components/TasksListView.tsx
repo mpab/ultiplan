@@ -89,14 +89,7 @@ export const TasksListView = () => {
   // ------------------------------------------------------------
   // Dialogs
   const [openAddDialog, setOpenAddDialog] = React.useState(false);
-  // const handleOpenAddDialog = () => {
-  //   setOpenAddDialog(true);
-  // };
-
   const [openDeleteDialog, setOpenDeleteDialog] = React.useState(false);
-  // const handleOpenDeleteDialog = () => {
-  //   setOpenDeleteDialog(true);
-  // };
 
   // -----------------------------------------------------
   // records get/set
@@ -110,11 +103,11 @@ export const TasksListView = () => {
 
   // -----------------------------------------------------
 
-  const Row = (props: { row: ReturnType<typeof taskRecordToTaskView> }) => {
+  const Row = (props: { taskView: TaskView }) => {
     // -----------------------------------------------------
     // expander
-    const { row } = props;
-    const [open, setOpen] = useState(false);
+    const taskView = props.taskView;
+    const [expanderIsOpen, setExpanderIsOpen] = useState(false);
 
     // -----------------------------------------------------
 
@@ -129,28 +122,6 @@ export const TasksListView = () => {
       tasksRead(setRecords, setSummary);
     };
 
-    const handleEditTaskRequest = (taskView: TaskView) => {
-      if (stringIsNullOrEmpty(taskView.taskRecord.id)) {
-        alert(`task has no id, unable to edit`);
-        return;
-      }
-
-      const description = prompt(
-        "Description: ",
-        taskView.taskRecord.description
-      );
-
-      if (stringIsNullOrEmpty(description)) {
-        //alert(`empty descriptions are not allowed`);
-        return;
-      }
-
-      taskView.taskRecord.description = description as string;
-      taskUpdate(taskView.taskRecord);
-      tasksRead(setRecords, setSummary);
-      tasksRead(setRecords, setSummary);
-    };
-
     const TasksStatusSelect = () => {
       //const taskStatusMap = enumToMap(TaskStatus); //Map of keys to values
       let tasksStatusArray = Object.values(TaskStatus).filter(
@@ -160,14 +131,14 @@ export const TasksListView = () => {
       // state machine
       // not_started -> started
       // not_started -> completed
-      if (row.status === TaskStatus.not_started) {
+      if (taskView.status === TaskStatus.not_started) {
         tasksStatusArray = tasksStatusArray.filter(
           (ts) => ts !== TaskStatus.not_started
         );
       }
 
       // in_progress -> completed
-      if (row.status === TaskStatus.in_progress) {
+      if (taskView.status === TaskStatus.in_progress) {
         tasksStatusArray = tasksStatusArray.filter(
           (ts) => ts !== TaskStatus.not_started
         );
@@ -182,15 +153,15 @@ export const TasksListView = () => {
 
         switch (newTaskStatus) {
           case TaskStatus.completed:
-            row.taskRecord.completed_on = dateYYYYMMDD(new Date());
+            taskView.taskRecord.completed_on = dateYYYYMMDD(new Date());
             break;
 
           case TaskStatus.in_progress:
-            row.taskRecord.started_on = dateYYYYMMDD(new Date());
+            taskView.taskRecord.started_on = dateYYYYMMDD(new Date());
             break;
         }
 
-        taskUpdate(row.taskRecord);
+        taskUpdate(taskView.taskRecord);
         tasksRead(setRecords, setSummary);
         tasksRead(setRecords, setSummary);
       };
@@ -198,11 +169,11 @@ export const TasksListView = () => {
       return (
         <Box sx={{ maxWidth: 140 }}>
           <FormControl fullWidth>
-            {row.status === TaskStatus.completed ||
-            row.status === TaskStatus.unknown ? (
+            {taskView.status === TaskStatus.completed ||
+            taskView.status === TaskStatus.unknown ? (
               <>
                 <TextField
-                  value={row.status}
+                  value={taskView.status}
                   InputProps={{
                     readOnly: true,
                   }}
@@ -210,11 +181,11 @@ export const TasksListView = () => {
               </>
             ) : (
               <>
-                <InputLabel>{row.status}</InputLabel>
+                <InputLabel>{taskView.status}</InputLabel>
                 <Select
                   labelId="task-status-select-label"
                   id="task-status-select-label-id"
-                  label={row.status}
+                  label={taskView.status}
                   onChange={handleOnChange}
                 >
                   {tasksStatusArray.map((e) => (
@@ -229,34 +200,44 @@ export const TasksListView = () => {
     };
 
     const TaskEditCell = () => {
+
       const [description, setDescription] = useState(
-        row.taskRecord.description
+        taskView.taskRecord.description
       );
 
       const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
         setDescription(event.target.value);
       };
 
-      const handleLostFocus = () => {
-        setDescription(row.taskRecord.description);
+      const handleGotFocus = () => {
+        //setExpanderIsOpen(true);
       };
 
-      const handleKeyPress = (e: { key: string }) => {
+      const handleLostFocus = () => {
+        //setExpanderIsOpen(false);
+        setDescription(taskView.taskRecord.description);
+      };
+
+      const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
         if (e.key !== "Enter") {
           return;
         }
 
-        row.taskRecord.description = description;
-        taskUpdate(row.taskRecord);
-        // tasksRead(setRecords, setSummary);
-        // tasksRead(setRecords, setSummary);
+        taskView.taskRecord.description = description;
+        taskUpdate(taskView.taskRecord);
+      };
+
+      const handleKeyUp = (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (e.key !== "Enter") {
+          return;
+        }       
       };
 
       return (
         <TableCell component="th" scope="row" style={{ width: "70%" }}>
-          {stringIsNullOrEmpty(row.taskRecord.id) ||
-          row.status === TaskStatus.unknown ||
-          row.status === TaskStatus.completed ? (
+          {stringIsNullOrEmpty(taskView.taskRecord.id) ||
+          taskView.status === TaskStatus.unknown ||
+          taskView.status === TaskStatus.completed ? (
             <TextField
               style={{ width: "100%" }}
               value={description}
@@ -269,7 +250,9 @@ export const TasksListView = () => {
               value={description}
               style={{ width: "100%" }}
               onChange={handleOnChange}
-              onKeyDown={handleKeyPress}
+              onKeyDown={(e) => handleKeyDown(e)}
+              onKeyUp={(e) => handleKeyUp(e)}
+              onFocus={handleGotFocus}
               onBlur={handleLostFocus}
             />
           )}
@@ -284,9 +267,13 @@ export const TasksListView = () => {
             <IconButton
               aria-label="expand row"
               size="small"
-              onClick={() => setOpen(!open)}
+              onClick={() => setExpanderIsOpen(!expanderIsOpen)}
             >
-              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+              {expanderIsOpen ? (
+                <KeyboardArrowUpIcon />
+              ) : (
+                <KeyboardArrowDownIcon />
+              )}
             </IconButton>
           </TableCell>
           <TaskEditCell />
@@ -294,32 +281,34 @@ export const TasksListView = () => {
           <TableCell>
             <TasksStatusSelect />
           </TableCell>
-          <TableCell>{row.date}</TableCell>
+          <TableCell>{taskView.date}</TableCell>
           <TableCell>
             <TasksDeleteDialog
               openDialog={openDeleteDialog}
               setOpenDialog={setOpenDeleteDialog}
-              onConfirmHandler={() => handleDeleteTaskRequest(row)}
-              taskView={row}
+              onConfirmHandler={() => handleDeleteTaskRequest(taskView)}
+              taskView={taskView}
             />
           </TableCell>
         </TableRow>
         <TableRow>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse in={expanderIsOpen} timeout="auto" unmountOnExit>
               <Box sx={{ margin: 1 }}>
                 <Table size="small" aria-label="details">
                   <TableBody>
                     <TableRow>
-                      <TableCell component="th">{row.summary}</TableCell>
+                      <TableCell component="th">{taskView.summary}</TableCell>
                     </TableRow>
-                    {row.taskRecord.tags.map((tagRow, id) => (
-                      <TableRow key={id}>
-                        <TableCell component="th" scope="row">
-                          - {tagRow}
-                        </TableCell>
-                      </TableRow>
-                    ))}
+                    {taskView.taskRecord.tags.map(
+                      (tagRow: string, id: number) => (
+                        <TableRow key={id}>
+                          <TableCell component="th" scope="row">
+                            - {tagRow}
+                          </TableCell>
+                        </TableRow>
+                      )
+                    )}
                   </TableBody>
                 </Table>
               </Box>
@@ -393,7 +382,7 @@ export const TasksListView = () => {
               {records
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((record, key) => (
-                  <Row key={key} row={taskRecordToTaskView(record)} />
+                  <Row key={key} taskView={taskRecordToTaskView(record)} />
                 ))}
             </TableBody>
           </Table>
