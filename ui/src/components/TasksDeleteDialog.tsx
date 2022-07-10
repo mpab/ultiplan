@@ -10,7 +10,7 @@ import {
   TextField,
   Tooltip,
 } from "@mui/material";
-import { TaskRecord } from "../api/types";
+import { TaskRecord, TaskStatus, TaskView } from "../api/types";
 import { stringIsNullOrEmpty } from "../utils";
 import { DeleteOutline } from "@mui/icons-material";
 
@@ -18,7 +18,7 @@ const TasksDeleteDialog = (props: {
   setOpenDialog: (mode: boolean) => void;
   openDialog: boolean;
   onConfirmHandler: (taskRecord: TaskRecord) => void;
-  taskRecord: TaskRecord;
+  taskView: TaskView;
 }) => {
 
   const handleDialogClose = () => {
@@ -31,7 +31,7 @@ const TasksDeleteDialog = (props: {
 
   const handleConfirm = (event: any) => {
     props.setOpenDialog(false);
-    props.onConfirmHandler(props.taskRecord);
+    props.onConfirmHandler(props.taskView.taskRecord);
   };
 
   return (
@@ -42,8 +42,9 @@ const TasksDeleteDialog = (props: {
               size="small"
               onClick={handleClickOpen}
             >
-              {!stringIsNullOrEmpty(props.taskRecord.completed_on) ||
-              !stringIsNullOrEmpty(props.taskRecord.started_on) ? (
+              {!stringIsNullOrEmpty(props.taskView.taskRecord.completed_on) ||
+              !stringIsNullOrEmpty(props.taskView.taskRecord.started_on) ||
+              props.taskView.status === TaskStatus.unknown ? (
                 <></>
               ) : (
                 <DeleteOutline color="error" />
@@ -63,7 +64,7 @@ const TasksDeleteDialog = (props: {
             label="Description"
             type="text"
             fullWidth
-            value={props.taskRecord.description}
+            value={props.taskView.taskRecord.description}
             multiline
             InputProps={{
               readOnly: true,

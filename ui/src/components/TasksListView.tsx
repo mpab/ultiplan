@@ -19,12 +19,11 @@ import {
 } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import React from "react";
+import React, { ChangeEvent } from "react";
 import { useEffect, useState } from "react";
 import { taskCreate, taskDelete, tasksRead, taskUpdate } from "../api/tasks";
 
 import { TaskRecord, TaskStatus, TaskView } from "../api/types";
-import { EditOutlined } from "@mui/icons-material";
 import { dateYYYYMMDD, stringIsNullOrEmpty } from "../utils";
 import TasksDeleteDialog from "./TasksDeleteDialog";
 import TasksAddDialog from "./TasksAddDialog";
@@ -177,7 +176,7 @@ export const TasksListView = () => {
         );
       }
 
-      const handleTaskStatusChange = (event: SelectChangeEvent) => {
+      const handleOnChange = (event: SelectChangeEvent) => {
         const newTaskStatus = event.target.value as TaskStatus;
         //setTaskStatus(newTaskStatus);
 
@@ -197,7 +196,7 @@ export const TasksListView = () => {
       };
 
       return (
-        <Box sx={{ minWidth: 120 }}>
+        <Box sx={{ maxWidth: 140 }}>
           <FormControl fullWidth>
             {row.status === TaskStatus.completed ||
             row.status === TaskStatus.unknown ? (
@@ -216,7 +215,7 @@ export const TasksListView = () => {
                   labelId="task-status-select-label"
                   id="task-status-select-label-id"
                   label={row.status}
-                  onChange={handleTaskStatusChange}
+                  onChange={handleOnChange}
                 >
                   {tasksStatusArray.map((e) => (
                     <MenuItem value={e}>{e}</MenuItem>
@@ -226,6 +225,55 @@ export const TasksListView = () => {
             )}
           </FormControl>
         </Box>
+      );
+    };
+
+    const TaskEditCell = () => {
+      const [description, setDescription] = useState(
+        row.taskRecord.description
+      );
+
+      const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setDescription(event.target.value);
+      };
+
+      const handleLostFocus = () => {
+        setDescription(row.taskRecord.description);
+      };
+
+      const handleKeyPress = (e: { key: string }) => {
+        if (e.key !== "Enter") {
+          return;
+        }
+
+        row.taskRecord.description = description;
+        taskUpdate(row.taskRecord);
+        // tasksRead(setRecords, setSummary);
+        // tasksRead(setRecords, setSummary);
+      };
+
+      return (
+        <TableCell component="th" scope="row" style={{ width: "70%" }}>
+          {stringIsNullOrEmpty(row.taskRecord.id) ||
+          row.status === TaskStatus.unknown ||
+          row.status === TaskStatus.completed ? (
+            <TextField
+              style={{ width: "100%" }}
+              value={description}
+              InputProps={{
+                readOnly: true,
+              }}
+            />
+          ) : (
+            <TextField
+              value={description}
+              style={{ width: "100%" }}
+              onChange={handleOnChange}
+              onKeyDown={handleKeyPress}
+              onBlur={handleLostFocus}
+            />
+          )}
+        </TableCell>
       );
     };
 
@@ -241,21 +289,7 @@ export const TasksListView = () => {
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
           </TableCell>
-          <TableCell component="th" scope="row">
-            <IconButton
-              aria-label="edit task"
-              size="small"
-              onClick={(event) => handleEditTaskRequest(row)}
-            >
-              {stringIsNullOrEmpty(row.taskRecord.completed_on) &&
-              !stringIsNullOrEmpty(row.taskRecord.id) ? (
-                <EditOutlined />
-              ) : (
-                <></>
-              )}
-            </IconButton>
-            {row.taskRecord.description}
-          </TableCell>
+          <TaskEditCell />
           <TableCell></TableCell>
           <TableCell>
             <TasksStatusSelect />
@@ -266,7 +300,7 @@ export const TasksListView = () => {
               openDialog={openDeleteDialog}
               setOpenDialog={setOpenDeleteDialog}
               onConfirmHandler={() => handleDeleteTaskRequest(row)}
-              taskRecord={row.taskRecord}
+              taskView={row}
             />
           </TableCell>
         </TableRow>
