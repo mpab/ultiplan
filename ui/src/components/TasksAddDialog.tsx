@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 
 import {
   Button,
@@ -21,6 +21,7 @@ const TasksAddDialog = (props: {
 }) => {
   const [description, setDescription] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
+  const [tags, setTags] = useState(Array<string>());
 
   const handleDialogClose = () => {
     props.setOpenDialog(false);
@@ -38,8 +39,17 @@ const TasksAddDialog = (props: {
 
   const isFormInvalid = stringIsNullOrEmpty(description);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement|HTMLTextAreaElement>) => {
-    setDescriptionError(stringIsNullOrEmpty(e.target.value) ? 'description cannot be empty' : '');
+  const handleClickNewTag = () => {
+    setTags([...tags, '']);
+  };
+
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+
+    setDescriptionError(
+      stringIsNullOrEmpty(e.target.value) ? "description cannot be empty" : ""
+    );
     setDescription(e.target.value);
   };
 
@@ -55,8 +65,8 @@ const TasksAddDialog = (props: {
         onClose={handleDialogClose}
         aria-labelledby="add-form-dialog-title"
         fullWidth
-        maxWidth={'md'}
-        BackdropProps={{style: {backgroundColor: 'transparent'}}}
+        maxWidth={"md"}
+        BackdropProps={{ style: { backgroundColor: "transparent" } }}
       >
         <DialogTitle id="add-form-dialog-title">Add Task</DialogTitle>
         <DialogContent>
@@ -69,9 +79,17 @@ const TasksAddDialog = (props: {
             value={description}
             helperText={descriptionError}
             multiline
-            rows={5}
+            rows={3}
             onChange={(e) => handleInputChange(e)}
           />
+          {tags.map((tag) => (
+            <TextField fullWidth value={tag}/>
+          ))}
+          <Tooltip title="add a tag line">
+            <IconButton onClick={handleClickNewTag} sx={{ fontSize: "12px" }}>
+              <Add sx={{ fontSize: "12px" }} />add tag
+            </IconButton>
+          </Tooltip>
         </DialogContent>
         <DialogActions>
           <Button
