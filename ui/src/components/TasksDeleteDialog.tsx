@@ -5,9 +5,9 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
+  DialogContentText,
   DialogTitle,
   IconButton,
-  TextField,
   Tooltip,
 } from "@mui/material";
 import { TaskRecord, TaskStatus, TaskView } from "../api/types";
@@ -20,7 +20,6 @@ const TasksDeleteDialog = (props: {
   onConfirmHandler: (taskRecord: TaskRecord) => void;
   taskView: TaskView;
 }) => {
-
   const handleDialogClose = () => {
     props.setOpenDialog(false);
   };
@@ -29,7 +28,7 @@ const TasksDeleteDialog = (props: {
     props.setOpenDialog(true);
   };
 
-  const handleConfirm = (event: any) => {
+  const handleConfirm = () => {
     props.setOpenDialog(false);
     props.onConfirmHandler(props.taskView.taskRecord);
   };
@@ -37,45 +36,36 @@ const TasksDeleteDialog = (props: {
   return (
     <React.Fragment>
       <Tooltip title="delete a task">
-      <IconButton
-              aria-label="delete task"
-              size="small"
-              onClick={handleClickOpen}
-            >
-              {!stringIsNullOrEmpty(props.taskView.taskRecord.completed_on) ||
-              !stringIsNullOrEmpty(props.taskView.taskRecord.started_on) ||
-              props.taskView.status === TaskStatus.unknown ? (
-                <></>
-              ) : (
-                <DeleteOutline color="error" />
-              )}
-            </IconButton>
+        <IconButton
+          aria-label="delete task"
+          size="small"
+          onClick={handleClickOpen}
+        >
+          {!stringIsNullOrEmpty(props.taskView.taskRecord.completed_on) ||
+          !stringIsNullOrEmpty(props.taskView.taskRecord.started_on) ||
+          props.taskView.status === TaskStatus.unknown ? (
+            <></>
+          ) : (
+            <DeleteOutline color="error" />
+          )}
+        </IconButton>
       </Tooltip>
       <Dialog
         open={props.openDialog}
         onClose={handleDialogClose}
-        aria-labelledby="form-dialog-title"
+        aria-labelledby="delete-form-dialog-title"
+        fullWidth
+        maxWidth={'md'}
+        BackdropProps={{style: {backgroundColor: 'transparent'}}}
       >
-        <DialogTitle id="form-dialog-title">Confirm Task Delete</DialogTitle>
+        <DialogTitle id="delete-form-dialog-title">Confirm delete</DialogTitle>
         <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Description"
-            type="text"
-            fullWidth
-            value={props.taskView.taskRecord.description}
-            multiline
-            InputProps={{
-              readOnly: true,
-            }}
-          />
+          <DialogContentText id="delete-dialog-description">
+            {props.taskView.taskRecord.description}
+          </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
-            onClick={handleConfirm}
-            color="primary"
-          >
+          <Button onClick={handleConfirm} color="primary">
             Confirm
           </Button>
           <Button onClick={handleDialogClose} color="secondary">

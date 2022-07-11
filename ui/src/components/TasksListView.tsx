@@ -238,11 +238,11 @@ export const TasksListView = () => {
 
       return (
         <Table
-        sx={{
-          [`& .${tableCellClasses.root}`]: {
-            borderBottom: "none"
-          }
-        }}
+          sx={{
+            [`& .${tableCellClasses.root}`]: {
+              borderBottom: "none",
+            },
+          }}
         >
           <TableRow>
             <TableCell component="th" scope="row">
@@ -270,19 +270,17 @@ export const TasksListView = () => {
             </TableCell>
           </TableRow>
 
-            <Collapse
-              in={expanderIsOpen}
-              timeout="auto"
-              unmountOnExit
-            >
-              {taskView.taskRecord.tags.map((tagRow: string, id: number) => (
-                <Box sx={{ m: "0.2rem" }}>
-                  <TextField value={tagRow} style={{ width: "97%" }} inputProps={{style: {fontSize: 14 }}} />
-                  </Box>
-              ))}
-              
-            </Collapse>
-
+          <Collapse in={expanderIsOpen} timeout="auto" unmountOnExit>
+            {taskView.taskRecord.tags.map((tagRow: string, id: number) => (
+              <Box sx={{ m: "0.2rem" }}>
+                <TextField
+                  value={tagRow}
+                  style={{ width: "97%" }}
+                  inputProps={{ style: { fontSize: 14 } }}
+                />
+              </Box>
+            ))}
+          </Collapse>
         </Table>
       );
     };
@@ -337,15 +335,6 @@ export const TasksListView = () => {
   // -----------------------------------------------------
 
   const TableHeader = () => {
-    const addTask = (task: TaskRecord) => {
-      if (task.description) {
-        taskCreate(task);
-        tasksRead(setRecords, setSummary);
-        toast.success(`added: ${task.description}`);
-        tasksRead(setRecords, setSummary);
-      }
-    };
-
     return (
       <TableHead>
         <TableRow>
@@ -353,7 +342,14 @@ export const TasksListView = () => {
             <TasksAddDialog
               openDialog={openAddDialog}
               setOpenDialog={setOpenAddDialog}
-              onConfirmHandler={addTask}
+              onConfirmHandler={(task: TaskRecord) => {
+                if (task.description) {
+                  taskCreate(task);
+                  tasksRead(setRecords, setSummary);
+                  toast.success(`added: ${task.description}`);
+                  tasksRead(setRecords, setSummary);
+                }
+              }}
             />
           </TableCell>
           <TableCell>Project: {summary}</TableCell>

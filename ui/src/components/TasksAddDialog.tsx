@@ -30,7 +30,7 @@ const TasksAddDialog = (props: {
     props.setOpenDialog(true);
   };
 
-  const handleConfirm = (event: any) => {
+  const handleConfirm = () => {
     props.setOpenDialog(false);
     const task = taskRecordFromDescription(description);
     props.onConfirmHandler(task);
@@ -53,9 +53,12 @@ const TasksAddDialog = (props: {
       <Dialog
         open={props.openDialog}
         onClose={handleDialogClose}
-        aria-labelledby="form-dialog-title"
+        aria-labelledby="add-form-dialog-title"
+        fullWidth
+        maxWidth={'md'}
+        BackdropProps={{style: {backgroundColor: 'transparent'}}}
       >
-        <DialogTitle id="form-dialog-title">Add Task</DialogTitle>
+        <DialogTitle id="add-form-dialog-title">Add Task</DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
