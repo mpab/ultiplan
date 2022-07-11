@@ -30,6 +30,7 @@ import TasksDeleteDialog from "./TasksDeleteDialog";
 import TasksAddDialog from "./TasksAddDialog";
 
 import toast from "./Toast";
+import { TaskEditViewPanel } from "./TasksEditViewPanel";
 
 const taskRecordToTaskView = (r: TaskRecord): TaskView => {
   let date = "unknown";
@@ -204,36 +205,15 @@ export const TasksListView = () => {
       const [description, setDescription] = useState(
         taskView.taskRecord.description
       );
+      const [tags, setTags] = useState(taskView.taskRecord.tags);
+      const [descriptionError, setDescriptionError] = useState("");
 
-      const handleOnChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setDescription(event.target.value);
-      };
-
-      const handleGotFocus = () => {
-        //setExpanderIsOpen(true);
-      };
-
-      const handleLostFocus = () => {
-        //setExpanderIsOpen(false);
-        setDescription(taskView.taskRecord.description);
-      };
-
-      const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-        if (e.key !== "Enter") {
-          return;
-        }
-
+      const handleEndEdit = () => {
+        console.log("TaskEditCell end edit");
         taskView.taskRecord.description = description;
+        taskView.taskRecord.tags = tags;
         taskUpdate(taskView.taskRecord);
-        tasksRead(setRecords, setSummary);
         toast.success(`changed: ${description}`);
-        tasksRead(setRecords, setSummary);
-      };
-
-      const handleKeyUp = (e: React.KeyboardEvent<HTMLDivElement>) => {
-        if (e.key !== "Enter") {
-          return;
-        }
       };
 
       return (
@@ -257,30 +237,20 @@ export const TasksListView = () => {
                   }}
                 />
               ) : (
-                <TextField
-                  value={description}
-                  style={{ width: "100%" }}
-                  onChange={handleOnChange}
-                  onKeyDown={(e) => handleKeyDown(e)}
-                  onKeyUp={(e) => handleKeyUp(e)}
-                  onFocus={handleGotFocus}
-                  onBlur={handleLostFocus}
-                />
+                <TaskEditViewPanel
+                  {...{
+                    description,
+                    setDescription,
+                    descriptionError,
+                    setDescriptionError,
+                    tags,
+                    setTags,
+                    handleEndEdit
+                  }}
+                ></TaskEditViewPanel>
               )}
             </TableCell>
           </TableRow>
-
-          <Collapse in={expanderIsOpen} timeout="auto" unmountOnExit>
-            {taskView.taskRecord.tags.map((tagRow: string, id: number) => (
-              <Box sx={{ m: "0.2rem" }}>
-                <TextField
-                  value={tagRow}
-                  style={{ width: "97%" }}
-                  inputProps={{ style: { fontSize: 14 } }}
-                />
-              </Box>
-            ))}
-          </Collapse>
         </Table>
       );
     };
@@ -288,22 +258,11 @@ export const TasksListView = () => {
     return (
       <React.Fragment>
         <TableRow sx={{ "& > *": { borderBottom: "none" } }}>
-          <TableCell>
-            <IconButton
-              aria-label="expand row"
-              size="small"
-              onClick={() => setExpanderIsOpen(!expanderIsOpen)}
-            >
-              {expanderIsOpen ? (
-                <KeyboardArrowUpIcon />
-              ) : (
-                <KeyboardArrowDownIcon />
-              )}
-            </IconButton>
-          </TableCell>
-          <TaskEditCell />
+        <TableCell style={{ width: "70%" }}>
 
-          <TableCell></TableCell>
+          <TaskEditCell />
+          </TableCell>
+
           <TableCell style={{ width: "10%" }}>
             <TasksStatusSelect />
           </TableCell>
@@ -338,7 +297,7 @@ export const TasksListView = () => {
     return (
       <TableHead>
         <TableRow>
-          <TableCell>
+          <TableCell> 
             <TasksAddDialog
               openDialog={openAddDialog}
               setOpenDialog={setOpenAddDialog}
@@ -350,13 +309,11 @@ export const TasksListView = () => {
                   tasksRead(setRecords, setSummary);
                 }
               }}
-            />
+            />Project: {summary}
           </TableCell>
-          <TableCell>Project: {summary}</TableCell>
-          <TableCell />
           <TableCell>Status</TableCell>
           <TableCell>Date</TableCell>
-          <TableCell />
+          <TableCell>Action</TableCell>
         </TableRow>
       </TableHead>
     );

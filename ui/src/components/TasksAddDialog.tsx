@@ -7,7 +7,6 @@ import {
   DialogContent,
   DialogTitle,
   IconButton,
-  TextField,
   Tooltip,
 } from "@mui/material";
 import { TaskRecord, taskRecordFromDescription } from "../api/types";
@@ -39,6 +38,10 @@ const TasksAddDialog = (props: {
     props.onConfirmHandler(task);
   };
 
+  const handleEndEdit = () => {
+    console.log("TasksAddDialog end edit");
+  };
+
   const isFormInvalid = stringIsNullOrEmpty(description);
 
   return (
@@ -65,7 +68,8 @@ const TasksAddDialog = (props: {
               descriptionError,
               setDescriptionError,
               tags,
-              setTags
+              setTags,
+              handleEndEdit
             }}
           ></TaskEditViewPanel>
         </DialogContent>
