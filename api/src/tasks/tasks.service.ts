@@ -59,7 +59,7 @@ export class TasksService {
       due_on: dates.due_on,
       completed_on: dates.completed_on,
       project: getProjectName(),
-      tags: [],
+      tags: model.tags,
     };
 
     dbCreateRecord(record, getDbHandle());

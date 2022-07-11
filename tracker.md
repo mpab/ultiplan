@@ -86,6 +86,8 @@
 - feature for api/services/db: add metadata to db - eg groups and tags spec along with statistics
 
 ### done: ultiplan
+- 2022-07-11: ui: extend task creation dialog to support tags
+- 2022-07-11: ui: extend task editing functionality to support tags
 - 2022-07-10: ui: implemented new status change controls with state transition guards
 - 2022-07-08: ui: implement collapsible rows - e.g. show/hide date information
 - 2022-07-08: ui: convert/upgrade all @material-ui to @mui

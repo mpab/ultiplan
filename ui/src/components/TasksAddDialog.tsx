@@ -34,23 +34,37 @@ const TasksAddDialog = (props: {
   const handleConfirm = () => {
     props.setOpenDialog(false);
     const task = taskRecordFromDescription(description);
+    task.tags = tags;
     props.onConfirmHandler(task);
   };
 
   const isFormInvalid = stringIsNullOrEmpty(description);
 
-  const handleClickNewTag = () => {
-    setTags([...tags, '']);
-  };
-
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-
     setDescriptionError(
       stringIsNullOrEmpty(e.target.value) ? "description cannot be empty" : ""
     );
     setDescription(e.target.value);
+  };
+
+  // ---------------------------------------------------------
+  // tags
+  const handleClickNewTag = () => {
+    setTags([...tags, ""]);
+  };
+
+  const handleInputChangeTag = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    id: number
+  ) => {
+    let edit= tags;
+    if (e.target.value)
+      edit[id] = e.target.value;
+    else
+      edit.splice(id, 1);
+    setTags([...edit]);
   };
 
   return (
@@ -82,12 +96,18 @@ const TasksAddDialog = (props: {
             rows={3}
             onChange={(e) => handleInputChange(e)}
           />
-          {tags.map((tag) => (
-            <TextField fullWidth value={tag}/>
+          {tags.map((tag, id) => (
+            <TextField
+              id={String(id)}
+              fullWidth
+              value={tag}
+              onChange={(e) => handleInputChangeTag(e, id)}
+            />
           ))}
           <Tooltip title="add a tag line">
             <IconButton onClick={handleClickNewTag} sx={{ fontSize: "12px" }}>
-              <Add sx={{ fontSize: "12px" }} />add tag
+              <Add sx={{ fontSize: "12px" }} />
+              add tag
             </IconButton>
           </Tooltip>
         </DialogContent>
