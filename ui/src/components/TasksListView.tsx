@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Collapse,
   FormControl,
   IconButton,
@@ -12,6 +11,7 @@ import {
   Table,
   TableBody,
   TableCell,
+  tableCellClasses,
   TableContainer,
   TableHead,
   TablePagination,
@@ -237,35 +237,59 @@ export const TasksListView = () => {
       };
 
       return (
-        <TableCell component="th" scope="row" style={{ width: "70%" }}>
-          {stringIsNullOrEmpty(taskView.taskRecord.id) ||
-          taskView.status === TaskStatus.unknown ||
-          taskView.status === TaskStatus.completed ? (
-            <TextField
-              style={{ width: "100%" }}
-              value={description}
-              InputProps={{
-                readOnly: true,
-              }}
-            />
-          ) : (
-            <TextField
-              value={description}
-              style={{ width: "100%" }}
-              onChange={handleOnChange}
-              onKeyDown={(e) => handleKeyDown(e)}
-              onKeyUp={(e) => handleKeyUp(e)}
-              onFocus={handleGotFocus}
-              onBlur={handleLostFocus}
-            />
-          )}
-        </TableCell>
+        <Table
+        sx={{
+          [`& .${tableCellClasses.root}`]: {
+            borderBottom: "none"
+          }
+        }}
+        >
+          <TableRow>
+            <TableCell component="th" scope="row">
+              {stringIsNullOrEmpty(taskView.taskRecord.id) ||
+              taskView.status === TaskStatus.unknown ||
+              taskView.status === TaskStatus.completed ? (
+                <TextField
+                  style={{ width: "100%" }}
+                  value={description}
+                  InputProps={{
+                    readOnly: true,
+                  }}
+                />
+              ) : (
+                <TextField
+                  value={description}
+                  style={{ width: "100%" }}
+                  onChange={handleOnChange}
+                  onKeyDown={(e) => handleKeyDown(e)}
+                  onKeyUp={(e) => handleKeyUp(e)}
+                  onFocus={handleGotFocus}
+                  onBlur={handleLostFocus}
+                />
+              )}
+            </TableCell>
+          </TableRow>
+
+            <Collapse
+              in={expanderIsOpen}
+              timeout="auto"
+              unmountOnExit
+            >
+              {taskView.taskRecord.tags.map((tagRow: string, id: number) => (
+                <Box sx={{ m: "0.2rem" }}>
+                  <TextField value={tagRow} style={{ width: "97%" }} inputProps={{style: {fontSize: 14 }}} />
+                  </Box>
+              ))}
+              
+            </Collapse>
+
+        </Table>
       );
     };
 
     return (
       <React.Fragment>
-        <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
+        <TableRow sx={{ "& > *": { borderBottom: "none" } }}>
           <TableCell>
             <IconButton
               aria-label="expand row"
@@ -280,8 +304,9 @@ export const TasksListView = () => {
             </IconButton>
           </TableCell>
           <TaskEditCell />
+
           <TableCell></TableCell>
-          <TableCell>
+          <TableCell style={{ width: "10%" }}>
             <TasksStatusSelect />
           </TableCell>
           <TableCell>{taskView.date}</TableCell>
@@ -299,29 +324,11 @@ export const TasksListView = () => {
             />
           </TableCell>
         </TableRow>
-        <TableRow>
-          <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-            <Collapse in={expanderIsOpen} timeout="auto" unmountOnExit>
-              <Box sx={{ margin: 1 }}>
-                <Table size="small" aria-label="details">
-                  <TableBody>
-                    <TableRow>
-                      <TableCell component="th">{taskView.summary}</TableCell>
-                    </TableRow>
-                    {taskView.taskRecord.tags.map(
-                      (tagRow: string, id: number) => (
-                        <TableRow key={id}>
-                          <TableCell component="th" scope="row">
-                            - {tagRow}
-                          </TableCell>
-                        </TableRow>
-                      )
-                    )}
-                  </TableBody>
-                </Table>
-              </Box>
-            </Collapse>
-          </TableCell>
+        <TableRow style={{ width: "100%" }}>
+          <TableCell
+            style={{ paddingBottom: 0, paddingTop: 0, width: "100%" }}
+            colSpan={12}
+          ></TableCell>
         </TableRow>
       </React.Fragment>
     );
