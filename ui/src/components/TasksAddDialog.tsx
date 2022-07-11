@@ -13,6 +13,7 @@ import {
 import { TaskRecord, taskRecordFromDescription } from "../api/types";
 import { stringIsNullOrEmpty } from "../utils";
 import { Add } from "@mui/icons-material";
+import { TaskEditViewPanel } from "./TasksEditViewPanel";
 
 const TasksAddDialog = (props: {
   setOpenDialog: (mode: boolean) => void;
@@ -40,33 +41,6 @@ const TasksAddDialog = (props: {
 
   const isFormInvalid = stringIsNullOrEmpty(description);
 
-  const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setDescriptionError(
-      stringIsNullOrEmpty(e.target.value) ? "description cannot be empty" : ""
-    );
-    setDescription(e.target.value);
-  };
-
-  // ---------------------------------------------------------
-  // tags
-  const handleClickNewTag = () => {
-    setTags([...tags, ""]);
-  };
-
-  const handleInputChangeTag = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    id: number
-  ) => {
-    let edit= tags;
-    if (e.target.value)
-      edit[id] = e.target.value;
-    else
-      edit.splice(id, 1);
-    setTags([...edit]);
-  };
-
   return (
     <React.Fragment>
       <Tooltip title="add a new task">
@@ -84,32 +58,16 @@ const TasksAddDialog = (props: {
       >
         <DialogTitle id="add-form-dialog-title">Add Task</DialogTitle>
         <DialogContent>
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Description"
-            type="text"
-            fullWidth
-            value={description}
-            helperText={descriptionError}
-            multiline
-            rows={3}
-            onChange={(e) => handleInputChange(e)}
-          />
-          {tags.map((tag, id) => (
-            <TextField
-              id={String(id)}
-              fullWidth
-              value={tag}
-              onChange={(e) => handleInputChangeTag(e, id)}
-            />
-          ))}
-          <Tooltip title="add a tag line">
-            <IconButton onClick={handleClickNewTag} sx={{ fontSize: "12px" }}>
-              <Add sx={{ fontSize: "12px" }} />
-              add tag
-            </IconButton>
-          </Tooltip>
+          <TaskEditViewPanel
+            {...{
+              description,
+              setDescription,
+              descriptionError,
+              setDescriptionError,
+              tags,
+              setTags
+            }}
+          ></TaskEditViewPanel>
         </DialogContent>
         <DialogActions>
           <Button

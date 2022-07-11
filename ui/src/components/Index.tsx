@@ -19,11 +19,13 @@ import ListItemText from "@mui/material/ListItemText";
 import NotesIcon from "@mui/icons-material/Notes";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import WaterfallChartIcon from "@mui/icons-material/WaterfallChart";
+import EditRoadIcon from '@mui/icons-material/EditRoad';
 import { FormatListNumbered } from "@mui/icons-material";
 import { TasksListView } from "./TasksListView";
 import { TasksCalendarView } from "./TasksCalendarView";
 import { TasksGanttChartView } from "./TasksGanttChartView";
 import { MeetingsListView } from "./MeetingsListView";
+import { TasksKanbanView } from "./TasksKanbanView";
 
 const drawerWidth = 240;
 
@@ -92,6 +94,7 @@ export default function PersistentDrawerLeft() {
 
   const viewNames = [
     "Tasks List View",
+    "Tasks Kanban View",
     "Tasks Calendar View",
     "Tasks Gantt Chart View",
     "Meetings List View",
@@ -170,6 +173,15 @@ export default function PersistentDrawerLeft() {
           <ListItem disablePadding>
             <ListItemButton onClick={() => setView(1)}>
               <ListItemIcon>
+                <EditRoadIcon />
+              </ListItemIcon>
+              <ListItemText primary="Kanban" />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => setView(2)}>
+              <ListItemIcon>
                 <CalendarMonthIcon />
               </ListItemIcon>
               <ListItemText primary="Calendar" />
@@ -177,7 +189,7 @@ export default function PersistentDrawerLeft() {
           </ListItem>
 
           <ListItem disablePadding>
-            <ListItemButton onClick={() => setView(2)}>
+            <ListItemButton onClick={() => setView(3)}>
               <ListItemIcon>
                 <WaterfallChartIcon />
               </ListItemIcon>
@@ -209,9 +221,10 @@ export default function PersistentDrawerLeft() {
       <Main open={open}>
         <DrawerHeader />
         {view === 0 && <TasksListView />}
-        {view === 1 && <TasksCalendarView />}
-        {view === 2 && <TasksGanttChartView />}
-        {view === 3 && <MeetingsListView />}
+        {view === 1 && <TasksKanbanView />}
+        {view === 2 && <TasksCalendarView />}
+        {view === 3 && <TasksGanttChartView />}
+        {view === 4 && <MeetingsListView />}
       </Main>
     </Box>
   );
