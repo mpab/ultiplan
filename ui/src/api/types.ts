@@ -1,3 +1,5 @@
+import { GridStrategyProcessingApi } from "@mui/x-data-grid/hooks/core/strategyProcessing";
+
 export type TaskRecord = {
   id: string;
   project: string;
@@ -21,6 +23,7 @@ export type TaskView = {
   status: TaskStatus;
   summary: string;
   date: string;
+  dateSignificance: string;
 };
 
 export const taskRecordFromDescription = (description: string): TaskRecord => {

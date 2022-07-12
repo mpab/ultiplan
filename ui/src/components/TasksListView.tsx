@@ -32,22 +32,26 @@ import toast from "./Toast";
 import { TaskEditViewPanel } from "./TasksEditViewPanel";
 
 const taskRecordToTaskView = (r: TaskRecord): TaskView => {
-  let date = "unknown";
+  let date = 'unknown';
+  let dateSignificance = '';
   let status = TaskStatus.unknown;
 
   if (r.created_on) {
     status = TaskStatus.not_started;
-    date = r.created_on + ` [created]`;
+    date = r.created_on;
+    dateSignificance = `created`;
   }
 
   if (r.started_on) {
     status = TaskStatus.in_progress;
-    date = r.created_on + ` [started]`;
+    date = r.created_on;
+    dateSignificance = `started`;
   }
 
   if (r.completed_on) {
     status = TaskStatus.completed;
-    date = r.completed_on + ` [done]`;
+    date = r.completed_on;
+    dateSignificance = `completed`;
   }
 
   let summary = "";
@@ -83,6 +87,7 @@ const taskRecordToTaskView = (r: TaskRecord): TaskView => {
   return {
     taskRecord: r,
     date: date,
+    dateSignificance: dateSignificance,
     status: status,
     summary: summary,
   };
@@ -284,7 +289,7 @@ export const TasksListView = () => {
           <TableCell style={{ width: "10%" }}>
             <TasksStatusSelect />
           </TableCell>
-          <TableCell>{taskView.date}</TableCell>
+          <TableCell><div>{taskView.date}</div><div>{taskView.dateSignificance}</div></TableCell>
           <TableCell>
             <TasksDeleteDialog
               openDialog={openDeleteDialog}
@@ -364,7 +369,7 @@ export const TasksListView = () => {
     <React.Fragment>
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <TableContainer component={Paper} sx={{ maxHeight: height }}>
-          <Table stickyHeader aria-label="collapsible table">
+          <Table size="small" stickyHeader aria-label="collapsible table" sx={{ minWidth: 800 }} >
             <TableHeader />
             <TableBody>
               {records
