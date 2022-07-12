@@ -44,7 +44,7 @@ const taskRecordToTaskView = (r: TaskRecord): TaskView => {
 
   if (r.started_on) {
     status = TaskStatus.in_progress;
-    date = r.created_on;
+    date = r.started_on;
     dateSignificance = `started`;
   }
 
