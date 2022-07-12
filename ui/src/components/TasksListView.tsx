@@ -1,6 +1,5 @@
 import {
   Box,
-  Collapse,
   FormControl,
   IconButton,
   InputLabel,
@@ -18,9 +17,9 @@ import {
   TableRow,
   TextField,
 } from "@mui/material";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import React, { ChangeEvent } from "react";
+import React from "react";
 import { useEffect, useState } from "react";
 import { taskCreate, taskDelete, tasksRead, taskUpdate } from "../api/tasks";
 
@@ -111,7 +110,7 @@ export const TasksListView = () => {
     // -----------------------------------------------------
     // expander
     const taskView = props.taskView;
-    const [expanderIsOpen, setExpanderIsOpen] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
 
     // -----------------------------------------------------
 
@@ -225,6 +224,25 @@ export const TasksListView = () => {
           }}
         >
           <TableRow>
+            <TableCell width={10}>
+              {!isExpanded ? (
+                <IconButton
+                  aria-label="expand row"
+                  size="small"
+                  onClick={() => setIsExpanded(!isExpanded)}
+                >
+                  <KeyboardArrowRightIcon sx={{ fontSize: "18px" }} />
+                </IconButton>
+              ) : (
+                <IconButton
+                  aria-label="expand row"
+                  size="small"
+                  onClick={() => setIsExpanded(!isExpanded)}
+                >
+                  <KeyboardArrowDownIcon sx={{ fontSize: "18px" }} />
+                </IconButton>
+              )}
+            </TableCell>
             <TableCell component="th" scope="row">
               {stringIsNullOrEmpty(taskView.taskRecord.id) ||
               taskView.status === TaskStatus.unknown ||
@@ -245,7 +263,8 @@ export const TasksListView = () => {
                     setDescriptionError,
                     tags,
                     setTags,
-                    handleEndEdit
+                    handleEndEdit,
+                    isExpanded,
                   }}
                 ></TaskEditViewPanel>
               )}
@@ -258,9 +277,8 @@ export const TasksListView = () => {
     return (
       <React.Fragment>
         <TableRow sx={{ "& > *": { borderBottom: "none" } }}>
-        <TableCell style={{ width: "70%" }}>
-
-          <TaskEditCell />
+          <TableCell style={{ width: "70%" }}>
+            <TaskEditCell />
           </TableCell>
 
           <TableCell style={{ width: "10%" }}>
@@ -297,7 +315,7 @@ export const TasksListView = () => {
     return (
       <TableHead>
         <TableRow>
-          <TableCell> 
+          <TableCell>
             <TasksAddDialog
               openDialog={openAddDialog}
               setOpenDialog={setOpenAddDialog}
@@ -309,7 +327,8 @@ export const TasksListView = () => {
                   tasksRead(setRecords, setSummary);
                 }
               }}
-            />Project: {summary}
+            />
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Project: {summary}
           </TableCell>
           <TableCell>Status</TableCell>
           <TableCell>Date</TableCell>

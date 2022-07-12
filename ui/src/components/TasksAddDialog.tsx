@@ -69,7 +69,8 @@ const TasksAddDialog = (props: {
               setDescriptionError,
               tags,
               setTags,
-              handleEndEdit
+              handleEndEdit,
+              isExpanded: true
             }}
           ></TaskEditViewPanel>
         </DialogContent>

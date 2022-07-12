@@ -1,7 +1,5 @@
 import { Add } from "@mui/icons-material";
 import { Collapse, IconButton, TextField, Tooltip } from "@mui/material";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import React, { ChangeEvent, useState } from "react";
 import { stringIsNullOrEmpty } from "../utils";
 
@@ -13,6 +11,7 @@ export const TaskEditViewPanel = (props: {
   tags: string[];
   setTags: (tags: string[]) => void;
   handleEndEdit: () => void;
+  isExpanded: boolean;
 }) => {
   const handleInputChangeDescription = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -69,8 +68,6 @@ export const TaskEditViewPanel = (props: {
     props.handleEndEdit();
   };
 
-  const [isExpanded, setIsExpanded] = useState(false);
-
   return (
     <React.Fragment>
       <TextField
@@ -84,28 +81,9 @@ export const TaskEditViewPanel = (props: {
         multiline
         onChange={(e) => handleInputChangeDescription(e)}
         onKeyDown={(e) => handleDescriptionKeyDown(e)}
-        rows={isExpanded ? 3 : 1}
+        rows={props.isExpanded ? 3 : 1}
       />
-      {!isExpanded ? (
-        <IconButton
-          aria-label="expand row"
-          size="small"
-          sx={{ fontSize: "12px" }}
-          onClick={() => setIsExpanded(!isExpanded)}
-        >
-          <KeyboardArrowRightIcon sx={{ fontSize: "12px" }} />
-        </IconButton>
-      ) : (
-        <IconButton
-          aria-label="expand row"
-          size="small"
-          sx={{ fontSize: "12px" }}
-          onClick={() => setIsExpanded(!isExpanded)}
-        >
-          <KeyboardArrowDownIcon sx={{ fontSize: "12px" }} />
-        </IconButton>
-      )}
-      <Collapse in={isExpanded} timeout="auto" unmountOnExit>
+      <Collapse in={props.isExpanded} timeout="auto" unmountOnExit>
       {props.tags.map((tag, id) => (
         <TextField
           id={String(id)}
