@@ -1121,5 +1121,21 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "id": "4a413218-274c-484c-aaf5-eab0d74449cc",
+    "description": "ui: automatically set focus when adding a tag - also may need to scroll when doing so",
+    "created_on": "2022-07-12",
+    "started_on": "2022-07-12",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": [
+      "best example: https://www.cluemediator.com/set-focus-on-the-dynamic-input-field-in-react",
+      "https://blog.maisie.ink/react-ref-autofocus/",
+      "https://reactgo.com/react-focus-input",
+      "https://stackoverflow.com/questions/61647847/how-can-i-set-focus-on-a-dynamically-added-field-with-react",
+      "https://thewebdev.info/2022/03/26/how-to-focus-a-react-material-ui-textfield-on-button-click/",
+    ]
   }
 ]
