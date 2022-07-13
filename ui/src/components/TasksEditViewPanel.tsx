@@ -33,30 +33,12 @@ export const TaskEditViewPanel = (props: {
     onTaskRecordChange();
   };
 
-  const handleClickNewTag = () => {
-    setTags([...tags, ""]);
-  };
-
-  const onChangeTag = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-    id: number
-  ) => {
-    let edit = tags;
-    if (e.target.value) {
-      edit[id] = e.target.value;
-    } else {
-      edit.splice(id, 1);
-    }
-    setTags([...edit]);
-    onTaskRecordChange();
-  };
-
   const onKeyDownDescription = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === `Enter`) {
       if (stringIsNullOrEmptyOrWhitespace(description)) {
         return;
       }
-      
+
       if (!e.shiftKey) {
         props.taskRecord.description = description;
         props.taskRecord.tags = tags;
@@ -67,14 +49,49 @@ export const TaskEditViewPanel = (props: {
     onTaskRecordChange();
   };
 
-  const onKeyDownTag = (e: React.KeyboardEvent<HTMLDivElement>, id: number) => {
-    if (e.key !== "Enter") {
-      return;
+  const handleClickNewTag = () => {
+    setTags([...tags, ""]);
+  };
+
+  const onChangeTag = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    id: number
+  ) => {
+    let triggerEditComplete = false;
+    let edit = tags;
+    if (e.target.value) {
+      edit[id] = e.target.value;
+    } else {
+      edit.splice(id, 1); // empty tag, delete
+      if (!stringIsNullOrEmptyOrWhitespace(description)) {
+        triggerEditComplete = true;
+      }
     }
 
-    if (e.shiftKey) {
-      handleClickNewTag();
-      return;
+    setTags([...edit]);
+    
+    if (triggerEditComplete) {
+      props.onTaskRecordEditComplete(props.taskRecord);
+    } else {
+      onTaskRecordChange();
+    }
+  };
+
+  const onKeyDownTag = (e: React.KeyboardEvent<HTMLDivElement>, id: number) => {
+    if (e.key === `Enter`) {
+      if (stringIsNullOrEmptyOrWhitespace(description)) {
+        return;
+      }
+      if (!e.shiftKey) {
+        props.taskRecord.description = description;
+        props.taskRecord.tags = tags;
+        props.onTaskRecordEditComplete(props.taskRecord);
+        return;
+      }
+      if (!stringIsNullOrEmptyOrWhitespace(tags[id])) {
+        handleClickNewTag();
+        return;
+      }
     }
 
     onTaskRecordChange();
