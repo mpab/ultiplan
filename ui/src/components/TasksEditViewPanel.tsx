@@ -72,7 +72,6 @@ export const TaskEditViewPanel = (props: {
     <React.Fragment>
       <TextField
         autoFocus
-        margin="dense"
         label="Description"
         type="text"
         fullWidth
@@ -84,21 +83,21 @@ export const TaskEditViewPanel = (props: {
         rows={props.isExpanded ? 3 : 1}
       />
       <Collapse in={props.isExpanded} timeout="auto" unmountOnExit>
-      {props.tags.map((tag, id) => (
-        <TextField
-          id={String(id)}
-          fullWidth
-          value={tag}
-          onChange={(e) => handleInputChangeTag(e, id)}
-          onKeyDown={(e) => handleTagKeyDown(e, id)}
-        />
-      ))}
-      <Tooltip title="add a tag line">
-        <IconButton onClick={handleClickNewTag} sx={{ fontSize: "12px" }}>
-          <Add sx={{ fontSize: "12px" }} />
-          add tag
-        </IconButton>
-      </Tooltip>
+        {props.tags.map((tag, id) => (
+          <TextField
+            id={String(id)}
+            fullWidth
+            value={tag}
+            onChange={(e) => handleInputChangeTag(e, id)}
+            onKeyDown={(e) => handleTagKeyDown(e, id)}
+          />
+        ))}
+        <Tooltip title="add a tag line">
+          <IconButton onClick={handleClickNewTag} sx={{ fontSize: "12px" }}>
+            <Add sx={{ fontSize: "12px" }} />
+            add tag
+          </IconButton>
+        </Tooltip>
       </Collapse>
     </React.Fragment>
   );

@@ -120,7 +120,6 @@ export const Table = ({ data }) => {
           <DialogContentText>Enter a description</DialogContentText>
           <TextField
             autoFocus
-            margin="dense"
             id="name"
             label="description"
             type="text"

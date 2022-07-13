@@ -1147,5 +1147,15 @@
     "completed_on": "",
     "project": "ultiplan",
     "tags": []
+  },
+  {
+    "id": "2b1c3947-d961-40b4-8dee-192e1a581e6e",
+    "description": "ui: implement standard success and error handlers for all api requests/http verbs - with logging and toast alerts",
+    "created_on": "2022-07-12",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "",
+    "project": "ultiplan",
+    "tags": []
   }
 ]

@@ -1,5 +1,3 @@
-import { GridStrategyProcessingApi } from "@mui/x-data-grid/hooks/core/strategyProcessing";
-
 export type TaskRecord = {
   id: string;
   project: string;

@@ -7,6 +7,7 @@ import {
   Paper,
   Select,
   SelectChangeEvent,
+  styled,
   Table,
   TableBody,
   TableCell,
@@ -220,6 +221,10 @@ export const TasksListView = () => {
         toast.success(`changed: ${description}`);
       };
 
+      const CompactTableCell = styled(TableCell)({
+        padding: 4,
+      })
+
       return (
         <Table
           sx={{
@@ -229,7 +234,7 @@ export const TasksListView = () => {
           }}
         >
           <TableRow>
-            <TableCell width={10}>
+            <CompactTableCell width={10}>
               {!isExpanded ? (
                 <IconButton
                   aria-label="expand row"
@@ -247,8 +252,8 @@ export const TasksListView = () => {
                   <KeyboardArrowDownIcon sx={{ fontSize: "18px" }} />
                 </IconButton>
               )}
-            </TableCell>
-            <TableCell component="th" scope="row">
+            </CompactTableCell>
+            <CompactTableCell component="th" scope="row">
               {stringIsNullOrEmpty(taskView.taskRecord.id) ||
               taskView.status === TaskStatus.unknown ||
               taskView.status === TaskStatus.completed ? (
@@ -273,7 +278,7 @@ export const TasksListView = () => {
                   }}
                 ></TaskEditViewPanel>
               )}
-            </TableCell>
+            </CompactTableCell>
           </TableRow>
         </Table>
       );
@@ -361,7 +366,7 @@ export const TasksListView = () => {
 
   // -----------------------------------------------------
 
-  let height = rowsPerPage <= 10 ? rowsPerPage * 90 : 900;
+  let height = rowsPerPage <= 10 ? rowsPerPage * 120 : 900;
   //height =
   //  document.body.clientHeight < height ? document.body.clientHeight : height;
 
@@ -381,7 +386,7 @@ export const TasksListView = () => {
           </Table>
         </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25, 100]}
+          rowsPerPageOptions={[10, 25, 100]}
           component="div"
           count={records.length}
           rowsPerPage={rowsPerPage}
