@@ -85,6 +85,7 @@ export const TaskEditViewPanel = (props: {
       <Collapse in={props.isExpanded} timeout="auto" unmountOnExit>
         {props.tags.map((tag, id) => (
           <TextField
+            autoFocus
             id={String(id)}
             fullWidth
             value={tag}

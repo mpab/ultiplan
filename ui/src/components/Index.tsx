@@ -26,6 +26,7 @@ import { TasksCalendarView } from "./TasksCalendarView";
 import { TasksGanttChartView } from "./TasksGanttChartView";
 import { MeetingsListView } from "./MeetingsListView";
 import { TasksKanbanView } from "./TasksKanbanView";
+import { TasksListViewReference } from "./TasksListViewReference";
 
 const drawerWidth = 240;
 
@@ -97,6 +98,7 @@ export default function PersistentDrawerLeft() {
     "Tasks Kanban View",
     "Tasks Calendar View",
     "Tasks Gantt Chart View",
+    "Tasks List View (reference)",
     "Meetings List View",
   ];
 
@@ -197,6 +199,15 @@ export default function PersistentDrawerLeft() {
             </ListItemButton>
           </ListItem>
 
+          <ListItem disablePadding>
+            <ListItemButton onClick={() => setView(4)}>
+              <ListItemIcon>
+                <WaterfallChartIcon />
+              </ListItemIcon>
+              <ListItemText primary="Tasks List (reference)" />
+            </ListItemButton>
+          </ListItem>
+
           <Divider />
 
           <ListItemText
@@ -207,7 +218,7 @@ export default function PersistentDrawerLeft() {
             }
           />
           <ListItem disablePadding>
-            <ListItemButton onClick={() => setView(3)}>
+            <ListItemButton onClick={() => setView(5)}>
               <ListItemIcon>
                 <NotesIcon />
               </ListItemIcon>
@@ -224,7 +235,8 @@ export default function PersistentDrawerLeft() {
         {view === 1 && <TasksKanbanView />}
         {view === 2 && <TasksCalendarView />}
         {view === 3 && <TasksGanttChartView />}
-        {view === 4 && <MeetingsListView />}
+        {view === 4 && <TasksListViewReference />}
+        {view === 5 && <MeetingsListView />}
       </Main>
     </Box>
   );

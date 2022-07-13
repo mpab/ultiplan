@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import MaterialTable, { Column } from "@material-table/core";
 import { Container } from '@mui/material';
 import tableIcons from "./TableIcons";
@@ -12,9 +12,10 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-import { taskDelete, taskCreate, taskUpdate } from "../api/tasks";
+import { taskDelete, taskCreate, taskUpdate, tasksRead } from "../api/tasks";
 
-import { TaskRecord } from "../api/types";
+import { TaskRecord, taskRecordFromDescription, TaskView } from "../api/types";
+import { stringIsNullOrEmpty } from "../utils";
 
 // type Props = {
 //   data: TaskRecord[],
@@ -37,7 +38,18 @@ const options = {
   pageSizeOptions: [10, 20, 50],
 };
 
-export const Table = ({ data }) => {
+export const TasksListViewReference = () => {
+  // -----------------------------------------------------
+  // records get/set
+  const [records, setRecords] = useState<TaskRecord[]>([]);
+  const [summary, setSummary] = useState<string>("");
+
+  useEffect(() => {
+    tasksRead(setRecords, setSummary);
+  }, []);
+
+  // -----------------------------------------------------
+  
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -48,32 +60,31 @@ export const Table = ({ data }) => {
     setIsDialogOpen(false);
   };
 
-  const handleDeleteTaskRequest = (rowData) => {
-    if (!rowData.id) {
-      alert(`task has no id, unable to delete`);
+  const handleDeleteTaskRequest = (taskView: TaskView) => {
+    if (stringIsNullOrEmpty(taskView.taskRecord.id)) {
       return;
     }
 
     if (
-      window.confirm(`Delete Task?\n` + rowData.id + `\n` + rowData.description)
+      window.confirm(`Delete Task?\n` + taskView.taskRecord.id + `\n` + taskView.taskRecord.description)
     ) {
-      taskDelete(rowData.id);
+      taskDelete(taskView.taskRecord.id);
     }
   };
 
   const handleNewTaskRequest = () => {
     const description = prompt("Enter description: ", "todo");
-    if (description) taskCreate(description);
+    if (description) taskCreate(taskRecordFromDescription(description));
   };
 
-  const handleEditTaskRequest = (rowData) => {
-    if (!rowData.id) {
+  const handleEditTaskRequest = (taskView: TaskView) => {
+    if (stringIsNullOrEmpty(taskView.taskRecord.id)) {
       alert(`task has no id, unable to edit`);
       return;
     }
 
-    const description = prompt("Description: ", rowData.description);
-    if (description) taskUpdate(rowData.id, description);
+    const description = prompt("Description: ", taskView.taskRecord.description);
+    if (description) taskUpdate(taskView.taskRecord);
   };
 
   React.useEffect(() => {
@@ -81,37 +92,42 @@ export const Table = ({ data }) => {
     // if (isDialogOpen) {
     //   setIsDialogOpen(false);
     // }
-  }, [data, isDialogOpen]);
+  }, [isDialogOpen]);
+
+//   <MaterialTable
+//   columns={columns}
+//   data={data}
+//   icons={tableIcons}
+//   options={{
+//     exportButton: true,
+//   }}
+//   title={"Tasks"}
+//   actions={[
+//     {
+//       icon: tableIcons.Delete,
+//       tooltip: "Delete Task",
+//       onClick: (event, rowData) => handleDeleteTaskRequest(rowData),
+//     },
+//     {
+//       icon: tableIcons.Add,
+//       tooltip: "Add Task",
+//       isFreeAction: true,
+
+//       onClick: (event) => handleNewTaskRequest(),
+//     },
+//     {
+//       icon: tableIcons.Edit,
+//       tooltip: "Edit Task",
+//       onClick: (event, rowData) => handleEditTaskRequest(rowData),
+//     },
+//   ]}
+// />
 
   return (
     <Container>
       <MaterialTable
-        columns={columns}
-        data={data}
-        icons={tableIcons}
-        options={{
-          exportButton: true,
-        }}
-        title={"Tasks"}
-        actions={[
-          {
-            icon: tableIcons.Delete,
-            tooltip: "Delete Task",
-            onClick: (event, rowData) => handleDeleteTaskRequest(rowData),
-          },
-          {
-            icon: tableIcons.Add,
-            tooltip: "Add Task",
-            isFreeAction: true,
-
-            onClick: (event) => handleNewTaskRequest(),
-          },
-          {
-            icon: tableIcons.Edit,
-            tooltip: "Edit Task",
-            onClick: (event, rowData) => handleEditTaskRequest(rowData),
-          },
-        ]}
+      columns={columns}
+      data={records}
       />
 
       <Dialog open={isDialogOpen} onClose={handleClose}>

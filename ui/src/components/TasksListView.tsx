@@ -103,7 +103,6 @@ export const TasksListView = () => {
   // -----------------------------------------------------
   // records get/set
   const [records, setRecords] = useState<TaskRecord[]>([]);
-
   const [summary, setSummary] = useState<string>("");
 
   useEffect(() => {
@@ -222,7 +221,7 @@ export const TasksListView = () => {
       };
 
       const CompactTableCell = styled(TableCell)({
-        padding: 4,
+        padding: 2,
       })
 
       return (
