@@ -1,61 +1,73 @@
 import { Add } from "@mui/icons-material";
 import { Collapse, IconButton, TextField, Tooltip } from "@mui/material";
 import React, { ChangeEvent, useState } from "react";
-import { stringIsNullOrEmpty } from "../utils";
+import { TaskRecord } from "../api/types";
+import { stringIsNullOrEmptyOrWhitespace } from "../utils";
 
 export const TaskEditViewPanel = (props: {
-  description: string;
-  setDescription: (description: string) => void;
-  descriptionError: string;
-  setDescriptionError: (err: string) => void;
-  tags: string[];
-  setTags: (tags: string[]) => void;
-  handleEndEdit: () => void;
+  taskRecord: TaskRecord;
+  onTaskRecordChange: (taskRecord: TaskRecord) => void;
+  onTaskRecordEditComplete: (taskRecord: TaskRecord) => void;
   isExpanded: boolean;
 }) => {
-  const handleInputChangeDescription = (
+  let validate = (s: string): string =>
+    stringIsNullOrEmptyOrWhitespace(s) ? `cannot be whitespace` : ``;
+
+  const [description, setDescription] = useState(props.taskRecord.description);
+  const [validationError, setValidationError] = useState(
+    validate(props.taskRecord.description)
+  );
+  const [tags, setTags] = useState(props.taskRecord.tags);
+
+  const onTaskRecordChange = () => {
+    props.taskRecord.description = description;
+    props.taskRecord.tags = tags;
+    props.onTaskRecordChange(props.taskRecord);
+  };
+
+  const onChangeDescription = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    props.setDescriptionError(
-      stringIsNullOrEmpty(e.target.value) ? "description cannot be empty" : ""
-    );
-    props.setDescription(e.target.value);
+    setDescription(e.target.value);
+    setValidationError(validate(e.target.value));
+    onTaskRecordChange();
   };
 
   const handleClickNewTag = () => {
-    props.setTags([...props.tags, ""]);
+    setTags([...tags, ""]);
   };
 
-  const handleInputChangeTag = (
+  const onChangeTag = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     id: number
   ) => {
-    let edit = props.tags;
+    let edit = tags;
     if (e.target.value) {
       edit[id] = e.target.value;
     } else {
       edit.splice(id, 1);
-      props.handleEndEdit();
     }
-    props.setTags([...edit]);
+    setTags([...edit]);
+    onTaskRecordChange();
   };
 
-  const handleDescriptionKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key !== "Enter") {
-      return;
+  const onKeyDownDescription = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === `Enter`) {
+      if (stringIsNullOrEmptyOrWhitespace(description)) {
+        return;
+      }
+      
+      if (!e.shiftKey) {
+        props.taskRecord.description = description;
+        props.taskRecord.tags = tags;
+        props.onTaskRecordEditComplete(props.taskRecord);
+        return;
+      }
     }
-
-    if (e.shiftKey) {
-      return;
-    }
-
-    props.handleEndEdit();
+    onTaskRecordChange();
   };
 
-  const handleTagKeyDown = (
-    e: React.KeyboardEvent<HTMLDivElement>,
-    id: number
-  ) => {
+  const onKeyDownTag = (e: React.KeyboardEvent<HTMLDivElement>, id: number) => {
     if (e.key !== "Enter") {
       return;
     }
@@ -65,7 +77,7 @@ export const TaskEditViewPanel = (props: {
       return;
     }
 
-    props.handleEndEdit();
+    onTaskRecordChange();
   };
 
   return (
@@ -75,22 +87,22 @@ export const TaskEditViewPanel = (props: {
         label="Description"
         type="text"
         fullWidth
-        value={props.description}
-        helperText={props.descriptionError}
+        value={description}
+        helperText={validationError}
         multiline
-        onChange={(e) => handleInputChangeDescription(e)}
-        onKeyDown={(e) => handleDescriptionKeyDown(e)}
+        onChange={(e) => onChangeDescription(e)}
+        onKeyDown={(e) => onKeyDownDescription(e)}
         rows={props.isExpanded ? 3 : 1}
       />
       <Collapse in={props.isExpanded} timeout="auto" unmountOnExit>
-        {props.tags.map((tag, id) => (
+        {tags.map((tag, id) => (
           <TextField
             autoFocus
             id={String(id)}
             fullWidth
             value={tag}
-            onChange={(e) => handleInputChangeTag(e, id)}
-            onKeyDown={(e) => handleTagKeyDown(e, id)}
+            onChange={(e) => onChangeTag(e, id)}
+            onKeyDown={(e) => onKeyDownTag(e, id)}
           />
         ))}
         <Tooltip title="add a tag line">

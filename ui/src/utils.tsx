@@ -2,6 +2,14 @@ export const stringIsNullOrEmpty = (str: string | null): boolean => {
   return typeof str == "undefined" || !str || !str.trim;
 };
 
+export const stringIsNullOrEmptyOrWhitespace = (str: string | null): boolean => {
+  if (stringIsNullOrEmpty(str)) return true;
+  let checkstr = str as string;
+  checkstr = checkstr.replace(' ', '');
+  checkstr = checkstr.replace(/(\r\n|\n|\r)/gm, '');
+  return checkstr.length === 0;;
+};
+
 export const dateYYYYMMDD = (date: {
   getTime: () => number;
   getTimezoneOffset: () => number;

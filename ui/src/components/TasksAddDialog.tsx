@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import {
   Button,
@@ -10,20 +10,19 @@ import {
   Tooltip,
 } from "@mui/material";
 import { TaskRecord, taskRecordFromDescription } from "../api/types";
-import { stringIsNullOrEmpty } from "../utils";
+import { stringIsNullOrEmptyOrWhitespace } from "../utils";
 import { Add } from "@mui/icons-material";
 import { TaskEditViewPanel } from "./TasksEditViewPanel";
 
 const TasksAddDialog = (props: {
   setOpenDialog: (mode: boolean) => void;
   openDialog: boolean;
-  onConfirmHandler: (task: TaskRecord) => void;
+  onTaskRecordEditComplete: (taskRecord: TaskRecord) => void;
 }) => {
-  const [description, setDescription] = useState("");
-  const [descriptionError, setDescriptionError] = useState("");
-  const [tags, setTags] = useState(Array<string>());
+  const [taskRecord, setTaskRecord] = useState(taskRecordFromDescription(``));
+  const [confirmIsDisabled, setConfirmIsDisabled] = useState(true);
 
-  const handleDialogClose = () => {
+  const onDialogClose = () => {
     props.setOpenDialog(false);
   };
 
@@ -32,17 +31,19 @@ const TasksAddDialog = (props: {
   };
 
   const handleConfirm = () => {
-    props.setOpenDialog(false);
-    const task = taskRecordFromDescription(description);
-    task.tags = tags;
-    props.onConfirmHandler(task);
+    if (stringIsNullOrEmptyOrWhitespace(taskRecord.description)) {
+      alert('empty description');
+      return;
+    }
+
+    onDialogClose();
+    props.onTaskRecordEditComplete(taskRecord);
   };
 
-  const handleEndEdit = () => {
-    console.log("TasksAddDialog end edit");
+  const onTaskRecordChange = (newTaskRecord: TaskRecord): void => {
+    setTaskRecord(newTaskRecord);
+    setConfirmIsDisabled(stringIsNullOrEmptyOrWhitespace(taskRecord.description));
   };
-
-  const isFormInvalid = stringIsNullOrEmpty(description);
 
   return (
     <React.Fragment>
@@ -53,7 +54,7 @@ const TasksAddDialog = (props: {
       </Tooltip>
       <Dialog
         open={props.openDialog}
-        onClose={handleDialogClose}
+        onClose={onDialogClose}
         aria-labelledby="add-form-dialog-title"
         fullWidth
         maxWidth={"md"}
@@ -63,14 +64,10 @@ const TasksAddDialog = (props: {
         <DialogContent>
           <TaskEditViewPanel
             {...{
-              description,
-              setDescription,
-              descriptionError,
-              setDescriptionError,
-              tags,
-              setTags,
-              handleEndEdit,
-              isExpanded: true
+              taskRecord,
+              onTaskRecordChange,
+              onTaskRecordEditComplete: handleConfirm,
+              isExpanded: true,
             }}
           ></TaskEditViewPanel>
         </DialogContent>
@@ -78,11 +75,11 @@ const TasksAddDialog = (props: {
           <Button
             onClick={handleConfirm}
             color="primary"
-            disabled={isFormInvalid}
+            disabled={confirmIsDisabled}
           >
             Confirm
           </Button>
-          <Button onClick={handleDialogClose} color="secondary">
+          <Button onClick={onDialogClose} color="secondary">
             Cancel
           </Button>
         </DialogActions>

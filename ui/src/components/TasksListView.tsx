@@ -33,8 +33,8 @@ import toast from "./Toast";
 import { TaskEditViewPanel } from "./TasksEditViewPanel";
 
 const taskRecordToTaskView = (r: TaskRecord): TaskView => {
-  let date = 'unknown';
-  let dateSignificance = '';
+  let date = "unknown";
+  let dateSignificance = "";
   let status = TaskStatus.unknown;
 
   if (r.created_on) {
@@ -206,23 +206,15 @@ export const TasksListView = () => {
     };
 
     const TaskEditCell = () => {
-      const [description, setDescription] = useState(
-        taskView.taskRecord.description
-      );
-      const [tags, setTags] = useState(taskView.taskRecord.tags);
-      const [descriptionError, setDescriptionError] = useState("");
 
-      const handleEndEdit = () => {
-        console.log("TaskEditCell end edit");
-        taskView.taskRecord.description = description;
-        taskView.taskRecord.tags = tags;
-        taskUpdate(taskView.taskRecord);
-        toast.success(`changed: ${description}`);
+      const onTaskRecordEditComplete = (taskRecord: TaskRecord) => {
+        taskUpdate(taskRecord);
+        toast.success(`updated: ${taskRecord.description}`);
       };
 
       const CompactTableCell = styled(TableCell)({
         padding: 2,
-      })
+      });
 
       return (
         <Table
@@ -258,7 +250,7 @@ export const TasksListView = () => {
               taskView.status === TaskStatus.completed ? (
                 <TextField
                   style={{ width: "100%" }}
-                  value={description}
+                  value={taskView.taskRecord.description}
                   InputProps={{
                     readOnly: true,
                   }}
@@ -266,13 +258,9 @@ export const TasksListView = () => {
               ) : (
                 <TaskEditViewPanel
                   {...{
-                    description,
-                    setDescription,
-                    descriptionError,
-                    setDescriptionError,
-                    tags,
-                    setTags,
-                    handleEndEdit,
+                    taskRecord: taskView.taskRecord,
+                    onTaskRecordChange: () => {},
+                    onTaskRecordEditComplete,
                     isExpanded,
                   }}
                 ></TaskEditViewPanel>
@@ -293,7 +281,10 @@ export const TasksListView = () => {
           <TableCell style={{ width: "10%" }}>
             <TasksStatusSelect />
           </TableCell>
-          <TableCell><div>{taskView.date}</div><div>{taskView.dateSignificance}</div></TableCell>
+          <TableCell>
+            <div>{taskView.date}</div>
+            <div>{taskView.dateSignificance}</div>
+          </TableCell>
           <TableCell>
             <TasksDeleteDialog
               openDialog={openDeleteDialog}
@@ -328,7 +319,7 @@ export const TasksListView = () => {
             <TasksAddDialog
               openDialog={openAddDialog}
               setOpenDialog={setOpenAddDialog}
-              onConfirmHandler={(task: TaskRecord) => {
+              onTaskRecordEditComplete={(task: TaskRecord) => {
                 if (task.description) {
                   taskCreate(task);
                   tasksRead(setRecords, setSummary);
@@ -373,7 +364,12 @@ export const TasksListView = () => {
     <React.Fragment>
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <TableContainer component={Paper} sx={{ maxHeight: height }}>
-          <Table size="small" stickyHeader aria-label="collapsible table" sx={{ minWidth: 800 }} >
+          <Table
+            size="small"
+            stickyHeader
+            aria-label="collapsible table"
+            sx={{ minWidth: 800 }}
+          >
             <TableHeader />
             <TableBody>
               {records
