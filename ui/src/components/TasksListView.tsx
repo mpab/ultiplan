@@ -22,10 +22,9 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import React from "react";
 import { useEffect, useState } from "react";
-import { taskCreate, taskDelete, tasksRead, taskUpdate } from "../api/tasks";
+import { taskCreate, taskDelete, taskReadAll, taskUpdate } from "../api/tasks";
 
 import {
-  TaskRecord,
   taskRecordFromDescription,
   TaskStatus,
   TaskView,
@@ -53,7 +52,48 @@ export const TasksListView = () => {
   const [openAddDialog, setOpenAddDialog] = useState(false);
 
   const [isVisibleTaskDeleteDlg, setIsVisibleTaskDeleteDlg] = useState(false);
-  const onClick_TaskDeleteDlg_Confirm = (taskView: TaskView) => {
+
+  // ------------------------------------------------------------
+  // API CRUD functions
+
+  const createTask = (taskView: TaskView) => {
+    const index = taskViewCollection.indexOf(taskView);
+    if (index >= 0) {
+      toast.error(`${taskView.taskRecord.description} exists`);
+      return;
+    }
+
+    taskCreate(
+      taskView.taskRecord,
+      (response) => {
+        console.log("taskCreate response:", response);
+        if (response.status !== 201) {
+          toast.error(
+            `could not create ${taskView.taskRecord.description} (code=${response.status})`
+          );
+          return;
+        }
+
+        return response;
+      },
+      (data) => {
+        if (!data) return;
+        let newCollection = [...taskViewCollection];
+        newCollection.push(taskView);
+        setTaskViewCollection(newCollection);
+        toast.success(`created ${taskView.taskRecord.description}`);
+      },
+      (error) => {
+        console.error(error);
+        const estr = eToString(error);
+        toast.error(
+          `could not create ${taskView.taskRecord.description} (${estr})`
+        );
+      }
+    );
+  };
+
+  const deleteTask = (taskView: TaskView) => {
     const index = taskViewCollection.indexOf(taskView);
     if (index < 0) {
       toast.error(`${taskView.taskRecord.description} not found`);
@@ -90,56 +130,103 @@ export const TasksListView = () => {
     );
   };
 
+  const updateTask = (taskView: TaskView) => {
+    const index = taskViewCollection.indexOf(taskView);
+    if (index < 0) {
+      toast.error(`${taskView.taskRecord.description} not found`);
+      return;
+    }
+
+    taskUpdate(
+      taskView.taskRecord,
+      (response) => {
+        console.log("taskUpdate response:", response);
+        if (response.status !== 200) {
+          toast.error(
+            `could not update ${taskView.taskRecord.description} (code=${response.status})`
+          );
+          return;
+        }
+
+        return response;
+      },
+      (data) => {
+        if (!data) return;
+        let newCollection = [...taskViewCollection];
+        newCollection[index] = taskView;
+        setTaskViewCollection(newCollection);
+        toast.success(`updated ${taskView.taskRecord.description}`);
+      },
+      (error) => {
+        console.error(error);
+        const estr = eToString(error);
+        toast.error(
+          `could not update ${taskView.taskRecord.description} (${estr})`
+        );
+      }
+    );
+  };
+
   // -----------------------------------------------------
   // status filtering
 
   const statusFilters = [...Object.values(TaskStatus)];
   const [statusFilterProp, setStatusFilterProp] = useState("any");
 
-  // -----------------------------------------------------
+  const readAllTasks = () => {
+    taskReadAll(
+      (response) => {
+        console.log("tasksRead response:", response);
+        if (response.status !== 200) {
+          toast.error(`could not read tasks (code=${response.status})`);
+          return;
+        }
 
-  const [trigger, setTrigger] = useState(0);
-
-  useEffect(() => {
-    tasksRead(
-      (task: TaskRecord, views: TaskView[]) => {
-        const view: TaskView = taskViewFromTaskRecord(task);
-        views.push(view);
+        return response.json();
       },
-      setTaskViewCollection,
-      setSummary
-    );
-    //toast.success(`tasksRead: ${trigger}`);
-  }, [trigger]);
+      (data) => {
+        if (!data) return;
 
-  const queryTasks = () => {
-    setTrigger(trigger + 1);
+        const results = new Array<TaskView>();
+        const projects = new Set<string>();
+        let completed = 0;
+
+        if (statusFilterProp === "any") {
+          for (const d of data) {
+            const view: TaskView = taskViewFromTaskRecord(d);
+            results.push(view);
+            if (!stringIsNullOrEmpty(d.completed_on)) ++completed;
+            projects.add(d.project);
+          }
+        } else {
+          for (const d of data) {
+            const view: TaskView = taskViewFromTaskRecord(d);
+            if (view.status === statusFilterProp) results.push(view);
+            if (!stringIsNullOrEmpty(d.completed_on)) ++completed;
+            projects.add(d.project);
+          }
+        }
+        setTaskViewCollection(results);
+        const project_list = Array.from(projects).join(", ");
+        const summary = `${project_list}, ${
+          data.length
+        } tasks, ${completed} completed, @ ${new Date()}`;
+        setSummary(summary);
+      },
+      (error) => {
+        console.error(error);
+        const estr = eToString(error);
+        toast.error(`could not read tasks (${estr})`);
+      }
+    );
   };
 
-  useEffect(() => {
-    if (statusFilterProp === "any") {
-      tasksRead(
-        (task: TaskRecord, views: TaskView[]) => {
-          const view: TaskView = taskViewFromTaskRecord(task);
-          views.push(view);
-        },
-        setTaskViewCollection,
-        setSummary
-      );
-      //toast.success(`tasksRead: ${statusFilterProp}`);
-      return;
-    }
+  const [refresh, setRefresh] = useState(0);
+  const triggerRefresh = () => setRefresh(1 + refresh);
 
-    tasksRead(
-      (task: TaskRecord, views: TaskView[]) => {
-        const view: TaskView = taskViewFromTaskRecord(task);
-        if (view.status === statusFilterProp) views.push(view);
-      },
-      setTaskViewCollection,
-      setSummary
-    );
-    //toast.success(`tasksRead: ${statusFilterProp}`);
-  }, [statusFilterProp]);
+  useEffect(() => {
+    readAllTasks();
+  }, [statusFilterProp, refresh]);
 
   // -----------------------------------------------------
 
@@ -186,9 +273,7 @@ export const TasksListView = () => {
             break;
         }
 
-        taskUpdate(tv.taskRecord);
-        queryTasks();
-        toast.success(`changed: ${tv.status} -> ${newTaskStatus}`);
+        updateTask(tv);
       };
 
       return (
@@ -225,12 +310,6 @@ export const TasksListView = () => {
     };
 
     const TaskEditCell = () => {
-      const onTaskViewEditComplete = (taskView: TaskView) => {
-        taskUpdate(taskView.taskRecord);
-        queryTasks();
-        toast.success(`updated: ${taskView.taskRecord.description}`);
-      };
-
       const CompactTableCell = styled(TableCell)({
         padding: 2,
       });
@@ -279,7 +358,9 @@ export const TasksListView = () => {
                   {...{
                     taskView: tv,
                     onTaskViewChange: () => {},
-                    onTaskViewEditComplete,
+                    onTaskViewEditComplete: () => {
+                      updateTask(tv);
+                    },
                     isExpanded,
                   }}
                 ></TaskEditViewControl>
@@ -376,9 +457,8 @@ export const TasksListView = () => {
               setOpenDialog={setOpenAddDialog}
               onTaskViewEditComplete={(taskView: TaskView) => {
                 if (taskView.taskRecord.description) {
-                  taskCreate(taskView.taskRecord);
-                  queryTasks();
-                  toast.success(`added: ${taskView.taskRecord.description}`);
+                  createTask(taskView);
+                  triggerRefresh(); // hacky bug fix... element remains locked if refresh not triggered
                 }
               }}
             />
@@ -451,7 +531,7 @@ export const TasksListView = () => {
       <TaskDeleteDlg
         setIsVisibleTaskDeleteDlg={setIsVisibleTaskDeleteDlg}
         isVisibleTaskDeleteDlg={isVisibleTaskDeleteDlg}
-        onClick_TaskDeleteDlg_Confirm={onClick_TaskDeleteDlg_Confirm}
+        onClick_TaskDeleteDlg_Confirm={deleteTask}
         selectedTaskView={selectedTaskView}
       />
       <div id="snackbarhelper"></div>

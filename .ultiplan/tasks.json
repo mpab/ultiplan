@@ -1,10 +1,10 @@
 [
   {
-    "description": "define initial task data model (nosql, json)",
-    "created_on": "2022-05-15",
-    "started_on": "2022-05-15",
-    "due_on": "2022-05-15",
-    "completed_on": "2022-05-15",
+    "description": "create an api for the web ui",
+    "created_on": "2022-06-10",
+    "started_on": "",
+    "due_on": "",
+    "completed_on": "2022-07-14",
     "project": "ultiplan",
     "tags": []
   },
@@ -662,7 +662,7 @@
   },
   {
     "id": "430742cb-74f5-4610-866a-db74d0efe0d6",
-    "description": "implement appending of records without reading all of the items first",
+    "description": "api: implement appending of records without reading all of the items first",
     "created_on": "2022-06-27",
     "started_on": "",
     "due_on": "",
@@ -1154,7 +1154,7 @@
     "created_on": "2022-07-12",
     "started_on": "",
     "due_on": "",
-    "completed_on": "",
+    "completed_on": "2022-07-14",
     "project": "ultiplan",
     "tags": []
   }

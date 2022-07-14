@@ -16,11 +16,15 @@ export class TasksController {
   constructor(private readonly service: TasksService) {}
 
   @Get()
+  @ApiOkResponse({ description: `tasks found.` })
+  @ApiNotFoundResponse({ description: 'tasks not found.' })
   get(): any {
     return this.service.read();
   }
 
   @Get(':id')
+  @ApiOkResponse({ description: `task found.` })
+  @ApiNotFoundResponse({ description: 'task not found.' })
   find(@Param('id') id: string): any {
     return this.service.find(id);
   }
@@ -33,16 +37,16 @@ export class TasksController {
   }
 
   @Post()
+  @ApiOkResponse({ description: `task created.` })
+  @ApiNotFoundResponse({ description: 'task not found.' })
   create(@Body() model: TaskModel): any {
-    //res.status(HttpStatus.OK).json(this.service.create());
-    return this.service.create(model);
+    this.service.create(model);
   }
 
   @Put()
+  @ApiOkResponse({ description: `task updated.` })
+  @ApiNotFoundResponse({ description: 'task not found.' })
   update(@Body() model: TaskModel): any {
-    //res.status(HttpStatus.OK).json(this.service.create());
-    try {
-      this.service.update(model);
-    } catch (e) {}
+    this.service.update(model);
   }
 }

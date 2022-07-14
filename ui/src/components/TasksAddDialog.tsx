@@ -10,7 +10,7 @@ import {
   Tooltip,
 } from "@mui/material";
 import { taskRecordFromDescription, TaskView, taskViewFromTaskRecord } from "../api/types";
-import { stringIsNullOrEmptyOrWhitespace } from "../utils";
+import { dateYYYYMMDD, stringIsNullOrEmptyOrWhitespace } from "../utils";
 import { Add } from "@mui/icons-material";
 import { TaskEditViewControl } from "./TasksEditViewControl";
 
@@ -19,7 +19,9 @@ const TasksAddDialog = (props: {
   openDialog: boolean;
   onTaskViewEditComplete: (taskView: TaskView) => void;
 }) => {
-  const [cachedTaskView, setCachedTaskView] = useState(taskViewFromTaskRecord(taskRecordFromDescription('')));
+  const template = taskRecordFromDescription('');
+  template.created_on = dateYYYYMMDD(new Date());
+  const [cachedTaskView, setCachedTaskView] = useState(taskViewFromTaskRecord(template));
   const [confirmIsDisabled, setConfirmIsDisabled] = useState(true);
 
   const onDialogClose = () => {

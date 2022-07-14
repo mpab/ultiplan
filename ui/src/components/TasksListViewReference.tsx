@@ -12,7 +12,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-import { taskDelete, taskCreate, taskUpdate, tasksRead } from "../api/tasks";
+import { taskDelete, taskCreate, taskUpdate, taskReadAll } from "../api/tasks";
 
 import { TaskRecord, taskRecordFromDescription, TaskView } from "../api/types";
 import { stringIsNullOrEmpty } from "../utils";
@@ -84,7 +84,13 @@ export const TasksListViewReference = () => {
 
   const handleNewTaskRequest = () => {
     const description = prompt("Enter description: ", "todo");
-    if (description) taskCreate(taskRecordFromDescription(description));
+    if (description)
+      taskCreate(
+        taskRecordFromDescription(description),
+        () => {},
+        () => {},
+        () => {}
+      );
   };
 
   const handleEditTaskRequest = (taskView: TaskView) => {
@@ -97,7 +103,13 @@ export const TasksListViewReference = () => {
       "Description: ",
       taskView.taskRecord.description
     );
-    if (description) taskUpdate(taskView.taskRecord);
+    if (description)
+      taskUpdate(
+        taskView.taskRecord,
+        () => {},
+        () => {},
+        () => {}
+      );
   };
 
   React.useEffect(() => {

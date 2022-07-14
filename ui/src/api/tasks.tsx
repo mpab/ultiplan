@@ -1,30 +1,14 @@
-import { stringIsNullOrEmpty } from "../utils";
-import { TaskRecord, TaskView, taskViewFromTaskRecord } from "./types";
+import { TaskRecord } from "./types";
 
-export const tasksRead = (
-  filter: (task: TaskRecord, results: TaskView[]) => void,
-  setRecords: (arg0: TaskView[]) => void,
-  setSummary: (arg0: string) => void,
+export const taskReadAll = (
+  processResponse: (response: any) => void,
+  onSuccess: (data: any) => void,
+  onError: (error: any) => void
 ) => {
-  const results = new Array<TaskView>();
-  const projects = new Set<string>();
-  let completed = 0;
-
-  fetch("http://localhost:3001/api/tasks")
-    .then((res) => res.json())
-    .then((records) => {
-      for (const d of records) {
-        filter(d, results);
-        if (!stringIsNullOrEmpty(d.completed_on)) ++completed;
-        projects.add(d.project);
-      }
-      setRecords(results);
-      const project_list = Array.from(projects).join(", ");
-      const summary = `${project_list}, ${
-        records.length
-      } tasks, ${completed} completed, @ ${new Date()}`;
-      setSummary(summary);
-    });
+  fetch(`http://localhost:3001/api/tasks`, {})
+    .then((response) => processResponse(response))
+    .then((data) => onSuccess(data))
+    .catch((error) => onError(error));
 };
 
 export const taskDelete = (
@@ -41,24 +25,30 @@ export const taskDelete = (
     .catch((error) => onError(error));
 };
 
-export const taskCreate = (task: TaskRecord) => {
+export const taskCreate = (
+  taskRecord: TaskRecord,
+  processResponse: (response: any) => void,
+  onSuccess: (data: any) => void,
+  onError: (error: any) => void
+) => {
   fetch(`http://localhost:3001/api/tasks`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(task),
+    body: JSON.stringify(taskRecord),
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+    .then((response) => processResponse(response))
+    .then((data) => onSuccess(data))
+    .catch((error) => onError(error));
 };
 
-export const taskUpdate = (taskRecord: TaskRecord) => {
+export const taskUpdate = (
+  taskRecord: TaskRecord,
+  processResponse: (response: any) => void,
+  onSuccess: (data: any) => void,
+  onError: (error: any) => void
+) => {
   fetch(`http://localhost:3001/api/tasks`, {
     method: "PUT",
     headers: {
@@ -66,11 +56,7 @@ export const taskUpdate = (taskRecord: TaskRecord) => {
     },
     body: JSON.stringify(taskRecord),
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+    .then((response) => processResponse(response))
+    .then((data) => onSuccess(data))
+    .catch((error) => onError(error));
 };

@@ -55,7 +55,7 @@
     - https://docs.nestjs.com/
     - https://www.thisdot.co/blog/introduction-to-restful-apis-with-nestjs
     - api/routes: https://progressivecoder.com/creating-your-first-nestjs-controller-learn-nestjs-series-part-2/
-- implement appending of records without reading all of the items first
+- api: implement appending of records without reading all of the items first
 - api: implement recursive reading of projects
 - api: add markdown summary endpoint
 - implement meeting notes feature
@@ -84,8 +84,18 @@
 - api: prevent deletion of started tasks
 - api book: discuss how to push validation to client - see task deletion guards
 - feature for api/services/db: add metadata to db - eg groups and tags spec along with statistics
+- implement summary info in api instead of ui
+- feature: scripts - run multiple api/ui combinations using a range of dynamically allocated urls/ports
 
 ### done: ultiplan
+- 2022-07-14: create an api for the web ui
+- 2022-07-14: ui: automatically set focus when adding a tag - also may need to scroll when doing so
+    - best example: https://www.cluemediator.com/set-focus-on-the-dynamic-input-field-in-react
+    - https://blog.maisie.ink/react-ref-autofocus/
+    - https://reactgo.com/react-focus-input
+    - https://stackoverflow.com/questions/61647847/how-can-i-set-focus-on-a-dynamically-added-field-with-react
+    - https://thewebdev.info/2022/03/26/how-to-focus-a-react-material-ui-textfield-on-button-click/
+- 2022-07-14: ui: implement standard success and error handlers for all api requests/http verbs - with logging and toast alerts
 - 2022-07-11: ui: extend task creation dialog to support tags
 - 2022-07-11: ui: extend task editing functionality to support tags
 - 2022-07-10: ui: implemented new status change controls with state transition guards
@@ -140,7 +150,6 @@
 - 2022-05-21: implement separate tasks database
 - 2022-05-19: auto configure commands such that they can be added automatically
 - 2022-05-16: basic task saving using a JSON file
-- 2022-05-15: define initial task data model (nosql, json)
 ---
 ## tests
 
