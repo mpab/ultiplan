@@ -27,7 +27,7 @@ export type TaskView = {
   errors: string[];
 };
 
-export const taskRecordFromDescription = (description: string): TaskRecord => {
+export const taskNew = (description: string): TaskRecord => {
   return {
     id: "",
     description: description,
@@ -40,7 +40,7 @@ export const taskRecordFromDescription = (description: string): TaskRecord => {
   };
 };
 
-export const taskViewFromTaskRecord = (r: TaskRecord): TaskView => {
+export const viewFromTask = (r: TaskRecord): TaskView => {
   let date = "unknown";
   let dateSignificance = "";
   let status = TaskStatus.any;

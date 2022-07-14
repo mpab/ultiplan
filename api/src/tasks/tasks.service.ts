@@ -30,7 +30,7 @@ const getProjectName = (): string => {
 
 @Injectable()
 export class TasksService {
-  create(model: TaskModel): any {
+  create(model: TaskModel): DbRecord {
     console.log(`------------------------------------`);
     console.log(`create`);
     console.dir(model);
@@ -61,15 +61,17 @@ export class TasksService {
     };
 
     dbCreateRecord(record, getDbHandle());
+
+    return record;
   }
 
-  read(): any {
+  read(): DbRecord[] {
     console.log(`------------------------------------`);
     console.log(`read`);
     return dbLoad(getDbHandle());
   }
 
-  find(id: string): any {
+  find(id: string): DbRecord {
     console.log(`------------------------------------`);
     console.log(`find ${id}`);
 
@@ -82,7 +84,7 @@ export class TasksService {
     return record;
   }
 
-  update(model: TaskModel): any {
+  update(model: TaskModel): DbRecord {
     console.log(`------------------------------------`);
     console.log(`update`);
     console.dir(model);
@@ -104,9 +106,11 @@ export class TasksService {
 
     if (!dbUpdateRecord(record, getDbHandle()))
       throw new UnprocessableEntityException(`cannot update: id=${model.id}`);
+
+    return record;
   }
 
-  delete(id: string): any {
+  delete(id: string): void {
     console.log(`------------------------------------`);
     if (!dbDeleteRecord(id, getDbHandle())) {
       throw new NotFoundException('Task not found.');

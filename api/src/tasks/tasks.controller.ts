@@ -40,13 +40,13 @@ export class TasksController {
   @ApiOkResponse({ description: `task created.` })
   @ApiNotFoundResponse({ description: 'task not found.' })
   create(@Body() model: TaskModel): any {
-    this.service.create(model);
+    return this.service.create(model);
   }
 
   @Put()
   @ApiOkResponse({ description: `task updated.` })
   @ApiNotFoundResponse({ description: 'task not found.' })
   update(@Body() model: TaskModel): any {
-    this.service.update(model);
+    return this.service.update(model);
   }
 }

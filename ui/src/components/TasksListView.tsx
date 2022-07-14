@@ -25,12 +25,17 @@ import { useEffect, useState } from "react";
 import { taskCreate, taskDelete, taskReadAll, taskUpdate } from "../api/tasks";
 
 import {
-  taskRecordFromDescription,
+  taskNew,
   TaskStatus,
   TaskView,
-  taskViewFromTaskRecord,
+  viewFromTask,
 } from "../api/types";
-import { dateYYYYMMDD, dateYYYYMMDDhhmmss, eToString, stringIsNullOrEmpty } from "../utils";
+import {
+  dateYYYYMMDD,
+  dateYYYYMMDDhhmmss,
+  eToString,
+  stringIsNullOrEmpty,
+} from "../utils";
 import TasksAddDialog from "./TasksAddDialog";
 
 import toast from "./Toast";
@@ -44,7 +49,7 @@ export const TasksListView = () => {
   const [taskViewCollection, setTaskViewCollection] = useState<TaskView[]>([]);
   const [summary, setSummary] = useState<string>("");
   const [selectedTaskView, setSelectedTaskView] = useState<TaskView>(
-    taskViewFromTaskRecord(taskRecordFromDescription(""))
+    viewFromTask(taskNew(""))
   );
 
   // ------------------------------------------------------------
@@ -74,20 +79,98 @@ export const TasksListView = () => {
           return;
         }
 
-        return response;
+        return response.json();
       },
       (data) => {
         if (!data) return;
+        const newView = viewFromTask(data)
         let newCollection = [...taskViewCollection];
-        newCollection.push(taskView);
+        newCollection.push(newView);
         setTaskViewCollection(newCollection);
-        toast.success(`created ${taskView.taskRecord.description}`);
+        toast.success(`created ${newView.taskRecord.description}`);
       },
       (error) => {
         console.error(error);
         const estr = eToString(error);
         toast.error(
           `could not create ${taskView.taskRecord.description} (${estr})`
+        );
+      }
+    );
+  };
+
+  const readAllTasks = () => {
+    taskReadAll(
+      (response) => {
+        console.log("tasksRead response:", response);
+        if (response.status !== 200) {
+          toast.error(`could not read tasks (code=${response.status})`);
+          return;
+        }
+
+        return response.json();
+      },
+      (data) => {
+        if (!data) return;
+        const results = new Array<TaskView>();
+        const projects = new Set<string>();
+        let completed = 0;
+
+        for (const d of data) {
+          const view: TaskView = viewFromTask(d);
+          results.push(view);
+          if (!stringIsNullOrEmpty(d.completed_on)) ++completed;
+          projects.add(d.project);
+        }
+
+        setTaskViewCollection(results);
+        const project_list = Array.from(projects).join(", ");
+        const summary = `${project_list}, ${
+          data.length
+        } tasks, ${completed} completed, @ ${dateYYYYMMDDhhmmss(new Date())}`;
+        setSummary(summary);
+      },
+      (error) => {
+        console.error(error);
+        const estr = eToString(error);
+        toast.error(`could not read tasks (${estr})`);
+      }
+    );
+  };
+
+  const updateTask = (taskView: TaskView) => {
+    const index = taskViewCollection.indexOf(taskView);
+    if (index < 0) {
+      toast.error(`${taskView.taskRecord.description} not found`);
+      return;
+    }
+
+    taskUpdate(
+      taskView.taskRecord,
+      (response) => {
+        console.log("taskUpdate response:", response);
+        if (response.status !== 200) {
+          toast.error(
+            `could not update ${taskView.taskRecord.description} (code=${response.status})`
+          );
+          return;
+        }
+
+        return response.json();
+      },
+      (data) => {
+        if (!data) return;
+        const newView = viewFromTask(data)
+        let newCollection = [...taskViewCollection];
+        newCollection[index] = newView;
+        setTaskViewCollection(newCollection);
+        toast.success(`updated ${newView.taskRecord.description}`);
+      },
+      (error) => {
+        console.error(error);
+        const estr = eToString(error);
+        toast.error(
+          `could not update ${taskView.taskRecord.description} (${estr})`
         );
       }
     );
@@ -130,97 +213,15 @@ export const TasksListView = () => {
     );
   };
 
-  const updateTask = (taskView: TaskView) => {
-    const index = taskViewCollection.indexOf(taskView);
-    if (index < 0) {
-      toast.error(`${taskView.taskRecord.description} not found`);
-      return;
-    }
-
-    taskView = taskViewFromTaskRecord(taskView.taskRecord); // force task view attributes update
-
-    taskUpdate(
-      taskView.taskRecord,
-      (response) => {
-        console.log("taskUpdate response:", response);
-        if (response.status !== 200) {
-          toast.error(
-            `could not update ${taskView.taskRecord.description} (code=${response.status})`
-          );
-          return;
-        }
-
-        return response;
-      },
-      (data) => {
-        if (!data) return;
-        let newCollection = [...taskViewCollection];
-        newCollection[index] = taskView;
-        setTaskViewCollection(newCollection);
-        toast.success(`updated ${taskView.taskRecord.description}`);
-      },
-      (error) => {
-        console.error(error);
-        const estr = eToString(error);
-        toast.error(
-          `could not update ${taskView.taskRecord.description} (${estr})`
-        );
-      }
-    );
-  };
-
   // -----------------------------------------------------
   // status filtering
 
   const statusFilters = [...Object.values(TaskStatus)];
   const [statusFilterProp, setStatusFilterProp] = useState("any");
 
-  const readAllTasks = () => {
-    taskReadAll(
-      (response) => {
-        console.log("tasksRead response:", response);
-        if (response.status !== 200) {
-          toast.error(`could not read tasks (code=${response.status})`);
-          return;
-        }
-
-        return response.json();
-      },
-      (data) => {
-        if (!data) return;
-
-        const results = new Array<TaskView>();
-        const projects = new Set<string>();
-        let completed = 0;
-
-        for (const d of data) {
-          const view: TaskView = taskViewFromTaskRecord(d);
-          results.push(view);
-          if (!stringIsNullOrEmpty(d.completed_on)) ++completed;
-          projects.add(d.project);
-        }
-
-        setTaskViewCollection(results);
-        const project_list = Array.from(projects).join(", ");
-        const summary = `${project_list}, ${
-          data.length
-        } tasks, ${completed} completed, @ ${dateYYYYMMDDhhmmss(new Date())}`;
-        setSummary(summary);
-      },
-      (error) => {
-        console.error(error);
-        const estr = eToString(error);
-        toast.error(`could not read tasks (${estr})`);
-      }
-    );
-  };
-
-  const [refresh, setRefresh] = useState(0);
-  const triggerRefresh = () => setRefresh(1 + refresh);
-
   useEffect(() => {
     readAllTasks();
-  }, [statusFilterProp, refresh]);
+  }, []);
 
   // -----------------------------------------------------
 
@@ -447,7 +448,6 @@ export const TasksListView = () => {
               onTaskViewEditComplete={(taskView: TaskView) => {
                 if (taskView.taskRecord.description) {
                   createTask(taskView);
-                  triggerRefresh(); // hacky bug fix... element remains locked if refresh not triggered
                 }
               }}
             />

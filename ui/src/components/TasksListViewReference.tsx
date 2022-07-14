@@ -14,7 +14,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 
 import { taskDelete, taskCreate, taskUpdate, taskReadAll } from "../api/tasks";
 
-import { TaskRecord, taskRecordFromDescription, TaskView } from "../api/types";
+import { TaskRecord, taskNew, TaskView } from "../api/types";
 import { stringIsNullOrEmpty } from "../utils";
 
 // type Props = {
@@ -86,7 +86,7 @@ export const TasksListViewReference = () => {
     const description = prompt("Enter description: ", "todo");
     if (description)
       taskCreate(
-        taskRecordFromDescription(description),
+        taskNew(description),
         () => {},
         () => {},
         () => {}
