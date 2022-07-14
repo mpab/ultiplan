@@ -30,7 +30,7 @@ import {
   TaskView,
   taskViewFromTaskRecord,
 } from "../api/types";
-import { dateYYYYMMDD, eToString, stringIsNullOrEmpty } from "../utils";
+import { dateYYYYMMDD, dateYYYYMMDDhhmmss, eToString, stringIsNullOrEmpty } from "../utils";
 import TasksAddDialog from "./TasksAddDialog";
 
 import toast from "./Toast";
@@ -137,6 +137,8 @@ export const TasksListView = () => {
       return;
     }
 
+    taskView = taskViewFromTaskRecord(taskView.taskRecord); // force task view attributes update
+
     taskUpdate(
       taskView.taskRecord,
       (response) => {
@@ -191,26 +193,18 @@ export const TasksListView = () => {
         const projects = new Set<string>();
         let completed = 0;
 
-        if (statusFilterProp === "any") {
-          for (const d of data) {
-            const view: TaskView = taskViewFromTaskRecord(d);
-            results.push(view);
-            if (!stringIsNullOrEmpty(d.completed_on)) ++completed;
-            projects.add(d.project);
-          }
-        } else {
-          for (const d of data) {
-            const view: TaskView = taskViewFromTaskRecord(d);
-            if (view.status === statusFilterProp) results.push(view);
-            if (!stringIsNullOrEmpty(d.completed_on)) ++completed;
-            projects.add(d.project);
-          }
+        for (const d of data) {
+          const view: TaskView = taskViewFromTaskRecord(d);
+          results.push(view);
+          if (!stringIsNullOrEmpty(d.completed_on)) ++completed;
+          projects.add(d.project);
         }
+
         setTaskViewCollection(results);
         const project_list = Array.from(projects).join(", ");
         const summary = `${project_list}, ${
           data.length
-        } tasks, ${completed} completed, @ ${new Date()}`;
+        } tasks, ${completed} completed, @ ${dateYYYYMMDDhhmmss(new Date())}`;
         setSummary(summary);
       },
       (error) => {
@@ -231,10 +225,12 @@ export const TasksListView = () => {
   // -----------------------------------------------------
 
   const Row = (props: { taskView: TaskView }) => {
-    // -----------------------------------------------------
-    // expander
     const [isExpanded, setIsExpanded] = useState(false);
+
     let tv = props.taskView;
+
+    if (statusFilterProp !== "any" && statusFilterProp !== tv.status)
+      return <></>;
 
     // -----------------------------------------------------
 
@@ -247,12 +243,18 @@ export const TasksListView = () => {
       // not_started -> completed
       if (tv.status === TaskStatus.not_started) {
         tasksStatusArray = tasksStatusArray.filter(
+          (ts) => ts !== TaskStatus.any
+        );
+        tasksStatusArray = tasksStatusArray.filter(
           (ts) => ts !== TaskStatus.not_started
         );
       }
 
       // in_progress -> completed
       if (tv.status === TaskStatus.in_progress) {
+        tasksStatusArray = tasksStatusArray.filter(
+          (ts) => ts !== TaskStatus.any
+        );
         tasksStatusArray = tasksStatusArray.filter(
           (ts) => ts !== TaskStatus.not_started
         );
@@ -343,28 +345,15 @@ export const TasksListView = () => {
               )}
             </CompactTableCell>
             <CompactTableCell component="th" scope="row">
-              {stringIsNullOrEmpty(tv.taskRecord.id) ||
-              tv.status === TaskStatus.any ||
-              tv.status === TaskStatus.completed ? (
-                <TextField
-                  style={{ width: "100%" }}
-                  value={tv.taskRecord.description}
-                  InputProps={{
-                    readOnly: true,
-                  }}
-                />
-              ) : (
-                <TaskEditViewControl
-                  {...{
-                    taskView: tv,
-                    onTaskViewChange: () => {},
-                    onTaskViewEditComplete: () => {
-                      updateTask(tv);
-                    },
-                    isExpanded,
-                  }}
-                ></TaskEditViewControl>
-              )}
+              <TaskEditViewControl
+                forceEdit={false}
+                taskView={tv}
+                onTaskViewChange={() => {}}
+                onTaskViewEditComplete={() => {
+                  updateTask(tv);
+                }}
+                isExpanded={isExpanded}
+              ></TaskEditViewControl>
             </CompactTableCell>
           </TableRow>
         </Table>

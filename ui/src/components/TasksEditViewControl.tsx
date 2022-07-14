@@ -1,29 +1,40 @@
 import { Add } from "@mui/icons-material";
 import { Collapse, IconButton, TextField, Tooltip } from "@mui/material";
 import React, { ChangeEvent, useState } from "react";
-import { TaskView } from "../api/types";
-import { stringIsNullOrEmptyOrWhitespace } from "../utils";
+import { TaskStatus, TaskView } from "../api/types";
+import { stringIsNullOrEmpty, stringIsNullOrEmptyOrWhitespace } from "../utils";
 
-export const TaskEditViewControl = (props: {
+export interface TaskEditViewControlProps {
   taskView: TaskView;
   onTaskViewChange: (taskView: TaskView) => void;
   onTaskViewEditComplete: (taskView: TaskView) => void;
   isExpanded: boolean;
-}) => {
-  let taskView = {...props.taskView}
+  forceEdit: boolean;
+}
+
+export const TaskEditViewControl = (props: TaskEditViewControlProps) => {
+
+  let isReadonly = () => {
+    if (props.forceEdit) return false;
+    return stringIsNullOrEmpty(tv.taskRecord.id) ||
+    tv.status === TaskStatus.any ||
+    tv.status === TaskStatus.completed;
+  }
+
+  let tv = { ...props.taskView };
 
   let validate = (s: string): string =>
     stringIsNullOrEmptyOrWhitespace(s) ? `cannot be whitespace` : ``;
 
-  const [description, setDescription] = useState(taskView.taskRecord.description);
-  const [tags, setTags] = useState(taskView.taskRecord.tags);
+  const [description, setDescription] = useState(tv.taskRecord.description);
+  const [tags, setTags] = useState(tv.taskRecord.tags);
 
   const [validationError, setValidationError] = useState(
-    validate(taskView.taskRecord.description)
+    validate(tv.taskRecord.description)
   );
 
   const onTaskViewChange = () => {
-    props.onTaskViewChange(taskView);
+    props.onTaskViewChange(tv);
   };
 
   const onChangeDescription = (
@@ -31,7 +42,7 @@ export const TaskEditViewControl = (props: {
   ) => {
     setDescription(e.target.value);
     setValidationError(validate(e.target.value));
-    taskView.taskRecord.description = e.target.value;
+    tv.taskRecord.description = e.target.value;
     onTaskViewChange();
   };
 
@@ -42,9 +53,9 @@ export const TaskEditViewControl = (props: {
       }
 
       if (!e.shiftKey) {
-        taskView.taskRecord.description = description;
-        taskView.taskRecord.tags = tags;
-        props.onTaskViewEditComplete(taskView);
+        tv.taskRecord.description = description;
+        tv.taskRecord.tags = tags;
+        props.onTaskViewEditComplete(tv);
         return;
       }
     }
@@ -53,7 +64,7 @@ export const TaskEditViewControl = (props: {
   const handleClickNewTag = () => {
     const newTags = [...tags, ""];
     setTags(newTags);
-    taskView.taskRecord.tags = newTags;
+    tv.taskRecord.tags = newTags;
     onTaskViewChange();
   };
 
@@ -73,11 +84,11 @@ export const TaskEditViewControl = (props: {
     }
 
     setTags([...edit]);
-    taskView.taskRecord.tags = edit;
+    tv.taskRecord.tags = edit;
     onTaskViewChange();
-    
+
     if (triggerEditComplete) {
-      props.onTaskViewEditComplete(taskView);
+      props.onTaskViewEditComplete(tv);
     }
   };
 
@@ -87,9 +98,9 @@ export const TaskEditViewControl = (props: {
         return;
       }
       if (!e.shiftKey) {
-        taskView.taskRecord.description = description;
-        taskView.taskRecord.tags = tags;
-        props.onTaskViewEditComplete(taskView);
+        tv.taskRecord.description = description;
+        tv.taskRecord.tags = tags;
+        props.onTaskViewEditComplete(tv);
         return;
       }
       if (!stringIsNullOrEmptyOrWhitespace(tags[id])) {
@@ -103,18 +114,30 @@ export const TaskEditViewControl = (props: {
 
   return (
     <React.Fragment>
-      <TextField
-        autoFocus
-        label="Description"
-        type="text"
-        fullWidth
-        value={description}
-        helperText={validationError}
-        multiline
-        onChange={(e) => onChangeDescription(e)}
-        onKeyDown={(e) => onKeyDownDescription(e)}
-        rows={props.isExpanded ? 3 : 1}
-      />
+      <Tooltip title={tv.taskRecord.id}>
+        {isReadonly() ? (
+          <TextField
+            style={{ width: "100%" }}
+            value={tv.taskRecord.description}
+            InputProps={{
+              readOnly: true,
+            }}
+          />
+        ) : (
+          <TextField
+            autoFocus
+            label="Description"
+            type="text"
+            fullWidth
+            value={description}
+            helperText={validationError}
+            multiline
+            onChange={(e) => onChangeDescription(e)}
+            onKeyDown={(e) => onKeyDownDescription(e)}
+            rows={props.isExpanded ? 3 : 1}
+          />
+        )}
+      </Tooltip>
       <Collapse in={props.isExpanded} timeout="auto" unmountOnExit>
         {tags.map((tag, id) => (
           <TextField

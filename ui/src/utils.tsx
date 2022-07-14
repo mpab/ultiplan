@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const stringIsNullOrEmpty = (str: string | null): boolean => {
   return typeof str == "undefined" || !str || !str.trim;
 };
@@ -14,10 +16,16 @@ export const dateYYYYMMDD = (date: {
   getTime: () => number;
   getTimezoneOffset: () => number;
 }) => {
-  const ms_per_minute = 60000;
-  return new Date(date.getTime() - date.getTimezoneOffset() * ms_per_minute)
-    .toISOString()
-    .split("T")[0];
+  var formattedDate = moment(new Date(date.getTime() - date.getTimezoneOffset())).format('YYYY-MM-DD');
+  return formattedDate
+};
+
+export const dateYYYYMMDDhhmmss = (date: {
+  getTime: () => number;
+  getTimezoneOffset: () => number;
+}) => {
+  var formattedDate = moment(new Date(date.getTime() - date.getTimezoneOffset())).format('YYYY-MM-DD/hh:mm:ss a');
+  return formattedDate
 };
 
 // https://stackoverflow.com/questions/43100718/typescript-enum-to-object-array/43101184
@@ -43,3 +51,4 @@ export const eToString = (e: any): string => {
     default:         return 'unknown error';
 }
 }
+

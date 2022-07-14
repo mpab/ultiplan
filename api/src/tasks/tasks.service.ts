@@ -13,9 +13,7 @@ import dbFindRecord from 'src/libs/db/db-find-record';
 import dbCreateRecord from 'src/libs/db/db-create-record';
 import dateYYYYMMDD from 'src/libs/utils/dates';
 import genGuid from 'src/libs/utils/generate-uuid';
-import dbSave from 'src/libs/db/db-save';
 import dbUpdateRecord from 'src/libs/db/db-update-record';
-import { BaseExceptionFilter } from '@nestjs/core';
 
 const projectDbPath = '.ultiplan';
 const dbFileName = 'tasks.json';

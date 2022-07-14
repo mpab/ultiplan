@@ -9,7 +9,11 @@ import {
   IconButton,
   Tooltip,
 } from "@mui/material";
-import { taskRecordFromDescription, TaskView, taskViewFromTaskRecord } from "../api/types";
+import {
+  taskRecordFromDescription,
+  TaskView,
+  taskViewFromTaskRecord,
+} from "../api/types";
 import { dateYYYYMMDD, stringIsNullOrEmptyOrWhitespace } from "../utils";
 import { Add } from "@mui/icons-material";
 import { TaskEditViewControl } from "./TasksEditViewControl";
@@ -19,9 +23,11 @@ const TasksAddDialog = (props: {
   openDialog: boolean;
   onTaskViewEditComplete: (taskView: TaskView) => void;
 }) => {
-  const template = taskRecordFromDescription('');
+  const template = taskRecordFromDescription("");
   template.created_on = dateYYYYMMDD(new Date());
-  const [cachedTaskView, setCachedTaskView] = useState(taskViewFromTaskRecord(template));
+  const [cachedTaskView, setCachedTaskView] = useState(
+    taskViewFromTaskRecord(template)
+  );
   const [confirmIsDisabled, setConfirmIsDisabled] = useState(true);
 
   const onDialogClose = () => {
@@ -34,7 +40,7 @@ const TasksAddDialog = (props: {
 
   const onTaskViewEditComplete = (taskView: TaskView) => {
     if (stringIsNullOrEmptyOrWhitespace(taskView.taskRecord.description)) {
-      alert('empty description');
+      alert("empty description");
       return;
     }
 
@@ -43,7 +49,9 @@ const TasksAddDialog = (props: {
   };
 
   const onTaskViewChange = (taskView: TaskView): void => {
-    setConfirmIsDisabled(stringIsNullOrEmptyOrWhitespace(taskView.taskRecord.description));
+    setConfirmIsDisabled(
+      stringIsNullOrEmptyOrWhitespace(taskView.taskRecord.description)
+    );
     setCachedTaskView(taskView);
   };
 
@@ -65,12 +73,11 @@ const TasksAddDialog = (props: {
         <DialogTitle id="add-form-dialog-title">Add Task</DialogTitle>
         <DialogContent>
           <TaskEditViewControl
-            {...{
-              taskView: cachedTaskView,
-              onTaskViewChange,
-              onTaskViewEditComplete: onTaskViewEditComplete,
-              isExpanded: true,
-            }}
+            forceEdit={true}
+            taskView={cachedTaskView}
+            onTaskViewChange={onTaskViewChange}
+            onTaskViewEditComplete={onTaskViewEditComplete}
+            isExpanded={true}
           ></TaskEditViewControl>
         </DialogContent>
         <DialogActions>
