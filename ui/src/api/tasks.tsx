@@ -1,8 +1,13 @@
 import { stringIsNullOrEmpty } from "../utils";
-import { TaskRecord } from "./types";
+import { TaskRecord, TaskView, taskViewFromTaskRecord } from "./types";
 
-export const tasksRead = (setRecords: (arg0: TaskRecord[]) => void, setSummary: any) => {
-  const result = new Array<TaskRecord>();
+
+export const tasksRead = (
+  filter: (task: TaskRecord, results: TaskView[]) => void,
+  setRecords: (arg0: TaskView[]) => void,
+  setSummary: (arg0: string) => void
+) => {
+  const results = new Array<TaskView>();
   const projects = new Set<string>();
   let completed = 0;
 
@@ -10,23 +15,13 @@ export const tasksRead = (setRecords: (arg0: TaskRecord[]) => void, setSummary: 
     .then((res) => res.json())
     .then((records) => {
       for (const d of records) {
-        const task: TaskRecord = {
-          id: d.id,
-          description: d.description,
-          project: d.project,
-          created_on: d.created_on,
-          started_on: d.started_on,
-          due_on: d.due_on,
-          completed_on: d.completed_on,
-          tags: d.tags,
-        };
-        result.push(task);
+        filter(d, results);
+        if (!stringIsNullOrEmpty(d.completed_on)) ++completed;
         projects.add(d.project);
-        if (!stringIsNullOrEmpty(task.completed_on)) ++completed;
       }
-      setRecords(result);
+      setRecords(results);
       const project_list = Array.from(projects).join(', ');
-      const summary = `${project_list}, ${records.length} tasks, ${completed} completed`;
+      const summary = `${project_list}, ${records.length} tasks, ${completed} completed, @ ${new Date()}`;
       setSummary(summary);
     });
 };

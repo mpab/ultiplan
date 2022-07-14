@@ -9,17 +9,17 @@ import {
   IconButton,
   Tooltip,
 } from "@mui/material";
-import { TaskRecord, taskRecordFromDescription } from "../api/types";
+import { taskRecordFromDescription, TaskView, taskViewFromTaskRecord } from "../api/types";
 import { stringIsNullOrEmptyOrWhitespace } from "../utils";
 import { Add } from "@mui/icons-material";
-import { TaskEditViewPanel } from "./TasksEditViewPanel";
+import { TaskEditViewControl } from "./TasksEditViewControl";
 
 const TasksAddDialog = (props: {
   setOpenDialog: (mode: boolean) => void;
   openDialog: boolean;
-  onTaskRecordEditComplete: (taskRecord: TaskRecord) => void;
+  onTaskViewEditComplete: (taskView: TaskView) => void;
 }) => {
-  const [taskRecord, setTaskRecord] = useState(taskRecordFromDescription(``));
+  const [cachedTaskView, setCachedTaskView] = useState(taskViewFromTaskRecord(taskRecordFromDescription('')));
   const [confirmIsDisabled, setConfirmIsDisabled] = useState(true);
 
   const onDialogClose = () => {
@@ -30,19 +30,19 @@ const TasksAddDialog = (props: {
     props.setOpenDialog(true);
   };
 
-  const handleConfirm = () => {
-    if (stringIsNullOrEmptyOrWhitespace(taskRecord.description)) {
+  const onTaskViewEditComplete = (taskView: TaskView) => {
+    if (stringIsNullOrEmptyOrWhitespace(taskView.taskRecord.description)) {
       alert('empty description');
       return;
     }
 
     onDialogClose();
-    props.onTaskRecordEditComplete(taskRecord);
+    props.onTaskViewEditComplete(taskView);
   };
 
-  const onTaskRecordChange = (newTaskRecord: TaskRecord): void => {
-    setTaskRecord(newTaskRecord);
-    setConfirmIsDisabled(stringIsNullOrEmptyOrWhitespace(taskRecord.description));
+  const onTaskViewChange = (taskView: TaskView): void => {
+    setConfirmIsDisabled(stringIsNullOrEmptyOrWhitespace(taskView.taskRecord.description));
+    setCachedTaskView(taskView);
   };
 
   return (
@@ -62,18 +62,18 @@ const TasksAddDialog = (props: {
       >
         <DialogTitle id="add-form-dialog-title">Add Task</DialogTitle>
         <DialogContent>
-          <TaskEditViewPanel
+          <TaskEditViewControl
             {...{
-              taskRecord,
-              onTaskRecordChange,
-              onTaskRecordEditComplete: handleConfirm,
+              taskView: cachedTaskView,
+              onTaskViewChange,
+              onTaskViewEditComplete: onTaskViewEditComplete,
               isExpanded: true,
             }}
-          ></TaskEditViewPanel>
+          ></TaskEditViewControl>
         </DialogContent>
         <DialogActions>
           <Button
-            onClick={handleConfirm}
+            onClick={() => onTaskViewEditComplete(cachedTaskView)}
             color="primary"
             disabled={confirmIsDisabled}
           >

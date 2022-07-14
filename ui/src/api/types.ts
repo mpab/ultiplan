@@ -1,3 +1,5 @@
+import { stringIsNullOrEmpty } from "../utils";
+
 export type TaskRecord = {
   id: string;
   project: string;
@@ -22,6 +24,7 @@ export type TaskView = {
   summary: string;
   date: string;
   dateSignificance: string;
+  errors: string[];
 };
 
 export const taskRecordFromDescription = (description: string): TaskRecord => {
@@ -34,5 +37,68 @@ export const taskRecordFromDescription = (description: string): TaskRecord => {
     completed_on: "",
     due_on: "",
     tags: [],
+  };
+};
+
+export const taskViewFromTaskRecord = (r: TaskRecord): TaskView => {
+  let date = "unknown";
+  let dateSignificance = "";
+  let status = TaskStatus.unknown;
+
+  if (r.created_on) {
+    status = TaskStatus.not_started;
+    date = r.created_on;
+    dateSignificance = `created`;
+  }
+
+  if (r.started_on) {
+    status = TaskStatus.in_progress;
+    date = r.started_on;
+    dateSignificance = `started`;
+  }
+
+  if (r.completed_on) {
+    status = TaskStatus.completed;
+    date = r.completed_on;
+    dateSignificance = `completed`;
+  }
+
+  let summary = "";
+  if (!stringIsNullOrEmpty(r.id)) {
+    summary += `id: ${r.id}, `;
+  }
+
+  if (!stringIsNullOrEmpty(r.project)) {
+    summary += `project: ${r.project}, `;
+  }
+
+  if (!stringIsNullOrEmpty(r.created_on)) {
+    summary += `created: ${r.created_on}, `;
+  }
+
+  if (!stringIsNullOrEmpty(r.started_on)) {
+    summary += `started: ${r.started_on}, `;
+  }
+
+  if (!stringIsNullOrEmpty(r.completed_on)) {
+    summary += `completed: ${r.completed_on}, `;
+  }
+
+  if (!stringIsNullOrEmpty(r.due_on)) {
+    summary += `due: ${r.due_on}, `;
+  }
+
+  // TODO
+  // calculate if overdue
+
+  summary = summary.slice(0, summary.length - 2);
+
+  return {
+    taskRecord: r,
+    date: date,
+    dateSignificance: dateSignificance,
+    status: status,
+    summary: summary,
+    errors: []
   };
 };

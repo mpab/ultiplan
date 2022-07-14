@@ -44,9 +44,9 @@ export const TasksListViewReference = () => {
   const [records, setRecords] = useState<TaskRecord[]>([]);
   const [summary, setSummary] = useState<string>("");
 
-  useEffect(() => {
-    tasksRead(setRecords, setSummary);
-  }, []);
+  // useEffect(() => {
+  //   tasksRead(setRecords, setSummary);
+  // }, []);
 
   // -----------------------------------------------------
   
@@ -128,6 +128,19 @@ export const TasksListViewReference = () => {
       <MaterialTable
       columns={columns}
       data={records}
+      detailPanel={({ rowData }) => {
+        return (
+          <div
+            style={{
+              fontSize: 20,
+              textAlign: "center",
+              height: 100,
+            }}
+          >
+            This is a detailed panel for {rowData.description}
+          </div>
+        );
+      }}
       />
 
       <Dialog open={isDialogOpen} onClose={handleClose}>

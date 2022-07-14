@@ -24,97 +24,89 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { taskCreate, taskDelete, tasksRead, taskUpdate } from "../api/tasks";
 
-import { TaskRecord, TaskStatus, TaskView } from "../api/types";
+import {
+  TaskRecord,
+  TaskStatus,
+  TaskView,
+  taskViewFromTaskRecord,
+} from "../api/types";
 import { dateYYYYMMDD, stringIsNullOrEmpty } from "../utils";
 import TasksDeleteDialog from "./TasksDeleteDialog";
 import TasksAddDialog from "./TasksAddDialog";
 
 import toast from "./Toast";
-import { TaskEditViewPanel } from "./TasksEditViewPanel";
-
-const taskRecordToTaskView = (r: TaskRecord): TaskView => {
-  let date = "unknown";
-  let dateSignificance = "";
-  let status = TaskStatus.unknown;
-
-  if (r.created_on) {
-    status = TaskStatus.not_started;
-    date = r.created_on;
-    dateSignificance = `created`;
-  }
-
-  if (r.started_on) {
-    status = TaskStatus.in_progress;
-    date = r.started_on;
-    dateSignificance = `started`;
-  }
-
-  if (r.completed_on) {
-    status = TaskStatus.completed;
-    date = r.completed_on;
-    dateSignificance = `completed`;
-  }
-
-  let summary = "";
-  if (!stringIsNullOrEmpty(r.id)) {
-    summary += `id: ${r.id}, `;
-  }
-
-  if (!stringIsNullOrEmpty(r.project)) {
-    summary += `project: ${r.project}, `;
-  }
-
-  if (!stringIsNullOrEmpty(r.created_on)) {
-    summary += `created: ${r.created_on}, `;
-  }
-
-  if (!stringIsNullOrEmpty(r.started_on)) {
-    summary += `started: ${r.started_on}, `;
-  }
-
-  if (!stringIsNullOrEmpty(r.completed_on)) {
-    summary += `completed: ${r.completed_on}, `;
-  }
-
-  if (!stringIsNullOrEmpty(r.due_on)) {
-    summary += `due: ${r.due_on}, `;
-  }
-
-  // TODO
-  // calculate if overdue
-
-  summary = summary.slice(0, summary.length - 2);
-
-  return {
-    taskRecord: r,
-    date: date,
-    dateSignificance: dateSignificance,
-    status: status,
-    summary: summary,
-  };
-};
+import { TaskEditViewControl } from "./TasksEditViewControl";
 
 export const TasksListView = () => {
   // ------------------------------------------------------------
   // Dialogs
-  const [openAddDialog, setOpenAddDialog] = React.useState(false);
-  const [openDeleteDialog, setOpenDeleteDialog] = React.useState(false);
+  const [openAddDialog, setOpenAddDialog] = useState(false);
+  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
 
   // -----------------------------------------------------
   // records get/set
-  const [records, setRecords] = useState<TaskRecord[]>([]);
+  const [records, setRecords] = useState<TaskView[]>([]);
   const [summary, setSummary] = useState<string>("");
 
+  // -----------------------------------------------------
+  // status filtering
+
+  const statusFilters = [
+    "all",
+    ...Object.values(TaskStatus).filter((ts) => ts !== TaskStatus.unknown),
+  ];
+  const [statusFilterProp, setStatusFilterProp] = useState("all");
+
+  // -----------------------------------------------------
+
+  const [trigger, setTrigger] = useState(0);
+
   useEffect(() => {
-    tasksRead(setRecords, setSummary);
-  }, []);
+    tasksRead(
+      (task: TaskRecord, views: TaskView[]) => {
+        const view: TaskView = taskViewFromTaskRecord(task);
+        views.push(view);
+      },
+      setRecords,
+      setSummary
+    );
+    //toast.success(`tasksRead: ${trigger}`);
+  }, [trigger]);
+
+  const queryTasks = () => {
+    setTrigger(trigger + 1);
+  }
+
+  useEffect(() => {
+    if (statusFilterProp === "all") {
+      tasksRead(
+        (task: TaskRecord, views: TaskView[]) => {
+          const view: TaskView = taskViewFromTaskRecord(task);
+          views.push(view);
+        },
+        setRecords,
+        setSummary
+      );
+      //toast.success(`tasksRead: ${statusFilterProp}`);
+      return;
+    }
+
+    tasksRead(
+      (task: TaskRecord, views: TaskView[]) => {
+        const view: TaskView = taskViewFromTaskRecord(task);
+        if (view.status === statusFilterProp) views.push(view);
+      },
+      setRecords,
+      setSummary
+    );
+    //toast.success(`tasksRead: ${statusFilterProp}`);
+  }, [statusFilterProp]);
 
   // -----------------------------------------------------
 
   const Row = (props: { taskView: TaskView }) => {
     // -----------------------------------------------------
     // expander
-    const taskView = props.taskView;
     const [isExpanded, setIsExpanded] = useState(false);
 
     // -----------------------------------------------------
@@ -125,8 +117,10 @@ export const TasksListView = () => {
       }
 
       taskDelete(taskView.taskRecord.id);
-      tasksRead(setRecords, setSummary);
-      tasksRead(setRecords, setSummary);
+      queryTasks();
+      toast.success(
+        `deleted: ${taskView.taskRecord.description}`
+      );
     };
 
     const TasksStatusSelect = () => {
@@ -138,14 +132,14 @@ export const TasksListView = () => {
       // state machine
       // not_started -> started
       // not_started -> completed
-      if (taskView.status === TaskStatus.not_started) {
+      if (props.taskView.status === TaskStatus.not_started) {
         tasksStatusArray = tasksStatusArray.filter(
           (ts) => ts !== TaskStatus.not_started
         );
       }
 
       // in_progress -> completed
-      if (taskView.status === TaskStatus.in_progress) {
+      if (props.taskView.status === TaskStatus.in_progress) {
         tasksStatusArray = tasksStatusArray.filter(
           (ts) => ts !== TaskStatus.not_started
         );
@@ -158,28 +152,27 @@ export const TasksListView = () => {
         const newTaskStatus = event.target.value as TaskStatus;
         switch (newTaskStatus) {
           case TaskStatus.completed:
-            taskView.taskRecord.completed_on = dateYYYYMMDD(new Date());
+            props.taskView.taskRecord.completed_on = dateYYYYMMDD(new Date());
             break;
 
           case TaskStatus.in_progress:
-            taskView.taskRecord.started_on = dateYYYYMMDD(new Date());
+            props.taskView.taskRecord.started_on = dateYYYYMMDD(new Date());
             break;
         }
 
-        taskUpdate(taskView.taskRecord);
-        tasksRead(setRecords, setSummary);
-        toast.success(`changed: ${taskView.status} -> ${newTaskStatus}`);
-        tasksRead(setRecords, setSummary);
+        taskUpdate(props.taskView.taskRecord);
+        queryTasks();
+        toast.success(`changed: ${props.taskView.status} -> ${newTaskStatus}`);
       };
 
       return (
         <Box sx={{ maxWidth: 140 }}>
           <FormControl fullWidth>
-            {taskView.status === TaskStatus.completed ||
-            taskView.status === TaskStatus.unknown ? (
+            {props.taskView.status === TaskStatus.completed ||
+            props.taskView.status === TaskStatus.unknown ? (
               <>
                 <TextField
-                  value={taskView.status}
+                  value={props.taskView.status}
                   InputProps={{
                     readOnly: true,
                   }}
@@ -187,11 +180,11 @@ export const TasksListView = () => {
               </>
             ) : (
               <>
-                <InputLabel>{taskView.status}</InputLabel>
+                <InputLabel>{props.taskView.status}</InputLabel>
                 <Select
                   labelId="task-status-select-label"
                   id="task-status-select-label-id"
-                  label={taskView.status}
+                  label={props.taskView.status}
                   onChange={handleOnChange}
                 >
                   {tasksStatusArray.map((e) => (
@@ -206,10 +199,10 @@ export const TasksListView = () => {
     };
 
     const TaskEditCell = () => {
-
-      const onTaskRecordEditComplete = (taskRecord: TaskRecord) => {
-        taskUpdate(taskRecord);
-        toast.success(`updated: ${taskRecord.description}`);
+      const onTaskViewEditComplete = (taskView: TaskView) => {
+        taskUpdate(taskView.taskRecord);
+        queryTasks();
+        toast.success(`updated: ${taskView.taskRecord.description}`);
       };
 
       const CompactTableCell = styled(TableCell)({
@@ -245,25 +238,25 @@ export const TasksListView = () => {
               )}
             </CompactTableCell>
             <CompactTableCell component="th" scope="row">
-              {stringIsNullOrEmpty(taskView.taskRecord.id) ||
-              taskView.status === TaskStatus.unknown ||
-              taskView.status === TaskStatus.completed ? (
+              {stringIsNullOrEmpty(props.taskView.taskRecord.id) ||
+              props.taskView.status === TaskStatus.unknown ||
+              props.taskView.status === TaskStatus.completed ? (
                 <TextField
                   style={{ width: "100%" }}
-                  value={taskView.taskRecord.description}
+                  value={props.taskView.taskRecord.description}
                   InputProps={{
                     readOnly: true,
                   }}
                 />
               ) : (
-                <TaskEditViewPanel
+                <TaskEditViewControl
                   {...{
-                    taskRecord: taskView.taskRecord,
-                    onTaskRecordChange: () => {},
-                    onTaskRecordEditComplete,
+                    taskView: props.taskView,
+                    onTaskViewChange: () => {},
+                    onTaskViewEditComplete,
                     isExpanded,
                   }}
-                ></TaskEditViewPanel>
+                ></TaskEditViewControl>
               )}
             </CompactTableCell>
           </TableRow>
@@ -282,20 +275,17 @@ export const TasksListView = () => {
             <TasksStatusSelect />
           </TableCell>
           <TableCell>
-            <div>{taskView.date}</div>
-            <div>{taskView.dateSignificance}</div>
+            <div>{props.taskView.date}</div>
+            <div>{props.taskView.dateSignificance}</div>
           </TableCell>
           <TableCell>
             <TasksDeleteDialog
               openDialog={openDeleteDialog}
               setOpenDialog={setOpenDeleteDialog}
               onConfirmHandler={() => {
-                handleDeleteTaskRequest(taskView);
-                tasksRead(setRecords, setSummary);
-                toast.success(`deleted: ${taskView.taskRecord.description}`);
-                tasksRead(setRecords, setSummary);
+                handleDeleteTaskRequest(props.taskView);
               }}
-              taskView={taskView}
+              taskView={props.taskView}
             />
           </TableCell>
         </TableRow>
@@ -311,6 +301,37 @@ export const TasksListView = () => {
 
   // -----------------------------------------------------
 
+  interface StatusFilterProps {
+    statusFilters: string[];
+    setStatusFilter: (filter: string) => void;
+  }
+
+  const StatusFilter = (props: StatusFilterProps) => {
+    const onStatusFilterChange = (event: SelectChangeEvent) => {
+      props.setStatusFilter(event.target.value);
+    };
+
+    return (
+      <Box sx={{ maxWidth: 140 }}>
+        <FormControl fullWidth>
+          <InputLabel>{statusFilterProp}</InputLabel>
+          <Select
+            labelId="task-status-select-label"
+            id="task-status-select-label-id"
+            label="Status"
+            onChange={onStatusFilterChange}
+          >
+            {props.statusFilters.map((e) => (
+              <MenuItem value={e}>{e}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Box>
+    );
+  };
+
+  // -----------------------------------------------------
+
   const TableHeader = () => {
     return (
       <TableHead>
@@ -319,18 +340,23 @@ export const TasksListView = () => {
             <TasksAddDialog
               openDialog={openAddDialog}
               setOpenDialog={setOpenAddDialog}
-              onTaskRecordEditComplete={(task: TaskRecord) => {
-                if (task.description) {
-                  taskCreate(task);
-                  tasksRead(setRecords, setSummary);
-                  toast.success(`added: ${task.description}`);
-                  tasksRead(setRecords, setSummary);
+              onTaskViewEditComplete={(taskView: TaskView) => {
+                
+                if (taskView.taskRecord.description) {
+                  taskCreate(taskView.taskRecord);
+                  queryTasks();
+                  toast.success(`added: ${taskView.taskRecord.description}`);
                 }
               }}
             />
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Project: {summary}
           </TableCell>
-          <TableCell>Status</TableCell>
+          <TableCell>
+            <StatusFilter
+              statusFilters={statusFilters}
+              setStatusFilter={setStatusFilterProp}
+            />
+          </TableCell>
           <TableCell>Date</TableCell>
           <TableCell>Action</TableCell>
         </TableRow>
@@ -355,10 +381,7 @@ export const TasksListView = () => {
   };
 
   // -----------------------------------------------------
-
   let height = rowsPerPage <= 10 ? rowsPerPage * 120 : 900;
-  //height =
-  //  document.body.clientHeight < height ? document.body.clientHeight : height;
 
   return (
     <React.Fragment>
@@ -375,7 +398,7 @@ export const TasksListView = () => {
               {records
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((record, key) => (
-                  <Row key={key} taskView={taskRecordToTaskView(record)} />
+                  <Row key={key} taskView={record} />
                 ))}
             </TableBody>
           </Table>
