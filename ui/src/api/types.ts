@@ -12,7 +12,7 @@ export type TaskRecord = {
 };
 
 export enum TaskStatus {
-  unknown = "unknown",
+  any = "any",
   not_started = "not started",
   in_progress = "in progress",
   completed = "completed",
@@ -43,7 +43,7 @@ export const taskRecordFromDescription = (description: string): TaskRecord => {
 export const taskViewFromTaskRecord = (r: TaskRecord): TaskView => {
   let date = "unknown";
   let dateSignificance = "";
-  let status = TaskStatus.unknown;
+  let status = TaskStatus.any;
 
   if (r.created_on) {
     status = TaskStatus.not_started;

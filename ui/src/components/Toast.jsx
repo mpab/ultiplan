@@ -7,6 +7,9 @@ export default {
   success: function (msg) {
     this.toast(msg, 'success');
   },
+  error: function (msg) {
+    this.toast(msg, 'error');
+  },
   toast: function (msg, variant) {
     const Display = withSnackbar(({ message, enqueueSnackbar }) => {
       enqueueSnackbar(message, { variant });

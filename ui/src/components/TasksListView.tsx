@@ -1,11 +1,5 @@
 import {
   Box,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
   FormControl,
   IconButton,
   InputLabel,
@@ -23,7 +17,6 @@ import {
   TablePagination,
   TableRow,
   TextField,
-  Tooltip,
 } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -33,37 +26,75 @@ import { taskCreate, taskDelete, tasksRead, taskUpdate } from "../api/tasks";
 
 import {
   TaskRecord,
+  taskRecordFromDescription,
   TaskStatus,
   TaskView,
   taskViewFromTaskRecord,
 } from "../api/types";
-import { dateYYYYMMDD, stringIsNullOrEmpty } from "../utils";
-import TasksDeleteDialog from "./TasksDeleteDialog";
+import { dateYYYYMMDD, eToString, stringIsNullOrEmpty } from "../utils";
 import TasksAddDialog from "./TasksAddDialog";
 
 import toast from "./Toast";
 import { TaskEditViewControl } from "./TasksEditViewControl";
 import { DeleteOutline } from "@mui/icons-material";
+import TaskDeleteDlg from "./TaskDeleteDlg";
 
 export const TasksListView = () => {
-  // ------------------------------------------------------------
-  // Dialogs
-  const [openAddDialog, setOpenAddDialog] = useState(false);
-  const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
-
   // -----------------------------------------------------
   // records get/set
-  const [records, setRecords] = useState<TaskView[]>([]);
+  const [taskViewCollection, setTaskViewCollection] = useState<TaskView[]>([]);
   const [summary, setSummary] = useState<string>("");
+  const [selectedTaskView, setSelectedTaskView] = useState<TaskView>(
+    taskViewFromTaskRecord(taskRecordFromDescription(""))
+  );
+
+  // ------------------------------------------------------------
+  // Dialog state & callbacks
+  const [openAddDialog, setOpenAddDialog] = useState(false);
+
+  const [isVisibleTaskDeleteDlg, setIsVisibleTaskDeleteDlg] = useState(false);
+  const onClick_TaskDeleteDlg_Confirm = (taskView: TaskView) => {
+    const index = taskViewCollection.indexOf(taskView);
+    if (index < 0) {
+      toast.error(`${taskView.taskRecord.description} not found`);
+      return;
+    }
+
+    taskDelete(
+      taskView.taskRecord.id,
+      (response) => {
+        console.log("taskDelete response:", response);
+        if (response.status !== 200) {
+          toast.error(
+            `could not delete ${taskView.taskRecord.description} (code=${response.status})`
+          );
+          return;
+        }
+
+        return response;
+      },
+      (data) => {
+        if (!data) return;
+        let newCollection = [...taskViewCollection];
+        newCollection.splice(index, 1);
+        setTaskViewCollection(newCollection);
+        toast.success(`deleted ${taskView.taskRecord.description}`);
+      },
+      (error) => {
+        console.error(error);
+        const estr = eToString(error);
+        toast.error(
+          `could not delete ${taskView.taskRecord.description} (${estr})`
+        );
+      }
+    );
+  };
 
   // -----------------------------------------------------
   // status filtering
 
-  const statusFilters = [
-    "all",
-    ...Object.values(TaskStatus).filter((ts) => ts !== TaskStatus.unknown),
-  ];
-  const [statusFilterProp, setStatusFilterProp] = useState("all");
+  const statusFilters = [...Object.values(TaskStatus)];
+  const [statusFilterProp, setStatusFilterProp] = useState("any");
 
   // -----------------------------------------------------
 
@@ -75,7 +106,7 @@ export const TasksListView = () => {
         const view: TaskView = taskViewFromTaskRecord(task);
         views.push(view);
       },
-      setRecords,
+      setTaskViewCollection,
       setSummary
     );
     //toast.success(`tasksRead: ${trigger}`);
@@ -86,13 +117,13 @@ export const TasksListView = () => {
   };
 
   useEffect(() => {
-    if (statusFilterProp === "all") {
+    if (statusFilterProp === "any") {
       tasksRead(
         (task: TaskRecord, views: TaskView[]) => {
           const view: TaskView = taskViewFromTaskRecord(task);
           views.push(view);
         },
-        setRecords,
+        setTaskViewCollection,
         setSummary
       );
       //toast.success(`tasksRead: ${statusFilterProp}`);
@@ -104,7 +135,7 @@ export const TasksListView = () => {
         const view: TaskView = taskViewFromTaskRecord(task);
         if (view.status === statusFilterProp) views.push(view);
       },
-      setRecords,
+      setTaskViewCollection,
       setSummary
     );
     //toast.success(`tasksRead: ${statusFilterProp}`);
@@ -116,25 +147,13 @@ export const TasksListView = () => {
     // -----------------------------------------------------
     // expander
     const [isExpanded, setIsExpanded] = useState(false);
-    const [tv, stv] = useState(props.taskView);
+    let tv = props.taskView;
 
     // -----------------------------------------------------
 
-    const onDeleteTaskRequest = (taskView: TaskView) => {
-      if (stringIsNullOrEmpty(taskView.taskRecord.id)) {
-        return;
-      }
-
-      taskDelete(taskView.taskRecord.id);
-      queryTasks();
-      toast.success(`deleted: ${taskView.taskRecord.description}`);
-    };
-
     const TasksStatusSelect = () => {
       //const taskStatusMap = enumToMap(TaskStatus); //Map of keys to values
-      let tasksStatusArray = Object.values(TaskStatus).filter(
-        (ts) => ts !== TaskStatus.unknown
-      );
+      let tasksStatusArray = Object.values(TaskStatus);
 
       // state machine
       // not_started -> started
@@ -176,7 +195,7 @@ export const TasksListView = () => {
         <Box sx={{ maxWidth: 140 }}>
           <FormControl fullWidth>
             {tv.status === TaskStatus.completed ||
-            tv.status === TaskStatus.unknown ? (
+            tv.status === TaskStatus.any ? (
               <>
                 <TextField
                   value={tv.status}
@@ -246,7 +265,7 @@ export const TasksListView = () => {
             </CompactTableCell>
             <CompactTableCell component="th" scope="row">
               {stringIsNullOrEmpty(tv.taskRecord.id) ||
-              tv.status === TaskStatus.unknown ||
+              tv.status === TaskStatus.any ||
               tv.status === TaskStatus.completed ? (
                 <TextField
                   style={{ width: "100%" }}
@@ -290,13 +309,13 @@ export const TasksListView = () => {
               aria-label="expand row"
               size="small"
               onClick={() => {
-                // eslint-disable-next-line no-restricted-globals, no-template-curly-in-string
-                confirm(`confirm delete\n` + tv.taskRecord.description) && onDeleteTaskRequest(tv);
+                setSelectedTaskView(tv);
+                setIsVisibleTaskDeleteDlg(true);
               }}
             >
               {!stringIsNullOrEmpty(tv.taskRecord.completed_on) ||
               !stringIsNullOrEmpty(tv.taskRecord.started_on) ||
-              tv.status === TaskStatus.unknown ? (
+              tv.status === TaskStatus.any ? (
                 <></>
               ) : (
                 <DeleteOutline color="error" />
@@ -409,7 +428,7 @@ export const TasksListView = () => {
           >
             <TableHeader />
             <TableBody>
-              {records
+              {taskViewCollection
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((record, key) => (
                   <Row key={key} taskView={record} />
@@ -420,7 +439,7 @@ export const TasksListView = () => {
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
-          count={records.length}
+          count={taskViewCollection.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
@@ -429,6 +448,12 @@ export const TasksListView = () => {
           showLastButton
         />
       </Paper>
+      <TaskDeleteDlg
+        setIsVisibleTaskDeleteDlg={setIsVisibleTaskDeleteDlg}
+        isVisibleTaskDeleteDlg={isVisibleTaskDeleteDlg}
+        onClick_TaskDeleteDlg_Confirm={onClick_TaskDeleteDlg_Confirm}
+        selectedTaskView={selectedTaskView}
+      />
       <div id="snackbarhelper"></div>
     </React.Fragment>
   );

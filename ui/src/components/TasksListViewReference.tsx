@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MaterialTable, { Column } from "@material-table/core";
-import { Container } from '@mui/material';
+import { Container } from "@mui/material";
 import tableIcons from "./TableIcons";
 
 import Button from "@mui/material/Button";
@@ -49,7 +49,7 @@ export const TasksListViewReference = () => {
   // }, []);
 
   // -----------------------------------------------------
-  
+
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -66,9 +66,19 @@ export const TasksListViewReference = () => {
     }
 
     if (
-      window.confirm(`Delete Task?\n` + taskView.taskRecord.id + `\n` + taskView.taskRecord.description)
+      window.confirm(
+        `Delete Task?\n` +
+          taskView.taskRecord.id +
+          `\n` +
+          taskView.taskRecord.description
+      )
     ) {
-      taskDelete(taskView.taskRecord.id);
+      taskDelete(
+        taskView.taskRecord.id,
+        () => {},
+        () => {},
+        () => {}
+      );
     }
   };
 
@@ -83,7 +93,10 @@ export const TasksListViewReference = () => {
       return;
     }
 
-    const description = prompt("Description: ", taskView.taskRecord.description);
+    const description = prompt(
+      "Description: ",
+      taskView.taskRecord.description
+    );
     if (description) taskUpdate(taskView.taskRecord);
   };
 
@@ -94,53 +107,53 @@ export const TasksListViewReference = () => {
     // }
   }, [isDialogOpen]);
 
-//   <MaterialTable
-//   columns={columns}
-//   data={data}
-//   icons={tableIcons}
-//   options={{
-//     exportButton: true,
-//   }}
-//   title={"Tasks"}
-//   actions={[
-//     {
-//       icon: tableIcons.Delete,
-//       tooltip: "Delete Task",
-//       onClick: (event, rowData) => handleDeleteTaskRequest(rowData),
-//     },
-//     {
-//       icon: tableIcons.Add,
-//       tooltip: "Add Task",
-//       isFreeAction: true,
+  //   <MaterialTable
+  //   columns={columns}
+  //   data={data}
+  //   icons={tableIcons}
+  //   options={{
+  //     exportButton: true,
+  //   }}
+  //   title={"Tasks"}
+  //   actions={[
+  //     {
+  //       icon: tableIcons.Delete,
+  //       tooltip: "Delete Task",
+  //       onClick: (event, rowData) => handleDeleteTaskRequest(rowData),
+  //     },
+  //     {
+  //       icon: tableIcons.Add,
+  //       tooltip: "Add Task",
+  //       isFreeAction: true,
 
-//       onClick: (event) => handleNewTaskRequest(),
-//     },
-//     {
-//       icon: tableIcons.Edit,
-//       tooltip: "Edit Task",
-//       onClick: (event, rowData) => handleEditTaskRequest(rowData),
-//     },
-//   ]}
-// />
+  //       onClick: (event) => handleNewTaskRequest(),
+  //     },
+  //     {
+  //       icon: tableIcons.Edit,
+  //       tooltip: "Edit Task",
+  //       onClick: (event, rowData) => handleEditTaskRequest(rowData),
+  //     },
+  //   ]}
+  // />
 
   return (
     <Container>
       <MaterialTable
-      columns={columns}
-      data={records}
-      detailPanel={({ rowData }) => {
-        return (
-          <div
-            style={{
-              fontSize: 20,
-              textAlign: "center",
-              height: 100,
-            }}
-          >
-            This is a detailed panel for {rowData.description}
-          </div>
-        );
-      }}
+        columns={columns}
+        data={records}
+        detailPanel={({ rowData }) => {
+          return (
+            <div
+              style={{
+                fontSize: 20,
+                textAlign: "center",
+                height: 100,
+              }}
+            >
+              This is a detailed panel for {rowData.description}
+            </div>
+          );
+        }}
       />
 
       <Dialog open={isDialogOpen} onClose={handleClose}>

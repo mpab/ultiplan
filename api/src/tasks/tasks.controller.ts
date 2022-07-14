@@ -9,6 +9,7 @@ import {
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { TaskModel } from './task.interface';
+import { ApiNotFoundResponse, ApiOkResponse } from '@nestjs/swagger';
 
 @Controller('api/tasks')
 export class TasksController {
@@ -25,8 +26,10 @@ export class TasksController {
   }
 
   @Delete(':id')
-  delete(@Param('id') id: string): any {
-    return this.service.delete(id);
+  @ApiOkResponse({ description: `task deleted.` })
+  @ApiNotFoundResponse({ description: 'task not found.' })
+  delete(@Param('id') id: string): void {
+    this.service.delete(id);
   }
 
   @Post()
@@ -38,6 +41,8 @@ export class TasksController {
   @Put()
   update(@Body() model: TaskModel): any {
     //res.status(HttpStatus.OK).json(this.service.create());
-    return this.service.update(model);
+    try {
+      this.service.update(model);
+    } catch (e) {}
   }
 }

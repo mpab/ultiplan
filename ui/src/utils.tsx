@@ -35,3 +35,11 @@ export const enumToMap = (enumeration: any): Map<string, string | number> => {
 
   return map;
 };
+
+export const eToString = (e: any): string => {
+  switch (e.constructor) {
+    case Error:      return 'generic error';
+    case RangeError: return 'range error';
+    default:         return 'unknown error';
+}
+}

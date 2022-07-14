@@ -1,11 +1,10 @@
 import { stringIsNullOrEmpty } from "../utils";
 import { TaskRecord, TaskView, taskViewFromTaskRecord } from "./types";
 
-
 export const tasksRead = (
   filter: (task: TaskRecord, results: TaskView[]) => void,
   setRecords: (arg0: TaskView[]) => void,
-  setSummary: (arg0: string) => void
+  setSummary: (arg0: string) => void,
 ) => {
   const results = new Array<TaskView>();
   const projects = new Set<string>();
@@ -20,23 +19,26 @@ export const tasksRead = (
         projects.add(d.project);
       }
       setRecords(results);
-      const project_list = Array.from(projects).join(', ');
-      const summary = `${project_list}, ${records.length} tasks, ${completed} completed, @ ${new Date()}`;
+      const project_list = Array.from(projects).join(", ");
+      const summary = `${project_list}, ${
+        records.length
+      } tasks, ${completed} completed, @ ${new Date()}`;
       setSummary(summary);
     });
 };
 
-export const taskDelete = (id: string) => {
+export const taskDelete = (
+  id: string,
+  processResponse: (response: any) => void,
+  onSuccess: (data: any) => void,
+  onError: (error: any) => void
+) => {
   fetch(`http://localhost:3001/api/tasks/${id}`, {
     method: "DELETE",
   })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log("Success:", data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+    .then((response) => processResponse(response))
+    .then((data) => onSuccess(data))
+    .catch((error) => onError(error));
 };
 
 export const taskCreate = (task: TaskRecord) => {

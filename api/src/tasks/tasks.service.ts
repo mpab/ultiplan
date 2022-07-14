@@ -110,9 +110,9 @@ export class TasksService {
 
   delete(id: string): any {
     console.log(`------------------------------------`);
-    console.log(`delete ${id}`);
     if (!dbDeleteRecord(id, getDbHandle())) {
       throw new NotFoundException('Task not found.');
     }
+    console.log(`deleted ${id}`);
   }
 }
