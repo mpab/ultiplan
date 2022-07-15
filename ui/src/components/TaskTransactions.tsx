@@ -79,7 +79,6 @@ export default class TasksTransactions extends React.Component {
 
         for (const d of data) {
           const view: TaskView = viewFromTask(d);
-          console.log(view.taskRecord.description);
           results.push(view);
           if (!stringIsNullOrEmpty(d.completed_on)) ++completed;
           projects.add(d.project);
