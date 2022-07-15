@@ -56,7 +56,7 @@ export const TasksListView = () => {
     success: (msg) => toast.success(msg),
     error: (msg) => toast.error(msg),
     views: views,
-    setViews: setViews
+    setViews: setViews,
   });
 
   useEffect(() => {
@@ -143,13 +143,16 @@ export const TasksListView = () => {
               <>
                 <InputLabel>{tv.status}</InputLabel>
                 <Select
+                  value={""}
                   labelId="task-status-select-label"
                   id="task-status-select-label-id"
                   label={tv.status}
                   onChange={handleOnChange}
                 >
                   {tasksStatusArray.map((e, k) => (
-                    <MenuItem value={e} key={k}>{e}</MenuItem>
+                    <MenuItem value={e} key={k}>
+                      {e}
+                    </MenuItem>
                   ))}
                 </Select>
               </>
@@ -172,38 +175,40 @@ export const TasksListView = () => {
             },
           }}
         >
-          <TableRow>
-            <CompactTableCell width={10}>
-              {!isExpanded ? (
-                <IconButton
-                  aria-label="expand row"
-                  size="small"
-                  onClick={() => setIsExpanded(!isExpanded)}
-                >
-                  <KeyboardArrowRightIcon sx={{ fontSize: "18px" }} />
-                </IconButton>
-              ) : (
-                <IconButton
-                  aria-label="expand row"
-                  size="small"
-                  onClick={() => setIsExpanded(!isExpanded)}
-                >
-                  <KeyboardArrowDownIcon sx={{ fontSize: "18px" }} />
-                </IconButton>
-              )}
-            </CompactTableCell>
-            <CompactTableCell component="th" scope="row">
-              <TaskEditViewControl
-                forceEdit={false}
-                taskView={tv}
-                onTaskViewChange={() => {}}
-                onTaskViewEditComplete={() => {
-                  tasks.updateTask(tv);
-                }}
-                isExpanded={isExpanded}
-              ></TaskEditViewControl>
-            </CompactTableCell>
-          </TableRow>
+          <TableBody>
+            <TableRow>
+              <CompactTableCell width={10}>
+                {!isExpanded ? (
+                  <IconButton
+                    aria-label="expand row"
+                    size="small"
+                    onClick={() => setIsExpanded(!isExpanded)}
+                  >
+                    <KeyboardArrowRightIcon sx={{ fontSize: "18px" }} />
+                  </IconButton>
+                ) : (
+                  <IconButton
+                    aria-label="expand row"
+                    size="small"
+                    onClick={() => setIsExpanded(!isExpanded)}
+                  >
+                    <KeyboardArrowDownIcon sx={{ fontSize: "18px" }} />
+                  </IconButton>
+                )}
+              </CompactTableCell>
+              <CompactTableCell component="th" scope="row">
+                <TaskEditViewControl
+                  forceEdit={false}
+                  taskView={tv}
+                  onTaskViewChange={() => {}}
+                  onTaskViewEditComplete={() => {
+                    tasks.updateTask(tv);
+                  }}
+                  isExpanded={isExpanded}
+                ></TaskEditViewControl>
+              </CompactTableCell>
+            </TableRow>
+          </TableBody>
         </Table>
       );
     };
@@ -268,6 +273,7 @@ export const TasksListView = () => {
         <FormControl fullWidth>
           <InputLabel>{statusFilterProp}</InputLabel>
           <Select
+            value={""}
             labelId="task-status-select-label"
             id="task-status-select-label-id"
             label="Status"
