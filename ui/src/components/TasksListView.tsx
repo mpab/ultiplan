@@ -31,10 +31,12 @@ import toast from "./Toast";
 import { TaskEditViewControl } from "./TasksEditViewControl";
 import { DeleteOutline } from "@mui/icons-material";
 import TaskDeleteDlg from "./TaskDeleteDlg";
-import TasksTransactions from "./TaskTransactions";
+import TasksTransactions, {
+  readAllTasks,
+  TasksApiReadCfg,
+} from "../api/TaskTransactions";
 
 export const TasksListView = () => {
-  
   const [selectedTaskView, setSelectedTaskView] = useState(
     viewFromTask(taskNew(""))
   );
@@ -54,12 +56,18 @@ export const TasksListView = () => {
     success: (msg) => toast.success(msg),
     error: (msg) => toast.error(msg),
     views: views,
-    setViews: setViews,
-    setSummary: setSummary
+    setViews: setViews
   });
 
   useEffect(() => {
-    tasks.readAllTasks();
+    const cfg: TasksApiReadCfg = {
+      success: (msg) => toast.success(msg),
+      error: (msg) => toast.error(msg),
+      setViews: setViews,
+      setSummary: setSummary,
+    };
+
+    readAllTasks(cfg);
   }, []);
 
   // -----------------------------------------------------
@@ -140,8 +148,8 @@ export const TasksListView = () => {
                   label={tv.status}
                   onChange={handleOnChange}
                 >
-                  {tasksStatusArray.map((e) => (
-                    <MenuItem value={e}>{e}</MenuItem>
+                  {tasksStatusArray.map((e, k) => (
+                    <MenuItem value={e} key={k}>{e}</MenuItem>
                   ))}
                 </Select>
               </>
@@ -265,8 +273,8 @@ export const TasksListView = () => {
             label="Status"
             onChange={onStatusFilterChange}
           >
-            {props.statusFilters.map((e, idx) => (
-              <MenuItem key={idx} value={e}>
+            {props.statusFilters.map((e, k) => (
+              <MenuItem key={k} value={e}>
                 {e}
               </MenuItem>
             ))}
@@ -340,8 +348,8 @@ export const TasksListView = () => {
             <TableBody>
               {views
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((record, key) => (
-                  <Row key={key} taskView={record} />
+                .map((record, k) => (
+                  <Row key={k} taskView={record} />
                 ))}
             </TableBody>
           </Table>

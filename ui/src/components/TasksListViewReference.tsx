@@ -11,9 +11,8 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-import { taskNew, TaskView, viewFromTask } from "../api/types";
-import TasksTransactions from "./TaskTransactions";
-import { DeleteOutline, } from "@mui/icons-material";
+import { TaskView } from "../api/types";
+import TasksTransactions, { readAllTasks, TasksApiReadCfg } from "../api/TaskTransactions";
 import tableIcons from "./TableIcons";
 
 const columns: Array<Column<TaskView>> = [
@@ -34,16 +33,15 @@ export const TasksListViewReference = () => {
   const [views, setViews] = useState<TaskView[]>([]);
   const [summary, setSummary] = useState(``);
 
-  const tasks = new TasksTransactions({
-    success: (msg) => alert("SUCCESS\n" + msg),
-    error: (msg) => alert("ERROR\n" + msg),
-    views: views,
-    setViews: setViews,
-    setSummary: setSummary,
-  });
-
   useEffect(() => {
-    tasks.readAllTasks();
+    const cfg: TasksApiReadCfg = {
+      success: (msg) => alert(`success\n` + msg),
+      error: (msg) => alert(`error\n` + msg),
+      setViews: setViews,
+      setSummary: setSummary,
+    };
+
+    readAllTasks(cfg);
   }, []);
 
   // -----------------------------------------------------

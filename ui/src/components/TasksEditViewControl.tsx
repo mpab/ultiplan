@@ -13,13 +13,14 @@ export interface TaskEditViewControlProps {
 }
 
 export const TaskEditViewControl = (props: TaskEditViewControlProps) => {
-
   let isReadonly = () => {
     if (props.forceEdit) return false;
-    return stringIsNullOrEmpty(tv.taskRecord.id) ||
-    tv.status === TaskStatus.any ||
-    tv.status === TaskStatus.completed;
-  }
+    return (
+      stringIsNullOrEmpty(tv.taskRecord.id) ||
+      tv.status === TaskStatus.any ||
+      tv.status === TaskStatus.completed
+    );
+  };
 
   let tv = { ...props.taskView };
 
@@ -141,6 +142,7 @@ export const TaskEditViewControl = (props: TaskEditViewControlProps) => {
       <Collapse in={props.isExpanded} timeout="auto" unmountOnExit>
         {tags.map((tag, id) => (
           <TextField
+            key={id}
             autoFocus
             id={String(id)}
             fullWidth
