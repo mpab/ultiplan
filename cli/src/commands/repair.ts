@@ -4,9 +4,7 @@
 import { DbRecord } from "ultiplan-api/src/libs/db/db-record";
 import { getAndCheckDbHandle } from "../utils/db-handle";
 import visit from "ultiplan-api/src/libs/utils/dir-visitor";
-import stringIsNullOrEmptyOrWhitespace from "ultiplan-api/src/libs/utils/string-is-null-or-empty-or-whitespace";
-import genGuid from "ultiplan-api/src/libs/utils/generate-uuid";
-import dbSave from "ultiplan-api/src/libs/db/db-save";
+import stringIsNullOrEmpty from "ultiplan-api/src/libs/utils/string-is-null-or-empty";
 
 const checkRecordsBelongToProject = (
   project_name: string,
@@ -24,30 +22,16 @@ const checkRecordsBelongToProject = (
   if (!errors) console.log(`passed`);
 };
 
-const fixIds = (data: DbRecord[]) => {
-  let fixed = 0;
-  for (let i = 0; i != data.length; ++i) {
-    let record = data[i];
-    if (stringIsNullOrEmptyOrWhitespace(record.id)) {
-      data[i].id = genGuid();
-      ++fixed;
-    }
-  }
+const check = (handle: string, project_name = undefined) => {
 
-  console.log(`fixed: ${fixed} ids`);
-};
-
-const check = (handle: string, fix: boolean, project_name = undefined) => {
-  if (stringIsNullOrEmptyOrWhitespace(handle)) return;
+  if (stringIsNullOrEmpty(handle)) return;
 
   const fpath = handle.replace(/\\/g, "/");
 
-  let json;
-  let has_bad_ids = false;
-  let unfilteredRecords: DbRecord[] = [];
+  let data;
 
   try {
-    json = require("fs").readFileSync(handle);
+    data = require("fs").readFileSync(handle);
   } catch (e) {
     console.log(`## file error reading: ${fpath}`);
     console.log(e);
@@ -59,7 +43,7 @@ const check = (handle: string, fix: boolean, project_name = undefined) => {
   let fail = false;
 
   try {
-    unfilteredRecords = JSON.parse(json);
+    const unfilteredRecords: DbRecord[] = JSON.parse(data);
     const args = require(`minimist`)(process.argv.slice(2));
 
     // extract all projects & iterate
@@ -72,17 +56,13 @@ const check = (handle: string, fix: boolean, project_name = undefined) => {
       console.log(`- error: ${projects.length} projects (can be 0 or 1)`);
     }
 
-    const bad_ids = unfilteredRecords.filter((record) =>
-      stringIsNullOrEmptyOrWhitespace(record.id)
-    );
+    const bad_ids = unfilteredRecords.filter((record) => stringIsNullOrEmpty(record.id))
 
     if (bad_ids.length) {
-      has_bad_ids = true;
       fail = true;
-      console.log(
-        `- error: ${bad_ids.length} of ${unfilteredRecords.length} record(s) have no id`
-      );
+      console.log(`- error: ${bad_ids.length} of ${unfilteredRecords.length} record(s) have no id`);
     }
+
   } catch (e) {
     fail = true;
     console.log(`## schema error in: ${fpath}`);
@@ -90,13 +70,7 @@ const check = (handle: string, fix: boolean, project_name = undefined) => {
   }
 
   console.log(fail ? "fail" : "pass");
-  console.log("----------------------------------------");
-
-  if (fix) {
-    if (has_bad_ids) fixIds(unfilteredRecords);
-
-    dbSave(unfilteredRecords, handle);
-  }
+  console.log("----------------------------------------")
 };
 
 module.exports = async (handle: string) => {
@@ -104,21 +78,14 @@ module.exports = async (handle: string) => {
   const args = minimist(process.argv.slice(2));
   let project_name = args.project || args.p || undefined;
 
-  let fix = false;
-  if (args.fix || args.repair) {
-    fix = true;
-  } else {
-    console.log("running in analysis mode - use --fix or --repair if required");
-  }
-
   if (args.r || args.recurse) {
     await visit((dir: string) => {
       const [handle] = getAndCheckDbHandle(dir);
       if (!handle) return;
-      check(handle, fix);
+      check(handle);
     });
     return;
   }
 
-  check(handle, fix, project_name);
+  check(handle, project_name);
 };
