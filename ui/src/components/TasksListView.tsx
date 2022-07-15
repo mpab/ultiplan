@@ -21,7 +21,7 @@ import {
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import React from "react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { taskNew, TaskStatus, TaskView, viewFromTask } from "../api/types";
 import { dateYYYYMMDD, stringIsNullOrEmpty } from "../utils";
@@ -35,6 +35,7 @@ import TasksTransactions, {
   readAllTasks,
   TasksApiReadCfg,
 } from "../api/TaskTransactions";
+import { useEffectOnce } from "../useEffectOnce";
 
 export const TasksListView = () => {
   const [selectedTaskView, setSelectedTaskView] = useState(
@@ -59,7 +60,7 @@ export const TasksListView = () => {
     setViews: setViews,
   });
 
-  useEffect(() => {
+  useEffectOnce(() => {
     const cfg: TasksApiReadCfg = {
       success: (msg) => toast.success(msg),
       error: (msg) => toast.error(msg),
@@ -68,7 +69,7 @@ export const TasksListView = () => {
     };
 
     readAllTasks(cfg);
-  }, []);
+  },);
 
   // -----------------------------------------------------
 

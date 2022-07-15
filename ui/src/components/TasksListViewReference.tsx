@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import MaterialTable, { Column } from "@material-table/core";
 import { Container } from "@mui/material";
 
@@ -12,8 +12,9 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
 import { TaskView } from "../api/types";
-import TasksTransactions, { readAllTasks, TasksApiReadCfg } from "../api/TaskTransactions";
+import { readAllTasks, TasksApiReadCfg } from "../api/TaskTransactions";
 import tableIcons from "./TableIcons";
+import { useEffectOnce } from "../useEffectOnce";
 
 const columns: Array<Column<TaskView>> = [
   //{ title: "Id", field: "id" },
@@ -33,7 +34,7 @@ export const TasksListViewReference = () => {
   const [views, setViews] = useState<TaskView[]>([]);
   const [summary, setSummary] = useState(``);
 
-  useEffect(() => {
+  useEffectOnce(() => {
     const cfg: TasksApiReadCfg = {
       success: (msg) => alert(`success\n` + msg),
       error: (msg) => alert(`error\n` + msg),
@@ -42,7 +43,7 @@ export const TasksListViewReference = () => {
     };
 
     readAllTasks(cfg);
-  }, []);
+  });
 
   // -----------------------------------------------------
 
