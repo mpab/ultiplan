@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import MaterialTable, { Column } from "@material-table/core";
 import { Container } from "@mui/material";
-import tableIcons from "./TableIcons";
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -12,147 +11,89 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 
-import { taskDelete, taskCreate, taskUpdate, taskReadAll } from "../api/tasks";
+import { taskNew, TaskView, viewFromTask } from "../api/types";
+import TasksTransactions from "./TaskTransactions";
+import { DeleteOutline, } from "@mui/icons-material";
+import tableIcons from "./TableIcons";
 
-import { TaskRecord, taskNew, TaskView } from "../api/types";
-import { stringIsNullOrEmpty } from "../utils";
-
-// type Props = {
-//   data: TaskRecord[],
-// };
-
-const columns: Array<Column<TaskRecord>> = [
+const columns: Array<Column<TaskView>> = [
   //{ title: "Id", field: "id" },
-  { title: "Description", field: "description" },
-  { title: "Project", field: "project" },
-  { title: "Created", field: "created_on" },
-  { title: "Completed", field: "completed_on" },
-  { title: "Due", field: "due_on" },
+  { title: "Description", field: "taskRecord.description" },
+  { title: "Project", field: "taskRecord.project" },
+  { title: "Created", field: "taskRecord.created_on" },
+  { title: "Completed", field: "taskRecord.completed_on" },
+  { title: "Due", field: "taskRecord.due_on" },
   { title: "Status", field: "status" },
 ];
 
-const options = {
-  paging: true,
-  pageSize: 10,
-  emptyRowsWhenPaging: false,
-  pageSizeOptions: [10, 20, 50],
-};
-
 export const TasksListViewReference = () => {
   // -----------------------------------------------------
-  // records get/set
-  const [records, setRecords] = useState<TaskRecord[]>([]);
-  const [summary, setSummary] = useState<string>("");
+  //
+  // Tasks CRUD and dependencies
+  //
+  const [views, setViews] = useState<TaskView[]>([]);
+  const [summary, setSummary] = useState(``);
 
-  // useEffect(() => {
-  //   tasksRead(setRecords, setSummary);
-  // }, []);
+  const tasks = new TasksTransactions({
+    success: (msg) => alert("SUCCESS\n" + msg),
+    error: (msg) => alert("ERROR\n" + msg),
+    views: views,
+    setViews: setViews,
+    setSummary: setSummary,
+  });
+
+  useEffect(() => {
+    tasks.readAllTasks();
+  }, []);
 
   // -----------------------------------------------------
 
   const [isDialogOpen, setIsDialogOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
-    setIsDialogOpen(true);
-  };
-
   const handleClose = () => {
     setIsDialogOpen(false);
   };
 
-  const handleDeleteTaskRequest = (taskView: TaskView) => {
-    if (stringIsNullOrEmpty(taskView.taskRecord.id)) {
-      return;
-    }
-
-    if (
-      window.confirm(
-        `Delete Task?\n` +
-          taskView.taskRecord.id +
-          `\n` +
-          taskView.taskRecord.description
-      )
-    ) {
-      taskDelete(
-        taskView.taskRecord.id,
-        () => {},
-        () => {},
-        () => {}
-      );
-    }
-  };
-
-  const handleNewTaskRequest = () => {
-    const description = prompt("Enter description: ", "todo");
-    if (description)
-      taskCreate(
-        taskNew(description),
-        () => {},
-        () => {},
-        () => {}
-      );
-  };
-
-  const handleEditTaskRequest = (taskView: TaskView) => {
-    if (stringIsNullOrEmpty(taskView.taskRecord.id)) {
-      alert(`task has no id, unable to edit`);
-      return;
-    }
-
-    const description = prompt(
-      "Description: ",
-      taskView.taskRecord.description
-    );
-    if (description)
-      taskUpdate(
-        taskView.taskRecord,
-        () => {},
-        () => {},
-        () => {}
-      );
-  };
-
   React.useEffect(() => {
     // Closes dialog after saving
-    // if (isDialogOpen) {
-    //   setIsDialogOpen(false);
-    // }
+    if (isDialogOpen) {
+      setIsDialogOpen(false);
+    }
   }, [isDialogOpen]);
 
-  //   <MaterialTable
-  //   columns={columns}
-  //   data={data}
-  //   icons={tableIcons}
-  //   options={{
-  //     exportButton: true,
-  //   }}
-  //   title={"Tasks"}
-  //   actions={[
-  //     {
-  //       icon: tableIcons.Delete,
-  //       tooltip: "Delete Task",
-  //       onClick: (event, rowData) => handleDeleteTaskRequest(rowData),
-  //     },
-  //     {
-  //       icon: tableIcons.Add,
-  //       tooltip: "Add Task",
-  //       isFreeAction: true,
+  <MaterialTable
+    columns={columns}
+    data={views}
+    icons={tableIcons}
+    options={{
+    }}
+    title={"Tasks"}
+    // actions={[
+    //   {
+    //     icon: tableIcons.Delete,
+    //     tooltip: "Delete Task",
+    //     onClick: (event, rowData) => tasks.deleteTask(rowData as TaskView),
+    //   },
+    //   {
+    //     icon: Add,
+    //     tooltip: "Add Task",
+    //     isFreeAction: true,
 
-  //       onClick: (event) => handleNewTaskRequest(),
-  //     },
-  //     {
-  //       icon: tableIcons.Edit,
-  //       tooltip: "Edit Task",
-  //       onClick: (event, rowData) => handleEditTaskRequest(rowData),
-  //     },
-  //   ]}
-  // />
+    //     onClick: (event) => tasks.createTask(viewFromTask(taskNew(""))),
+    //   },
+    //   {
+    //     icon: Edit,
+    //     tooltip: "Edit Task",
+    //     onClick: (event, rowData) => tasks.updateTask(rowData as TaskView),
+    //   },
+    // ]}
+  />;
 
   return (
     <Container>
       <MaterialTable
         columns={columns}
-        data={records}
+        data={views}
         detailPanel={({ rowData }) => {
           return (
             <div
@@ -162,7 +103,7 @@ export const TasksListViewReference = () => {
                 height: 100,
               }}
             >
-              This is a detailed panel for {rowData.description}
+              This is a detailed panel for {rowData.taskRecord.description}
             </div>
           );
         }}

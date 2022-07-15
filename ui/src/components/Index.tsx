@@ -103,13 +103,6 @@ export default function PersistentDrawerLeft() {
   ];
 
   // ------------------------------------------------------------
-  // Dialog
-  const [openDialog, setOpenDialog] = React.useState(false);
-  const handleOpenDialog = () => {
-    setOpenDialog(true);
-  };
-
-  // ------------------------------------------------------------
 
   return (
     <Box sx={{ display: "flex" }}>
