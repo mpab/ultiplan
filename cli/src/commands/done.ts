@@ -32,7 +32,8 @@ module.exports = () => {
     };
 
     const record = recordFromView(view);
-    console.dir(record);
+    dbCreateRecord(record, getDbHandle());
+    return;
   }
 
   do {

@@ -87,6 +87,7 @@
 - 2022-07-17: create a basic web ui for managing tasks
 - 2022-07-17: create an api for the web ui
 - 2022-07-17: implement a find command
+- 2022-07-17: implemented prep for schema versioning
 - 2022-07-14: create an api for the web ui
 - 2022-07-14: ui: automatically set focus when adding a tag - also may need to scroll when doing so
     - best example: https://www.cluemediator.com/set-focus-on-the-dynamic-input-field-in-react

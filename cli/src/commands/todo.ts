@@ -32,8 +32,6 @@ const index = async (handle: string) => {
     console.dir(view);
 
     const record = recordFromView(view);
-    console.dir(record);
-
     dbCreateRecord(record, getDbHandle());
     return;
   }

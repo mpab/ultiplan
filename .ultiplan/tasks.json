@@ -1245,5 +1245,16 @@
       "completed_on": "2022-07-14"
     },
     "tags": []
+  },
+  {
+    "id": "02e4b325-31f0-46d2-b981-6283c6e88347",
+    "description": "implemented prep for schema versioning",
+    "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-17",
+      "started_on": "2022-07-17",
+      "completed_on": "2022-07-17"
+    },
+    "tags": []
   }
 ]
