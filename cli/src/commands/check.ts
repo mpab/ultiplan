@@ -7,6 +7,7 @@ import visit from "ultiplan-api/src/libs/utils/dir-visitor";
 import stringIsNullOrEmptyOrWhitespace from "ultiplan-api/src/libs/utils/string-is-null-or-empty-or-whitespace";
 import genGuid from "ultiplan-api/src/libs/utils/generate-uuid";
 import dbSave from "ultiplan-api/src/libs/db/db-save";
+import dbLoad from "ultiplan-api/src/libs/db/db-load";
 
 const checkRecordsBelongToProject = (
   project_name: string,
@@ -44,35 +45,24 @@ const check = (handle: string, fix: boolean, project_name = undefined) => {
 
   let json;
   let has_bad_ids = false;
-  let unfilteredRecords: DbRecord[] = [];
 
-  try {
-    json = require("fs").readFileSync(handle);
-  } catch (e) {
-    console.log(`## file error reading: ${fpath}`);
-    console.log(e);
-    return;
-  }
+  const records: DbRecord[] = dbLoad(handle);
+  if (!records.length) return;
 
   console.log(`parsing: ${fpath}...`);
 
   let fail = false;
 
   try {
-    unfilteredRecords = JSON.parse(json);
-    const args = require(`minimist`)(process.argv.slice(2));
-
     // extract all projects & iterate
-    const projects = [
-      ...new Set(unfilteredRecords.map((record) => record.project)),
-    ];
+    const projects = [...new Set(records.map((record) => record.project))];
 
     if (projects.length > 1) {
       fail = true;
       console.log(`- error: ${projects.length} projects (can be 0 or 1)`);
     }
 
-    const bad_ids = unfilteredRecords.filter((record) =>
+    const bad_ids = records.filter((record) =>
       stringIsNullOrEmptyOrWhitespace(record.id)
     );
 
@@ -80,7 +70,7 @@ const check = (handle: string, fix: boolean, project_name = undefined) => {
       has_bad_ids = true;
       fail = true;
       console.log(
-        `- error: ${bad_ids.length} of ${unfilteredRecords.length} record(s) have no id`
+        `- error: ${bad_ids.length} of ${records.length} record(s) have no id`
       );
     }
   } catch (e) {
@@ -93,9 +83,9 @@ const check = (handle: string, fix: boolean, project_name = undefined) => {
   console.log("----------------------------------------");
 
   if (fix) {
-    if (has_bad_ids) fixIds(unfilteredRecords);
+    if (has_bad_ids) fixIds(records);
 
-    dbSave(unfilteredRecords, handle);
+    dbSave(records, handle);
   }
 };
 
