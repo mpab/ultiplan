@@ -2,7 +2,7 @@
 
 [ ! -d .git ] && echo "ERROR: $PWD is not a git repo" && exit
 
-tasks report --r >| tracker.md
+tasks report >| tracker.md
 
 comment=$(git diff tracker.md | grep -e "+- [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]" | sed "s/+- [0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]: //" | paste -s -d";")
 [ ! -z "$comment" ] && echo git acp \'$comment\'

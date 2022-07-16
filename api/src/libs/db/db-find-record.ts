@@ -1,10 +1,13 @@
-import { DbRecord } from './db-record';
-
 import dbLoad from './db-load';
 
 const dbFindRecord = (id: string, handle: string) => {
-  const records: DbRecord[] = dbLoad(handle);
-  if (!records.length) return;
+  const [records, error] = dbLoad(handle);
+  if (error) return;
+
+  if (!records.length) {
+    console.log(`empty DB at ${handle}`);
+    return;
+  }
   return records.filter((record) => record.id === id)[0];
 };
 

@@ -1,21 +1,22 @@
 // list tasks (with recursive option)
 // ls: `list all tasks <options> --r, -r recursively`,
 
-import fs from 'fs';
-import minimist from 'minimist';
-import dbLoad from 'ultiplan-api/src/libs/db/db-load';
+import minimist from "minimist";
+import dbLoad from "ultiplan-api/src/libs/db/db-load";
 
-import { DbRecord } from "ultiplan-api/src/libs/db/db-record";
+import { DbRecord_2022_07_16, RecordView } from "ultiplan-api/src/libs/db/db-record";
+import { dbLoadAsView } from "ultiplan-api/src/libs/db/db-converters";
 import { getAndCheckDbHandle } from "../utils/db-handle";
 
 import visit from "ultiplan-api/src/libs/utils/dir-visitor";
 import stringIsNullOrEmpty from "ultiplan-api/src/libs/utils/string-is-null-or-empty";
 
 const lsCsv = (handle: string) => {
-  const records = dbLoad(handle);
+  const [records, error] = dbLoadAsView(handle);
+  if (error) return;
 
   for (const item of records) {
-    const record: DbRecord = item;
+    const record: RecordView = item;
     const { parse } = require("json2csv");
     const fields = [
       "description",
@@ -33,18 +34,28 @@ const lsCsv = (handle: string) => {
   }
 };
 
-const lsAttr = (handle: string) => {
-  const records = dbLoad(handle);
+const lsRaw = (handle: string) => {
+  const [records, error] = dbLoad(handle);
+  if (error) return;
 
-  for (const item of records) {
-    const record: DbRecord = item;
-    console.dir(record);
-    console.log();
+  for (const r of records) {
+    console.log(r as DbRecord_2022_07_16);
   }
 };
 
-const lsFormatRecord = (record: DbRecord) => {
-  const id = stringIsNullOrEmpty(record.id) ? "00000000-0000-0000-0000-000000000000" : record.id;
+const lsView = (handle: string) => {
+  const [records, error] = dbLoadAsView(handle);
+  if (error) return;
+
+  for (const r of records) {
+    console.log(r);
+  }
+};
+
+const lsFormatRecord = (record: RecordView) => {
+  const id = stringIsNullOrEmpty(record.id)
+    ? "00000000-0000-0000-0000-000000000000"
+    : record.id;
   let ret = `${record.project}-${id}\n${record.description}`;
   for (const tag of record.tags) {
     ret += `\n- ` + tag;
@@ -52,41 +63,50 @@ const lsFormatRecord = (record: DbRecord) => {
   return ret;
 };
 
-const ls = (handle: string) => {
+const lsSummary = (handle: string) => {
   //console.log(`list ${handle}`)
   //console.log(`found DB ${handle}`)
 
-  const records = dbLoad(handle);
+  const [records, error] = dbLoadAsView(handle);
+  if (error) return;
 
   for (const item of records) {
-    const record: DbRecord = item;
+    const record: RecordView = item;
     console.log(lsFormatRecord(record));
     console.log();
   }
 };
 
-module.exports = async (handle: string) => {
-  const args = minimist(process.argv.slice(2));
-
+const ls = (args: minimist.ParsedArgs, handle: string) => {
   if (args.csv) {
     lsCsv(handle);
     return;
   }
 
-  if (args.attr) {
-    lsAttr(handle);
+  if (args.summary) {
+    lsSummary(handle);
     return;
   }
+
+  if (args.raw) {
+    lsRaw(handle);
+    return;
+  }
+
+  lsView(handle);
+};
+
+module.exports = async (handle: string) => {
+  const args = minimist(process.argv.slice(2));
 
   if (args.r || args.recurse) {
     await visit((dir: string) => {
       const [handle] = getAndCheckDbHandle(dir);
       if (!handle) return;
-      ls(handle);
+      ls(args, handle);
     });
     return;
   }
 
-  ls(handle);
-
+  ls(args, handle);
 };

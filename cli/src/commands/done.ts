@@ -5,26 +5,22 @@ import reader from "readline-sync";
 import dateYYYYMMDD from "ultiplan-api/src/libs/utils/dates";
 import dbCreateRecord from "ultiplan-api/src/libs/db/db-create-record";
 import genGuid from "ultiplan-api/src/libs/utils/generate-uuid";
-import { DbRecord, DbRecordDates } from "ultiplan-api/src/libs/db/db-record";
+import { RecordView } from "ultiplan-api/src/libs/db/db-record";
 import { getDbHandle } from "../utils/db-handle";
-import dbNewRecord from './shared/new-record';
+import dbNewView from './shared/new-view';
 import projectInfo from "../utils/project-info";
+import { RecordDates, recordFromView } from "ultiplan-api/src/libs/db/db-converters";
 
 module.exports = () => {
   let description: string = process.argv.slice(3).join(` `);
 
-  const date = dateYYYYMMDD(new Date());
-  const dates: DbRecordDates = {
-    created_on: date,
-    started_on: date,
-    due_on: date,
-    completed_on: date,
-  };
+  const dates = new RecordDates(dateYYYYMMDD(new Date()));
+  dates.completed_on = dates.created_on;
 
   const id = genGuid();
 
   if (description.length) {
-    const record: DbRecord = {
+    const view: RecordView = {
       id: id,
       description: description,
       created_on: dates.created_on,
@@ -35,14 +31,16 @@ module.exports = () => {
       tags: Array(),
     };
 
-    dbCreateRecord(record, getDbHandle());
-    return;
+    const record = recordFromView(view);
+    console.dir(record);
   }
 
   do {
     description = reader.question(" completed? ");
     if (description.length) {
-      dbCreateRecord(dbNewRecord(description, dates, id), getDbHandle());
+      const view = dbNewView(description, dates, id);
+      const record = recordFromView(view);
+      dbCreateRecord(record, getDbHandle());
     }
   } while (description.length);
 };

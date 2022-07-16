@@ -1,6 +1,6 @@
 // initializes a project
 
-import { DbRecord } from "ultiplan-api/src/libs/db/db-record";
+import { RecordView } from "ultiplan-api/src/libs/db/db-record";
 import { getAndCheckDbHandle, getDbHandle } from "../utils/db-handle";
 
 module.exports = () => {
@@ -13,7 +13,7 @@ module.exports = () => {
   projectDbHandle = getDbHandle();
 
   console.log("no DB: " + projectDbHandle);
-  let records: DbRecord[] = [];
+  let records: RecordView[] = [];
 
   const fs = require("fs");
 

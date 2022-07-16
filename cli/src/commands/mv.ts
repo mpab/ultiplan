@@ -3,7 +3,7 @@
 
 import fs from 'fs';
 
-import { DbRecord } from "ultiplan-api/src/libs/db/db-record";
+import { RecordView } from "ultiplan-api/src/libs/db/db-record";
 import { getAndCheckDbHandle } from "../utils/db-handle";
 import errorExit from "../utils/error-exit";
 import stringIsNullOrEmpty from "ultiplan-api/src/libs/utils/string-is-null-or-empty";
@@ -45,7 +45,7 @@ const mv = async (old_project: string, new_project: string) => {
 
   const safeHandle = handle as string;
 
-  let records: DbRecord[] = [];
+  let records: RecordView[] = [];
 
   fs.readFile(safeHandle, 'utf-8', function (err: any, json_string: string) {
     if (err) {

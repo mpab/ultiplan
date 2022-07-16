@@ -1,518 +1,530 @@
 [
   {
+    "id": "34489cfc-ffc8-4568-fdbc-422b27c7da2c",
     "description": "create an api for the web ui",
-    "created_on": "2022-06-10",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "2022-07-14",
     "project": "ultiplan",
-    "tags": [],
-    "id": "34489cfc-ffc8-4568-fdbc-422b27c7da2c"
+    "dates": {
+      "created_on": "2022-06-10",
+      "completed_on": "2022-07-14"
+    },
+    "tags": []
   },
   {
+    "id": "358166ad-1654-4d2f-8607-74f884ea49c2",
     "description": "auto configure commands such that they can be added automatically",
-    "created_on": "2022-05-15",
-    "started_on": "2022-05-15",
-    "due_on": "",
-    "completed_on": "2022-05-19",
     "project": "ultiplan",
-    "tags": [],
-    "start_date": "",
-    "id": "358166ad-1654-4d2f-8607-74f884ea49c2"
+    "dates": {
+      "created_on": "2022-05-15",
+      "started_on": "2022-05-15",
+      "completed_on": "2022-05-19"
+    },
+    "tags": []
   },
   {
+    "id": "19d811f0-3bd5-4a37-87a9-2b3f7ab018a1",
     "description": "basic task saving using a JSON file",
-    "created_on": "2022-05-16",
-    "started_on": "2022-05-15",
-    "due_on": "2022-05-16",
-    "completed_on": "2022-05-16",
     "project": "ultiplan",
-    "tags": [],
-    "start_date": "2022-05-16",
-    "id": "19d811f0-3bd5-4a37-87a9-2b3f7ab018a1"
+    "dates": {
+      "created_on": "2022-05-16",
+      "started_on": "2022-05-15",
+      "due_on": "2022-05-16",
+      "completed_on": "2022-05-16"
+    },
+    "tags": []
   },
   {
+    "id": "2381f3d8-1009-481b-e328-875547f0ed5d",
     "description": "ui: implement basic task viewing, creation and deletion",
-    "created_on": "2022-05-19",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "2022-07-06",
     "project": "ultiplan",
-    "tags": [],
-    "id": "2381f3d8-1009-481b-e328-875547f0ed5d"
+    "dates": {
+      "created_on": "2022-05-19",
+      "completed_on": "2022-07-06"
+    },
+    "tags": []
   },
   {
+    "id": "5a81a3f0-956c-4771-cb5a-5fcaf28d29d3",
     "description": "create alias for todo command",
-    "created_on": "2022-05-21",
-    "started_on": "2022-06-10",
-    "due_on": "2022-06-10",
-    "completed_on": "2022-06-10",
     "project": "ultiplan",
-    "tags": [],
-    "id": "5a81a3f0-956c-4771-cb5a-5fcaf28d29d3"
+    "dates": {
+      "created_on": "2022-05-21",
+      "started_on": "2022-06-10",
+      "due_on": "2022-06-10",
+      "completed_on": "2022-06-10"
+    },
+    "tags": []
   },
   {
+    "id": "1e7eeb92-8f8b-4ca2-c9ce-ac2b95614704",
     "description": "reporting: create parameterized summary reports per project (output to markdown)",
-    "created_on": "2022-05-21",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "2022-05-22",
     "project": "ultiplan",
-    "tags": [],
-    "id": "1e7eeb92-8f8b-4ca2-c9ce-ac2b95614704"
+    "dates": {
+      "created_on": "2022-05-21",
+      "completed_on": "2022-05-22"
+    },
+    "tags": []
   },
   {
+    "id": "8c017a01-8b86-4ba4-e6c7-272084b3c640",
     "description": "consider how to link tasks to learnings/learning paths",
-    "created_on": "2022-05-21",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "8c017a01-8b86-4ba4-e6c7-272084b3c640"
+    "dates": {
+      "created_on": "2022-05-21"
+    },
+    "tags": []
   },
   {
+    "id": "fd00f9a8-d6d9-40c5-8f7f-1aae650340f5",
     "description": "add task edit (update) functionality",
-    "created_on": "2022-05-21",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "2022-07-06",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-05-21",
+      "completed_on": "2022-07-06"
+    },
     "tags": [
       "implemented in ui and api, not in cli"
-    ],
-    "id": "fd00f9a8-d6d9-40c5-8f7f-1aae650340f5"
+    ]
   },
   {
+    "id": "daac50fc-ca33-4691-db53-b002be3cfc82",
     "description": "implement local tasks repo/deployment (with default project?)",
-    "created_on": "2022-05-21",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "daac50fc-ca33-4691-db53-b002be3cfc82"
+    "dates": {
+      "created_on": "2022-05-21"
+    },
+    "tags": []
   },
   {
+    "id": "ef92f1d0-c8c3-4598-bc8e-7883e17bc5e1",
     "description": "implement links between ultiplan repos (hierarchical, sibling, ...)",
-    "created_on": "2022-05-21",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "ef92f1d0-c8c3-4598-bc8e-7883e17bc5e1"
+    "dates": {
+      "created_on": "2022-05-21"
+    },
+    "tags": []
   },
   {
+    "id": "91656fb3-92f5-4238-f680-6f38ee232531",
     "description": "implement separate tasks database",
-    "created_on": "2022-05-21",
-    "started_on": "2022-05-21",
-    "due_on": "2022-05-21",
-    "completed_on": "2022-05-21",
     "project": "ultiplan",
-    "tags": [],
-    "id": "91656fb3-92f5-4238-f680-6f38ee232531"
+    "dates": {
+      "created_on": "2022-05-21",
+      "started_on": "2022-05-21",
+      "due_on": "2022-05-21",
+      "completed_on": "2022-05-21"
+    },
+    "tags": []
   },
   {
+    "id": "63846ca0-3810-4ea9-9039-0f9f1ad209ed",
     "description": "add parameters to commands",
-    "created_on": "2022-05-22",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "63846ca0-3810-4ea9-9039-0f9f1ad209ed"
+    "dates": {
+      "created_on": "2022-05-22"
+    },
+    "tags": []
   },
   {
+    "id": "10e09c7b-a4c6-48c9-96a3-5887a5fee406",
     "description": "reporting: implemented basic tracker (in markdown) for project",
-    "created_on": "2022-05-22",
-    "started_on": "2022-05-22",
-    "due_on": "2022-05-22",
-    "completed_on": "2022-05-22",
     "project": "ultiplan",
-    "tags": [],
-    "id": "10e09c7b-a4c6-48c9-96a3-5887a5fee406"
+    "dates": {
+      "created_on": "2022-05-22",
+      "started_on": "2022-05-22",
+      "due_on": "2022-05-22",
+      "completed_on": "2022-05-22"
+    },
+    "tags": []
   },
   {
+    "id": "f59030b6-ab5e-48e8-bf4d-002abed2a104",
     "description": "extract diff from tracker to use as git commit message",
-    "created_on": "2022-05-22",
-    "started_on": "2022-06-04",
-    "due_on": "2022-06-04",
-    "completed_on": "2022-06-04",
     "project": "ultiplan",
-    "tags": [],
-    "id": "f59030b6-ab5e-48e8-bf4d-002abed2a104"
+    "dates": {
+      "created_on": "2022-05-22",
+      "started_on": "2022-06-04",
+      "due_on": "2022-06-04",
+      "completed_on": "2022-06-04"
+    },
+    "tags": []
   },
   {
+    "id": "0d9e8d40-3670-4ff0-84b7-9f2876f15a74",
     "description": "reporting: implement date sorting",
-    "created_on": "2022-05-22",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "2022-05-23",
     "project": "ultiplan",
-    "tags": [],
-    "id": "0d9e8d40-3670-4ff0-84b7-9f2876f15a74"
+    "dates": {
+      "created_on": "2022-05-22",
+      "completed_on": "2022-05-23"
+    },
+    "tags": []
   },
   {
+    "id": "a84e0bd2-b445-4d23-cc8e-fed77a0a9203",
     "description": "references: implement reference extraction to markdown (url tags)",
-    "created_on": "2022-05-22",
-    "started_on": "2022-06-04",
-    "due_on": "2022-06-04",
-    "completed_on": "2022-06-04",
     "project": "ultiplan",
-    "tags": [],
-    "id": "a84e0bd2-b445-4d23-cc8e-fed77a0a9203"
+    "dates": {
+      "created_on": "2022-05-22",
+      "started_on": "2022-06-04",
+      "due_on": "2022-06-04",
+      "completed_on": "2022-06-04"
+    },
+    "tags": []
   },
   {
+    "id": "8f6021ce-a73c-4f39-c112-8447a3c8afda",
     "description": "design: data flows, aggregation, and task creation (inbox concept)",
-    "created_on": "2022-05-22",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "8f6021ce-a73c-4f39-c112-8447a3c8afda"
+    "dates": {
+      "created_on": "2022-05-22"
+    },
+    "tags": []
   },
   {
+    "id": "d4e5aba3-1d70-49c6-a0b2-b364595b5e43",
     "description": "implement check to determine if duplicate tasks are being created",
-    "created_on": "2022-05-22",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "d4e5aba3-1d70-49c6-a0b2-b364595b5e43"
+    "dates": {
+      "created_on": "2022-05-22"
+    },
+    "tags": []
   },
   {
+    "id": "3ee04800-7b60-4fa1-9ec5-3761ba5b8ca5",
     "description": "implement analysis mode to scan tasks for similarities, extract keywords, suggest groupings, etc",
-    "created_on": "2022-05-22",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "3ee04800-7b60-4fa1-9ec5-3761ba5b8ca5"
+    "dates": {
+      "created_on": "2022-05-22"
+    },
+    "tags": []
   },
   {
+    "id": "f92ddc60-b88d-4c1d-9155-92abbf914154",
     "description": "implement multi-line text entry/handle commas",
-    "created_on": "2022-05-22",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "f92ddc60-b88d-4c1d-9155-92abbf914154"
+    "dates": {
+      "created_on": "2022-05-22"
+    },
+    "tags": []
   },
   {
+    "id": "919403c2-887c-4b28-8361-d8e79c3dbdd4",
     "description": "implement default project response when creating a task",
-    "created_on": "2022-05-23",
-    "started_on": "2022-05-23",
-    "due_on": "2022-05-23",
-    "completed_on": "2022-05-23",
     "project": "ultiplan",
-    "tags": [],
-    "id": "919403c2-887c-4b28-8361-d8e79c3dbdd4"
+    "dates": {
+      "created_on": "2022-05-23",
+      "started_on": "2022-05-23",
+      "due_on": "2022-05-23",
+      "completed_on": "2022-05-23"
+    },
+    "tags": []
   },
   {
+    "id": "7899b4b9-5f27-4a6b-d8ef-44b81f70a799",
     "description": "improve list command formatting",
-    "created_on": "2022-05-23",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "7899b4b9-5f27-4a6b-d8ef-44b81f70a799"
+    "dates": {
+      "created_on": "2022-05-23"
+    },
+    "tags": []
   },
   {
+    "id": "63c97783-8fae-481c-afbd-6f788551cf55",
     "description": "design: how to integrate browser favourites?",
-    "created_on": "2022-05-23",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "63c97783-8fae-481c-afbd-6f788551cf55"
+    "dates": {
+      "created_on": "2022-05-23"
+    },
+    "tags": []
   },
   {
+    "id": "3b65405e-ee17-467b-c24e-9b381b599115",
     "description": "design: how to integrate gists?",
-    "created_on": "2022-05-23",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "3b65405e-ee17-467b-c24e-9b381b599115"
+    "dates": {
+      "created_on": "2022-05-23"
+    },
+    "tags": []
   },
   {
+    "id": "782a0e91-2579-41c0-d752-54918e8486aa",
     "description": "improve task entry to support tags",
-    "created_on": "2022-05-23",
-    "started_on": "2022-06-04",
-    "due_on": "2022-06-04",
-    "completed_on": "2022-06-04",
     "project": "ultiplan",
-    "tags": [],
-    "id": "782a0e91-2579-41c0-d752-54918e8486aa"
+    "dates": {
+      "created_on": "2022-05-23",
+      "started_on": "2022-06-04",
+      "due_on": "2022-06-04",
+      "completed_on": "2022-06-04"
+    },
+    "tags": []
   },
   {
+    "id": "7a35fe1c-9c66-4f2b-e744-5d914b4a9bba",
     "description": "add ability to specify sub-projects/epics/BTIs (Big Ticket Items) for sub-grouping within a project",
-    "created_on": "2022-05-23",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "7a35fe1c-9c66-4f2b-e744-5d914b4a9bba"
+    "dates": {
+      "created_on": "2022-05-23"
+    },
+    "tags": []
   },
   {
+    "id": "23d63065-0fcb-4282-e4a9-e02e1aa7515c",
     "description": "add lists to descriptions using dash (-) separators and use these to format the reports",
-    "created_on": "2022-05-23",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "23d63065-0fcb-4282-e4a9-e02e1aa7515c"
+    "dates": {
+      "created_on": "2022-05-23"
+    },
+    "tags": []
   },
   {
+    "id": "affe76e2-aa05-434a-b4a5-644077feb70d",
     "description": "reporting: implement calendar display",
-    "created_on": "2022-05-23",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "affe76e2-aa05-434a-b4a5-644077feb70d"
+    "dates": {
+      "created_on": "2022-05-23"
+    },
+    "tags": []
   },
   {
+    "id": "6a914bed-50ff-40b0-9912-1a5bd114b647",
     "description": "design: implement a workflow concept to support tracking of events - e.g. email communications",
-    "created_on": "2022-05-23",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "6a914bed-50ff-40b0-9912-1a5bd114b647"
+    "dates": {
+      "created_on": "2022-05-23"
+    },
+    "tags": []
   },
   {
+    "id": "114a3fe8-08c5-4268-be09-22e3d9b97c62",
     "description": "similar app - noteplan",
-    "created_on": "2022-05-23",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-05-23"
+    },
     "tags": [
       "https://noteplan.co/",
       "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d",
       "https://hackernoon.com/markdown-calendar-notes-28b87f965e5d",
       "https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d"
-    ],
-    "id": "114a3fe8-08c5-4268-be09-22e3d9b97c62"
+    ]
   },
   {
+    "id": "2d16580e-0ac2-49bf-8356-a7d85f13a894",
     "description": "design: how to separate notes, tasks, learning tasks, reading (learning) articles",
-    "created_on": "2022-05-23",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "2d16580e-0ac2-49bf-8356-a7d85f13a894"
+    "dates": {
+      "created_on": "2022-05-23"
+    },
+    "tags": []
   },
   {
+    "id": "43b511f3-c475-4587-b4b0-42c2c5c58418",
     "description": "implement scanning of local subdirectories for project name selection",
-    "created_on": "2022-05-27",
-    "started_on": "2022-06-04",
-    "due_on": "2022-06-04",
-    "completed_on": "2022-06-04",
     "project": "ultiplan",
-    "tags": [],
-    "id": "43b511f3-c475-4587-b4b0-42c2c5c58418"
+    "dates": {
+      "created_on": "2022-05-27",
+      "started_on": "2022-06-04",
+      "due_on": "2022-06-04",
+      "completed_on": "2022-06-04"
+    },
+    "tags": []
   },
   {
+    "id": "ff1bc0f3-5f4e-4373-8650-4761b530c9fc",
     "description": "simplify adding tasks - 'add' command, default to 'todo'",
-    "created_on": "2022-05-27",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "ff1bc0f3-5f4e-4373-8650-4761b530c9fc"
+    "dates": {
+      "created_on": "2022-06-04",
+      "completed_on": "2022-06-04"
+    },
+    "tags": []
   },
   {
+    "id": "ecf1240b-55ca-4ed1-d97e-7d109eeb4fb0",
     "description": "implement true cli - with menu system to navigate commands",
-    "created_on": "2022-05-27",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "ecf1240b-55ca-4ed1-d97e-7d109eeb4fb0"
+    "dates": {
+      "created_on": "2022-05-27"
+    },
+    "tags": []
   },
   {
+    "id": "8ed96d87-d309-445e-dc7d-cba0be5b683b",
     "description": "implement projects using tags - will simplify the data model",
-    "created_on": "2022-05-27",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "8ed96d87-d309-445e-dc7d-cba0be5b683b"
+    "dates": {
+      "created_on": "2022-05-27"
+    },
+    "tags": []
   },
   {
+    "id": "e23d85ea-a0ee-48b7-8b8f-9815aca4c3e6",
     "description": "implement auto-linking of data, e.g. registration when creating a new DB",
-    "created_on": "2022-05-27",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "e23d85ea-a0ee-48b7-8b8f-9815aca4c3e6"
+    "dates": {
+      "created_on": "2022-05-27"
+    },
+    "tags": []
   },
   {
+    "id": "c3b65d55-ae22-4ec6-9a76-f618b3ac2ca7",
     "description": "refactor list command into ls command with --options",
-    "created_on": "2022-06-01",
-    "started_on": "2022-06-01",
-    "due_on": "2022-06-01",
-    "completed_on": "2022-06-01",
     "project": "ultiplan",
-    "tags": [],
-    "id": "c3b65d55-ae22-4ec6-9a76-f618b3ac2ca7"
+    "dates": {
+      "created_on": "2022-06-01",
+      "started_on": "2022-06-01",
+      "due_on": "2022-06-01",
+      "completed_on": "2022-06-01"
+    },
+    "tags": []
   },
   {
+    "id": "2ab30e34-5391-4b9d-a55c-de07b62d9654",
     "description": "use standard .ultiplan directory naming for DB",
-    "created_on": "2022-06-01",
-    "started_on": "2022-06-01",
-    "due_on": "2022-06-01",
-    "completed_on": "2022-06-01",
     "project": "ultiplan",
-    "tags": [],
-    "id": "2ab30e34-5391-4b9d-a55c-de07b62d9654"
+    "dates": {
+      "created_on": "2022-06-01",
+      "started_on": "2022-06-01",
+      "due_on": "2022-06-01",
+      "completed_on": "2022-06-01"
+    },
+    "tags": []
   },
   {
+    "id": "edd12487-35ab-4bfa-a17b-b0882229a936",
     "description": "implement recursive project ls feature",
-    "created_on": "2022-06-01",
-    "started_on": "2022-06-04",
-    "due_on": "2022-06-04",
-    "completed_on": "2022-06-04",
     "project": "ultiplan",
-    "tags": [],
-    "id": "edd12487-35ab-4bfa-a17b-b0882229a936"
+    "dates": {
+      "created_on": "2022-06-01",
+      "started_on": "2022-06-04",
+      "due_on": "2022-06-04",
+      "completed_on": "2022-06-04"
+    },
+    "tags": []
   },
   {
+    "id": "ba3e7a39-bf52-4db4-fc47-0e63afa8fcb2",
     "description": "fix: can't create local DB if global DB not present - removed global DB",
-    "created_on": "2022-06-01",
-    "started_on": "2022-06-04",
-    "due_on": "2022-06-04",
-    "completed_on": "2022-06-04",
     "project": "ultiplan",
-    "tags": [],
-    "id": "ba3e7a39-bf52-4db4-fc47-0e63afa8fcb2"
+    "dates": {
+      "created_on": "2022-06-01",
+      "started_on": "2022-06-04",
+      "due_on": "2022-06-04",
+      "completed_on": "2022-06-04"
+    },
+    "tags": []
   },
   {
+    "id": "37ebe3fd-696b-4d42-bbad-23b0f8972202",
     "description": "create install script",
-    "created_on": "2022-06-03",
-    "started_on": "2022-06-03",
-    "due_on": "2022-06-03",
-    "completed_on": "2022-06-03",
     "project": "ultiplan",
-    "tags": [],
-    "id": "37ebe3fd-696b-4d42-bbad-23b0f8972202"
+    "dates": {
+      "created_on": "2022-06-03",
+      "started_on": "2022-06-03",
+      "due_on": "2022-06-03",
+      "completed_on": "2022-06-03"
+    },
+    "tags": []
   },
   {
+    "id": "8d0b3381-1709-455a-eef5-da29b24362c6",
     "description": "implement recursive markdown report generation",
-    "created_on": "2022-06-04",
-    "started_on": "2022-06-04",
-    "due_on": "2022-06-04",
-    "completed_on": "2022-06-04",
     "project": "ultiplan",
-    "tags": [],
-    "id": "8d0b3381-1709-455a-eef5-da29b24362c6"
+    "dates": {
+      "created_on": "2022-06-04",
+      "started_on": "2022-06-04",
+      "due_on": "2022-06-04",
+      "completed_on": "2022-06-04"
+    },
+    "tags": []
   },
   {
+    "id": "2473ec19-45f5-4d87-b3ef-a922ed3654f6",
     "description": "when adding a task, pick up the description from the command line parameters",
-    "created_on": "2022-06-04",
-    "started_on": "2022-06-09",
-    "due_on": "2022-06-09",
-    "completed_on": "2022-06-09",
     "project": "ultiplan",
-    "tags": [],
-    "id": "2473ec19-45f5-4d87-b3ef-a922ed3654f6"
+    "dates": {
+      "created_on": "2022-06-04",
+      "started_on": "2022-06-09",
+      "due_on": "2022-06-09",
+      "completed_on": "2022-06-09"
+    },
+    "tags": []
   },
   {
+    "id": "65171d2c-dce1-4fa6-df03-f91a3590c54b",
     "description": "installer: detect shell environment and update correct profile (sh, bash, zsh, ...)",
-    "created_on": "2022-06-05",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "65171d2c-dce1-4fa6-df03-f91a3590c54b"
+    "dates": {
+      "created_on": "2022-06-05"
+    },
+    "tags": []
   },
   {
+    "id": "8d244f23-3d47-4223-e61c-7a8b51bd7941",
     "description": "task schema: refactor named fields to k,v tag model",
-    "created_on": "2022-06-05",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "8d244f23-3d47-4223-e61c-7a8b51bd7941"
+    "dates": {
+      "created_on": "2022-06-05",
+      "completed_on": "2022-07-17"
+    },
+    "tags": []
   },
   {
+    "id": "18da75d9-a980-40b5-f920-2d7bb4ec88f7",
     "description": "task schema: tags can now be added as groups",
-    "created_on": "2022-06-06",
-    "started_on": "2022-06-06",
-    "due_on": "2022-06-06",
-    "completed_on": "2022-06-06",
     "project": "ultiplan",
-    "tags": [],
-    "id": "18da75d9-a980-40b5-f920-2d7bb4ec88f7"
+    "dates": {
+      "created_on": "2022-06-06",
+      "started_on": "2022-06-06",
+      "due_on": "2022-06-06",
+      "completed_on": "2022-06-06"
+    },
+    "tags": []
   },
   {
+    "id": "7110db73-7df3-44d9-d0fb-846dc3d62565",
     "description": "task schema: improve documentation",
-    "created_on": "2022-06-06",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-06"
+    },
     "tags": [
       "https://github.com/MiSTer-devel/MkDocs_MiSTer"
-    ],
-    "id": "7110db73-7df3-44d9-d0fb-846dc3d62565"
+    ]
   },
   {
+    "id": "6cc8868e-562e-422b-abbc-6e4dc4f3061b",
     "description": "implemented custom tag handling for 'todo'",
-    "created_on": "2022-06-09",
-    "started_on": "2022-06-09",
-    "due_on": "2022-06-09",
-    "completed_on": "2022-06-09",
     "project": "ultiplan",
-    "tags": [],
-    "id": "6cc8868e-562e-422b-abbc-6e4dc4f3061b"
+    "dates": {
+      "created_on": "2022-06-09",
+      "started_on": "2022-06-09",
+      "due_on": "2022-06-09",
+      "completed_on": "2022-06-09"
+    },
+    "tags": []
   },
   {
+    "id": "244efc0a-9b31-4c59-e247-b195ccaf1f09",
     "description": "data linking",
-    "created_on": "2022-06-09",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-09"
+    },
     "tags": [
       "scan tasks and look for similar wording/phrases/key words",
       "can be done at a description level or at a tag level (what about custom tags)",
       "extract the phrases into a dictionary",
       "link tasks using the dictionary",
       "dictionary should be dynamic and implemented as a separate schema"
-    ],
-    "id": "244efc0a-9b31-4c59-e247-b195ccaf1f09"
+    ]
   },
   {
+    "id": "b3227c7d-beda-4cbd-ca3f-2b3a2bee9f8e",
     "description": "graph ui",
-    "created_on": "2022-06-09",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-09"
+    },
     "tags": [
       "create a UI view of the tasks (and data linking schema)",
       "https://www.monterail.com/blog/javascript-libraries-data-visualization",
@@ -522,177 +534,195 @@
       "https://cambridge-intelligence.com/keylines-faq-force-directed-layouts/",
       "http://getspringy.com/",
       "https://www.yworks.com/pages/force-directed-graph-layout"
-    ],
-    "id": "b3227c7d-beda-4cbd-ca3f-2b3a2bee9f8e"
+    ]
   },
   {
+    "id": "96359e75-72cd-44a2-deb1-0823bad5c95e",
     "description": "implemented multiple task entry (keep entering tasks until a task with no description is detected)",
-    "created_on": "2022-06-09",
-    "started_on": "2022-06-09",
-    "due_on": "2022-06-09",
-    "completed_on": "2022-06-09",
     "project": "ultiplan",
-    "tags": [],
-    "id": "96359e75-72cd-44a2-deb1-0823bad5c95e"
+    "dates": {
+      "created_on": "2022-06-09",
+      "started_on": "2022-06-09",
+      "due_on": "2022-06-09",
+      "completed_on": "2022-06-09"
+    },
+    "tags": []
   },
   {
+    "id": "bd190fb3-5d8f-4d41-cce2-3f0d64c22393",
     "description": "factor out project/directory scanning code to visitor pattern",
-    "created_on": "2022-06-10",
-    "started_on": "2022-06-10",
-    "due_on": "2022-06-10",
-    "completed_on": "2022-06-10",
     "project": "ultiplan",
-    "tags": [],
-    "id": "bd190fb3-5d8f-4d41-cce2-3f0d64c22393"
+    "dates": {
+      "created_on": "2022-06-10",
+      "started_on": "2022-06-10",
+      "due_on": "2022-06-10",
+      "completed_on": "2022-06-10"
+    },
+    "tags": []
   },
   {
+    "id": "29dc5411-9613-4e20-b7d0-2f1ba47c98c3",
     "description": "create a basic web ui for managing tasks",
-    "created_on": "2022-06-10",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "29dc5411-9613-4e20-b7d0-2f1ba47c98c3"
+    "dates": {
+      "created_on": "2022-06-10",
+      "completed_on": "2022-07-17"
+    },
+    "tags": []
   },
   {
+    "id": "85f1cf33-1c1f-4ec8-e0a8-86474b079fd4",
     "description": "create an api for the web ui",
-    "created_on": "2022-06-10",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "85f1cf33-1c1f-4ec8-e0a8-86474b079fd4"
+    "dates": {
+      "created_on": "2022-06-10",
+      "completed_on": "2022-07-17"
+    },
+    "tags": []
   },
   {
+    "id": "33c351d1-77f4-4aa3-ea73-5d90e9f03cf3",
     "description": "implement ability to move tasks between different projects",
-    "created_on": "2022-06-21",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "33c351d1-77f4-4aa3-ea73-5d90e9f03cf3"
+    "dates": {
+      "created_on": "2022-06-21"
+    },
+    "tags": []
   },
   {
+    "id": "d16f6082-7b4d-4c4d-c9a7-05c1a64148f2",
     "description": "implement project move/rename",
-    "created_on": "2022-06-21",
-    "started_on": "2022-06-21",
-    "due_on": "2022-06-21",
-    "completed_on": "2022-06-21",
     "project": "ultiplan",
-    "tags": [],
-    "id": "d16f6082-7b4d-4c4d-c9a7-05c1a64148f2"
+    "dates": {
+      "created_on": "2022-06-21",
+      "started_on": "2022-06-21",
+      "due_on": "2022-06-21",
+      "completed_on": "2022-06-21"
+    },
+    "tags": []
   },
   {
+    "id": "27ca7c7f-3bec-451f-da07-bf89f1c45e9e",
     "description": "bug: check command fails - seems to read top-level project twice",
-    "created_on": "2022-06-21",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "27ca7c7f-3bec-451f-da07-bf89f1c45e9e"
+    "dates": {
+      "created_on": "2022-06-21"
+    },
+    "tags": []
   },
   {
+    "id": "a9485eb8-8144-4141-afdb-a2760ad0108f",
     "description": "implement data checks in projects",
-    "created_on": "2022-06-21",
-    "started_on": "2022-06-21",
-    "due_on": "2022-06-21",
-    "completed_on": "2022-06-21",
     "project": "ultiplan",
-    "tags": [],
-    "id": "a9485eb8-8144-4141-afdb-a2760ad0108f"
+    "dates": {
+      "created_on": "2022-06-21",
+      "started_on": "2022-06-21",
+      "due_on": "2022-06-21",
+      "completed_on": "2022-06-21"
+    },
+    "tags": []
   },
   {
+    "id": "375fc784-7c82-47c3-bd07-d287310020f9",
     "description": "implement a find command",
-    "created_on": "2022-06-23",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
-    "tags": [],
-    "id": "375fc784-7c82-47c3-bd07-d287310020f9"
+    "dates": {
+      "created_on": "2022-06-23",
+      "completed_on": "2022-07-17"
+    },
+    "tags": []
   },
   {
     "id": "baa8b871-8d67-4413-f353-7aeb6d7ad54c",
     "description": "implemented id field as uuid",
-    "created_on": "2022-06-25",
-    "started_on": "2022-06-25",
-    "due_on": "2022-06-25",
-    "completed_on": "2022-06-25",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-25",
+      "started_on": "2022-06-25",
+      "due_on": "2022-06-25",
+      "completed_on": "2022-06-25"
+    },
     "tags": []
   },
   {
     "id": "76d23829-2926-4cdf-cd2e-f46243a0beef",
     "description": "improved DB validation check",
-    "created_on": "2022-06-25",
-    "started_on": "2022-06-25",
-    "due_on": "2022-06-25",
-    "completed_on": "2022-06-25",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-25",
+      "started_on": "2022-06-25",
+      "due_on": "2022-06-25",
+      "completed_on": "2022-06-25"
+    },
     "tags": []
   },
   {
     "id": "0de456a6-1bf8-4a9d-8086-f52be8f62dd6",
     "description": "fixed visitor implementation",
-    "created_on": "2022-06-26",
-    "started_on": "2022-06-26",
-    "due_on": "2022-06-26",
-    "completed_on": "2022-06-26",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-26",
+      "started_on": "2022-06-26",
+      "due_on": "2022-06-26",
+      "completed_on": "2022-06-26"
+    },
     "tags": []
   },
   {
     "id": "b3b6440b-8984-4a57-f1e0-93c80f639f69",
     "description": "fixed report",
-    "created_on": "2022-06-26",
-    "started_on": "2022-06-26",
-    "due_on": "2022-06-26",
-    "completed_on": "2022-06-26",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-26",
+      "started_on": "2022-06-26",
+      "due_on": "2022-06-26",
+      "completed_on": "2022-06-26"
+    },
     "tags": []
   },
   {
     "id": "1b24e437-4769-407f-e8c0-8ee7c380754d",
     "description": "implemented prototype ui",
-    "created_on": "2022-06-26",
-    "started_on": "2022-06-26",
-    "due_on": "2022-06-26",
-    "completed_on": "2022-06-26",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-26",
+      "started_on": "2022-06-26",
+      "due_on": "2022-06-26",
+      "completed_on": "2022-06-26"
+    },
     "tags": []
   },
   {
     "id": "41ac0b19-0dde-42e2-e6f7-4f7736dc7879",
     "description": "reorganised project structure",
-    "created_on": "2022-06-26",
-    "started_on": "2022-06-26",
-    "due_on": "2022-06-26",
-    "completed_on": "2022-06-26",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-26",
+      "started_on": "2022-06-26",
+      "due_on": "2022-06-26",
+      "completed_on": "2022-06-26"
+    },
     "tags": []
   },
   {
     "id": "d27b25d9-3bae-4e98-a88f-b82fb90bdf15",
     "description": "api: serves tasks data",
-    "created_on": "2022-06-26",
-    "started_on": "2022-06-26",
-    "due_on": "2022-06-26",
-    "completed_on": "2022-06-26",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-26",
+      "started_on": "2022-06-26",
+      "due_on": "2022-06-26",
+      "completed_on": "2022-06-26"
+    },
     "tags": []
   },
   {
     "id": "2ae0f357-5d9a-4d37-bf3d-f4ade4703d0a",
     "description": "notes: nestjs",
-    "created_on": "2022-06-26",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-26"
+    },
     "tags": [
       "https://docs.nestjs.com/",
       "https://www.thisdot.co/blog/introduction-to-restful-apis-with-nestjs",
@@ -702,201 +732,208 @@
   {
     "id": "dd6dc7e7-387c-4c7f-fa91-cc23355378ac",
     "description": "implemented initial ui connection to api",
-    "created_on": "2022-06-27",
-    "started_on": "2022-06-27",
-    "due_on": "2022-06-27",
-    "completed_on": "2022-06-27",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-27",
+      "started_on": "2022-06-27",
+      "due_on": "2022-06-27",
+      "completed_on": "2022-06-27"
+    },
     "tags": []
   },
   {
     "id": "112ea396-b096-46cd-d0ba-94734ab3196e",
     "description": "implement location-independent running of ui/api/services bundle",
-    "created_on": "2022-06-27",
-    "started_on": "2022-06-28",
-    "due_on": "2022-06-28",
-    "completed_on": "2022-06-28",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-27",
+      "started_on": "2022-06-28",
+      "due_on": "2022-06-28",
+      "completed_on": "2022-06-28"
+    },
     "tags": []
   },
   {
     "id": "430742cb-74f5-4610-866a-db74d0efe0d6",
     "description": "api: implement appending of records without reading all of the items first",
-    "created_on": "2022-06-27",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-27"
+    },
     "tags": []
   },
   {
     "id": "41c3a05a-b28b-4e6d-c379-c18859c42162",
     "description": "api: implement start and stop feature",
-    "created_on": "2022-06-27",
-    "started_on": "2022-06-28",
-    "due_on": "2022-06-28",
-    "completed_on": "2022-06-28",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-27",
+      "started_on": "2022-06-28",
+      "due_on": "2022-06-28",
+      "completed_on": "2022-06-28"
+    },
     "tags": []
   },
   {
     "id": "dd010176-bfd9-4f6f-b53e-734fd32e3272",
     "description": "ui: implement start and stop feature",
-    "created_on": "2022-06-27",
-    "started_on": "2022-06-28",
-    "due_on": "2022-06-28",
-    "completed_on": "2022-06-28",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-27",
+      "started_on": "2022-06-28",
+      "due_on": "2022-06-28",
+      "completed_on": "2022-06-28"
+    },
     "tags": []
   },
   {
     "id": "d22cc8d7-2a78-4d64-ecdf-629e8471c304",
     "description": "hacked port settings for ui and api",
-    "created_on": "2022-06-27",
-    "started_on": "2022-06-27",
-    "due_on": "2022-06-27",
-    "completed_on": "2022-06-27",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-27",
+      "started_on": "2022-06-27",
+      "due_on": "2022-06-27",
+      "completed_on": "2022-06-27"
+    },
     "tags": []
   },
   {
     "id": "9f27495e-2013-4e87-b22e-50ba27275d11",
     "description": "implemented local start and stop for api and ui",
-    "created_on": "2022-06-27",
-    "started_on": "2022-06-27",
-    "due_on": "2022-06-27",
-    "completed_on": "2022-06-27",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-27",
+      "started_on": "2022-06-27",
+      "due_on": "2022-06-27",
+      "completed_on": "2022-06-27"
+    },
     "tags": []
   },
   {
     "id": "6ae7a3d7-1864-48bc-ac1f-38d97cfce282",
     "description": "api: implement recursive reading of projects",
-    "created_on": "2022-06-28",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-28"
+    },
     "tags": []
   },
   {
     "id": "2b174856-6d72-4380-bb87-a70bf0024de4",
     "description": "ui: added more details to tasks view",
-    "created_on": "2022-06-28",
-    "started_on": "2022-06-28",
-    "due_on": "2022-06-28",
-    "completed_on": "2022-06-28",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-28",
+      "started_on": "2022-06-28",
+      "due_on": "2022-06-28",
+      "completed_on": "2022-06-28"
+    },
     "tags": []
   },
   {
     "id": "52ee293d-c493-4ad8-e7cd-b96a99af7974",
     "description": "api: add markdown summary endpoint",
-    "created_on": "2022-06-28",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-28"
+    },
     "tags": []
   },
   {
     "id": "0c81f426-aefe-489d-cbbd-bf48663f027a",
     "description": "implemented tasks-diff - requires a git repository to work",
-    "created_on": "2022-06-28",
-    "started_on": "2022-06-28",
-    "due_on": "2022-06-28",
-    "completed_on": "2022-06-28",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-28",
+      "started_on": "2022-06-28",
+      "due_on": "2022-06-28",
+      "completed_on": "2022-06-28"
+    },
     "tags": []
   },
   {
     "id": "590b45fd-a464-4f6d-98a3-46613a3ced81",
     "description": "moved service functions to shared library",
-    "created_on": "2022-06-29",
-    "started_on": "2022-06-29",
-    "due_on": "2022-06-29",
-    "completed_on": "2022-06-29",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-29",
+      "started_on": "2022-06-29",
+      "due_on": "2022-06-29",
+      "completed_on": "2022-06-29"
+    },
     "tags": []
   },
   {
     "id": "3157ffa6-0733-43ce-9480-c1a1c1c00f38",
     "description": "implement meeting notes feature",
-    "created_on": "2022-06-29",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-29"
+    },
     "tags": []
   },
   {
     "id": "fac34b29-a09f-4584-9197-e1c468318e1b",
     "description": "implement integration with github projects and tickets",
-    "created_on": "2022-06-29",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-29"
+    },
     "tags": []
   },
   {
     "id": "024fa476-0598-45f0-d752-80a076369d17",
     "description": "implement integration with bitbucket projects and tickets",
-    "created_on": "2022-06-29",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-29"
+    },
     "tags": []
   },
   {
     "id": "a01b1012-7b1e-4bed-d089-26af48b1fbd1",
     "description": "implement DB version conversion feature",
-    "created_on": "2022-06-29",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-29"
+    },
     "tags": []
   },
   {
     "id": "f82f41aa-aca1-4acf-a841-ecbe62381e50",
     "description": "implement integration with web browsers to save and set favourites - initially using a set of indexed markdown pages",
-    "created_on": "2022-06-29",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-29"
+    },
     "tags": []
   },
   {
     "id": "47080bcf-1e3d-4edf-a5d2-3e41402f0c13",
     "description": "implement multiline task entry with tags separated by semi-colons",
-    "created_on": "2022-06-29",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-29"
+    },
     "tags": []
   },
   {
     "id": "2e0dd8ce-5622-4aec-fb5b-506ee1c1cf35",
     "description": "example layout/representation - cheatsheets: https://devhints.io/",
-    "created_on": "2022-06-30",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-06-30"
+    },
     "tags": []
   },
   {
     "id": "cec45a61-f12a-4441-e775-414ada8935ea",
     "description": "ui: implement refresh/re-read of data after modification",
-    "created_on": "2022-07-06",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-06"
+    },
     "tags": [
       "works partially, sometimes the refresh works, sometimes it doesn't"
     ]
@@ -904,291 +941,284 @@
   {
     "id": "7f5087d4-a24f-46de-8ff2-4284706ddd5e",
     "description": "ui: implement collapsible rows - e.g. show/hide date information",
-    "created_on": "2022-07-06",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "2022-07-08",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-06",
+      "completed_on": "2022-07-08"
+    },
     "tags": []
   },
   {
     "id": "1cc6601d-4d8f-4af7-9a33-cc4b88edc5e3",
     "description": "implement mindmap generation",
-    "created_on": "2022-07-06",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-06"
+    },
     "tags": []
   },
   {
     "id": "ab6ebe86-5277-49d5-86e5-02257791b6af",
     "description": "implement project-to-project task merge feature",
-    "created_on": "2022-07-06",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-06"
+    },
     "tags": []
   },
   {
     "id": "d9b1be83-984d-4f24-efc1-61842169c578",
     "description": "implement generation of help text for commands and command options",
-    "created_on": "2022-07-06",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-06"
+    },
     "tags": []
   },
   {
     "id": "17d5d307-9684-4c33-ec9c-15d7176984c5",
     "description": "api: implement view of projects using a recursive view option similar to ls and report commands",
-    "created_on": "2022-07-06",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-06"
+    },
     "tags": []
   },
   {
     "id": "cb9f5524-8952-4995-bc5a-1dea3ceb37ae",
     "description": "api: implement ability to dynamically add and remove projects links - extends recursive view functionality",
-    "created_on": "2022-07-06",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-06"
+    },
     "tags": []
   },
   {
     "id": "50bc5290-b769-44e8-87a9-4aa9ec4955d0",
     "description": "implement ability to group tasks - eg for epics",
-    "created_on": "2022-07-06",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-06"
+    },
     "tags": []
   },
   {
     "id": "7ef49f90-d1a8-44d4-dc62-64adc6d307d4",
     "description": "implement ability to capture and display tasks as md/html fragments",
-    "created_on": "2022-07-06",
-    "started_on": "2022-07-06",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-06",
+      "started_on": "2022-07-06"
+    },
     "tags": []
   },
   {
     "id": "eff318c5-be50-4254-f341-45a66532dac0",
     "description": "ui: use sticky header + custom overrides + collapsible table",
-    "created_on": "2022-07-07",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-07"
+    },
     "tags": []
   },
   {
     "id": "ceb6501b-8f5c-4e53-9673-d18ba7c74782",
     "description": "ui: convert/upgrade all @material-ui to @mui",
-    "created_on": "2022-07-07",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "2022-07-08",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-07",
+      "completed_on": "2022-07-08"
+    },
     "tags": []
   },
   {
     "id": "7694a95e-c724-447b-b7ed-181014407979",
     "description": "implement org-chart generation",
-    "created_on": "2022-07-07",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-07"
+    },
     "tags": []
   },
   {
     "id": "76a559fe-8cda-4829-c005-836a12bb9021",
     "description": "can now start api on a mapped network drive",
-    "created_on": "2022-07-07",
-    "started_on": "2022-07-07",
-    "due_on": "2022-07-07",
-    "completed_on": "2022-07-07",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-07",
+      "started_on": "2022-07-07",
+      "due_on": "2022-07-07",
+      "completed_on": "2022-07-07"
+    },
     "tags": []
   },
   {
     "id": "22b40030-a037-4af7-eec3-5eb50dae98d2",
     "description": "ui: implement color coding for date status",
-    "created_on": "2022-07-07",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-07"
+    },
     "tags": []
   },
   {
     "id": "567586f6-8fd7-4083-bbd2-22adbc001866",
     "description": "ui: implement color coding for bad data/bad records",
-    "created_on": "2022-07-07",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-07"
+    },
     "tags": []
   },
   {
     "id": "c94c4a54-5a3e-422c-d529-d8c66f20af1b",
     "description": "ui: implement custom tag notation for known tags - eg bug feature note etc and implement grouping and filtering",
-    "created_on": "2022-07-07",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-07"
+    },
     "tags": []
   },
   {
     "id": "f7dcc2fe-b3c1-4f3e-8c02-0ea9ec590c83",
     "description": "ui: defect - search feature no longer working after table refactoring",
-    "created_on": "2022-07-08",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-08"
+    },
     "tags": []
   },
   {
     "id": "2649db27-0a8f-40f5-b091-c064e328be63",
     "description": "ui: improved date and status information display",
-    "created_on": "2022-07-08",
-    "started_on": "2022-07-08",
-    "due_on": "2022-07-08",
-    "completed_on": "2022-07-08",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-08",
+      "started_on": "2022-07-08",
+      "due_on": "2022-07-08",
+      "completed_on": "2022-07-08"
+    },
     "tags": []
   },
   {
     "id": "b987a4ad-06c1-477e-90d2-e37a2620a298",
     "description": "ui: can now mark tasks as done",
-    "created_on": "2022-07-08",
-    "started_on": "2022-07-08",
-    "due_on": "2022-07-08",
-    "completed_on": "2022-07-08",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-08",
+      "started_on": "2022-07-08",
+      "due_on": "2022-07-08",
+      "completed_on": "2022-07-08"
+    },
     "tags": []
   },
   {
     "id": "215431c3-c61c-429e-be90-0866597025fd",
     "description": "ui: defect - page controls no longer have navigate to start/end buttons",
-    "created_on": "2022-07-08",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "2022-07-08",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-08",
+      "completed_on": "2022-07-08"
+    },
     "tags": []
   },
   {
     "id": "0d715e9e-745b-4a2a-d45a-43580432f12f",
     "description": "ui: prevent deletion of started or completed tasks",
-    "created_on": "2022-07-08",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "2022-07-08",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-08",
+      "completed_on": "2022-07-08"
+    },
     "tags": []
   },
   {
     "id": "0d5f6ed1-31a4-4b02-de0c-db10e7858694",
     "description": "api: prevent deletion of completed tasks",
-    "created_on": "2022-07-08",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-08"
+    },
     "tags": []
   },
   {
     "id": "f50f9782-da6d-46ee-8b2a-13fb8b5db886",
     "description": "api: prevent deletion of started tasks",
-    "created_on": "2022-07-08",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-08"
+    },
     "tags": []
   },
   {
     "id": "1ff3d852-90a1-4269-ba37-d9508894188f",
     "description": "api book: discuss how to push validation to client - see task deletion guards",
-    "created_on": "2022-07-08",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-08"
+    },
     "tags": []
   },
   {
     "id": "aa65464b-373d-418e-95d5-42bd0d26ebf6",
     "description": "feature for api/services/db: add metadata to db - eg groups and tags spec along with statistics",
-    "created_on": "2022-07-08",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-08"
+    },
     "tags": []
   },
   {
     "id": "256e2b21-1a70-4084-f3b3-2a4343745875",
     "description": "ui: implemented new status change controls with state transition guards",
-    "created_on": "2022-07-10",
-    "started_on": "2022-07-10",
-    "due_on": "2022-07-10",
-    "completed_on": "2022-07-10",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-10",
+      "started_on": "2022-07-10",
+      "due_on": "2022-07-10",
+      "completed_on": "2022-07-10"
+    },
     "tags": []
   },
   {
     "id": "34eb117e-79da-4f42-ab31-89eb1e0a6dcf",
     "description": "ui: extend task creation dialog to support tags",
-    "created_on": "2022-07-10",
-    "started_on": "2022-07-11",
-    "due_on": "",
-    "completed_on": "2022-07-11",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-10",
+      "started_on": "2022-07-11",
+      "completed_on": "2022-07-11"
+    },
     "tags": []
   },
   {
     "id": "739c35dd-cead-4e7a-eb56-41c1bbb0f05f",
     "description": "ui: extend task editing functionality to support tags",
-    "created_on": "2022-07-10",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "2022-07-11",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-10",
+      "completed_on": "2022-07-11"
+    },
     "tags": []
   },
   {
     "id": "97608295-db16-4f6a-a205-c9a1c2cccb8a",
     "description": "implement summary info in api instead of ui",
-    "created_on": "2022-07-12",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-12"
+    },
     "tags": []
   },
   {
     "id": "4a413218-274c-484c-aaf5-eab0d74449cc",
     "description": "ui: automatically set focus when adding a tag - also may need to scroll when doing so",
-    "created_on": "2022-07-12",
-    "started_on": "2022-07-12",
-    "due_on": "",
-    "completed_on": "2022-07-14",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-12",
+      "started_on": "2022-07-12",
+      "completed_on": "2022-07-14"
+    },
     "tags": [
       "best example: https://www.cluemediator.com/set-focus-on-the-dynamic-input-field-in-react",
       "https://blog.maisie.ink/react-ref-autofocus/",
@@ -1200,21 +1230,20 @@
   {
     "id": "9f8e5380-d27c-4277-92a0-e0c295e0bc64",
     "description": "feature: scripts - run multiple api/ui combinations using a range of dynamically allocated urls/ports",
-    "created_on": "2022-07-12",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-12"
+    },
     "tags": []
   },
   {
     "id": "2b1c3947-d961-40b4-8dee-192e1a581e6e",
     "description": "ui: implement standard success and error handlers for all api requests/http verbs - with logging and toast alerts",
-    "created_on": "2022-07-12",
-    "started_on": "",
-    "due_on": "",
-    "completed_on": "2022-07-14",
     "project": "ultiplan",
+    "dates": {
+      "created_on": "2022-07-12",
+      "completed_on": "2022-07-14"
+    },
     "tags": []
   }
 ]

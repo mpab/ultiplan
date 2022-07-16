@@ -1,13 +1,11 @@
-import fs from 'fs';
-
-import { DbRecord } from './db-record';
+import { DbRecord_2022_07_16 } from './db-record';
 
 import dbLoad from './db-load';
 import dbSave from './db-save';
 
 // TODO: multi-record update is not working
 
-const dbCreateRecord = (new_record: DbRecord, handle: string) => {
+const dbCreateRecord = (new_record: DbRecord_2022_07_16, handle: string) => {
   // validate item
   let item_errors = '';
 
@@ -19,15 +17,12 @@ const dbCreateRecord = (new_record: DbRecord, handle: string) => {
     item_errors += 'no description, ';
   }
 
-  if (!new_record.created_on) {
-    item_errors += 'no created_on, ';
-  }
-
   if (item_errors.length) {
     return console.error(item_errors);
   }
 
-  const records: DbRecord[] = dbLoad(handle);
+  const [records, error] = dbLoad(handle);
+  if (error) return;
   records.push(new_record);
   //console.log(`adding ${new_record.description}`);
   dbSave(records, handle);

@@ -4,46 +4,16 @@
 
 data is stored in k,v json file(s)
 
-- record
-
-interface TagArray extends Array<[...any]>{}
-
-export interface DbRecord {
-description: string,
-created_on: string,
-started_on: string,
-due_on: string,
-completed_on: string,
-project: string,
-tags: TagArray,
-}
-
-```json
-{
-  "description": "",                  // mandatory queued
-  "project": "",                      // mandatory queued
-  "created_on": "",                   // optional, semantically significant
-  "started_on": "",                   // optional, semantically significant
-  "due_on": "",                       // optional, semantically significant
-  "completed_on":  "",                // optional, semantically significant
-  "tags": [["t1"]["t2", "t2.1"], ...] // optional, semantically significant
-},
-```
-
 basic pattern
 
 ```json
-[{[string, null | string | [,..]]}, ...]
-```
-
-```json
-{
-  [string, null | string | [,..]],
-  ["schema"]
-  ["description", "" | [,..]],
-  ["dates", "" | [,..]],
-  ["tags, "" | [,..]]
+"id": "65171d2c-dce1-4fa6-df03-f91a3590c54b",
+"description": "...",
+"project": "...",
+"dates": {
+  "created_on": "2022-06-05"
 },
+"tags": []
 ```
 
 ## task model

@@ -75,6 +75,10 @@ const index = async () => {
       await require("./commands/todo")(handle);
       break;
 
+    case "upschema":
+      await require("./commands/upschema")(handle);
+      break;
+
     case "version":
       await require("./commands/version")(handle);
       break;

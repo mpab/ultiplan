@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 
-import { DbRecord } from './db-record';
+import { DbRecord_2022_07_16 } from './db-record';
 
-const dbSave = (records: DbRecord[], handle: string) => {
+export function dbSaveGeneric<T>(records: T[], handle: string) {
   if (!records.length) console.warn('saving empty record set');
 
   //console.log(`saving ${handle}`);
@@ -15,6 +15,9 @@ const dbSave = (records: DbRecord[], handle: string) => {
       }
     },
   );
-};
+}
+
+export const dbSave = (records: DbRecord_2022_07_16[], handle: string) =>
+  dbSaveGeneric<DbRecord_2022_07_16>(records, handle);
 
 export default dbSave;

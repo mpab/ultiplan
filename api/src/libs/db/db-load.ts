@@ -1,12 +1,21 @@
 import * as fs from 'fs';
 
-import stringIsNullOrEmpty from '../utils/string-is-null-or-empty';
-import { DbRecord } from './db-record';
+import stringIsNullOrEmptyOrWhitespace from '../utils/string-is-null-or-empty-or-whitespace';
+import { DbRecord_2022_07_16 } from './db-record';
 
-const dbLoad = (handle: string): DbRecord[] => {
-  if (stringIsNullOrEmpty(handle)) {
-    console.error(`invalid handle`);
-    return [];
+const nameOfGeneric =
+  <T>() =>
+  (name: keyof T) =>
+    name;
+
+export const logErrorAndReturnCollection = (error: string): [[], string] => {
+  console.error(error);
+  return [[], error];
+};
+
+export function dbLoadGeneric<T>(handle: string): [T[], string] {
+  if (stringIsNullOrEmptyOrWhitespace(handle)) {
+    return logErrorAndReturnCollection(`invalid handle`);
   }
 
   let data: string;
@@ -14,21 +23,26 @@ const dbLoad = (handle: string): DbRecord[] => {
     data = fs.readFileSync(handle, 'utf-8');
   } catch (e) {
     console.error(e);
-    console.error(`## file error reading: ${handle}`);
-    return [];
+    return logErrorAndReturnCollection(`## file error reading: ${handle}`);
   }
-  //console.log(`parsing: ${fpath}...`);
 
   try {
-    const records: DbRecord[] = JSON.parse(data);
+    const records: T[] = JSON.parse(data);
     //console.log(`read ${records.length} records from ${handle}`);
-    return records;
+    if (!records.length) {
+      console.log(`empty DB at ${handle}`);
+    }
+    return [records, ''];
   } catch (e) {
     console.error(e);
-    console.error(`## schema error in: ${handle}`);
   }
 
-  return [];
-};
+  return logErrorAndReturnCollection(
+    `## error: ${handle} is not schema ${nameOfGeneric<T>()} - use cli upschema command to upgrade`,
+  );
+}
+
+export const dbLoad = (handle: string): [DbRecord_2022_07_16[], string] =>
+  dbLoadGeneric<DbRecord_2022_07_16>(handle);
 
 export default dbLoad;

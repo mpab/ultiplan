@@ -1,5 +1,0 @@
-#!/bin/sh
-
-npm r ultiplan -g
-npm link
-# mkdir -p $HOME/.ultiplan

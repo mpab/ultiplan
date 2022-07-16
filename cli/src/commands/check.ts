@@ -1,7 +1,10 @@
 // checks a project for data issues
 // check: `check all project tasks <options> --r, -r ..... recursively`,
 
-import { DbRecord } from "ultiplan-api/src/libs/db/db-record";
+import {
+  DbRecord_2022_07_16,
+  RecordView,
+} from "ultiplan-api/src/libs/db/db-record";
 import { getAndCheckDbHandle } from "../utils/db-handle";
 import visit from "ultiplan-api/src/libs/utils/dir-visitor";
 import stringIsNullOrEmptyOrWhitespace from "ultiplan-api/src/libs/utils/string-is-null-or-empty-or-whitespace";
@@ -11,7 +14,7 @@ import dbLoad from "ultiplan-api/src/libs/db/db-load";
 
 const checkRecordsBelongToProject = (
   project_name: string,
-  records: DbRecord[]
+  records: RecordView[]
 ) => {
   console.log(`checking project: ${project_name}`);
   let errors = 0;
@@ -25,7 +28,7 @@ const checkRecordsBelongToProject = (
   if (!errors) console.log(`passed`);
 };
 
-const fixIds = (data: DbRecord[]) => {
+const fixIds = (data: DbRecord_2022_07_16[]) => {
   let fixed = 0;
   for (let i = 0; i != data.length; ++i) {
     let record = data[i];
@@ -43,13 +46,15 @@ const check = (handle: string, fix: boolean, project_name = undefined) => {
 
   const fpath = handle.replace(/\\/g, "/");
 
-  let json;
   let has_bad_ids = false;
+  let has_bad_dates = false;
+  let filtered_records: DbRecord_2022_07_16[];
 
-  const records: DbRecord[] = dbLoad(handle);
-  if (!records.length) return;
+  const [records, error] = dbLoad(handle);
+  if (error) return;
 
-  console.log(`parsing: ${fpath}...`);
+  console.log(`${records.length} records in file ${fpath}: parsing...`);
+  console.log("----------------------------------------");
 
   let fail = false;
 
@@ -59,28 +64,52 @@ const check = (handle: string, fix: boolean, project_name = undefined) => {
 
     if (projects.length > 1) {
       fail = true;
-      console.log(`- error: ${projects.length} projects (can be 0 or 1)`);
+      console.log(`- error: ${projects.length} projects (should be 0 or 1)`);
+      console.log(projects);
     }
 
-    const bad_ids = records.filter((record) =>
+    filtered_records = records.filter((record) =>
       stringIsNullOrEmptyOrWhitespace(record.id)
     );
 
-    if (bad_ids.length) {
+    if (filtered_records.length) {
       has_bad_ids = true;
       fail = true;
       console.log(
-        `- error: ${bad_ids.length} of ${records.length} record(s) have no id`
+        `- ${filtered_records.length} record(s) have no id`
       );
     }
+
+    filtered_records = records.filter((record) => !record.dates);
+    if (filtered_records.length) {
+      has_bad_dates = true;
+      fail = true;
+      console.log(
+        `- ${filtered_records.length} record(s) have no dates tag`
+      );
+        console.dir(filtered_records)
+    }
+
+    filtered_records = records.filter((record) =>
+      !stringIsNullOrEmptyOrWhitespace(record.id)
+    );
+    filtered_records = filtered_records.filter((record) => record.dates);
+    filtered_records = filtered_records.filter((record) => record.dates.created_on);
+    if (filtered_records.length < records.length) {
+      has_bad_dates = true;
+      fail = true;
+      console.log(
+        `- ${filtered_records.length} record(s) have no dates created_on tag`
+      );
+    }
+
   } catch (e) {
     fail = true;
     console.log(`## schema error in: ${fpath}`);
-    //console.log(e);
+    console.error(e);
   }
 
   console.log(fail ? "fail" : "pass");
-  console.log("----------------------------------------");
 
   if (fix) {
     if (has_bad_ids) fixIds(records);

@@ -1,14 +1,15 @@
 import reader from "readline-sync";
+import { RecordDates } from "ultiplan-api/src/libs/db/db-converters";
 
-import { DbRecordItem, DbRecord, DbRecordDates } from "ultiplan-api/src/libs/db/db-record";
+import { DbRecordItem, RecordView } from "ultiplan-api/src/libs/db/db-record";
 import projectInfo from "../../utils/project-info";
 
 const index = (
   description: string,
-  recordDates: DbRecordDates,
+  recordDates: RecordDates,
   id: string,
   default_project_name: string = projectInfo().name,
-): DbRecord => {
+): RecordView => {
   
   const project_name = default_project_name; 
   // const project_name: string = reader.question(
@@ -28,7 +29,7 @@ const index = (
     if (tag_v) custom_tags.push(tag_v);
   } while (tag_v);
 
-  const record: DbRecord = {
+  const record: RecordView = {
     id: id,
     description: description,
     created_on: recordDates.created_on,

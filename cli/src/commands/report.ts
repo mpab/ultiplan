@@ -1,15 +1,15 @@
 // generate a tasks report
 
-import fs from 'fs';
-import minimist from 'minimist';
+import minimist from "minimist";
 
-import { DbRecord, DbRecordItem } from "ultiplan-api/src/libs/db/db-record";
+import { RecordView, DbRecordItem } from "ultiplan-api/src/libs/db/db-record";
 import { getAndCheckDbHandle } from "../utils/db-handle";
 
 import visit from "ultiplan-api/src/libs/utils/dir-visitor";
 import stringIsNullOrEmpty from "ultiplan-api/src/libs/utils/string-is-null-or-empty";
+import { dbLoadAsView } from "ultiplan-api/src/libs/db/db-converters";
 
-const formatRecord = (record: DbRecord) => {
+const formatRecord = (record: RecordView) => {
   let text =
     "- " +
     (record.completed_on ? record.completed_on + ": " : "") +
@@ -43,14 +43,14 @@ const formatRecord = (record: DbRecord) => {
   return text;
 };
 
-const recordsToMarkdown = (project_records: DbRecord[], project: string) => {
+const recordsToMarkdown = (project_records: RecordView[], project: string) => {
   console.log("## " + project);
 
-  const todo: DbRecord[] = project_records.filter(
+  const todo: RecordView[] = project_records.filter(
     (record) => record.project === project && !record.completed_on
   );
 
-  const done: DbRecord[] = project_records
+  const done: RecordView[] = project_records
     .filter((record) => record.project === project && record.completed_on)
     .sort(function (a, b) {
       return ("" + b.completed_on).localeCompare(a.completed_on);
@@ -69,7 +69,7 @@ const recordsToMarkdown = (project_records: DbRecord[], project: string) => {
 };
 
 const projectToMarkdown = (
-  unfilteredRecords: DbRecord[],
+  unfilteredRecords: RecordView[],
   project_name: string
 ) => {
   const records = unfilteredRecords.filter(
@@ -82,39 +82,33 @@ const projectToMarkdown = (
 const reportAsMarkdown = (handle: string, project_name = undefined) => {
   if (stringIsNullOrEmpty(handle)) return;
 
-  fs.readFile(handle, 'utf-8', function (err: any, data: string) {
-    if (err) {
-      console.log(`## error reading: ` + handle.replace(/\\/g, "/"));
-      console.log("---");
+  const [unfilteredRecords, errors] = dbLoadAsView(handle);
+  if (errors) return;
+
+  try {
+    const args = minimist(process.argv.slice(2));
+    let project_name = args.project || args.p || undefined;
+
+    if (project_name) {
+      projectToMarkdown(unfilteredRecords, project_name);
       return;
     }
 
-    try {
-      const unfilteredRecords: DbRecord[] = JSON.parse(data);
-      const args = minimist(process.argv.slice(2));
-      let project_name = args.project || args.p || undefined;
+    // extract all projects & iterate
+    const projects = [
+      ...new Set(unfilteredRecords.map((record) => record.project)),
+    ];
 
-      if (project_name) {
-        projectToMarkdown(unfilteredRecords, project_name);
-        return;
-      }
-
-      // extract all projects & iterate
-      const projects = [
-        ...new Set(unfilteredRecords.map((record) => record.project)),
-      ];
-
-      for (project_name of projects) {
-        const records = unfilteredRecords.filter(
-          (record) => record.project === project_name
-        );
-        projectToMarkdown(records, project_name);
-      }
-    } catch (e) {
-      console.log(`## unhandled schema in: ` + handle.replace(/\\/g, "/"));
+    for (project_name of projects) {
+      const records = unfilteredRecords.filter(
+        (record) => record.project === project_name
+      );
+      projectToMarkdown(records, project_name);
     }
-    console.log("---");
-  });
+  } catch (e) {
+    console.log(`## unhandled schema in: ` + handle.replace(/\\/g, "/"));
+  }
+  console.log("---");
 };
 
 module.exports = async (handle: string) => {
@@ -133,5 +127,4 @@ module.exports = async (handle: string) => {
   }
 
   reportAsMarkdown(handle, project_name);
-
 };

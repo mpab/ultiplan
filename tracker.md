@@ -4,7 +4,7 @@
 ### todo: ultiplan
 - consider how to link tasks to learnings/learning paths
 - implement local tasks repo/deployment (with default project?)
-- implement links between ultiplan repos (hierarchichal, sibling, ...)
+- implement links between ultiplan repos (hierarchical, sibling, ...)
 - add parameters to commands
 - design: data flows, aggregation, and task creation (inbox concept)
 - implement check to determine if duplicate tasks are being created
@@ -23,12 +23,10 @@
     - https://hackernoon.com/markdown-calendar-notes-28b87f965e5d
     - https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d
 - design: how to separate notes, tasks, learning tasks, reading (learning) articles
-- simplify adding tasks - 'add' command, default to 'todo'
 - implement true cli - with menu system to navigate commands
 - implement projects using tags - will simplify the data model
 - implement auto-linking of data, e.g. registration when creating a new DB
 - installer: detect shell environment and update correct profile (sh, bash, zsh, ...)
-- task schema: refactor named fields to k,v tag model
 - task schema: improve documentation
     - https://github.com/MiSTer-devel/MkDocs_MiSTer
 - data linking
@@ -46,11 +44,8 @@
     - https://cambridge-intelligence.com/keylines-faq-force-directed-layouts/
     - http://getspringy.com/
     - https://www.yworks.com/pages/force-directed-graph-layout
-- create a basic web ui for managing tasks
-- create an api for the web ui
 - implement ability to move tasks between different projects
 - bug: check command fails - seems to read top-level project twice
-- implement a find command
 - notes: nestjs
     - https://docs.nestjs.com/
     - https://www.thisdot.co/blog/introduction-to-restful-apis-with-nestjs
@@ -88,6 +83,10 @@
 - feature: scripts - run multiple api/ui combinations using a range of dynamically allocated urls/ports
 
 ### done: ultiplan
+- 2022-07-17: task schema: refactor named fields to k,v tag model
+- 2022-07-17: create a basic web ui for managing tasks
+- 2022-07-17: create an api for the web ui
+- 2022-07-17: implement a find command
 - 2022-07-14: create an api for the web ui
 - 2022-07-14: ui: automatically set focus when adding a tag - also may need to scroll when doing so
     - best example: https://www.cluemediator.com/set-focus-on-the-dynamic-input-field-in-react
@@ -137,6 +136,7 @@
 - 2022-06-04: references: implement reference extraction to markdown (url tags)
 - 2022-06-04: improve task entry to support tags
 - 2022-06-04: implement scanning of local subdirectories for project name selection
+- 2022-06-04: simplify adding tasks - 'add' command, default to 'todo'
 - 2022-06-04: implement recursive project ls feature
 - 2022-06-04: fix: can't create local DB if global DB not present - removed global DB
 - 2022-06-04: implement recursive markdown report generation
@@ -150,55 +150,4 @@
 - 2022-05-21: implement separate tasks database
 - 2022-05-19: auto configure commands such that they can be added automatically
 - 2022-05-16: basic task saving using a JSON file
----
-## tests
-
-### todo: tests
-- this is a sample demonstrating refactoring of task schema to k, v tag model
-- empty tags
-- single tag item
-    - a tag
-- multiple tag item
-    - tag 1
-    - tag 2
-    - tag 3
-- multiple nested tag items
-    - tag group 1
-        - tag 1.1
-        - tag 1.2
-        - tag 1.3
-    - tag group 2
-        - tag 2.1
-        - tag 2.2
-        - tag 2.3
-- multiple multiple nested tag items
-    - tag group 1
-        - tag 1.1
-        - tag 1.2
-        - tag 1.3
-        - tag group 1.2
-            - tag 1.2.1
-            - tag 1.2.2
-            - tag 1.2.3
-    - tag group 2
-        - tag 2.1
-        - tag 2.2
-        - tag 2.3
-
-### done: tests
-- 2022-05-15: this is a sample demonstrating composite tags
-    - composite
-        - dates
-            - created_on
-                - 2022-05-15
-            - started_on
-                - 2022-05-15
-            - due_on
-                - 2022-05-15
-            - completed_on
-                - 2022-05-15
-## not tests
-
-### todo: not tests
-- bad task
 ---
