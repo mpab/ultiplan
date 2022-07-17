@@ -1094,17 +1094,6 @@
     "tags": []
   },
   {
-    "id": "97608295-db16-4f6a-a205-c9a1c2cccb8a",
-    "description": "implement summary info in api instead of ui\n",
-    "dates": {
-      "created_on": "2022-07-12",
-      "started_on": "2022-07-17"
-    },
-    "tags": [
-      "2022-07-17: added info endpoint to api"
-    ]
-  },
-  {
     "id": "4a413218-274c-484c-aaf5-eab0d74449cc",
     "description": "ui: automatically set focus when adding a tag - also may need to scroll when doing so",
     "dates": {
