@@ -115,7 +115,7 @@ export const TaskEditViewControl = (props: TaskEditViewControlProps) => {
 
   return (
     <React.Fragment>
-      <Tooltip title={tv.taskRecord.id ? tv.taskRecord.id : 'undefined'}>
+      <Tooltip title={tv.taskRecord.id ? tv.summary : 'undefined'}>
         {isReadonly() ? (
           <TextField
             style={{ width: "100%" }}

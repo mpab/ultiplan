@@ -37,8 +37,7 @@ export const TasksListViewReference = () => {
     const cfg: TasksApiReadCfg = {
       success: (msg) => alert(`success\n` + msg),
       error: (msg) => alert(`error\n` + msg),
-      setViews: setViews,
-      setSummary: setSummary,
+      setViews: setViews
     };
 
     readAllTasks(cfg);

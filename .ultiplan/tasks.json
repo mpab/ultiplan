@@ -1146,5 +1146,14 @@
       "completed_on": "2022-07-17"
     },
     "tags": []
+  },
+  {
+    "id": "bf2fe760-dd11-436c-8d0e-c0ae81445599",
+    "description": "ui: implement basic filtering on task status",
+    "dates": {
+      "created_on": "2022-07-17",
+      "completed_on": "2022-07-17"
+    },
+    "tags": []
   }
 ]

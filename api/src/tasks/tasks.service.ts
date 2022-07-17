@@ -24,7 +24,7 @@ import {
 const projectDbPath = '.ultiplan';
 const dbFileName = 'tasks.json';
 
-const getDbHandle = (): string => {
+const apiReadDbHandleFromEnv = (): string => {
   const ultiplanProject: string = process.env.ultiplanProject;
   return path.join(ultiplanProject, projectDbPath, dbFileName);
 };
@@ -56,14 +56,14 @@ export class TasksService {
     };
 
     assignDates(dates, record.dates);
-    dbCreateRecord(record, getDbHandle());
+    dbCreateRecord(record, apiReadDbHandleFromEnv());
     return viewFromRecord(record);
   }
 
   read(): RecordView[] {
     console.log(`------------------------------------`);
     console.log(`read`);
-    const [views] = dbLoadAsView(getDbHandle());
+    const [views] = dbLoadAsView(apiReadDbHandleFromEnv());
     return views;
   }
 
@@ -71,7 +71,7 @@ export class TasksService {
     console.log(`------------------------------------`);
     console.log(`find ${id}`);
 
-    const record = dbFindRecord(id, getDbHandle());
+    const record = dbFindRecord(id, apiReadDbHandleFromEnv());
 
     if (!record) {
       throw new NotFoundException('Task not found.');
@@ -100,7 +100,7 @@ export class TasksService {
     };
 
     const new_record = recordFromView(view);
-    const changed_record = dbUpdateRecord(new_record, getDbHandle());
+    const changed_record = dbUpdateRecord(new_record, apiReadDbHandleFromEnv());
 
     if (!changed_record)
       throw new UnprocessableEntityException(`cannot update: id=${model.id}`);
@@ -110,7 +110,7 @@ export class TasksService {
 
   delete(id: string): void {
     console.log(`------------------------------------`);
-    if (!dbDeleteRecord(id, getDbHandle())) {
+    if (!dbDeleteRecord(id, apiReadDbHandleFromEnv())) {
       throw new NotFoundException('Task not found.');
     }
     console.log(`deleted ${id}`);

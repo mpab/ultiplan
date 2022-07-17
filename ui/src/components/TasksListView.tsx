@@ -24,7 +24,11 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 
 import { taskNew, TaskStatus, TaskView, viewFromTask } from "../api/types";
-import { dateYYYYMMDD, stringIsNullOrEmpty } from "../utils";
+import {
+  dateYYYYMMDD,
+  dateYYYYMMDDhhmmss,
+  stringIsNullOrEmpty,
+} from "../utils";
 import TasksAddDialog from "./TasksAddDialog";
 
 import toast from "./Toast";
@@ -38,39 +42,28 @@ import TasksTransactions, {
   TasksApiReadCfg,
 } from "../api/TaskTransactions";
 import { useEffectOnce } from "../useEffectOnce";
+import { StatusFilterControl } from "./StatusFilterControl";
 
 export const TasksListView = () => {
   const [selectedTaskView, setSelectedTaskView] = useState(
     viewFromTask(taskNew(""))
   );
   const [isVisibleTaskDeleteDlg, setIsVisibleTaskDeleteDlg] = useState(false);
-  const [statusFilterProp, setStatusFilterProp] = useState(`any`);
   const [openAddDialog, setOpenAddDialog] = useState(false);
-  const statusFilters: string[] = [...Object.values(TaskStatus)];
 
   // -----------------------------------------------------
   //
   // Tasks CRUD and dependencies
   //
-  const [views, setViews] = useState<TaskView[]>([]);
+  const [unfilteredViews, setUnfilteredViews] = useState<TaskView[]>([]);
   const [summary, setSummary] = useState(``);
 
   const tasks = new TasksTransactions({
     success: (msg) => toast.success(msg),
     error: (msg) => toast.error(msg),
-    views: views,
-    setViews: setViews,
+    views: unfilteredViews,
+    setViews: setUnfilteredViews,
   });
-
-  useEffectOnce(() => {
-    const cfg: TasksApiReadCfg = {
-      success: (msg) => toast.success(msg),
-      error: (msg) => toast.error(msg),
-      setViews: setViews,
-      setSummary: setSummary,
-    };
-    readAllTasks(cfg);
-  },);
 
   const [tasksInfo, setTasksInfo] = useState(``);
   useEffect(() => {
@@ -80,7 +73,60 @@ export const TasksListView = () => {
       setInfo: setTasksInfo,
     };
     getTasksInfo(cfg);
-  },[views]);
+  }, [unfilteredViews]);
+
+  // -----------------------------------------------------
+  // filtering
+  const [taskStatusFilter, privateSetTaskStatusFilter] = useState(`any`);
+  const taskStatusFilters: string[] = [...Object.values(TaskStatus)];
+  const [filteredViews, setFilteredViews] = useState<TaskView[]>([]);
+
+  const setTaskStatusFilter = (filter: string) => {
+    privateSetTaskStatusFilter(filter);
+  };
+
+  useEffectOnce(() => {
+    const cfg: TasksApiReadCfg = {
+      success: (msg) => toast.success(msg),
+      error: (msg) => toast.error(msg),
+      setViews: setUnfilteredViews,
+    };
+    readAllTasks(cfg);
+  });
+
+  useEffect(() => {
+    if (taskStatusFilter === TaskStatus.any) {
+      setFilteredViews(unfilteredViews);
+      return;
+    }
+    const newFilteredViews = unfilteredViews.filter(
+      (view) => view.status === taskStatusFilter
+    );
+    setFilteredViews(newFilteredViews);
+  }, [taskStatusFilter, unfilteredViews]);
+
+  useEffect(() => { // setSummary...
+    let completed = 0;
+    let in_progress = 0;
+    let not_started = 0;
+
+    for (const v of unfilteredViews) {
+      if (!stringIsNullOrEmpty(v.taskRecord.completed_on)) {
+        ++completed;
+      } else if (!stringIsNullOrEmpty(v.taskRecord.started_on)) {
+        ++in_progress;
+      } else if (!stringIsNullOrEmpty(v.taskRecord.created_on)) {
+        ++not_started;
+      }
+    }
+
+    const summary = `${unfilteredViews.length} tasks,
+      ${completed} completed,
+      ${in_progress} in progress,
+      ${not_started} not started.
+       (last checked ${dateYYYYMMDDhhmmss(new Date())})`;
+    setSummary(summary);
+  }, [unfilteredViews]);
 
   // -----------------------------------------------------
 
@@ -89,7 +135,7 @@ export const TasksListView = () => {
 
     let tv = props.taskView;
 
-    if (statusFilterProp !== "any" && statusFilterProp !== tv.status)
+    if (taskStatusFilter !== "any" && taskStatusFilter !== tv.status)
       return <></>;
 
     // -----------------------------------------------------
@@ -270,38 +316,6 @@ export const TasksListView = () => {
 
   // -----------------------------------------------------
 
-  interface StatusFilterProps {
-    statusFilters: string[];
-    setStatusFilter: (filter: string) => void;
-  }
-
-  const StatusFilter = (props: StatusFilterProps) => {
-    const onStatusFilterChange = (event: SelectChangeEvent) => {
-      props.setStatusFilter(event.target.value);
-    };
-
-    return (
-      <Box sx={{ maxWidth: 140 }}>
-        <FormControl fullWidth>
-          <InputLabel>{statusFilterProp}</InputLabel>
-          <Select
-            value={""}
-            labelId="task-status-select-label"
-            id="task-status-select-label-id"
-            label="Status"
-            onChange={onStatusFilterChange}
-          >
-            {props.statusFilters.map((e, k) => (
-              <MenuItem key={k} value={e}>
-                {e}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Box>
-    );
-  };
-
   // -----------------------------------------------------
 
   const TableHeader = () => {
@@ -321,9 +335,10 @@ export const TasksListView = () => {
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {tasksInfo}: {summary}
           </TableCell>
           <TableCell>
-            <StatusFilter
-              statusFilters={statusFilters}
-              setStatusFilter={setStatusFilterProp}
+            <StatusFilterControl
+              filters={taskStatusFilters}
+              setFilter={setTaskStatusFilter}
+              filter={taskStatusFilter}
             />
           </TableCell>
           <TableCell>Date</TableCell>
@@ -364,7 +379,7 @@ export const TasksListView = () => {
           >
             <TableHeader />
             <TableBody>
-              {views
+              {filteredViews
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                 .map((record, k) => (
                   <Row key={k} taskView={record} />
@@ -375,7 +390,7 @@ export const TasksListView = () => {
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component="div"
-          count={views.length}
+          count={filteredViews.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

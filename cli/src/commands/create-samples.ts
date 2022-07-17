@@ -4,18 +4,16 @@ import fs from "fs";
 
 import genGuid from "ultiplan-api/src/libs/utils/generate-uuid";
 import { RecordView } from "ultiplan-api/src/libs/db/db-record";
-import { getAndCheckDbHandle, getDbHandle } from "../utils/db-handle";
+import path from "path";
 
-module.exports = () => {
-  const sampleDb = `sample-tasks.json`;
-
-  const [shouldBeNull] = getAndCheckDbHandle(sampleDb);
-  if (shouldBeNull) {
-    console.warn("DB already exists: " + shouldBeNull);
+module.exports = async (handle: string) => {
+  if (handle) {
+    console.warn(`DB already exists: ${handle}`);
     return;
   }
 
-  const sampleDbFilepath = getDbHandle(`./`, sampleDb);
+  const sampleDb = `sample-tasks.json`;
+  const sampleDbFilepath = path.join(process.cwd(), sampleDb);
 
   const data: RecordView[] = [];
 

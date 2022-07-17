@@ -1,6 +1,5 @@
 import { CRUD } from "../api/CRUD";
-import { TaskView, viewFromTask } from "../api/types";
-import { dateYYYYMMDDhhmmss, eToString, stringIsNullOrEmpty } from "../utils";
+import { TaskRecord, TaskView, viewFromTask } from "../api/types";
 
 export interface TasksApiChangeCfg {
   success: (error: string) => void;
@@ -9,10 +8,31 @@ export interface TasksApiChangeCfg {
   setViews: (views: TaskView[]) => void;
 }
 
+// const eToString = (e: any): string => {
+//   switch (e.constructor) {
+//     case Error:
+//       return "generic error";
+//     case RangeError:
+//       return "range error";
+//     default:
+//       return "unknown error";
+//   }
+// };
+
+const logSuccess = (cfg: any, msg: string) => {
+  console.log(msg);
+  cfg.success(msg);
+};
+
+const logError = (cfg: any, msg: string) => {
+  console.error(msg);
+  cfg.error(msg);
+};
+
 // ------------------------------------------------------------
 // API CRUD functions
 
-const tasksApiBaseUrl: URL = new URL(`http://localhost:3001/api/tasks/`)
+const tasksApiBaseUrl: URL = new URL(`http://localhost:3001/api/tasks/`);
 
 export default class TasksTransactions {
   constructor(cfg: TasksApiChangeCfg) {
@@ -26,7 +46,7 @@ export default class TasksTransactions {
   createTask = (taskView: TaskView) => {
     const index = this.cfg.views.indexOf(taskView);
     if (index >= 0) {
-      this.cfg.error(`${taskView.taskRecord.description} exists`);
+      logError(this.cfg, `${taskView.taskRecord.description} exists`);
       return;
     }
 
@@ -35,7 +55,8 @@ export default class TasksTransactions {
       (response) => {
         console.log("taskCreate response:", response);
         if (response.status !== 201) {
-          this.cfg.error(
+          logError(
+            this.cfg,
             `could not create ${taskView.taskRecord.description} (code=${response.status})`
           );
           return;
@@ -49,13 +70,12 @@ export default class TasksTransactions {
         let newCollection = [...this.cfg.views];
         newCollection.push(newView);
         this.cfg.setViews(newCollection);
-        this.cfg.success(`created ${newView.taskRecord.description}`);
+        logSuccess(this.cfg, `created ${newView.taskRecord.description}`);
       },
       (error) => {
-        console.error(error);
-        const estr = eToString(error);
-        this.cfg.error(
-          `could not create ${taskView.taskRecord.description} (${estr})`
+        logError(
+          this.cfg,
+          `could not create ${taskView.taskRecord.description} because: ${error}`
         );
       }
     );
@@ -64,7 +84,7 @@ export default class TasksTransactions {
   updateTask = (taskView: TaskView) => {
     const index = this.cfg.views.indexOf(taskView);
     if (index < 0) {
-      this.cfg.error(`${taskView.taskRecord.description} not found`);
+      logError(this.cfg, `${taskView.taskRecord.description} not found`);
       return;
     }
 
@@ -73,7 +93,8 @@ export default class TasksTransactions {
       (response) => {
         console.log("taskUpdate response:", response);
         if (response.status !== 200) {
-          this.cfg.error(
+          logError(
+            this.cfg,
             `could not update ${taskView.taskRecord.description} (code=${response.status})`
           );
           return;
@@ -87,13 +108,12 @@ export default class TasksTransactions {
         let newCollection = [...this.cfg.views];
         newCollection[index] = newView;
         this.cfg.setViews(newCollection);
-        this.cfg.success(`updated ${newView.taskRecord.description}`);
+        logSuccess(this.cfg, `updated ${newView.taskRecord.description}`);
       },
       (error) => {
-        console.error(error);
-        const estr = eToString(error);
-        this.cfg.error(
-          `could not update ${taskView.taskRecord.description} (${estr})`
+        logError(
+          this.cfg,
+          `could not update ${taskView.taskRecord.description} (${error})`
         );
       }
     );
@@ -102,7 +122,7 @@ export default class TasksTransactions {
   deleteTask = (taskView: TaskView) => {
     const index = this.cfg.views.indexOf(taskView);
     if (index < 0) {
-      this.cfg.error(`${taskView.taskRecord.description} not found`);
+      logError(this.cfg, `${taskView.taskRecord.description} not found`);
       return;
     }
 
@@ -111,7 +131,8 @@ export default class TasksTransactions {
       (response) => {
         console.log("taskDelete response:", response);
         if (response.status !== 200) {
-          this.cfg.error(
+          logError(
+            this.cfg,
             `could not delete ${taskView.taskRecord.description} (code=${response.status})`
           );
           return;
@@ -124,13 +145,12 @@ export default class TasksTransactions {
         let newCollection = [...this.cfg.views];
         newCollection.splice(index, 1);
         this.cfg.setViews(newCollection);
-        this.cfg.success(`deleted ${taskView.taskRecord.description}`);
+        logSuccess(this.cfg, `deleted ${taskView.taskRecord.description}`);
       },
       (error) => {
-        console.error(error);
-        const estr = eToString(error);
-        this.cfg.error(
-          `could not delete ${taskView.taskRecord.description} (${estr})`
+        logError(
+          this.cfg,
+          `could not delete ${taskView.taskRecord.description} (${error})`
         );
       }
     );
@@ -141,7 +161,6 @@ export interface TasksApiReadCfg {
   success: (error: string) => void;
   error: (error: string) => void;
   setViews: (views: TaskView[]) => void;
-  setSummary: (msg: string) => void;
 }
 
 export const readAllTasks = (cfg: TasksApiReadCfg) => {
@@ -149,37 +168,21 @@ export const readAllTasks = (cfg: TasksApiReadCfg) => {
     (response) => {
       console.log("taskReadAll response:", response);
       if (response.status !== 200) {
-        cfg.error(`could not read tasks (code=${response.status})`);
+        logError(cfg, `could not read tasks (code=${response.status})`);
         return;
       }
-
       return response.json();
     },
     (data) => {
-      if (!data) return;
-      const results = new Array<TaskView>();
-      let completed = 0;
-
-      for (const d of data) {
-        const view: TaskView = viewFromTask(d);
-        results.push(view);
-        if (!stringIsNullOrEmpty(d.completed_on)) ++completed;
-      }
-
-      console.log("taskReadAll count:", results.length);
-
-      cfg.setViews(results);
-      const summary = `${
-        data.length
-      } tasks, ${completed} completed. (last checked ${dateYYYYMMDDhhmmss(
-        new Date()
-      )})`;
-      cfg.setSummary(summary);
+      if (!data) {
+        logSuccess(cfg, `read ${data.length} tasks`);
+      };
+      const views = data.map((task: TaskRecord) => viewFromTask(task))
+      cfg.setViews(views);
     },
     (error) => {
       console.error(error);
-      const estr = eToString(error);
-      cfg.error(`could not read tasks (${estr})`);
+      logError(cfg, `could not read tasks (${error})`);
     }
   );
 };
@@ -195,7 +198,7 @@ export const getTasksInfo = (cfg: TasksApiInfoCfg) => {
     (response) => {
       console.log("info response:", response);
       if (response.status !== 200) {
-        cfg.error(`could not query tasks info (code=${response.status})`);
+        logError(cfg, `could not query tasks info (code=${response.status})`);
         return;
       }
       return response.text();
@@ -206,9 +209,7 @@ export const getTasksInfo = (cfg: TasksApiInfoCfg) => {
       cfg.setInfo(`Project - ` + data);
     },
     (error) => {
-      console.error(error);
-      const estr = eToString(error);
-      cfg.error(`could not query tasks info (${estr})`);
+      logError(cfg, `could not read tasks (${error})`);
     }
   );
 };

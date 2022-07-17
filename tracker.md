@@ -73,6 +73,8 @@
 - api book: discuss how to push validation to client - see task deletion guards
 - feature for api/services/db: add metadata to db - eg groups and tags spec along with statistics
 - implement summary info in api instead of ui
+
+    - 2022-07-17: added info endpoint to api
 - feature: scripts - run multiple api/ui combinations using a range of dynamically allocated urls/ports
 
 ### done: ultiplan
@@ -90,6 +92,7 @@
 - 2022-07-17: ui: implement refresh/re-read of data after modification
     - works partially, sometimes the refresh works, sometimes it doesn't
 - 2022-07-17: implemented prep for schema versioning
+- 2022-07-17: ui: implement basic filtering on task status
 - 2022-07-14: create an api for the web ui
 - 2022-07-14: ui: automatically set focus when adding a tag - also may need to scroll when doing so
     - best example: https://www.cluemediator.com/set-focus-on-the-dynamic-input-field-in-react
