@@ -1,6 +1,6 @@
 import stringIsNullOrEmpty from './string-is-null-or-empty';
 
-const index = (str: string | null): boolean => {
+const index = (str: string | null | undefined): boolean => {
   if (stringIsNullOrEmpty(str)) return true;
   let checkstr = str as string;
   checkstr = checkstr.replace(' ', '');

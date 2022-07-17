@@ -8,7 +8,6 @@ import genGuid from "ultiplan-api/src/libs/utils/generate-uuid";
 import { RecordView } from "ultiplan-api/src/libs/db/db-record";
 import { getDbHandle } from "../utils/db-handle";
 import dbNewView from './shared/new-view';
-import projectInfo from "../utils/project-info";
 import { RecordDates, recordFromView } from "ultiplan-api/src/libs/db/db-converters";
 
 module.exports = () => {
@@ -27,7 +26,6 @@ module.exports = () => {
       started_on: dates.started_on,
       due_on: dates.due_on,
       completed_on: dates.completed_on,
-      project: projectInfo().name,
       tags: Array(),
     };
 

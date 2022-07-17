@@ -7,9 +7,6 @@ export class TaskModel {
   @ApiProperty({ type: String })
   description: string;
 
-  @ApiProperty({ type: String })
-  project: string;
-
   @ApiProperty({ type: String, format: 'date-time' })
   created_on: string;
 

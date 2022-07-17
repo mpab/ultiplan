@@ -9,7 +9,6 @@
 - design: data flows, aggregation, and task creation (inbox concept)
 - implement check to determine if duplicate tasks are being created
 - implement analysis mode to scan tasks for similarities, extract keywords, suggest groupings, etc
-- implement multi-line text entry/handle commas
 - improve list command formatting
 - design: how to integrate browser favourites?
 - design: how to integrate gists?
@@ -24,7 +23,6 @@
     - https://medium.com/hackernoon/markdown-calendar-notes-28b87f965e5d
 - design: how to separate notes, tasks, learning tasks, reading (learning) articles
 - implement true cli - with menu system to navigate commands
-- implement projects using tags - will simplify the data model
 - implement auto-linking of data, e.g. registration when creating a new DB
 - installer: detect shell environment and update correct profile (sh, bash, zsh, ...)
 - task schema: improve documentation
@@ -45,7 +43,6 @@
     - http://getspringy.com/
     - https://www.yworks.com/pages/force-directed-graph-layout
 - implement ability to move tasks between different projects
-- bug: check command fails - seems to read top-level project twice
 - notes: nestjs
     - https://docs.nestjs.com/
     - https://www.thisdot.co/blog/introduction-to-restful-apis-with-nestjs
@@ -56,12 +53,8 @@
 - implement meeting notes feature
 - implement integration with github projects and tickets
 - implement integration with bitbucket projects and tickets
-- implement DB version conversion feature
 - implement integration with web browsers to save and set favourites - initially using a set of indexed markdown pages
-- implement multiline task entry with tags separated by semi-colons
 - example layout/representation - cheatsheets: https://devhints.io/
-- ui: implement refresh/re-read of data after modification
-    - works partially, sometimes the refresh works, sometimes it doesn't
 - implement mindmap generation
 - implement project-to-project task merge feature
 - implement generation of help text for commands and command options
@@ -83,10 +76,19 @@
 - feature: scripts - run multiple api/ui combinations using a range of dynamically allocated urls/ports
 
 ### done: ultiplan
+- 2022-07-17: implement multi-line text entry/handle commas
+- works in ui and api
+- 2022-07-17: removed project field from records, project scope is now at DB-level
 - 2022-07-17: task schema: refactor named fields to k,v tag model
 - 2022-07-17: create a basic web ui for managing tasks
 - 2022-07-17: create an api for the web ui
+- 2022-07-17: bug: check command fails - seems to read top-level project twice
 - 2022-07-17: implement a find command
+- 2022-07-17: implement DB version conversion feature
+- 2022-07-17: implement multiline task entry with tags separated by semi-colons
+- implemented in ui and api
+- 2022-07-17: ui: implement refresh/re-read of data after modification
+    - works partially, sometimes the refresh works, sometimes it doesn't
 - 2022-07-17: implemented prep for schema versioning
 - 2022-07-14: create an api for the web ui
 - 2022-07-14: ui: automatically set focus when adding a tag - also may need to scroll when doing so

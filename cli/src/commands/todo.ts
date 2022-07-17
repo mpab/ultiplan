@@ -6,9 +6,7 @@ import dateYYYYMMDD from "ultiplan-api/src/libs/utils/dates";
 import dbCreateRecord from "ultiplan-api/src/libs/db/db-create-record";
 import genGuid from "ultiplan-api/src/libs/utils/generate-uuid";
 import { RecordView } from "ultiplan-api/src/libs/db/db-record";
-import { getDbHandle } from "../utils/db-handle";
 import dbNewView from "./shared/new-view";
-import projectInfo from "../utils/project-info";
 import { RecordDates, recordFromView } from "ultiplan-api/src/libs/db/db-converters";
 
 const index = async (handle: string) => {
@@ -26,13 +24,12 @@ const index = async (handle: string) => {
       started_on: dates.started_on,
       due_on: dates.due_on,
       completed_on: dates.completed_on,
-      project: projectInfo().name,
       tags: Array(),
     };
     console.dir(view);
 
     const record = recordFromView(view);
-    dbCreateRecord(record, getDbHandle());
+    dbCreateRecord(record, handle);
     return;
   }
 
@@ -41,7 +38,7 @@ const index = async (handle: string) => {
     if (description.length) {
       const view = dbNewView(description, dates, id);
       const record = recordFromView(view);
-      dbCreateRecord(record, getDbHandle());
+      dbCreateRecord(record, handle);
     }
   } while (description.length);
 };

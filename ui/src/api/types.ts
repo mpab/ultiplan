@@ -68,10 +68,6 @@ export const viewFromTask = (r: TaskRecord): TaskView => {
     summary += `id: ${r.id}, `;
   }
 
-  if (!stringIsNullOrEmpty(r.project)) {
-    summary += `project: ${r.project}, `;
-  }
-
   if (!stringIsNullOrEmpty(r.created_on)) {
     summary += `created: ${r.created_on}, `;
   }

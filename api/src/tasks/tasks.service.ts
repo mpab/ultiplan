@@ -17,6 +17,7 @@ import {
   assignDates,
   dbLoadAsView,
   RecordDates,
+  recordFromView,
   viewFromRecord,
 } from 'src/libs/db/db-converters';
 
@@ -28,13 +29,13 @@ const getDbHandle = (): string => {
   return path.join(ultiplanProject, projectDbPath, dbFileName);
 };
 
-const getProjectName = (): string => {
-  const arr = process.env.ultiplanProject.replace(/\\/g, '/').split(`/`);
-  return arr[arr.length - 1];
-};
-
 @Injectable()
 export class TasksService {
+  info(): string {
+    const arr = process.env.ultiplanProject.replace(/\\/g, '/').split(`/`);
+    return arr[arr.length - 1];
+  }
+
   create(model: TaskModel): RecordView {
     console.log(`------------------------------------`);
     console.log(`create`);
@@ -50,7 +51,6 @@ export class TasksService {
     const record: DbRecord_2022_07_16 = {
       id: id,
       description: model.description,
-      project: getProjectName(),
       tags: model.tags,
       dates: {},
     };
@@ -89,21 +89,23 @@ export class TasksService {
       throw new NotAcceptableException('Bad model.');
     }
 
-    const record: RecordView = {
+    const view: RecordView = {
       id: model.id,
       description: model.description,
       created_on: model.created_on,
       started_on: model.started_on,
       due_on: model.due_on,
       completed_on: model.completed_on,
-      project: model.project,
       tags: model.tags,
     };
 
-    if (!dbUpdateRecord(record, getDbHandle()))
+    const new_record = recordFromView(view);
+    const changed_record = dbUpdateRecord(new_record, getDbHandle());
+
+    if (!changed_record)
       throw new UnprocessableEntityException(`cannot update: id=${model.id}`);
 
-    return record;
+    return viewFromRecord(changed_record);
   }
 
   delete(id: string): void {

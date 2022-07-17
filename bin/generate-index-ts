@@ -1,7 +1,7 @@
 #!/bin/sh
 
 typescript='import errorExit from "./utils/error-exit";
-import { getAndCheckDbHandle } from "./utils/db-handle";
+import { safeGetDbHandle } from "./utils/db-handle";
  
 const index = async () => {
   const args = require(`minimist`)(process.argv.slice(2));
@@ -15,9 +15,9 @@ const index = async () => {
     cmd = "help";
   }
 
-  const [handle, info] = getAndCheckDbHandle();
+  const [handle, project, errors] = safeGetDbHandle(process.cwd());
   const ignoreInvalidHandle = cmd === `init` || cmd === `help` || cmd === `version` || cmd === `create-samples`;
-  if (!handle && !ignoreInvalidHandle) errorExit(info);
+  if (!handle.length && !ignoreInvalidHandle) errorExit(errors);
  
   // generated command handlers
   switch (cmd) {'
@@ -33,7 +33,7 @@ for filepath in ./cli/src/commands/*; do
   filename_with_ext=$(basename -- "$filepath")
   filename="${filename_with_ext%.*}"
   echo "    case \"$filename\":"
-  echo "      await require(\"./commands/$filename\")(handle);"
+  echo "      await require(\"./commands/$filename\")(handle, project);"
   echo '      break;'
   echo
   done

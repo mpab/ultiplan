@@ -9,17 +9,15 @@ export interface RecordView {
   started_on: string;
   due_on: string;
   completed_on: string;
-  project: string;
   tags: DbRecordItem;
 }
 
-type DatesIndex = `created_on` | `started_on` | `due_on` | `completed_on`;
-export type Dates = { [k in DatesIndex]?: string };
+type DatesKeys = `created_on` | `started_on` | `due_on` | `completed_on`;
+export type Dates = { [k in DatesKeys]?: string };
 
 export interface DbRecord_2022_07_16 {
   id: string;
   description: string;
-  project: string;
   dates: Dates;
   tags: DbRecordItem;
 }

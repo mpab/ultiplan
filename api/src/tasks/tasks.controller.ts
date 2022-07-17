@@ -15,6 +15,13 @@ import { ApiNotFoundResponse, ApiOkResponse } from '@nestjs/swagger';
 export class TasksController {
   constructor(private readonly service: TasksService) {}
 
+  @Get('info')
+  @ApiOkResponse({ description: `project.` })
+  @ApiNotFoundResponse({ description: 'project not found.' })
+  getInfo(): string {
+    return this.service.info();
+  }
+
   @Get()
   @ApiOkResponse({ description: `tasks found.` })
   @ApiNotFoundResponse({ description: 'tasks not found.' })

@@ -1,4 +1,4 @@
-import { taskCreate, taskDelete, taskReadAll, taskUpdate } from "../api/tasks";
+import { CRUD } from "../api/CRUD";
 import { TaskView, viewFromTask } from "../api/types";
 import { dateYYYYMMDDhhmmss, eToString, stringIsNullOrEmpty } from "../utils";
 
@@ -12,12 +12,16 @@ export interface TasksApiChangeCfg {
 // ------------------------------------------------------------
 // API CRUD functions
 
+const tasksApiBaseUrl: URL = new URL(`http://localhost:3001/api/tasks/`)
+
 export default class TasksTransactions {
   constructor(cfg: TasksApiChangeCfg) {
     this.cfg = cfg;
+    this.crud = new CRUD(tasksApiBaseUrl);
   }
 
   cfg: TasksApiChangeCfg;
+  crud: CRUD;
 
   createTask = (taskView: TaskView) => {
     const index = this.cfg.views.indexOf(taskView);
@@ -26,7 +30,7 @@ export default class TasksTransactions {
       return;
     }
 
-    taskCreate(
+    this.crud.apiCreate(
       taskView.taskRecord,
       (response) => {
         console.log("taskCreate response:", response);
@@ -64,7 +68,7 @@ export default class TasksTransactions {
       return;
     }
 
-    taskUpdate(
+    this.crud.apiUpdate(
       taskView.taskRecord,
       (response) => {
         console.log("taskUpdate response:", response);
@@ -102,7 +106,7 @@ export default class TasksTransactions {
       return;
     }
 
-    taskDelete(
+    this.crud.apiDelete(
       taskView.taskRecord.id,
       (response) => {
         console.log("taskDelete response:", response);
@@ -141,7 +145,7 @@ export interface TasksApiReadCfg {
 }
 
 export const readAllTasks = (cfg: TasksApiReadCfg) => {
-  taskReadAll(
+  new CRUD(tasksApiBaseUrl).apiReadAll(
     (response) => {
       console.log("taskReadAll response:", response);
       if (response.status !== 200) {
@@ -154,29 +158,57 @@ export const readAllTasks = (cfg: TasksApiReadCfg) => {
     (data) => {
       if (!data) return;
       const results = new Array<TaskView>();
-      const projects = new Set<string>();
       let completed = 0;
 
       for (const d of data) {
         const view: TaskView = viewFromTask(d);
         results.push(view);
         if (!stringIsNullOrEmpty(d.completed_on)) ++completed;
-        projects.add(d.project);
       }
 
       console.log("taskReadAll count:", results.length);
 
       cfg.setViews(results);
-      const project_list = Array.from(projects).join(", ");
-      const summary = `${project_list}, ${
+      const summary = `${
         data.length
-      } tasks, ${completed} completed, @ ${dateYYYYMMDDhhmmss(new Date())}`;
+      } tasks, ${completed} completed. (last checked ${dateYYYYMMDDhhmmss(
+        new Date()
+      )})`;
       cfg.setSummary(summary);
     },
     (error) => {
       console.error(error);
       const estr = eToString(error);
       cfg.error(`could not read tasks (${estr})`);
+    }
+  );
+};
+
+export interface TasksApiInfoCfg {
+  success: (error: string) => void;
+  error: (error: string) => void;
+  setInfo: (msg: string) => void;
+}
+
+export const getTasksInfo = (cfg: TasksApiInfoCfg) => {
+  new CRUD(tasksApiBaseUrl).info(
+    (response) => {
+      console.log("info response:", response);
+      if (response.status !== 200) {
+        cfg.error(`could not query tasks info (code=${response.status})`);
+        return;
+      }
+      return response.text();
+    },
+    (data) => {
+      if (!data) return;
+      console.log("info data:", data);
+      cfg.setInfo(`Project - ` + data);
+    },
+    (error) => {
+      console.error(error);
+      const estr = eToString(error);
+      cfg.error(`could not query tasks info (${estr})`);
     }
   );
 };

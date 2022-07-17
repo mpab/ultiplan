@@ -2,21 +2,13 @@ import reader from "readline-sync";
 import { RecordDates } from "ultiplan-api/src/libs/db/db-converters";
 
 import { DbRecordItem, RecordView } from "ultiplan-api/src/libs/db/db-record";
-import projectInfo from "../../utils/project-info";
 
 const index = (
   description: string,
   recordDates: RecordDates,
   id: string,
-  default_project_name: string = projectInfo().name,
 ): RecordView => {
   
-  const project_name = default_project_name; 
-  // const project_name: string = reader.question(
-  //   `project? (enter=${default_project_name}) `,
-  //   { defaultInput: default_project_name }
-  // );
-
   let tag_v;
   const tag_n = `tags`;
   // const tag_n = reader.question(`tag name? (enter=tags) `, {
@@ -36,7 +28,6 @@ const index = (
     started_on: recordDates.created_on,
     due_on: recordDates.due_on,
     completed_on: recordDates.completed_on,
-    project: project_name,
     tags: Array<DbRecordItem>() as DbRecordItem,
   };
 

@@ -54,10 +54,6 @@ const mv = async (old_project: string, new_project: string) => {
       records = JSON.parse(json_string);
     }
 
-    for (const record of records) {
-      record.project = new_project;
-    }
-
     fs.writeFile(safeHandle, JSON.stringify(records, null, "  "), function (err: any) {
       if (err) errorExit(err);
     });

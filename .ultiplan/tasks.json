@@ -2,7 +2,6 @@
   {
     "id": "34489cfc-ffc8-4568-fdbc-422b27c7da2c",
     "description": "create an api for the web ui",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-10",
       "completed_on": "2022-07-14"
@@ -12,7 +11,6 @@
   {
     "id": "358166ad-1654-4d2f-8607-74f884ea49c2",
     "description": "auto configure commands such that they can be added automatically",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-15",
       "started_on": "2022-05-15",
@@ -23,7 +21,6 @@
   {
     "id": "19d811f0-3bd5-4a37-87a9-2b3f7ab018a1",
     "description": "basic task saving using a JSON file",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-16",
       "started_on": "2022-05-15",
@@ -35,7 +32,6 @@
   {
     "id": "2381f3d8-1009-481b-e328-875547f0ed5d",
     "description": "ui: implement basic task viewing, creation and deletion",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-19",
       "completed_on": "2022-07-06"
@@ -45,7 +41,6 @@
   {
     "id": "5a81a3f0-956c-4771-cb5a-5fcaf28d29d3",
     "description": "create alias for todo command",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-21",
       "started_on": "2022-06-10",
@@ -57,7 +52,6 @@
   {
     "id": "1e7eeb92-8f8b-4ca2-c9ce-ac2b95614704",
     "description": "reporting: create parameterized summary reports per project (output to markdown)",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-21",
       "completed_on": "2022-05-22"
@@ -67,7 +61,6 @@
   {
     "id": "8c017a01-8b86-4ba4-e6c7-272084b3c640",
     "description": "consider how to link tasks to learnings/learning paths",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-21"
     },
@@ -76,7 +69,6 @@
   {
     "id": "fd00f9a8-d6d9-40c5-8f7f-1aae650340f5",
     "description": "add task edit (update) functionality",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-21",
       "completed_on": "2022-07-06"
@@ -88,7 +80,6 @@
   {
     "id": "daac50fc-ca33-4691-db53-b002be3cfc82",
     "description": "implement local tasks repo/deployment (with default project?)",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-21"
     },
@@ -97,7 +88,6 @@
   {
     "id": "ef92f1d0-c8c3-4598-bc8e-7883e17bc5e1",
     "description": "implement links between ultiplan repos (hierarchical, sibling, ...)",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-21"
     },
@@ -106,7 +96,6 @@
   {
     "id": "91656fb3-92f5-4238-f680-6f38ee232531",
     "description": "implement separate tasks database",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-21",
       "started_on": "2022-05-21",
@@ -118,7 +107,6 @@
   {
     "id": "63846ca0-3810-4ea9-9039-0f9f1ad209ed",
     "description": "add parameters to commands",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-22"
     },
@@ -127,7 +115,6 @@
   {
     "id": "10e09c7b-a4c6-48c9-96a3-5887a5fee406",
     "description": "reporting: implemented basic tracker (in markdown) for project",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-22",
       "started_on": "2022-05-22",
@@ -139,7 +126,6 @@
   {
     "id": "f59030b6-ab5e-48e8-bf4d-002abed2a104",
     "description": "extract diff from tracker to use as git commit message",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-22",
       "started_on": "2022-06-04",
@@ -151,7 +137,6 @@
   {
     "id": "0d9e8d40-3670-4ff0-84b7-9f2876f15a74",
     "description": "reporting: implement date sorting",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-22",
       "completed_on": "2022-05-23"
@@ -161,7 +146,6 @@
   {
     "id": "a84e0bd2-b445-4d23-cc8e-fed77a0a9203",
     "description": "references: implement reference extraction to markdown (url tags)",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-22",
       "started_on": "2022-06-04",
@@ -173,7 +157,6 @@
   {
     "id": "8f6021ce-a73c-4f39-c112-8447a3c8afda",
     "description": "design: data flows, aggregation, and task creation (inbox concept)",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-22"
     },
@@ -182,7 +165,6 @@
   {
     "id": "d4e5aba3-1d70-49c6-a0b2-b364595b5e43",
     "description": "implement check to determine if duplicate tasks are being created",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-22"
     },
@@ -191,7 +173,6 @@
   {
     "id": "3ee04800-7b60-4fa1-9ec5-3761ba5b8ca5",
     "description": "implement analysis mode to scan tasks for similarities, extract keywords, suggest groupings, etc",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-22"
     },
@@ -199,17 +180,16 @@
   },
   {
     "id": "f92ddc60-b88d-4c1d-9155-92abbf914154",
-    "description": "implement multi-line text entry/handle commas",
-    "project": "ultiplan",
+    "description": "implement multi-line text entry/handle commas\n- works in ui and api",
     "dates": {
-      "created_on": "2022-05-22"
+      "created_on": "2022-05-23",
+      "completed_on": "2022-07-17"
     },
     "tags": []
   },
   {
     "id": "919403c2-887c-4b28-8361-d8e79c3dbdd4",
     "description": "implement default project response when creating a task",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-23",
       "started_on": "2022-05-23",
@@ -221,7 +201,6 @@
   {
     "id": "7899b4b9-5f27-4a6b-d8ef-44b81f70a799",
     "description": "improve list command formatting",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-23"
     },
@@ -230,7 +209,6 @@
   {
     "id": "63c97783-8fae-481c-afbd-6f788551cf55",
     "description": "design: how to integrate browser favourites?",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-23"
     },
@@ -239,7 +217,6 @@
   {
     "id": "3b65405e-ee17-467b-c24e-9b381b599115",
     "description": "design: how to integrate gists?",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-23"
     },
@@ -248,7 +225,6 @@
   {
     "id": "782a0e91-2579-41c0-d752-54918e8486aa",
     "description": "improve task entry to support tags",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-23",
       "started_on": "2022-06-04",
@@ -260,7 +236,6 @@
   {
     "id": "7a35fe1c-9c66-4f2b-e744-5d914b4a9bba",
     "description": "add ability to specify sub-projects/epics/BTIs (Big Ticket Items) for sub-grouping within a project",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-23"
     },
@@ -269,7 +244,6 @@
   {
     "id": "23d63065-0fcb-4282-e4a9-e02e1aa7515c",
     "description": "add lists to descriptions using dash (-) separators and use these to format the reports",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-23"
     },
@@ -278,7 +252,6 @@
   {
     "id": "affe76e2-aa05-434a-b4a5-644077feb70d",
     "description": "reporting: implement calendar display",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-23"
     },
@@ -287,7 +260,6 @@
   {
     "id": "6a914bed-50ff-40b0-9912-1a5bd114b647",
     "description": "design: implement a workflow concept to support tracking of events - e.g. email communications",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-23"
     },
@@ -296,7 +268,6 @@
   {
     "id": "114a3fe8-08c5-4268-be09-22e3d9b97c62",
     "description": "similar app - noteplan",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-23"
     },
@@ -310,7 +281,6 @@
   {
     "id": "2d16580e-0ac2-49bf-8356-a7d85f13a894",
     "description": "design: how to separate notes, tasks, learning tasks, reading (learning) articles",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-23"
     },
@@ -319,7 +289,6 @@
   {
     "id": "43b511f3-c475-4587-b4b0-42c2c5c58418",
     "description": "implement scanning of local subdirectories for project name selection",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-27",
       "started_on": "2022-06-04",
@@ -331,7 +300,6 @@
   {
     "id": "ff1bc0f3-5f4e-4373-8650-4761b530c9fc",
     "description": "simplify adding tasks - 'add' command, default to 'todo'",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-04",
       "completed_on": "2022-06-04"
@@ -341,7 +309,6 @@
   {
     "id": "ecf1240b-55ca-4ed1-d97e-7d109eeb4fb0",
     "description": "implement true cli - with menu system to navigate commands",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-27"
     },
@@ -349,17 +316,16 @@
   },
   {
     "id": "8ed96d87-d309-445e-dc7d-cba0be5b683b",
-    "description": "implement projects using tags - will simplify the data model",
-    "project": "ultiplan",
+    "description": "removed project field from records, project scope is now at DB-level",
     "dates": {
-      "created_on": "2022-05-27"
+      "created_on": "2022-05-27",
+      "completed_on": "2022-07-17"
     },
     "tags": []
   },
   {
     "id": "e23d85ea-a0ee-48b7-8b8f-9815aca4c3e6",
     "description": "implement auto-linking of data, e.g. registration when creating a new DB",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-05-27"
     },
@@ -368,7 +334,6 @@
   {
     "id": "c3b65d55-ae22-4ec6-9a76-f618b3ac2ca7",
     "description": "refactor list command into ls command with --options",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-01",
       "started_on": "2022-06-01",
@@ -380,7 +345,6 @@
   {
     "id": "2ab30e34-5391-4b9d-a55c-de07b62d9654",
     "description": "use standard .ultiplan directory naming for DB",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-01",
       "started_on": "2022-06-01",
@@ -392,7 +356,6 @@
   {
     "id": "edd12487-35ab-4bfa-a17b-b0882229a936",
     "description": "implement recursive project ls feature",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-01",
       "started_on": "2022-06-04",
@@ -404,7 +367,6 @@
   {
     "id": "ba3e7a39-bf52-4db4-fc47-0e63afa8fcb2",
     "description": "fix: can't create local DB if global DB not present - removed global DB",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-01",
       "started_on": "2022-06-04",
@@ -416,7 +378,6 @@
   {
     "id": "37ebe3fd-696b-4d42-bbad-23b0f8972202",
     "description": "create install script",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-03",
       "started_on": "2022-06-03",
@@ -428,7 +389,6 @@
   {
     "id": "8d0b3381-1709-455a-eef5-da29b24362c6",
     "description": "implement recursive markdown report generation",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-04",
       "started_on": "2022-06-04",
@@ -440,7 +400,6 @@
   {
     "id": "2473ec19-45f5-4d87-b3ef-a922ed3654f6",
     "description": "when adding a task, pick up the description from the command line parameters",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-04",
       "started_on": "2022-06-09",
@@ -452,7 +411,6 @@
   {
     "id": "65171d2c-dce1-4fa6-df03-f91a3590c54b",
     "description": "installer: detect shell environment and update correct profile (sh, bash, zsh, ...)",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-05"
     },
@@ -461,7 +419,6 @@
   {
     "id": "8d244f23-3d47-4223-e61c-7a8b51bd7941",
     "description": "task schema: refactor named fields to k,v tag model",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-05",
       "completed_on": "2022-07-17"
@@ -471,7 +428,6 @@
   {
     "id": "18da75d9-a980-40b5-f920-2d7bb4ec88f7",
     "description": "task schema: tags can now be added as groups",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-06",
       "started_on": "2022-06-06",
@@ -483,7 +439,6 @@
   {
     "id": "7110db73-7df3-44d9-d0fb-846dc3d62565",
     "description": "task schema: improve documentation",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-06"
     },
@@ -494,7 +449,6 @@
   {
     "id": "6cc8868e-562e-422b-abbc-6e4dc4f3061b",
     "description": "implemented custom tag handling for 'todo'",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-09",
       "started_on": "2022-06-09",
@@ -506,7 +460,6 @@
   {
     "id": "244efc0a-9b31-4c59-e247-b195ccaf1f09",
     "description": "data linking",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-09"
     },
@@ -521,7 +474,6 @@
   {
     "id": "b3227c7d-beda-4cbd-ca3f-2b3a2bee9f8e",
     "description": "graph ui",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-09"
     },
@@ -539,7 +491,6 @@
   {
     "id": "96359e75-72cd-44a2-deb1-0823bad5c95e",
     "description": "implemented multiple task entry (keep entering tasks until a task with no description is detected)",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-09",
       "started_on": "2022-06-09",
@@ -551,7 +502,6 @@
   {
     "id": "bd190fb3-5d8f-4d41-cce2-3f0d64c22393",
     "description": "factor out project/directory scanning code to visitor pattern",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-10",
       "started_on": "2022-06-10",
@@ -563,7 +513,6 @@
   {
     "id": "29dc5411-9613-4e20-b7d0-2f1ba47c98c3",
     "description": "create a basic web ui for managing tasks",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-10",
       "completed_on": "2022-07-17"
@@ -573,7 +522,6 @@
   {
     "id": "85f1cf33-1c1f-4ec8-e0a8-86474b079fd4",
     "description": "create an api for the web ui",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-10",
       "completed_on": "2022-07-17"
@@ -583,7 +531,6 @@
   {
     "id": "33c351d1-77f4-4aa3-ea73-5d90e9f03cf3",
     "description": "implement ability to move tasks between different projects",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-21"
     },
@@ -592,7 +539,6 @@
   {
     "id": "d16f6082-7b4d-4c4d-c9a7-05c1a64148f2",
     "description": "implement project move/rename",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-21",
       "started_on": "2022-06-21",
@@ -604,16 +550,15 @@
   {
     "id": "27ca7c7f-3bec-451f-da07-bf89f1c45e9e",
     "description": "bug: check command fails - seems to read top-level project twice",
-    "project": "ultiplan",
     "dates": {
-      "created_on": "2022-06-21"
+      "created_on": "2022-06-21",
+      "completed_on": "2022-07-17"
     },
     "tags": []
   },
   {
     "id": "a9485eb8-8144-4141-afdb-a2760ad0108f",
     "description": "implement data checks in projects",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-21",
       "started_on": "2022-06-21",
@@ -625,7 +570,6 @@
   {
     "id": "375fc784-7c82-47c3-bd07-d287310020f9",
     "description": "implement a find command",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-23",
       "completed_on": "2022-07-17"
@@ -635,7 +579,6 @@
   {
     "id": "baa8b871-8d67-4413-f353-7aeb6d7ad54c",
     "description": "implemented id field as uuid",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-25",
       "started_on": "2022-06-25",
@@ -647,7 +590,6 @@
   {
     "id": "76d23829-2926-4cdf-cd2e-f46243a0beef",
     "description": "improved DB validation check",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-25",
       "started_on": "2022-06-25",
@@ -659,7 +601,6 @@
   {
     "id": "0de456a6-1bf8-4a9d-8086-f52be8f62dd6",
     "description": "fixed visitor implementation",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-26",
       "started_on": "2022-06-26",
@@ -671,7 +612,6 @@
   {
     "id": "b3b6440b-8984-4a57-f1e0-93c80f639f69",
     "description": "fixed report",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-26",
       "started_on": "2022-06-26",
@@ -683,7 +623,6 @@
   {
     "id": "1b24e437-4769-407f-e8c0-8ee7c380754d",
     "description": "implemented prototype ui",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-26",
       "started_on": "2022-06-26",
@@ -695,7 +634,6 @@
   {
     "id": "41ac0b19-0dde-42e2-e6f7-4f7736dc7879",
     "description": "reorganised project structure",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-26",
       "started_on": "2022-06-26",
@@ -707,7 +645,6 @@
   {
     "id": "d27b25d9-3bae-4e98-a88f-b82fb90bdf15",
     "description": "api: serves tasks data",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-26",
       "started_on": "2022-06-26",
@@ -719,7 +656,6 @@
   {
     "id": "2ae0f357-5d9a-4d37-bf3d-f4ade4703d0a",
     "description": "notes: nestjs",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-26"
     },
@@ -732,7 +668,6 @@
   {
     "id": "dd6dc7e7-387c-4c7f-fa91-cc23355378ac",
     "description": "implemented initial ui connection to api",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-27",
       "started_on": "2022-06-27",
@@ -744,7 +679,6 @@
   {
     "id": "112ea396-b096-46cd-d0ba-94734ab3196e",
     "description": "implement location-independent running of ui/api/services bundle",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-27",
       "started_on": "2022-06-28",
@@ -756,7 +690,6 @@
   {
     "id": "430742cb-74f5-4610-866a-db74d0efe0d6",
     "description": "api: implement appending of records without reading all of the items first",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-27"
     },
@@ -765,7 +698,6 @@
   {
     "id": "41c3a05a-b28b-4e6d-c379-c18859c42162",
     "description": "api: implement start and stop feature",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-27",
       "started_on": "2022-06-28",
@@ -777,7 +709,6 @@
   {
     "id": "dd010176-bfd9-4f6f-b53e-734fd32e3272",
     "description": "ui: implement start and stop feature",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-27",
       "started_on": "2022-06-28",
@@ -789,7 +720,6 @@
   {
     "id": "d22cc8d7-2a78-4d64-ecdf-629e8471c304",
     "description": "hacked port settings for ui and api",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-27",
       "started_on": "2022-06-27",
@@ -801,7 +731,6 @@
   {
     "id": "9f27495e-2013-4e87-b22e-50ba27275d11",
     "description": "implemented local start and stop for api and ui",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-27",
       "started_on": "2022-06-27",
@@ -813,7 +742,6 @@
   {
     "id": "6ae7a3d7-1864-48bc-ac1f-38d97cfce282",
     "description": "api: implement recursive reading of projects",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-28"
     },
@@ -822,7 +750,6 @@
   {
     "id": "2b174856-6d72-4380-bb87-a70bf0024de4",
     "description": "ui: added more details to tasks view",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-28",
       "started_on": "2022-06-28",
@@ -834,7 +761,6 @@
   {
     "id": "52ee293d-c493-4ad8-e7cd-b96a99af7974",
     "description": "api: add markdown summary endpoint",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-28"
     },
@@ -843,7 +769,6 @@
   {
     "id": "0c81f426-aefe-489d-cbbd-bf48663f027a",
     "description": "implemented tasks-diff - requires a git repository to work",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-28",
       "started_on": "2022-06-28",
@@ -855,7 +780,6 @@
   {
     "id": "590b45fd-a464-4f6d-98a3-46613a3ced81",
     "description": "moved service functions to shared library",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-29",
       "started_on": "2022-06-29",
@@ -867,7 +791,6 @@
   {
     "id": "3157ffa6-0733-43ce-9480-c1a1c1c00f38",
     "description": "implement meeting notes feature",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-29"
     },
@@ -876,7 +799,6 @@
   {
     "id": "fac34b29-a09f-4584-9197-e1c468318e1b",
     "description": "implement integration with github projects and tickets",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-29"
     },
@@ -885,7 +807,6 @@
   {
     "id": "024fa476-0598-45f0-d752-80a076369d17",
     "description": "implement integration with bitbucket projects and tickets",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-29"
     },
@@ -894,16 +815,15 @@
   {
     "id": "a01b1012-7b1e-4bed-d089-26af48b1fbd1",
     "description": "implement DB version conversion feature",
-    "project": "ultiplan",
     "dates": {
-      "created_on": "2022-06-29"
+      "created_on": "2022-06-29",
+      "completed_on": "2022-07-17"
     },
     "tags": []
   },
   {
     "id": "f82f41aa-aca1-4acf-a841-ecbe62381e50",
     "description": "implement integration with web browsers to save and set favourites - initially using a set of indexed markdown pages",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-29"
     },
@@ -911,17 +831,16 @@
   },
   {
     "id": "47080bcf-1e3d-4edf-a5d2-3e41402f0c13",
-    "description": "implement multiline task entry with tags separated by semi-colons",
-    "project": "ultiplan",
+    "description": "implement multiline task entry with tags separated by semi-colons\n- implemented in ui and api",
     "dates": {
-      "created_on": "2022-06-29"
+      "created_on": "2022-06-29",
+      "completed_on": "2022-07-17"
     },
     "tags": []
   },
   {
     "id": "2e0dd8ce-5622-4aec-fb5b-506ee1c1cf35",
     "description": "example layout/representation - cheatsheets: https://devhints.io/",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-06-30"
     },
@@ -930,9 +849,9 @@
   {
     "id": "cec45a61-f12a-4441-e775-414ada8935ea",
     "description": "ui: implement refresh/re-read of data after modification",
-    "project": "ultiplan",
     "dates": {
-      "created_on": "2022-07-06"
+      "created_on": "2022-07-06",
+      "completed_on": "2022-07-17"
     },
     "tags": [
       "works partially, sometimes the refresh works, sometimes it doesn't"
@@ -941,7 +860,6 @@
   {
     "id": "7f5087d4-a24f-46de-8ff2-4284706ddd5e",
     "description": "ui: implement collapsible rows - e.g. show/hide date information",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-06",
       "completed_on": "2022-07-08"
@@ -951,7 +869,6 @@
   {
     "id": "1cc6601d-4d8f-4af7-9a33-cc4b88edc5e3",
     "description": "implement mindmap generation",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-06"
     },
@@ -960,7 +877,6 @@
   {
     "id": "ab6ebe86-5277-49d5-86e5-02257791b6af",
     "description": "implement project-to-project task merge feature",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-06"
     },
@@ -969,7 +885,6 @@
   {
     "id": "d9b1be83-984d-4f24-efc1-61842169c578",
     "description": "implement generation of help text for commands and command options",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-06"
     },
@@ -978,7 +893,6 @@
   {
     "id": "17d5d307-9684-4c33-ec9c-15d7176984c5",
     "description": "api: implement view of projects using a recursive view option similar to ls and report commands",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-06"
     },
@@ -987,7 +901,6 @@
   {
     "id": "cb9f5524-8952-4995-bc5a-1dea3ceb37ae",
     "description": "api: implement ability to dynamically add and remove projects links - extends recursive view functionality",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-06"
     },
@@ -996,7 +909,6 @@
   {
     "id": "50bc5290-b769-44e8-87a9-4aa9ec4955d0",
     "description": "implement ability to group tasks - eg for epics",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-06"
     },
@@ -1005,7 +917,6 @@
   {
     "id": "7ef49f90-d1a8-44d4-dc62-64adc6d307d4",
     "description": "implement ability to capture and display tasks as md/html fragments",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-06",
       "started_on": "2022-07-06"
@@ -1015,7 +926,6 @@
   {
     "id": "eff318c5-be50-4254-f341-45a66532dac0",
     "description": "ui: use sticky header + custom overrides + collapsible table",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-07"
     },
@@ -1024,7 +934,6 @@
   {
     "id": "ceb6501b-8f5c-4e53-9673-d18ba7c74782",
     "description": "ui: convert/upgrade all @material-ui to @mui",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-07",
       "completed_on": "2022-07-08"
@@ -1034,7 +943,6 @@
   {
     "id": "7694a95e-c724-447b-b7ed-181014407979",
     "description": "implement org-chart generation",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-07"
     },
@@ -1043,7 +951,6 @@
   {
     "id": "76a559fe-8cda-4829-c005-836a12bb9021",
     "description": "can now start api on a mapped network drive",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-07",
       "started_on": "2022-07-07",
@@ -1055,7 +962,6 @@
   {
     "id": "22b40030-a037-4af7-eec3-5eb50dae98d2",
     "description": "ui: implement color coding for date status",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-07"
     },
@@ -1064,7 +970,6 @@
   {
     "id": "567586f6-8fd7-4083-bbd2-22adbc001866",
     "description": "ui: implement color coding for bad data/bad records",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-07"
     },
@@ -1073,7 +978,6 @@
   {
     "id": "c94c4a54-5a3e-422c-d529-d8c66f20af1b",
     "description": "ui: implement custom tag notation for known tags - eg bug feature note etc and implement grouping and filtering",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-07"
     },
@@ -1082,7 +986,6 @@
   {
     "id": "f7dcc2fe-b3c1-4f3e-8c02-0ea9ec590c83",
     "description": "ui: defect - search feature no longer working after table refactoring",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-08"
     },
@@ -1091,7 +994,6 @@
   {
     "id": "2649db27-0a8f-40f5-b091-c064e328be63",
     "description": "ui: improved date and status information display",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-08",
       "started_on": "2022-07-08",
@@ -1103,7 +1005,6 @@
   {
     "id": "b987a4ad-06c1-477e-90d2-e37a2620a298",
     "description": "ui: can now mark tasks as done",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-08",
       "started_on": "2022-07-08",
@@ -1115,7 +1016,6 @@
   {
     "id": "215431c3-c61c-429e-be90-0866597025fd",
     "description": "ui: defect - page controls no longer have navigate to start/end buttons",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-08",
       "completed_on": "2022-07-08"
@@ -1125,7 +1025,6 @@
   {
     "id": "0d715e9e-745b-4a2a-d45a-43580432f12f",
     "description": "ui: prevent deletion of started or completed tasks",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-08",
       "completed_on": "2022-07-08"
@@ -1135,7 +1034,6 @@
   {
     "id": "0d5f6ed1-31a4-4b02-de0c-db10e7858694",
     "description": "api: prevent deletion of completed tasks",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-08"
     },
@@ -1144,7 +1042,6 @@
   {
     "id": "f50f9782-da6d-46ee-8b2a-13fb8b5db886",
     "description": "api: prevent deletion of started tasks",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-08"
     },
@@ -1153,7 +1050,6 @@
   {
     "id": "1ff3d852-90a1-4269-ba37-d9508894188f",
     "description": "api book: discuss how to push validation to client - see task deletion guards",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-08"
     },
@@ -1162,7 +1058,6 @@
   {
     "id": "aa65464b-373d-418e-95d5-42bd0d26ebf6",
     "description": "feature for api/services/db: add metadata to db - eg groups and tags spec along with statistics",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-08"
     },
@@ -1171,7 +1066,6 @@
   {
     "id": "256e2b21-1a70-4084-f3b3-2a4343745875",
     "description": "ui: implemented new status change controls with state transition guards",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-10",
       "started_on": "2022-07-10",
@@ -1183,7 +1077,6 @@
   {
     "id": "34eb117e-79da-4f42-ab31-89eb1e0a6dcf",
     "description": "ui: extend task creation dialog to support tags",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-10",
       "started_on": "2022-07-11",
@@ -1194,7 +1087,6 @@
   {
     "id": "739c35dd-cead-4e7a-eb56-41c1bbb0f05f",
     "description": "ui: extend task editing functionality to support tags",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-10",
       "completed_on": "2022-07-11"
@@ -1204,7 +1096,6 @@
   {
     "id": "97608295-db16-4f6a-a205-c9a1c2cccb8a",
     "description": "implement summary info in api instead of ui",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-12"
     },
@@ -1213,7 +1104,6 @@
   {
     "id": "4a413218-274c-484c-aaf5-eab0d74449cc",
     "description": "ui: automatically set focus when adding a tag - also may need to scroll when doing so",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-12",
       "started_on": "2022-07-12",
@@ -1230,7 +1120,6 @@
   {
     "id": "9f8e5380-d27c-4277-92a0-e0c295e0bc64",
     "description": "feature: scripts - run multiple api/ui combinations using a range of dynamically allocated urls/ports",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-12"
     },
@@ -1239,7 +1128,6 @@
   {
     "id": "2b1c3947-d961-40b4-8dee-192e1a581e6e",
     "description": "ui: implement standard success and error handlers for all api requests/http verbs - with logging and toast alerts",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-12",
       "completed_on": "2022-07-14"
@@ -1249,7 +1137,6 @@
   {
     "id": "02e4b325-31f0-46d2-b981-6283c6e88347",
     "description": "implemented prep for schema versioning",
-    "project": "ultiplan",
     "dates": {
       "created_on": "2022-07-17",
       "started_on": "2022-07-17",

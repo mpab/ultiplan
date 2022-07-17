@@ -9,7 +9,7 @@ const menus: {[index: string]:any} = {
     create-samples ..................... create sample task data
     done ................................. add a completed task 
     find ................................. find a task by its id
-    help .............................. help on using commands 
+    help ................................ help on using commands
     init ................................. initializes a project
     ls ...................... list tasks (with recursive option)
     mv .................... move project (with recursive option)
@@ -18,7 +18,7 @@ const menus: {[index: string]:any} = {
     schedule ................................... schedule a task
     today ........................ show all open tasks for today
     todo ....................................... add a todo task
-    upschema .................. checks a project for data issues
+    upschema ............................ upgrades the DB schema
     version ....................... show the application version
 `,
   ls: `

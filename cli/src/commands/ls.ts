@@ -4,11 +4,13 @@
 import minimist from "minimist";
 import dbLoad from "ultiplan-api/src/libs/db/db-load";
 
-import { DbRecord_2022_07_16, RecordView } from "ultiplan-api/src/libs/db/db-record";
+import {
+  DbRecord_2022_07_16,
+  RecordView,
+} from "ultiplan-api/src/libs/db/db-record";
 import { dbLoadAsView } from "ultiplan-api/src/libs/db/db-converters";
-import { getAndCheckDbHandle } from "../utils/db-handle";
-
-import visit from "ultiplan-api/src/libs/utils/dir-visitor";
+import { safeGetDbHandle } from "../utils/db-handle";
+import visit from "../utils/dir-visitor";
 import stringIsNullOrEmpty from "ultiplan-api/src/libs/utils/string-is-null-or-empty";
 
 const lsCsv = (handle: string) => {
@@ -56,7 +58,7 @@ const lsFormatRecord = (record: RecordView) => {
   const id = stringIsNullOrEmpty(record.id)
     ? "00000000-0000-0000-0000-000000000000"
     : record.id;
-  let ret = `${record.project}-${id}\n${record.description}`;
+  let ret = `${id}\n${record.description}`;
   for (const tag of record.tags) {
     ret += `\n- ` + tag;
   }
@@ -99,14 +101,14 @@ const ls = (args: minimist.ParsedArgs, handle: string) => {
 module.exports = async (handle: string) => {
   const args = minimist(process.argv.slice(2));
 
+  ls(args, handle);
+
   if (args.r || args.recurse) {
     await visit((dir: string) => {
-      const [handle] = getAndCheckDbHandle(dir);
-      if (!handle) return;
-      ls(args, handle);
-    });
-    return;
+      const [file_handle] = safeGetDbHandle(dir);
+      if (file_handle.length) {
+        ls(args, file_handle);
+      }
+    }, process.cwd());
   }
-
-  ls(args, handle);
 };

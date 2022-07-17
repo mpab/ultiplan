@@ -20,7 +20,7 @@ import {
 } from "@mui/material";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 import { taskNew, TaskStatus, TaskView, viewFromTask } from "../api/types";
@@ -32,7 +32,9 @@ import { TaskEditViewControl } from "./TasksEditViewControl";
 import { DeleteOutline } from "@mui/icons-material";
 import TaskDeleteDlg from "./TaskDeleteDlg";
 import TasksTransactions, {
+  getTasksInfo,
   readAllTasks,
+  TasksApiInfoCfg,
   TasksApiReadCfg,
 } from "../api/TaskTransactions";
 import { useEffectOnce } from "../useEffectOnce";
@@ -67,9 +69,18 @@ export const TasksListView = () => {
       setViews: setViews,
       setSummary: setSummary,
     };
-
     readAllTasks(cfg);
   },);
+
+  const [tasksInfo, setTasksInfo] = useState(``);
+  useEffect(() => {
+    const cfg: TasksApiInfoCfg = {
+      success: (msg) => toast.success(msg),
+      error: (msg) => toast.error(msg),
+      setInfo: setTasksInfo,
+    };
+    getTasksInfo(cfg);
+  },[views]);
 
   // -----------------------------------------------------
 
@@ -307,7 +318,7 @@ export const TasksListView = () => {
                 }
               }}
             />
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Project: {summary}
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {tasksInfo}: {summary}
           </TableCell>
           <TableCell>
             <StatusFilter

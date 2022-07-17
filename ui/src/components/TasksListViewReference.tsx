@@ -19,7 +19,6 @@ import { useEffectOnce } from "../useEffectOnce";
 const columns: Array<Column<TaskView>> = [
   //{ title: "Id", field: "id" },
   { title: "Description", field: "taskRecord.description" },
-  { title: "Project", field: "taskRecord.project" },
   { title: "Created", field: "taskRecord.created_on" },
   { title: "Completed", field: "taskRecord.completed_on" },
   { title: "Due", field: "taskRecord.due_on" },

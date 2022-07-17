@@ -3,7 +3,7 @@
 import fs from "fs";
 
 import genGuid from "ultiplan-api/src/libs/utils/generate-uuid";
-import { RecordView} from "ultiplan-api/src/libs/db/db-record";
+import { RecordView } from "ultiplan-api/src/libs/db/db-record";
 import { getAndCheckDbHandle, getDbHandle } from "../utils/db-handle";
 
 module.exports = () => {
@@ -26,7 +26,6 @@ module.exports = () => {
     started_on: "2022-05-15",
     due_on: "2022-05-15",
     completed_on: "2022-05-15",
-    project: "ultiplan",
     tags: [],
   };
   item.id = genGuid();
@@ -43,7 +42,6 @@ module.exports = () => {
     "auto configure commands such that they can be added automatically";
   item.due_on = item.completed_on = "";
   item.started_on = "";
-  item.project = "ultiplan";
   item.id = genGuid();
   data.push(item);
 
@@ -52,7 +50,6 @@ module.exports = () => {
   (item.created_on = "2022-05-16"),
     (item.due_on = item.completed_on = "2022-05-16");
   item.started_on = "2022-05-16";
-  item.project = "ultiplan";
   item.id = genGuid();
   data.push(item);
 
@@ -61,11 +58,10 @@ module.exports = () => {
   (item.created_on = "2022-05-16"),
     (item.due_on = item.completed_on = "2022-05-16");
   item.started_on = "2022-05-16";
-  (item.project = "learning javascript"),
-    (item.tags = [
-      ["url", "https://developer.mozilla.org/en-US/docs/Web/JavaScript"],
-      ["url", "https://www.w3schools.com/js/default.asp"],
-    ]);
+  item.tags = [
+    ["url", "https://developer.mozilla.org/en-US/docs/Web/JavaScript"],
+    ["url", "https://www.w3schools.com/js/default.asp"],
+  ];
   item.id = genGuid();
   data.push(item);
 
@@ -74,8 +70,7 @@ module.exports = () => {
   (item.created_on = "2022-05-16"),
     (item.due_on = item.completed_on = "2022-05-16");
   item.started_on = "2022-05-16";
-  (item.project = "tags test"),
-    (item.tags = [["t0"], ["t1", "t1.1"], ["t2", "t2.1", "t2.2"]]);
+  item.tags = [["t0"], ["t1", "t1.1"], ["t2", "t2.1", "t2.2"]];
   item.id = genGuid();
   data.push(item);
 

@@ -29,7 +29,6 @@ export const recordFromView = (view: RecordView): DbRecord_2022_07_16 => {
   const record: DbRecord_2022_07_16 = {
     id: view.id,
     description: view.description,
-    project: view.project,
     dates: {},
     tags: view.tags,
   };
@@ -41,7 +40,6 @@ export const viewFromRecord = (record: DbRecord_2022_07_16): RecordView => {
   const view = {
     id: record.id,
     description: record.description,
-    project: record.project,
     tags: record.tags,
 
     created_on: ``, //m2s(record.dates, DatesKey.created_on),
@@ -58,15 +56,17 @@ export const dbLoadAsView = (handle: string): [RecordView[], string] => {
   const [records, error] = dbLoad(handle);
   if (error) return [views, error];
 
+  let record;
   for (const item of records) {
     let view: RecordView;
     try {
-      const record = item as DbRecord_2022_07_16;
+      record = item as DbRecord_2022_07_16;
       view = viewFromRecord(record);
     } catch (e) {
       console.error(e);
+      console.dir(record);
       return logErrorAndReturnCollection(
-        'schema error - try cli upschema command to upgrade',
+        `dbLoadAsView: schema error ${handle}`,
       );
     }
     views.push(view);
