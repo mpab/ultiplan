@@ -1,5 +1,13 @@
 import { Add } from "@mui/icons-material";
-import { Collapse, IconButton, TextField, Tooltip } from "@mui/material";
+import {
+  Box,
+  Button,
+  Collapse,
+  Grid,
+  IconButton,
+  TextField,
+  Tooltip,
+} from "@mui/material";
 import React, { ChangeEvent, useState } from "react";
 import { TaskStatus, TaskView } from "../api/types";
 import { stringIsNullOrEmpty, stringIsNullOrEmptyOrWhitespace } from "../utils";
@@ -109,15 +117,67 @@ export const TaskEditViewControl = (props: TaskEditViewControlProps) => {
         return;
       }
     }
-
     onTaskViewChange();
   };
 
   const lineCount = tv.taskRecord.description.split(`\n`).length;
 
+  const isExternalUrl = (test: string) => {
+    let url;
+    try {
+      url = new URL(test);
+    } catch (_) {
+      return false;
+    }
+    return url.protocol === "http:" || url.protocol === "https:";
+  };
+
+  interface LinkTextFieldProps {
+    val: string;
+    id: number;
+  }
+  const LinkTextField = (props: LinkTextFieldProps) => {
+    return (
+      <>
+        {isExternalUrl(props.val) ? (
+          <Grid container spacing={1}>
+            <Grid item xs={11}>
+              <TextField
+                key={props.id}
+                autoFocus
+                id={String(props.id)}
+                fullWidth
+                value={props.val}
+                onChange={(e) => onChangeTag(e, props.id)}
+                onKeyDown={(e) => onKeyDownTag(e, props.id)}
+              />
+            </Grid>
+            <Tooltip title={"open url"}>
+            <Grid item xs={1} container justifyContent="flex-end">
+                <Button fullWidth href={props.val} target="_blank" variant="contained" color="primary" disableElevation>
+                  Open
+                </Button>
+            </Grid>
+            </Tooltip>
+          </Grid>
+        ) : (
+          <TextField
+            key={props.id}
+            autoFocus
+            id={String(props.id)}
+            fullWidth
+            value={props.val}
+            onChange={(e) => onChangeTag(e, props.id)}
+            onKeyDown={(e) => onKeyDownTag(e, props.id)}
+          />
+        )}
+      </>
+    );
+  };
+
   return (
     <React.Fragment>
-      <Tooltip title={tv.taskRecord.id ? tv.summary : 'undefined'}>
+      <Tooltip title={tv.taskRecord.id ? tv.summary : "undefined"}>
         {isReadonly() ? (
           <TextField
             style={{ width: "100%" }}
@@ -145,15 +205,7 @@ export const TaskEditViewControl = (props: TaskEditViewControlProps) => {
       </Tooltip>
       <Collapse in={props.isExpanded} timeout="auto" unmountOnExit>
         {tags.map((tag, id) => (
-          <TextField
-            key={id}
-            autoFocus
-            id={String(id)}
-            fullWidth
-            value={tag}
-            onChange={(e) => onChangeTag(e, id)}
-            onKeyDown={(e) => onKeyDownTag(e, id)}
-          />
+          <LinkTextField val={tag} id={id} />
         ))}
         <Tooltip title="add a tag line">
           <IconButton onClick={handleClickNewTag} sx={{ fontSize: "12px" }}>

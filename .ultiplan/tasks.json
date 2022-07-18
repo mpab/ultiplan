@@ -1165,5 +1165,14 @@
     "dates": {
       "created_on": "2022-07-18"
     }
+  },
+  {
+    "id": "a4a227ba-2b00-4ad5-a103-7ab978b5d644",
+    "description": "ui: implemented tags as href/links if url detected",
+    "dates": {
+      "created_on": "2022-07-18",
+      "completed_on": "2022-07-18"
+    },
+    "tags": []
   }
 ]

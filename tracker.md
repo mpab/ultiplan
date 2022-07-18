@@ -69,11 +69,14 @@
 - ui: implement color coding for bad data/bad records
 - ui: implement custom tag notation for known tags - eg bug feature note etc and implement grouping and filtering
 - ui: defect - search feature no longer working after table refactoring
+- added to app bar https://mui.com/material-ui/react-app-bar/ (non-working)
+    - also consider moving headings to app bar (status filter, Date, Action, ...)
 - api: prevent deletion of completed tasks
 - api: prevent deletion of started tasks
 - api book: discuss how to push validation to client - see task deletion guards
 - feature for api/services/db: add metadata to db - eg groups and tags spec along with statistics
 - feature: scripts - run multiple api/ui combinations using a range of dynamically allocated urls/ports
+- api, ui, cli: implement colorised logging
 
 ### done: ultiplan
 - 2022-07-18: implement local tasks repo/deployment (with default project?)
@@ -82,6 +85,7 @@
 - api script looks for a project db relative to the script
 - 2022-07-18: bugfix: edit control accepts multi-line descriptions but collapses to single-line when task completed
 - also implemented expansion to number of lines in description
+- 2022-07-18: ui: implemented tags as href/links if url detected
 - 2022-07-17: implement multi-line text entry/handle commas
 - works in ui and api
 - 2022-07-17: removed project field from records, project scope is now at DB-level
