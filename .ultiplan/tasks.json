@@ -79,15 +79,16 @@
   },
   {
     "id": "daac50fc-ca33-4691-db53-b002be3cfc82",
-    "description": "implement local tasks repo/deployment (with default project?)",
+    "description": "implement local tasks repo/deployment (with default project?)\n- installation of application (ui, api, ..) is scripted\n- ui scripts can be started from anywhere\n- api script looks for a project db relative to the script",
     "dates": {
-      "created_on": "2022-05-21"
+      "created_on": "2022-05-21",
+      "completed_on": "2022-07-18"
     },
     "tags": []
   },
   {
     "id": "ef92f1d0-c8c3-4598-bc8e-7883e17bc5e1",
-    "description": "implement links between ultiplan repos (hierarchical, sibling, ...)",
+    "description": "implement links between ultiplan repos (hierarchical, sibling, ...)\n- use metadata\n- specify project and item links",
     "dates": {
       "created_on": "2022-05-21"
     },
@@ -1144,5 +1145,13 @@
       "completed_on": "2022-07-17"
     },
     "tags": []
+  },
+  {
+    "id": "b8982b78-da36-4820-f5f5-38ac3c1e0443",
+    "description": "bug: edit control accepts multi-line descriptions but collapses to single-line when task completed",
+    "tags": [],
+    "dates": {
+      "created_on": "2022-07-18"
+    }
   }
 ]

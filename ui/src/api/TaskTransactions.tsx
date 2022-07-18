@@ -175,9 +175,10 @@ export const readAllTasks = (cfg: TasksApiReadCfg) => {
     },
     (data) => {
       if (!data) {
-        logSuccess(cfg, `read ${data.length} tasks`);
-      };
-      const views = data.map((task: TaskRecord) => viewFromTask(task))
+        logError(cfg, `no tasks`);
+      }
+      logSuccess(cfg, `read ${data.length} tasks`);
+      const views = data.map((task: TaskRecord) => viewFromTask(task));
       cfg.setViews(views);
     },
     (error) => {
