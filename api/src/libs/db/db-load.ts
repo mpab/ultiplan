@@ -3,6 +3,11 @@ import * as fs from 'fs';
 import stringIsNullOrEmptyOrWhitespace from '../utils/string-is-null-or-empty-or-whitespace';
 import { DbRecord_2022_07_16 } from './db-record';
 
+const logWarn = (msg: string) => {
+  console.log(`<H3><p style="color:orange;">${msg}</p></H3>`);
+  console.log();
+};
+
 const nameOfGeneric =
   <T>() =>
   (name: keyof T) =>
@@ -30,7 +35,7 @@ export function dbLoadGeneric<T>(handle: string): [T[], string] {
     const records: T[] = JSON.parse(data);
     //console.log(`read ${records.length} records from ${handle}`);
     if (!records.length) {
-      console.log(`empty DB at ${handle}`);
+      logWarn(`empty DB at ${handle}`);
     }
     return [records, ''];
   } catch (e) {

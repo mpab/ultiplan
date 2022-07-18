@@ -1154,5 +1154,13 @@
       "created_on": "2022-07-18",
       "completed_on": "2022-07-18"
     }
+  },
+  {
+    "id": "a8966178-7df1-4d50-f473-3f6a23aad41d",
+    "description": "api, ui, cli: implement colorised logging",
+    "tags": [],
+    "dates": {
+      "created_on": "2022-07-18"
+    }
   }
 ]

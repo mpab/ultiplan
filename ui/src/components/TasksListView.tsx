@@ -65,7 +65,7 @@ export const TasksListView = () => {
     setViews: setUnfilteredViews,
   });
 
-  const [tasksInfo, setTasksInfo] = useState(``);
+  const [tasksInfo, setTasksInfo] = useState(`unknown`);
   useEffect(() => {
     const cfg: TasksApiInfoCfg = {
       success: (msg) => toast.success(msg),
@@ -130,13 +130,13 @@ export const TasksListView = () => {
       }
     }
 
-    const summary = `${unfilteredViews.length} tasks,
+    const summary = `${tasksInfo}: ${unfilteredViews.length} tasks,
       ${completed} completed,
       ${in_progress} in progress,
       ${not_started} not started.
        (last checked ${dateYYYYMMDDhhmmss(new Date())})`;
     setSummary(summary);
-  }, [unfilteredViews]);
+  }, [tasksInfo, unfilteredViews]);
 
   // -----------------------------------------------------
 
@@ -339,7 +339,7 @@ export const TasksListView = () => {
                 }
               }}
             />
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {tasksInfo}: {summary}
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; {summary}
           </TableCell>
           <TableCell>
             <StatusFilterControl
