@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { alpha, styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -19,14 +19,16 @@ import ListItemText from "@mui/material/ListItemText";
 import NotesIcon from "@mui/icons-material/Notes";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import WaterfallChartIcon from "@mui/icons-material/WaterfallChart";
-import EditRoadIcon from '@mui/icons-material/EditRoad';
-import { FormatListNumbered } from "@mui/icons-material";
+import EditRoadIcon from "@mui/icons-material/EditRoad";
+import { FormatListNumbered, Search } from "@mui/icons-material";
 import { TasksListView } from "./TasksListView";
 import { TasksCalendarView } from "./TasksCalendarView";
 import { TasksGanttChartView } from "./TasksGanttChartView";
 import { MeetingsListView } from "./MeetingsListView";
 import { TasksKanbanView } from "./TasksKanbanView";
 import { TasksListViewReference } from "./TasksListViewReference";
+import SearchIcon from "@mui/icons-material/Search";
+import { InputBase } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -103,6 +105,52 @@ export default function PersistentDrawerLeft() {
   ];
 
   // ------------------------------------------------------------
+  // custom search
+  // https://mui.com/material-ui/react-app-bar/
+
+  const Search = styled("div")(({ theme }) => ({
+    position: "relative",
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    "&:hover": {
+      backgroundColor: alpha(theme.palette.common.white, 0.25),
+    },
+    marginLeft: 0,
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      marginLeft: theme.spacing(1),
+      width: "auto",
+    },
+  }));
+
+  const SearchIconWrapper = styled("div")(({ theme }) => ({
+    padding: theme.spacing(0, 2),
+    height: "100%",
+    position: "absolute",
+    pointerEvents: "none",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  }));
+
+  const StyledInputBase = styled(InputBase)(({ theme }) => ({
+    color: "inherit",
+    "& .MuiInputBase-input": {
+      padding: theme.spacing(1, 1, 1, 0),
+      // vertical padding + font size from searchIcon
+      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+      transition: theme.transitions.create("width"),
+      width: "100%",
+      [theme.breakpoints.up("sm")]: {
+        width: "12ch",
+        "&:focus": {
+          width: "20ch",
+        },
+      },
+    },
+  }));
+
+  // ------------------------------------------------------------
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -121,6 +169,15 @@ export default function PersistentDrawerLeft() {
           <Typography variant="h6" noWrap component="div">
             {viewNames[view]}
           </Typography>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
         </Toolbar>
       </AppBar>
       <Drawer
