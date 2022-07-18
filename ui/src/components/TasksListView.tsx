@@ -95,17 +95,27 @@ export const TasksListView = () => {
   });
 
   useEffect(() => {
-    if (taskStatusFilter === TaskStatus.any) {
-      setFilteredViews(unfilteredViews);
-      return;
+    let newFilteredViews = unfilteredViews;
+    switch (taskStatusFilter) {
+      case TaskStatus.any:
+        break;
+      case TaskStatus.active:
+        newFilteredViews = unfilteredViews.filter(
+          (view) => view.status !== TaskStatus.completed
+        );
+        break;
+
+      default:
+        newFilteredViews = unfilteredViews.filter(
+          (view) => view.status === taskStatusFilter
+        );
+        break;
     }
-    const newFilteredViews = unfilteredViews.filter(
-      (view) => view.status === taskStatusFilter
-    );
     setFilteredViews(newFilteredViews);
   }, [taskStatusFilter, unfilteredViews]);
 
-  useEffect(() => { // setSummary...
+  useEffect(() => {
+    // setSummary...
     let completed = 0;
     let in_progress = 0;
     let not_started = 0;
@@ -134,9 +144,6 @@ export const TasksListView = () => {
     const [isExpanded, setIsExpanded] = useState(false);
 
     let tv = props.taskView;
-
-    if (taskStatusFilter !== "any" && taskStatusFilter !== tv.status)
-      return <></>;
 
     // -----------------------------------------------------
 

@@ -113,6 +113,8 @@ export const TaskEditViewControl = (props: TaskEditViewControlProps) => {
     onTaskViewChange();
   };
 
+  const lineCount = tv.taskRecord.description.split(`\n`).length;
+
   return (
     <React.Fragment>
       <Tooltip title={tv.taskRecord.id ? tv.summary : 'undefined'}>
@@ -123,6 +125,8 @@ export const TaskEditViewControl = (props: TaskEditViewControlProps) => {
             InputProps={{
               readOnly: true,
             }}
+            multiline
+            rows={props.isExpanded ? lineCount : 1}
           />
         ) : (
           <TextField
@@ -135,7 +139,7 @@ export const TaskEditViewControl = (props: TaskEditViewControlProps) => {
             multiline
             onChange={(e) => onChangeDescription(e)}
             onKeyDown={(e) => onKeyDownDescription(e)}
-            rows={props.isExpanded ? 3 : 1}
+            rows={props.isExpanded ? lineCount : 1}
           />
         )}
       </Tooltip>

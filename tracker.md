@@ -74,13 +74,14 @@
 - api book: discuss how to push validation to client - see task deletion guards
 - feature for api/services/db: add metadata to db - eg groups and tags spec along with statistics
 - feature: scripts - run multiple api/ui combinations using a range of dynamically allocated urls/ports
-- bug: edit control accepts multi-line descriptions but collapses to single-line when task completed
 
 ### done: ultiplan
 - 2022-07-18: implement local tasks repo/deployment (with default project?)
 - installation of application (ui, api, ..) is scripted
 - ui scripts can be started from anywhere
 - api script looks for a project db relative to the script
+- 2022-07-18: bugfix: edit control accepts multi-line descriptions but collapses to single-line when task completed
+- also implemented expansion to number of lines in description
 - 2022-07-17: implement multi-line text entry/handle commas
 - works in ui and api
 - 2022-07-17: removed project field from records, project scope is now at DB-level

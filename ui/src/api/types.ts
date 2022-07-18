@@ -16,6 +16,7 @@ export enum TaskStatus {
   not_started = "not started",
   in_progress = "in progress",
   completed = "completed",
+  active = "active",
 }
 
 export type TaskView = {
@@ -95,6 +96,6 @@ export const viewFromTask = (r: TaskRecord): TaskView => {
     dateSignificance: dateSignificance,
     status: status,
     summary: summary,
-    errors: []
+    errors: [],
   };
 };

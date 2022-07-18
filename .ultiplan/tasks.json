@@ -1148,10 +1148,11 @@
   },
   {
     "id": "b8982b78-da36-4820-f5f5-38ac3c1e0443",
-    "description": "bug: edit control accepts multi-line descriptions but collapses to single-line when task completed",
+    "description": "bugfix: edit control accepts multi-line descriptions but collapses to single-line when task completed\n- also implemented expansion to number of lines in description",
     "tags": [],
     "dates": {
-      "created_on": "2022-07-18"
+      "created_on": "2022-07-18",
+      "completed_on": "2022-07-18"
     }
   }
 ]
