@@ -141,7 +141,7 @@ export const TaskEditViewControl = (props: TaskEditViewControlProps) => {
       <>
         {isExternalUrl(props.val) ? (
           <Grid container spacing={1}>
-            <Grid item xs={11}>
+            <Grid item xs={10} sx={{ mt: 0.5, mb: 0.5 }}>
               <TextField
                 key={props.id}
                 autoFocus
@@ -153,11 +153,19 @@ export const TaskEditViewControl = (props: TaskEditViewControlProps) => {
               />
             </Grid>
             <Tooltip title={"open url"}>
-            <Grid item xs={1} container justifyContent="flex-end">
-                <Button fullWidth href={props.val} target="_blank" variant="contained" color="primary" disableElevation>
+              <Grid item xs={2} container justifyContent="flex-end" sx={{ mt: 0.5, mb: 0.5 }}>
+                <Button
+                  
+                  fullWidth
+                  href={props.val}
+                  target="_blank"
+                  variant="outlined"
+                  color="primary"
+                  disableElevation
+                >
                   Open
                 </Button>
-            </Grid>
+              </Grid>
             </Tooltip>
           </Grid>
         ) : (
