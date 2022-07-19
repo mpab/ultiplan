@@ -1174,5 +1174,14 @@
       "completed_on": "2022-07-18"
     },
     "tags": []
+  },
+  {
+    "id": "a7e1ce0b-97b6-4a28-f75a-bfb043709230",
+    "description": "cli: implemented db version check command",
+    "dates": {
+      "created_on": "2022-07-19",
+      "completed_on": "2022-07-19"
+    },
+    "tags": []
   }
 ]

@@ -25,7 +25,7 @@ const index = (
     id: id,
     description: description,
     created_on: recordDates.created_on,
-    started_on: recordDates.created_on,
+    started_on: recordDates.started_on,
     due_on: recordDates.due_on,
     completed_on: recordDates.completed_on,
     tags: Array<DbRecordItem>() as DbRecordItem,

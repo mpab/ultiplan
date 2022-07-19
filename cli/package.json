@@ -1,6 +1,6 @@
 {
   "name": "ultiplan-cli",
-  "version": "0.0.3",
+  "version": "00.00.50",
   "main": "./src/index.ts",
   "repository": "git@github.com:mpab/ultiplan.git",
   "author": "",

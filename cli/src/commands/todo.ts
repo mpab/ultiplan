@@ -30,6 +30,7 @@ const index = async (handle: string) => {
 
     const record = recordFromView(view);
     dbCreateRecord(record, handle);
+    console.log(dates);
     return;
   }
 
@@ -39,6 +40,7 @@ const index = async (handle: string) => {
       const view = dbNewView(description, dates, id);
       const record = recordFromView(view);
       dbCreateRecord(record, handle);
+      console.log(dates);
     }
   } while (description.length);
 };

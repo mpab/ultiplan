@@ -79,6 +79,7 @@
 - api, ui, cli: implement colorised logging
 
 ### done: ultiplan
+- 2022-07-19: cli: implemented db version check command
 - 2022-07-18: implement local tasks repo/deployment (with default project?)
 - installation of application (ui, api, ..) is scripted
 - ui scripts can be started from anywhere

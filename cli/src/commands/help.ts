@@ -12,14 +12,14 @@ const menus: {[index: string]:any} = {
     help ................................ help on using commands
     init ................................. initializes a project
     ls ...................... list tasks (with recursive option)
-    mv .................... move project (with recursive option)
     report ............................. generate a tasks report
     rm ................................. delete a task by its id
     schedule ................................... schedule a task
     today ........................ show all open tasks for today
     todo ....................................... add a todo task
     upschema ............................ upgrades the DB schema
-    version ....................... show the application version
+    version-app ................... show the application version
+    version-db ............................. show the db version
 `,
   ls: `
     tasks list <options>

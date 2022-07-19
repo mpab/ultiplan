@@ -51,10 +51,6 @@ const index = async () => {
       await require("./commands/ls")(handle, project);
       break;
 
-    case "mv":
-      await require("./commands/mv")(handle, project);
-      break;
-
     case "report":
       await require("./commands/report")(handle, project);
       break;
@@ -79,8 +75,12 @@ const index = async () => {
       await require("./commands/upschema")(handle, project);
       break;
 
-    case "version":
-      await require("./commands/version")(handle, project);
+    case "version-app":
+      await require("./commands/version-app")(handle, project);
+      break;
+
+    case "version-db":
+      await require("./commands/version-db")(handle, project);
       break;
 
     default:
